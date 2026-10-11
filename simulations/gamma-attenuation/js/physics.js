@@ -88,7 +88,7 @@ function calculateGammaTransmission(
 
 
 // ======================================================
-// CƯỜNG ĐỘ / SỐ PHOTON KỲ VỌNG
+// CƯỜNG ĐỘ / SỐ PHOTON KÌ VỌNG
 // ======================================================
 
 function calculateExpectedGammaCount(

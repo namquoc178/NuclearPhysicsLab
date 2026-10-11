@@ -13,9 +13,9 @@ body {
 
     line-height: 1.6;
 
-    color: #1f2937;
+    color: var(--lab-ink);
 
-    background: #f4f7fa;
+    background: var(--lab-paper);
 }
 
 
@@ -67,11 +67,11 @@ button {
 
     text-decoration: none;
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eaf2ff;
+    background: var(--lab-accent-wash);
 
-    border: 1px solid #dbeafe;
+    border: 1px solid var(--lab-accent-tint);
 
     font-weight: 600;
 
@@ -82,7 +82,7 @@ button {
 
 
 .home-link:hover {
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 
     transform:
         translateX(-2px);
@@ -106,7 +106,7 @@ button {
 .lesson-label {
     margin-bottom: 6px;
 
-    color: #2563eb;
+    color: var(--lab-accent);
 
     font-size: 14px;
 
@@ -136,7 +136,7 @@ button {
 
     margin: 0 auto;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 17px;
 }
@@ -196,11 +196,11 @@ button {
 
     padding: 14px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -221,9 +221,9 @@ button {
 
     border-radius: 50%;
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 }
 
 
@@ -256,7 +256,7 @@ button {
         11px
         22px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 8px;
 
@@ -265,9 +265,9 @@ button {
 
 
 .mode-button.active {
-    border: 2px solid #2563eb;
+    border: 2px solid var(--lab-accent);
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
     font-weight: 700;
 }
@@ -322,7 +322,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -342,7 +342,7 @@ button {
 .button-group button {
     padding: 11px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 8px;
 
@@ -353,11 +353,11 @@ button {
 .channel-note {
     padding: 14px;
 
-    border-left: 4px solid #64748b;
+    border-left: 4px solid var(--lab-muted);
 
     border-radius: 7px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 
     font-size: 14px;
 }
@@ -399,7 +399,7 @@ button {
 .simulation-title-row p {
     margin: 0;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -417,9 +417,9 @@ button {
 
 
 .status-badge.ready {
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eaf2ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -446,11 +446,11 @@ button {
 
     margin-top: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #f8fbff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -469,17 +469,17 @@ button {
 .stage-item {
     padding: 9px 5px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 7px;
 
     text-align: center;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 12px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -496,30 +496,30 @@ button {
 
     border-radius: 50%;
 
-    background: #e2e8f0;
+    background: var(--lab-rule);
 }
 
 
 .stage-item.active {
-    border-color: #3b82f6;
+    border-color: var(--lab-accent);
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 
     font-weight: 700;
 }
 
 
 .stage-item.active span {
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 }
 
 
 .visual-note {
     margin-bottom: 0;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 13px;
 }
@@ -565,7 +565,7 @@ button {
 .reaction-note {
     text-align: center;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -602,9 +602,9 @@ button {
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 }
 
 
@@ -613,7 +613,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -648,7 +648,7 @@ button {
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -681,18 +681,18 @@ button {
 .explanation-card {
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
 .explanation-card p {
     margin-bottom: 0;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -722,11 +722,11 @@ button {
 .question-card {
     padding: 16px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -740,11 +740,11 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -807,11 +807,11 @@ button {
 
     padding: 20px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 10px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -835,7 +835,7 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
@@ -852,11 +852,11 @@ button {
 
     padding: 14px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -886,7 +886,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -902,7 +902,7 @@ button {
 .task1-expression {
     margin: 0;
 
-    color: #475569;
+    color: var(--lab-text-2);
 
     font-size: 17px;
 }
@@ -913,7 +913,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 }
@@ -931,7 +931,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -953,7 +953,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -999,7 +999,7 @@ button {
 .task-button-group button {
     padding: 10px 16px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1017,7 +1017,7 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
@@ -1058,7 +1058,7 @@ button {
 
     margin-bottom: 6px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -1072,11 +1072,11 @@ button {
 
     padding: 16px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1149,7 +1149,7 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
@@ -1166,7 +1166,7 @@ button {
 
     padding: 17px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
@@ -1196,7 +1196,7 @@ button {
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1205,7 +1205,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -1221,11 +1221,11 @@ button {
 
     padding: 14px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -1255,7 +1255,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1271,7 +1271,7 @@ button {
 .task2-expression {
     margin: 0;
 
-    color: #475569;
+    color: var(--lab-text-2);
 
     font-size: 16px;
 }
@@ -1282,7 +1282,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 }
@@ -1299,7 +1299,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1319,7 +1319,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1355,7 +1355,7 @@ button {
 
     margin-bottom: 6px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -1369,11 +1369,11 @@ button {
 
     padding: 16px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1407,7 +1407,7 @@ button {
 
     border-radius: 999px;
 
-    background: #e2e8f0;
+    background: var(--lab-rule);
 }
 
 
@@ -1423,12 +1423,12 @@ button {
 
 
 .task2-mass-bar.initial {
-    background: #64748b;
+    background: var(--lab-muted);
 }
 
 
 .task2-mass-bar.final {
-    background: #2563eb;
+    background: var(--lab-accent);
 }
 
 
@@ -1437,11 +1437,11 @@ button {
 
     padding: 16px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1528,7 +1528,7 @@ button {
 
     overflow-x: auto;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 }
@@ -1545,7 +1545,7 @@ button {
 .task3-table-wrapper td {
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     text-align: center;
 
@@ -1554,7 +1554,7 @@ button {
 
 
 .task3-table-wrapper th {
-    background: #f1f5f9;
+    background: var(--lab-surface-3);
 }
 
 
@@ -1574,7 +1574,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1597,13 +1597,13 @@ button {
 .task3-summary-box {
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1612,7 +1612,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -1628,11 +1628,11 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1652,7 +1652,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1672,7 +1672,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1749,7 +1749,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1772,7 +1772,7 @@ button {
 .chain-parameter-box {
     padding: 14px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1787,7 +1787,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -1813,13 +1813,13 @@ button {
 .chain-summary-box {
     padding: 14px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1828,7 +1828,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -1855,11 +1855,11 @@ button {
 
     margin-top: 12px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #f8fbff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -1874,7 +1874,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1889,7 +1889,7 @@ button {
 
     overflow: auto;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 }
@@ -1906,7 +1906,7 @@ button {
 .chain-table-wrapper td {
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     text-align: center;
 }
@@ -1917,7 +1917,7 @@ button {
 
     top: 0;
 
-    background: #f1f5f9;
+    background: var(--lab-surface-3);
 }
 
 
@@ -1979,11 +1979,11 @@ button {
 
     padding: 20px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 10px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1997,11 +1997,11 @@ button {
 
     padding: 16px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 8px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -2034,7 +2034,7 @@ button {
 .validation-summary-box {
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -2049,7 +2049,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -2070,7 +2070,7 @@ button {
 
     overflow-x: auto;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 }
@@ -2087,7 +2087,7 @@ button {
 .validation-table-wrapper td {
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     text-align: center;
 
@@ -2096,7 +2096,7 @@ button {
 
 
 .validation-table-wrapper th {
-    background: #f1f5f9;
+    background: var(--lab-surface-3);
 }
 
 
@@ -2162,7 +2162,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -2185,13 +2185,13 @@ button {
 .monte-validation-detail-grid > div {
     padding: 14px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -2200,7 +2200,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -2225,7 +2225,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -2238,11 +2238,11 @@ button {
 
     padding: 17px;
 
-    border-left: 4px solid #64748b;
+    border-left: 4px solid var(--lab-muted);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 

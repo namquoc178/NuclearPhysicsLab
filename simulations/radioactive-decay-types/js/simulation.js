@@ -914,7 +914,7 @@ function renderAlphaDecay(
      * Ta cường điệu nhẹ thay đổi kích thước
      * để học sinh dễ nhận biết.
      *
-     * Đây KHÔNG phải tỉ lệ bán kính vật lý thật.
+     * Đây KHÔNG phải tỉ lệ bán kính vật lí thật.
      */
 
     let nucleusRadius =
@@ -1124,7 +1124,7 @@ function renderAlphaDecay(
 
 
         context.fillText(
-            "Kích thước hạt nhân con được thu nhỏ cường điệu để trực quan hóa; không theo tỉ lệ vật lý thật.",
+            "Kích thước hạt nhân con được thu nhỏ cường điệu để trực quan hóa; không theo tỉ lệ vật lí thật.",
             450,
             500
         );

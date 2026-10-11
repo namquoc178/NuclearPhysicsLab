@@ -345,7 +345,7 @@ function getNuclideVietnameseName(
 
 
 // ======================================================
-// KÝ HIỆU HẠT NHÂN HTML
+// KÍ HIỆU HẠT NHÂN HTML
 // ======================================================
 
 function getNuclideHtml(

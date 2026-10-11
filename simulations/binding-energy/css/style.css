@@ -13,9 +13,9 @@ body {
 
     line-height: 1.6;
 
-    color: #1f2937;
+    color: var(--lab-ink);
 
-    background: #f4f7fa;
+    background: var(--lab-paper);
 }
 
 
@@ -67,11 +67,11 @@ button {
 
     text-decoration: none;
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eaf2ff;
+    background: var(--lab-accent-wash);
 
-    border: 1px solid #dbeafe;
+    border: 1px solid var(--lab-accent-tint);
 
     font-weight: 600;
 
@@ -82,7 +82,7 @@ button {
 
 
 .home-link:hover {
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 
     transform:
         translateX(-2px);
@@ -106,7 +106,7 @@ button {
 .lesson-label {
     margin-bottom: 6px;
 
-    color: #2563eb;
+    color: var(--lab-accent);
 
     font-size: 14px;
 
@@ -138,7 +138,7 @@ button {
 
     margin: 0 auto;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 17px;
 }
@@ -197,11 +197,11 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -224,9 +224,9 @@ button {
 
     border-radius: 50%;
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 
     font-weight: 700;
 }
@@ -263,7 +263,7 @@ button {
 
     border:
         1px solid
-        #cbd5e1;
+        var(--lab-rule-strong);
 
     border-radius: 8px;
 
@@ -274,9 +274,9 @@ button {
 .mode-button.active {
     border:
         2px solid
-        #2563eb;
+        var(--lab-accent);
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
     font-weight: 700;
 }
@@ -330,7 +330,7 @@ button {
 
     border:
         1px solid
-        #cbd5e1;
+        var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -343,20 +343,20 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 9px;
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
 .selected-nuclide-card span {
     display: block;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 13px;
 }
@@ -395,7 +395,7 @@ button {
 
     border:
         1px solid
-        #cbd5e1;
+        var(--lab-rule-strong);
 
     border-radius: 8px;
 
@@ -410,11 +410,11 @@ button {
 
     border-left:
         4px solid
-        #64748b;
+        var(--lab-muted);
 
     border-radius: 7px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 
     font-size: 14px;
 }
@@ -456,7 +456,7 @@ button {
 .simulation-title-row p {
     margin: 0;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -474,9 +474,9 @@ button {
 
 
 .status-badge.ready {
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eaf2ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -551,7 +551,7 @@ button {
 .visual-note {
     margin-bottom: 0;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 13px;
 }
@@ -582,7 +582,7 @@ button {
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -591,7 +591,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -647,11 +647,11 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -677,7 +677,7 @@ button {
 .formula {
     margin: 0;
 
-    color: #475569;
+    color: var(--lab-text-2);
 }
 
 
@@ -740,7 +740,7 @@ button {
 
     border-radius: 999px;
 
-    background: #e2e8f0;
+    background: var(--lab-rule);
 }
 
 
@@ -756,12 +756,12 @@ button {
 
 
 .free-mass-bar {
-    background: #64748b;
+    background: var(--lab-muted);
 }
 
 
 .atomic-mass-bar {
-    background: #2563eb;
+    background: var(--lab-accent);
 }
 
 
@@ -811,7 +811,7 @@ button {
         0
         18px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -831,11 +831,11 @@ button {
 
     border-left:
         4px solid
-        #3b82f6;
+        var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -881,11 +881,11 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -895,7 +895,7 @@ button {
         0
         0;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -906,11 +906,11 @@ button {
 
     border-left:
         4px solid
-        #3b82f6;
+        var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -926,11 +926,11 @@ button {
 
     border:
         1px solid
-        #e2e8f0;
+        var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -946,11 +946,11 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1034,7 +1034,7 @@ button {
 
     padding: 20px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 12px;
 
@@ -1052,11 +1052,11 @@ button {
 
     padding: 14px 18px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -1099,7 +1099,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1114,7 +1114,7 @@ button {
         10px
         16px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1127,7 +1127,7 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
@@ -1157,7 +1157,7 @@ button {
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1166,7 +1166,7 @@ button {
 
     margin-bottom: 6px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 13px;
 }
@@ -1182,11 +1182,11 @@ button {
 
     padding: 14px;
 
-    border: 1px solid #e2e8f0;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1202,11 +1202,11 @@ button {
 
     padding: 14px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -1236,11 +1236,11 @@ button {
 
     padding: 14px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1254,7 +1254,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 }
@@ -1333,7 +1333,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -1347,11 +1347,11 @@ button {
 
     padding: 16px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1451,14 +1451,14 @@ button {
 .table-wrapper td {
     padding: 11px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     text-align: center;
 }
 
 
 .table-wrapper th {
-    background: #f1f5f9;
+    background: var(--lab-surface-3);
 }
 
 
@@ -1478,7 +1478,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1491,11 +1491,11 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1515,7 +1515,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1535,7 +1535,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1559,11 +1559,11 @@ button {
 
     padding: 14px;
 
-    border-left: 4px solid #64748b;
+    border-left: 4px solid var(--lab-muted);
 
     border-radius: 7px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1587,13 +1587,13 @@ button {
 .task3-summary-box {
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
     text-align: center;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1602,7 +1602,7 @@ button {
 
     margin-bottom: 8px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -1630,7 +1630,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1643,11 +1643,11 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1667,7 +1667,7 @@ button {
 
     padding: 15px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1687,7 +1687,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1734,11 +1734,11 @@ button {
 
     padding: 18px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 9px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 
@@ -1767,7 +1767,7 @@ button {
         9px
         14px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1778,7 +1778,7 @@ button {
 
 
 .validation-flow strong {
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 20px;
 }
@@ -1789,11 +1789,11 @@ button {
 
     padding: 15px;
 
-    border-left: 4px solid #3b82f6;
+    border-left: 4px solid var(--lab-accent);
 
     border-radius: 7px;
 
-    background: #eff6ff;
+    background: var(--lab-accent-wash);
 }
 
 
@@ -1818,7 +1818,7 @@ button {
         10px
         18px;
 
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -1843,7 +1843,7 @@ button {
 .validation-summary-box {
     padding: 14px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1858,7 +1858,7 @@ button {
 
     margin-bottom: 8px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 
     font-size: 14px;
 }
@@ -1884,7 +1884,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 
@@ -1899,7 +1899,7 @@ button {
 
     overflow: auto;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 }
@@ -1916,7 +1916,7 @@ button {
 .validation-table-wrapper td {
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     text-align: center;
 }
@@ -1929,7 +1929,7 @@ button {
 
     z-index: 1;
 
-    background: #f1f5f9;
+    background: var(--lab-surface-3);
 }
 
 
@@ -1956,11 +1956,11 @@ button {
 
     padding: 16px;
 
-    border-left: 4px solid #64748b;
+    border-left: 4px solid var(--lab-muted);
 
     border-radius: 8px;
 
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 

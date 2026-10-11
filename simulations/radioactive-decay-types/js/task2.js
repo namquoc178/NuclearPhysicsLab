@@ -1025,7 +1025,7 @@ function evaluateTask2CardChoice(
     ) {
 
         feedback.textContent =
-            "Bạn chưa chọn phương án.";
+            "Em chưa chọn phương án.";
 
 
         feedback.classList.add(
@@ -1374,7 +1374,7 @@ function checkTask2() {
     ) {
 
         task2Conclusion.textContent +=
-            " Bạn đã nhận diện chính xác dạng phân rã.";
+            " Em đã nhận diện chính xác dạng phân rã.";
 
     } else {
 

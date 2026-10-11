@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
   <defs><radialGradient id="glow"><stop stop-color="#fff7cc"/><stop offset="1" stop-color="#f3f8ff"/></radialGradient></defs>
-  <rect width="800" height="310" fill="url(#glow)"/>
+  <rect width="800" height="310" fill="none"/>
   <circle cx="170" cy="155" r="54" fill="#dcecff" stroke="#2f7bdc" stroke-width="4"/>
   <circle cx="315" cy="155" r="54" fill="#f2e8ff" stroke="#7a63d8" stroke-width="4"/>
   <text x="170" y="164" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="#255f9e">D</text>

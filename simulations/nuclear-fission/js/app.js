@@ -1844,7 +1844,7 @@ function evaluateChoice(
     ) {
 
         feedbackElement.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedbackElement.classList.add(
@@ -2398,7 +2398,7 @@ function checkTask2() {
 
 
     /*
-     * Cho phép học sinh làm tròn hợp lý:
+     * Cho phép học sinh làm tròn hợp lí:
      *
      * khối lượng trước/sau: ±0.0005 u
      * Δm: ±0.0005 u

@@ -6,9 +6,9 @@
 .real-data-check {
     margin: 0 0 20px;
     padding: 22px 24px;
-    border: 1px solid #bcd3ea;
-    border-radius: 16px;
-    background: #f6faff;
+    border: 1px solid var(--lab-accent-tint);
+    border-radius: var(--lab-radius-lg);
+    background: var(--lab-surface);
 }
 
 .real-data-check h2 {
@@ -18,16 +18,15 @@
 
 .rd-kicker {
     margin: 0;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: .08em;
-    color: #2f6fb6;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--lab-accent);
 }
 
 .rd-intro {
     max-width: 72ch;
     margin: 0 0 14px;
-    color: #344054;
+    color: var(--lab-text-2);
 }
 
 .rd-body {
@@ -37,9 +36,9 @@
 
 .rd-step {
     padding: 14px 16px;
-    border-radius: 12px;
-    background: #ffffff;
-    border: 1px solid #dbe6f2;
+    border-radius: var(--lab-radius);
+    background: var(--lab-surface);
+    border: 1px solid var(--lab-rule);
 }
 
 .rd-step h3 {
@@ -64,7 +63,7 @@
 .rd-table th,
 .rd-table td {
     padding: 7px 10px;
-    border-bottom: 1px solid #e4ebf3;
+    border-bottom: 1px solid var(--lab-rule);
     text-align: right;
     white-space: nowrap;
 }
@@ -76,7 +75,7 @@
 
 .rd-table th {
     font-size: 13px;
-    color: #475467;
+    color: var(--lab-text-2);
     font-weight: 600;
 }
 
@@ -97,7 +96,7 @@
     min-width: 120px;
     min-height: 40px;
     padding: 6px 10px;
-    border: 1px solid #b8c7d9;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 8px;
     font: inherit;
 }
@@ -107,16 +106,16 @@
     padding: 6px 14px;
     border: 0;
     border-radius: 8px;
-    background: #2563eb;
-    color: #ffffff;
+    background: var(--lab-ink);
+    color: var(--lab-surface);
     font: inherit;
     font-weight: 600;
     cursor: pointer;
 }
 
 .rd-input-row button.rd-secondary {
-    background: #e8eef7;
-    color: #1f2937;
+    background: var(--lab-accent-tint);
+    color: var(--lab-ink);
 }
 
 .rd-feedback {
@@ -125,14 +124,14 @@
     font-weight: 600;
 }
 
-.rd-ok { color: #15803d; }
-.rd-bad { color: #b42318; }
+.rd-ok { color: var(--lab-success); }
+.rd-bad { color: var(--lab-danger); }
 
 .rd-reveal {
     margin-top: 8px;
     padding: 10px 12px;
-    border-left: 3px solid #2563eb;
-    background: #f1f6ff;
+    border-left: 3px solid var(--lab-ink);
+    background: var(--lab-accent-wash);
     border-radius: 0 8px 8px 0;
 }
 
@@ -149,20 +148,20 @@
 .rd-chain li {
     padding: 4px 8px;
     border-radius: 6px;
-    background: #eef3fa;
+    background: var(--lab-surface-3);
     font-variant-numeric: tabular-nums;
 }
 
 .rd-chain li.rd-arrow {
     background: none;
-    color: #667085;
+    color: var(--lab-muted);
     font-size: 13px;
 }
 
 .rd-sources {
     margin-top: 14px;
     font-size: 13px;
-    color: #475467;
+    color: var(--lab-text-2);
 }
 
 .rd-sources ul {
@@ -172,9 +171,9 @@
 
 details.teacher-checks {
     margin: 0 0 20px;
-    border: 1px dashed #c3ccd8;
+    border: 1px dashed var(--lab-rule-strong);
     border-radius: 14px;
-    background: #fbfcfe;
+    background: var(--lab-surface-2);
 }
 
 details.teacher-checks > summary {
@@ -184,11 +183,11 @@ details.teacher-checks > summary {
 }
 
 details.teacher-checks > summary span {
-    color: #667085;
+    color: var(--lab-muted);
 }
 
 details.teacher-checks[open] > summary {
-    border-bottom: 1px dashed #c3ccd8;
+    border-bottom: 1px dashed var(--lab-rule-strong);
 }
 
 .teacher-checks-body {

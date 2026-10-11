@@ -529,7 +529,7 @@ function evaluateTask1Concept() {
     ) {
 
         task1ConceptFeedback.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         task1ConceptFeedback.classList.add(
@@ -762,7 +762,7 @@ function checkTask1() {
     ) {
 
         task1Conclusion.textContent =
-            `Bạn đã xác định đúng cấu tạo của ${p.label}. `
+            `Em đã xác định đúng cấu tạo của ${p.label}. `
             +
             `Hạt nhân có A = ${p.A}, Z = ${p.Z}, `
             +

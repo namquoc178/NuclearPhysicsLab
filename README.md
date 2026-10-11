@@ -1,6 +1,6 @@
 # NuclearPhysicsLab
 
-Website mô phỏng trực tuyến Vật lý hạt nhân dành cho học sinh THPT.
+Website mô phỏng trực tuyến Vật lí hạt nhân dành cho học sinh THPT.
 
 ## GitHub Pages
 

@@ -216,7 +216,7 @@ let task1CurrentProperties =
 
 
 // ======================================================
-// KÝ HIỆU HẠT NHÂN HTML
+// KÍ HIỆU HẠT NHÂN HTML
 // ======================================================
 
 function getTask1NuclideHtml(
@@ -611,7 +611,7 @@ function evaluateTask1Choice(
     ) {
 
         feedback.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedback.classList.add(

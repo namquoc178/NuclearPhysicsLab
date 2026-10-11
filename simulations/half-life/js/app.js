@@ -196,7 +196,7 @@ function validateInputs() {
     }
 
     if (!Number.isFinite(currentHalfLife) || currentHalfLife <= 0) {
-        alert("Chu kỳ bán rã T₁/₂ phải lớn hơn 0.");
+        alert("Chu kì bán rã T₁/₂ phải lớn hơn 0.");
         return false;
     }
 
@@ -367,7 +367,7 @@ function generateTheoreticalData() {
 }
 
 // ======================================================
-// 5. PLUGIN MỐC CHU KỲ BÁN RÃ
+// 5. PLUGIN MỐC CHU KÌ BÁN RÃ
 // ======================================================
 
 const halfLifeMarkerPlugin = {
@@ -529,7 +529,7 @@ function createChart() {
 
                     {
                         label:
-                            "Giá trị lý thuyết",
+                            "Giá trị lí thuyết",
                         borderColor:
                             "#1f2937",
                         backgroundColor:
@@ -655,8 +655,11 @@ function createChart() {
                     legend: {
                         display: true,
                         labels: {
+                            // Ẩn mục "Lí thuyết − σ" (đã có dải tô) và mục trung bình
+                            // nhiều lần mô phỏng khi chưa ở chế độ Kiểm chứng.
                             filter:
-                                item => item.text !== "Lí thuyết − σ"
+                                item => item.text !== "Lí thuyết − σ" &&
+                                    !(item.datasetIndex === 2 && currentMode !== "validation")
                         }
                     },
 
@@ -948,7 +951,7 @@ function finishExperiment1() {
         "Hoàn thành";
 
     setSimulationStatus(
-        "Nhiệm vụ 1 đã hoàn thành tại một chu kỳ bán rã.",
+        "Nhiệm vụ 1 đã hoàn thành tại một chu kì bán rã.",
         "finished"
     );
 
@@ -957,7 +960,7 @@ function finishExperiment1() {
     );
 
     experiment1Message.textContent =
-        `Sau một chu kỳ bán rã, giá trị lý thuyết kỳ vọng là ${theoreticalValue.toFixed(0)} hạt. ` +
+        `Sau một chu kì bán rã, giá trị lí thuyết kì vọng là ${theoreticalValue.toFixed(0)} hạt. ` +
         `Kết quả của một lần mô phỏng có thể khác giá trị này vì thời điểm phân rã của từng hạt nhân có tính ngẫu nhiên. ` +
         `Trong lần này, sai khác tương đối là ${percentDifference.toFixed(1)}%.`;
 }
@@ -1447,7 +1450,7 @@ function runExperiment2() {
             difference === 0
         ) {
             differenceText =
-                "Bằng giá trị lý thuyết";
+                "Bằng giá trị lí thuyết";
         } else if (
             difference > 0
         ) {
@@ -1512,7 +1515,7 @@ function runExperiment2() {
 
     experiment2Message.textContent =
         `Năm lần thí nghiệm được thực hiện với cùng N₀ và T₁/₂ nhưng kết quả không nhất thiết giống nhau. ` +
-        `Các giá trị dao động quanh giá trị lý thuyết ${theoreticalValue.toFixed(0)} hạt.`;
+        `Các giá trị dao động quanh giá trị lí thuyết ${theoreticalValue.toFixed(0)} hạt.`;
 }
 
 // ======================================================
@@ -1711,7 +1714,7 @@ function createExperiment3Chart(
 
                         {
                             label:
-                                "Lý thuyết N/N₀ = e^(-λt)",
+                                "Lí thuyết N/N₀ = e^(-λt)",
 
                             data:
                                 theoreticalCurve,
@@ -1957,7 +1960,7 @@ function runExperiment3() {
         "Hoàn thành";
 
     experiment3Message.textContent =
-        "Ba đường mô phỏng đều có dao động ngẫu nhiên. Khi N₀ tăng, mức dao động tương đối có xu hướng nhỏ hơn và đường N/N₀ thường bám sát đường lý thuyết hơn. " +
+        "Ba đường mô phỏng đều có dao động ngẫu nhiên. Khi N₀ tăng, mức dao động tương đối có xu hướng nhỏ hơn và đường N/N₀ thường bám sát đường lí thuyết hơn. " +
         "Không nhất thiết mọi lần chạy riêng lẻ đều cho mức lệch giảm đều từ N₀ = 20 đến 1000; cần quan sát xu hướng thống kê qua nhiều lần lặp.";
 
     console.log(
@@ -2587,7 +2590,7 @@ function setMode(mode) {
 }
 
 // ======================================================
-// 16. XỬ LÝ NÚT BẮT ĐẦU / TẠM DỪNG / ĐẶT LẠI
+// 16. XỬ LÍ NÚT BẮT ĐẦU / TẠM DỪNG / ĐẶT LẠI
 // ======================================================
 
 function handleStart() {

@@ -205,7 +205,7 @@ function calculateTransmissionProbability(
 
 
 // ======================================================
-// SỐ TIA TRUYỀN QUA KỲ VỌNG
+// SỐ TIA TRUYỀN QUA KÌ VỌNG
 // ======================================================
 
 function calculateExpectedTransmittedCount(

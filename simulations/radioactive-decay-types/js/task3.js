@@ -1408,7 +1408,7 @@ function evaluateTask3Equation() {
     ) {
 
         task3EquationFeedback.textContent =
-            "Bạn chưa chọn chuỗi phương trình.";
+            "Em chưa chọn chuỗi phương trình.";
 
 
         task3EquationFeedback.classList.add(
@@ -1784,7 +1784,7 @@ function checkTask3() {
     ) {
 
         task3Conclusion.textContent +=
-            " Bạn đã phân tích chính xác toàn bộ chuỗi biến đổi.";
+            " Em đã phân tích chính xác toàn bộ chuỗi biến đổi.";
 
     } else {
 

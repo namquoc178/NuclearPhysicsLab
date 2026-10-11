@@ -70,7 +70,7 @@
 
         // 2. Phần hoạt động mới cho học sinh.
         const section = el("section", { class: "real-data-check", "aria-label": "Đối chiếu với dữ liệu thực" },
-            el("p", { class: "rd-kicker" }, "KIỂM CHỨNG"),
+            el("p", { class: "rd-kicker" }, "Đối chiếu với dữ liệu thực"),
             el("h2", {}, options.title),
             el("p", { class: "rd-intro" }, options.intro)
         );

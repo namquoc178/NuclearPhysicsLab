@@ -301,7 +301,7 @@ function evaluateTask3Choice(
     ) {
 
         feedback.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedback.classList.add(

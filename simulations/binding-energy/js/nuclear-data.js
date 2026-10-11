@@ -41,7 +41,7 @@ const NEUTRON_MASS_U =
 
 // Năng lượng tương đương của 1 u.
 // Giá trị CODATA 2018, cũng là giá trị AME2020 dùng.
-// (CODATA 2022: 931,49410372 MeV; chênh lệch cỡ 1 phần tỷ, không ảnh hưởng kết quả.)
+// (CODATA 2022: 931,49410372 MeV; chênh lệch cỡ 1 phần tỉ, không ảnh hưởng kết quả.)
 const U_TO_MEV =
     931.49410242;
 

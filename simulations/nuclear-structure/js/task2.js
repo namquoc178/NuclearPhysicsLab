@@ -689,7 +689,7 @@ function evaluateTask2IsotopeChoice() {
     ) {
 
         task2IsotopeFeedback.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         task2IsotopeFeedback.classList.add(
@@ -741,7 +741,7 @@ function evaluateTask2IsotopeChoice() {
 
 
 // ======================================================
-// ĐÁNH GIÁ LÝ DO
+// ĐÁNH GIÁ LÍ DO
 // ======================================================
 
 function getExpectedTask2Reason() {
@@ -792,7 +792,7 @@ function evaluateTask2Reason() {
     ) {
 
         task2ReasonFeedback.textContent =
-            "Bạn chưa chọn lời giải thích.";
+            "Em chưa chọn lời giải thích.";
 
 
         task2ReasonFeedback.classList.add(

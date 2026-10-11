@@ -105,6 +105,28 @@ for (const [w, h, tag] of [[1440, 1000, "desktop"], [390, 844, "mobile"]]) {
             if (visible.length !== 1 || !visible[0].startsWith(mode)) errors.push(`chế độ ${mode}: thấy ${visible.join(",") || "không bảng nào"}`);
         }
 
+        // Trang bài học: các phần do lesson-ui.js dựng phải có mặt.
+        if (page) {
+            const shell = await tab.evaluate(() => ({
+                briefing: !!document.querySelector(".lesson-briefing .lesson-visual-overview"),
+                steps: document.querySelectorAll(".mode-button .mode-step").length,
+                footers: document.querySelectorAll(".lesson-mode-footer").length
+            }));
+            if (!shell.briefing) errors.push("thiếu khối định hướng thu gọn");
+            if (shell.steps !== 3) errors.push(`có ${shell.steps} số bước trên nút chế độ`);
+            if (shell.footers !== 3) errors.push(`có ${shell.footers} thanh chuyển chế độ`);
+        }
+
+        // Nhập sai phải hiện thông báo trong trang, không bật hộp alert chặn trang.
+        if (page.includes("half-life")) {
+            await tab.fill("#inputN0", "0");
+            await tab.click("#startButton");
+            await tab.waitForTimeout(200);
+            const toast = await tab.textContent(".lab-toast").catch(() => null);
+            if (!toast || !toast.includes("N₀")) errors.push("không thấy thông báo khi nhập N₀ = 0");
+            if (dialogs.length) errors.push("vẫn còn hộp alert của trình duyệt");
+        }
+
         if (errors.length) problems += errors.length;
         report.push(`${errors.length ? "✗" : "✓"} ${name}${errors.length ? ": " + errors.join(" | ") : ""}${dialogs.length ? `  (hộp thoại: ${dialogs.length})` : ""}`);
         await context.close();
