@@ -88,7 +88,7 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
         "radiation-penetration": {
             explore: {
                 bullets: [
-                    "Trong mô hình sư phạm, α bị suy giảm rất mạnh, β ở mức trung gian và γ có khả năng truyền qua lớn hơn.",
+                    "α dừng lại sau một tầm xa rất ngắn nên bị một lớp giấy mỏng chặn hoàn toàn; β truyền qua một phần; γ có khả năng truyền qua lớn nhất.",
                     "Độ dày và loại vật liệu đều ảnh hưởng đến phần bức xạ truyền qua."
                 ],
                 question: "Khi tăng độ dày vật liệu nhưng giữ nguyên loại bức xạ và vật liệu, phần truyền qua tăng hay giảm?",
@@ -135,23 +135,23 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             explore: {
                 bullets: [
                     "Độ hụt khối tạo nên năng lượng liên kết của hạt nhân.",
-                    "E_b/A giúp so sánh mức liên kết trung bình giữa các hạt nhân có số khối khác nhau."
+                    "Eₗₖ/A giúp so sánh mức liên kết trung bình giữa các hạt nhân có số khối khác nhau."
                 ],
                 question: "Đại lượng nào phù hợp hơn để so sánh độ bền liên kết trung bình của hai hạt nhân có A rất khác nhau?",
-                hint: "So sánh năng lượng liên kết trên mỗi nucleon thay vì chỉ dùng tổng E_b."
+                hint: "So sánh năng lượng liên kết trên mỗi nucleon thay vì chỉ dùng tổng Eₗₖ."
             },
             experiment: {
                 bullets: [
-                    "Bạn đã tính Δm, E_b và E_b/A từ dữ liệu khối lượng.",
-                    "Bạn đã so sánh nhiều hạt nhân và nhận ra vùng Fe/Ni có E_b/A lớn trong tập dữ liệu."
+                    "Bạn đã tính Δm, Eₗₖ và Eₗₖ/A từ dữ liệu khối lượng.",
+                    "Bạn đã so sánh nhiều hạt nhân và nhận ra vùng Fe/Ni có Eₗₖ/A lớn trong tập dữ liệu."
                 ],
-                question: "Nếu hai hạt nhân có cùng E_b nhưng A khác nhau, E_b/A của hạt nhân nào lớn hơn?",
+                question: "Nếu hai hạt nhân có cùng Eₗₖ nhưng A khác nhau, Eₗₖ/A của hạt nhân nào lớn hơn?",
                 hint: "Với cùng tử số, mẫu số A nhỏ hơn cho thương lớn hơn."
             },
             selfCheck: [
                 "Tôi tính được độ hụt khối từ dữ liệu khối lượng nguyên tử.",
                 "Tôi chuyển đổi được Δm sang năng lượng liên kết.",
-                "Tôi dùng E_b/A để so sánh mức liên kết trung bình giữa các hạt nhân."
+                "Tôi dùng Eₗₖ/A để so sánh mức liên kết trung bình giữa các hạt nhân."
             ]
         },
         "nuclear-fission": {

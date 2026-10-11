@@ -844,7 +844,7 @@ function updateSelectedNuclideInfo() {
 
 
     chartObservation.textContent =
-        "Nhấn “Tính các đại lượng” để xác định độ hụt khối, năng lượng liên kết và Eᵦ/A.";
+        "Nhấn “Tính các đại lượng” để xác định độ hụt khối, năng lượng liên kết và Eₗₖ/A.";
 
 
     setStatus(
@@ -1347,7 +1347,7 @@ function createBindingEnergyChart(
                                             +
                                             `A = ${point.x}, `
                                             +
-                                            `Eᵦ/A = ${point.y.toFixed(3)} MeV/nucleon`
+                                            `Eₗₖ/A = ${point.y.toFixed(3)} MeV/nucleon`
                                         );
                                     }
 
@@ -1400,7 +1400,7 @@ function createBindingEnergyChart(
                                     true,
 
                                 text:
-                                    "Năng lượng liên kết riêng Eᵦ/A (MeV/nucleon)"
+                                    "Năng lượng liên kết riêng Eₗₖ/A (MeV/nucleon)"
 
                             }
 
@@ -1436,7 +1436,7 @@ function updateObservation(
         chartObservation.textContent =
             `${properties.symbol}-${properties.A} nằm ở vùng hạt nhân nhẹ. `
             +
-            `Eᵦ/A = ${value.toFixed(3)} MeV/nucleon. `
+            `Eₗₖ/A = ${value.toFixed(3)} MeV/nucleon. `
             +
             `Hãy so sánh với các hạt nhân có số khối trung bình.`;
 
@@ -1452,7 +1452,7 @@ function updateObservation(
         chartObservation.textContent =
             `${properties.symbol}-${properties.A} là hạt nhân nặng. `
             +
-            `Eᵦ/A = ${value.toFixed(3)} MeV/nucleon, `
+            `Eₗₖ/A = ${value.toFixed(3)} MeV/nucleon, `
             +
             `thấp hơn vùng Fe–Ni trong bộ dữ liệu.`;
 
@@ -1482,7 +1482,7 @@ function updateObservation(
     chartObservation.textContent =
         `${properties.symbol}-${properties.A}: `
         +
-        `Eᵦ/A = ${value.toFixed(3)} MeV/nucleon. `
+        `Eₗₖ/A = ${value.toFixed(3)} MeV/nucleon. `
         +
         `Hãy chọn thêm các hạt nhân khác để so sánh.`;
 }
@@ -1918,7 +1918,7 @@ function checkTask1Answers() {
             +
             "khi nhầm số neutron N = A − Z, nhầm khối lượng nguyên tử với khối lượng hạt nhân, "
             +
-            "hoặc quên chia năng lượng liên kết cho A khi tính Eᵦ/A.";
+            "hoặc quên chia năng lượng liên kết cho A khi tính Eₗₖ/A.";
     }
 
 
@@ -1997,7 +1997,7 @@ function showTask1Solution() {
 
         <p>
             <strong>Bước 4.</strong>
-            E<sub>b</sub>
+            E<sub>lk</sub>
             =
             ${p.massDefectU.toFixed(6)}
             ×
@@ -2008,7 +2008,7 @@ function showTask1Solution() {
 
         <p>
             <strong>Bước 5.</strong>
-            E<sub>b</sub>/A
+            E<sub>lk</sub>/A
             =
             ${p.bindingEnergyMeV.toFixed(3)}
             /
@@ -2319,7 +2319,7 @@ function createTask2TotalChart(
 
                         {
                             label:
-                                "Năng lượng liên kết Eᵦ (MeV)",
+                                "Năng lượng liên kết Eₗₖ (MeV)",
 
                             data:
                                 data.map(
@@ -2367,7 +2367,7 @@ function createTask2TotalChart(
                                     true,
 
                                 text:
-                                    "Eᵦ (MeV)"
+                                    "Eₗₖ (MeV)"
 
                             }
 
@@ -2439,7 +2439,7 @@ function createTask2SpecificChart(
 
                         {
                             label:
-                                "Năng lượng liên kết riêng Eᵦ/A",
+                                "Năng lượng liên kết riêng Eₗₖ/A",
 
                             data:
                                 data.map(
@@ -2490,7 +2490,7 @@ function createTask2SpecificChart(
                                     true,
 
                                 text:
-                                    "Eᵦ/A (MeV/nucleon)"
+                                    "Eₗₖ/A (MeV/nucleon)"
 
                             }
 
@@ -2756,9 +2756,9 @@ function checkTask2Answers() {
         +
         `nhưng ${highestSpecific.label} có năng lượng liên kết riêng lớn nhất. `
         +
-        `Điều này cho thấy Eᵦ và Eᵦ/A mang hai ý nghĩa khác nhau. `
+        `Điều này cho thấy Eₗₖ và Eₗₖ/A mang hai ý nghĩa khác nhau. `
         +
-        `Không thể chỉ dựa vào Eᵦ tổng cộng để so sánh năng lượng liên kết trung bình trên mỗi nucleon.`;
+        `Không thể chỉ dựa vào Eₗₖ tổng cộng để so sánh năng lượng liên kết trung bình trên mỗi nucleon.`;
 
 
     setStatus(
@@ -3118,7 +3118,7 @@ function createTask3Chart(
                                             +
                                             `A = ${point.x}, `
                                             +
-                                            `Eᵦ/A = ${point.y.toFixed(3)} MeV/nucleon`
+                                            `Eₗₖ/A = ${point.y.toFixed(3)} MeV/nucleon`
                                         );
                                     }
 
@@ -3174,7 +3174,7 @@ function createTask3Chart(
                                     true,
 
                                 text:
-                                    "Eᵦ/A (MeV/nucleon)"
+                                    "Eₗₖ/A (MeV/nucleon)"
 
                             }
 
@@ -3399,15 +3399,15 @@ function checkTask3Answers() {
 
 
     task3Conclusion.textContent =
-        `Trong bộ dữ liệu đại diện hiện tại, Eᵦ/A tăng nhanh từ vùng hạt nhân nhẹ `
+        `Trong bộ dữ liệu đại diện hiện tại, Eₗₖ/A tăng nhanh từ vùng hạt nhân nhẹ `
         +
         `và đạt vùng giá trị cao quanh các hạt nhân có số khối trung bình; `
         +
-        `${maximumPoint.label} có Eᵦ/A lớn nhất trong chính bộ dữ liệu này, `
+        `${maximumPoint.label} có Eₗₖ/A lớn nhất trong chính bộ dữ liệu này, `
         +
         `với ${maximumPoint.bindingEnergyPerNucleon.toFixed(3)} MeV/nucleon. `
         +
-        `Về phía các hạt nhân rất nặng, Eᵦ/A nhìn chung giảm. `
+        `Về phía các hạt nhân rất nặng, Eₗₖ/A nhìn chung giảm. `
         +
         `Xu hướng đó giúp giải thích vì sao sự kết hợp của một số hạt nhân nhẹ `
         +
