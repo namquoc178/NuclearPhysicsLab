@@ -295,7 +295,7 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
                 <span class="journey-connector" aria-hidden="true"></span>
                 <button type="button" class="lesson-journey-step" data-mode="validation" role="listitem">
                     <span class="journey-dot">3</span>
-                    <span><b>Kiểm chứng</b><small>Đối chiếu mô hình</small></span>
+                    <span><b>Kiểm chứng</b><small>Đối chiếu dữ liệu thực</small></span>
                 </button>
             </div>
         `;
