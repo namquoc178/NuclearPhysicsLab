@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+        Các dạng phân rã phóng xạ
+    </title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=7" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<!-- =================================================
+         ĐIỀU HƯỚNG
+    ================================================== -->
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<div class="container">
+<!-- =================================================
+             HEADER
+        ================================================== -->
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Các dạng phân rã phóng xạ</h1>
+<p class="page-description">Khám phá sự biến đổi của hạt nhân trong phân rã α, β⁻, β⁺ và chuyển mức γ; theo dõi sự thay đổi của số khối A, số proton Z và số neutron N.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/radioactive-decay.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Phân biệt bốn dạng biến đổi α, β⁻, β⁺ và γ.</li><li>Theo dõi sự thay đổi của A, Z và N sau mỗi phân rã.</li><li>Ghép các bước riêng lẻ thành một chuỗi biến đổi hạt nhân.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="decay-rule-grid"><span><b>α</b><small>ΔA = −4<br/>ΔZ = −2</small></span><span><b>β⁻</b><small>ΔA = 0<br/>ΔZ = +1</small></span><span><b>β⁺</b><small>ΔA = 0<br/>ΔZ = −1</small></span><span><b>γ</b><small>ΔA = 0<br/>ΔZ = 0</small></span></div></div>
+<div class="lesson-mini-visual"><div class="mini-decay-strip"><span>Hạt nhân mẹ</span><b>→</b><span class="mini-transform">Biến đổi</span><b>→</b><span class="mini-daughter">Hạt nhân con</span></div></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Trong β⁻ và β⁺, electron/positron không được xem là hạt có sẵn trong hạt nhân. Với γ, A và Z không đổi; hạt nhân chỉ chuyển từ trạng thái kích thích xuống mức năng lượng thấp hơn.</p>
+</article>
+</section>
+<!-- =================================================
+             MỤC TIÊU
+        ================================================== -->
+<section class="learning-goals">
+<h2>
+                Mục tiêu học tập
+            </h2>
+<div class="goal-grid">
+<div class="goal-card">
+<strong>
+                        1
+                    </strong>
+<p>
+                        Nhận biết đặc điểm của
+                        phân rã α, β⁻, β⁺ và γ.
+                    </p>
+</div>
+<div class="goal-card">
+<strong>
+                        2
+                    </strong>
+<p>
+                        Xác định sự thay đổi
+                        của A, Z và N
+                        sau mỗi dạng phân rã.
+                    </p>
+</div>
+<div class="goal-card">
+<strong>
+                        3
+                    </strong>
+<p>
+                        Viết và phân tích
+                        phương trình biến đổi hạt nhân.
+                    </p>
+</div>
+</div>
+</section>
+<!-- =================================================
+             CHỌN CHẾ ĐỘ
+        ================================================== -->
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<!-- =================================================
+             KHÁM PHÁ
+        ================================================== -->
+<section class="mode-panel active" id="explorePanel">
+<div class="explore-layout">
+<!-- =========================================
+                     ĐIỀU KHIỂN
+                ========================================== -->
+<aside class="control-panel">
+<h2>
+                        Chọn dạng phân rã
+                    </h2>
+<div class="control-group">
+<label for="decayTypeSelect">
+                            Dạng phân rã
+                        </label>
+<select id="decayTypeSelect">
+<option value="alpha">
+                                Phân rã α
+                            </option>
+<option value="betaMinus">
+                                Phân rã β⁻
+                            </option>
+<option value="betaPlus">
+                                Phân rã β⁺
+                            </option>
+<option value="gamma">
+                                Chuyển mức γ
+                            </option>
+</select>
+</div>
+<div class="control-group">
+<label for="decayExampleSelect">
+                            Ví dụ
+                        </label>
+<select id="decayExampleSelect">
+</select>
+</div>
+<div class="control-buttons">
+<button class="primary-button" id="playAnimationButton">
+                            ▶ Quan sát phân rã
+                        </button>
+<button id="resetAnimationButton">
+                            ↻ Đặt lại
+                        </button>
+</div>
+<div class="legend-box">
+<h3>
+                            Chú giải
+                        </h3>
+<div class="legend-row">
+<span class="legend-particle proton">
+                                p
+                            </span>
+<span>
+                                Proton
+                            </span>
+</div>
+<div class="legend-row">
+<span class="legend-particle neutron">
+                                n
+                            </span>
+<span>
+                                Neutron
+                            </span>
+</div>
+<div class="legend-row">
+<span class="legend-radiation">
+                                →
+                            </span>
+<span>
+                                Hạt hoặc bức xạ phát ra
+                            </span>
+</div>
+</div>
+<div class="model-note">
+<strong>
+                            Lưu ý mô hình
+                        </strong>
+<p>
+                            Animation chỉ biểu diễn sơ đồ
+                            sự biến đổi hạt nhân.
+                            Kích thước, khoảng cách
+                            và quỹ đạo không theo tỉ lệ thực.
+                        </p>
+</div>
+</aside>
+<!-- =========================================
+                     KHU VỰC MÔ PHỎNG
+                ========================================== -->
+<section class="simulation-panel">
+<div class="simulation-heading">
+<div>
+<h2 id="selectedDecayTitle">
+                                —
+                            </h2>
+<p id="selectedDecayDescription">
+                                —
+                            </p>
+</div>
+<span class="decay-symbol-badge" id="decaySymbolBadge">
+                            —
+                        </span>
+</div>
+<canvas height="520" id="decayCanvas" width="900">
+</canvas>
+<div class="animation-phase-bar">
+<div class="phase-item active" id="phaseParent">
+<strong>
+                                1
+                            </strong>
+<span>
+                                Hạt nhân mẹ
+                            </span>
+</div>
+<div class="phase-arrow">
+                            →
+                        </div>
+<div class="phase-item" id="phaseTransformation">
+<strong>
+                                2
+                            </strong>
+<span>
+                                Biến đổi
+                            </span>
+</div>
+<div class="phase-arrow">
+                            →
+                        </div>
+<div class="phase-item" id="phaseDaughter">
+<strong>
+                                3
+                            </strong>
+<span>
+                                Hạt nhân con
+                            </span>
+</div>
+</div>
+</section>
+</div>
+<!-- =================================================
+                 PHƯƠNG TRÌNH
+            ================================================== -->
+<section class="equation-panel">
+<h2>
+                    Phương trình biến đổi hạt nhân
+                </h2>
+<div class="decay-equation" id="decayEquation">
+                    —
+                </div>
+<p class="equation-note" id="decayEquationNote">
+</p>
+</section>
+<!-- =================================================
+                 BẢNG A Z N
+            ================================================== -->
+<section class="quantity-panel">
+<h2>
+                    Sự thay đổi của A, Z và N
+                </h2>
+<div class="quantity-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Đại lượng
+                                </th>
+<th>
+                                    Hạt nhân mẹ
+                                </th>
+<th>
+                                    Độ biến thiên
+                                </th>
+<th>
+                                    Hạt nhân con
+                                </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+                                    Số khối A
+                                </td>
+<td id="parentADisplay">
+                                    —
+                                </td>
+<td id="deltaADisplay">
+                                    —
+                                </td>
+<td id="daughterADisplay">
+                                    —
+                                </td>
+</tr>
+<tr>
+<td>
+                                    Số proton Z
+                                </td>
+<td id="parentZDisplay">
+                                    —
+                                </td>
+<td id="deltaZDisplay">
+                                    —
+                                </td>
+<td id="daughterZDisplay">
+                                    —
+                                </td>
+</tr>
+<tr>
+<td>
+                                    Số neutron N
+                                </td>
+<td id="parentNDisplay">
+                                    —
+                                </td>
+<td id="deltaNDisplay">
+                                    —
+                                </td>
+<td id="daughterNDisplay">
+                                    —
+                                </td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- =================================================
+                 CẤU TẠO TRƯỚC SAU
+            ================================================== -->
+<section class="composition-panel">
+<h2>
+                    Cấu tạo hạt nhân trước và sau
+                </h2>
+<div class="composition-grid">
+<div class="composition-box">
+<span>
+                            Hạt nhân mẹ
+                        </span>
+<strong id="parentNuclideDisplay">
+                            —
+                        </strong>
+<p id="parentCompositionDisplay">
+                            —
+                        </p>
+</div>
+<div class="composition-arrow">
+                        →
+                    </div>
+<div class="composition-box">
+<span>
+                            Hạt nhân con
+                        </span>
+<strong id="daughterNuclideDisplay">
+                            —
+                        </strong>
+<p id="daughterCompositionDisplay">
+                            —
+                        </p>
+</div>
+</div>
+</section>
+<!-- =================================================
+                 BẢN CHẤT VẬT LÝ
+            ================================================== -->
+<section class="physics-explanation-panel">
+<h2>
+                    Điều gì xảy ra trong hạt nhân?
+                </h2>
+<div class="physics-explanation" id="physicsExplanation">
+</div>
+</section>
+<!-- =================================================
+                 SO SÁNH 4 DẠNG
+            ================================================== -->
+<section class="comparison-summary-panel">
+<h2>
+                    So sánh bốn dạng biến đổi
+                </h2>
+<div class="comparison-summary-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Dạng
+                                </th>
+<th>
+                                    ΔA
+                                </th>
+<th>
+                                    ΔZ
+                                </th>
+<th>
+                                    Biến đổi trong hạt nhân
+                                </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+                                    α
+                                </td>
+<td>
+                                    −4
+                                </td>
+<td>
+                                    −2
+                                </td>
+<td>
+                                    Mất 2 proton và 2 neutron
+                                </td>
+</tr>
+<tr>
+<td>
+                                    β⁻
+                                </td>
+<td>
+                                    0
+                                </td>
+<td>
+                                    +1
+                                </td>
+<td>
+                                    n → p
+                                </td>
+</tr>
+<tr>
+<td>
+                                    β⁺
+                                </td>
+<td>
+                                    0
+                                </td>
+<td>
+                                    −1
+                                </td>
+<td>
+                                    p → n
+                                </td>
+</tr>
+<tr>
+<td>
+                                    γ
+                                </td>
+<td>
+                                    0
+                                </td>
+<td>
+                                    0
+                                </td>
+<td>
+                                    Hạt nhân đổi trạng thái năng lượng
+                                </td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- =================================================
+                 GỢI Ý KHÁM PHÁ
+            ================================================== -->
+<section class="exploration-questions">
+<h2>
+                    Gợi ý khám phá
+                </h2>
+<div class="question-grid">
+<div class="question-card">
+<strong>
+                            Câu hỏi 1
+                        </strong>
+<p>
+                            Dạng phân rã nào làm
+                            cả A và Z cùng giảm?
+                        </p>
+</div>
+<div class="question-card">
+<strong>
+                            Câu hỏi 2
+                        </strong>
+<p>
+                            Trong β⁻,
+                            tại sao A không đổi
+                            nhưng Z tăng 1?
+                        </p>
+</div>
+<div class="question-card">
+<strong>
+                            Câu hỏi 3
+                        </strong>
+<p>
+                            So sánh β⁻ và β⁺:
+                            sự biến đổi proton – neutron
+                            diễn ra theo hai chiều như thế nào?
+                        </p>
+</div>
+<div class="question-card">
+<strong>
+                            Câu hỏi 4
+                        </strong>
+<p>
+                            Tại sao sau phát xạ γ
+                            hạt nhân vẫn là cùng một nuclide?
+                        </p>
+</div>
+</div>
+</section>
+</section>
+<!-- =================================================
+             THÍ NGHIỆM
+        ================================================== -->
+<section class="mode-panel" id="experimentPanel">
+<h2>
+                Thí nghiệm ảo
+            </h2>
+<div class="experiment-task" id="task1Card">
+<h3>
+        Nhiệm vụ 1:
+        Xác định hạt nhân con
+    </h3>
+<p>
+        Quan sát hạt nhân mẹ và dạng phân rã được cho.
+        Hãy xác định các đại lượng
+        A, Z, N và nguyên tố của hạt nhân con.
+    </p>
+<!-- =================================================
+         ĐỀ BÀI
+    ================================================== -->
+<div class="task1-question-area">
+<div>
+<span class="task1-question-label">
+                Hạt nhân mẹ
+            </span>
+<div class="task1-big-notation" id="task1ParentNotation">
+                —
+            </div>
+<p id="task1ParentName">
+                —
+            </p>
+</div>
+<div class="task1-decay-arrow">
+<span id="task1DecaySymbol">
+                —
+            </span>
+<strong>
+                →
+            </strong>
+</div>
+<div>
+<span class="task1-question-label">
+                Dạng phân rã
+            </span>
+<strong id="task1DecayName">
+                —
+            </strong>
+</div>
+</div>
+<button class="secondary-task-button" id="newTask1QuestionButton">
+        Tạo câu hỏi mới
+    </button>
+<!-- =================================================
+         GỢI Ý QUY TẮC
+    ================================================== -->
+<div class="task1-rule-hint">
+<strong>
+            Gợi ý
+        </strong>
+<p id="task1RuleHint">
+            Quan sát sự thay đổi của A và Z.
+        </p>
+</div>
+<!-- =================================================
+         NHẬP A Z N
+    ================================================== -->
+<div class="task1-input-grid">
+<div class="task1-input-card">
+<label for="task1AInput">
+                Số khối A của hạt nhân con
+            </label>
+<input id="task1AInput" placeholder="A" type="number"/>
+<span class="answer-feedback" id="task1AFeedback">
+</span>
+</div>
+<div class="task1-input-card">
+<label for="task1ZInput">
+                Số proton Z của hạt nhân con
+            </label>
+<input id="task1ZInput" placeholder="Z" type="number"/>
+<span class="answer-feedback" id="task1ZFeedback">
+</span>
+</div>
+<div class="task1-input-card">
+<label for="task1NInput">
+                Số neutron N của hạt nhân con
+            </label>
+<input id="task1NInput" placeholder="N" type="number"/>
+<span class="answer-feedback" id="task1NFeedback">
+</span>
+</div>
+</div>
+<!-- =================================================
+         CHỌN NGUYÊN TỐ
+    ================================================== -->
+<div class="task1-element-question">
+<label for="task1ElementSelect">
+
+            Nguyên tố của hạt nhân con là:
+
+        </label>
+<select id="task1ElementSelect">
+<option value="">
+                -- Chọn nguyên tố --
+            </option>
+</select>
+<span class="answer-feedback" id="task1ElementFeedback">
+</span>
+</div>
+<!-- =================================================
+         NHẬN DIỆN PHƯƠNG TRÌNH
+    ================================================== -->
+<div class="task1-equation-question">
+<p class="task1-equation-question-title">
+
+        Phương trình nào mô tả đúng phép biến đổi?
+
+    </p>
+<div class="task1-equation-options" id="task1EquationOptions">
+</div>
+<span class="answer-feedback" id="task1EquationFeedback">
+</span>
+</div>
+<!-- =================================================
+         BUTTON
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask1Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask1Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task1Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task1Result">
+<h4>
+            Đáp án
+        </h4>
+<div class="task1-result-grid">
+<div class="task1-result-box">
+<span>
+                    A
+                </span>
+<strong id="task1CorrectA">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Z
+                </span>
+<strong id="task1CorrectZ">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    N
+                </span>
+<strong id="task1CorrectN">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Hạt nhân con
+                </span>
+<strong id="task1CorrectNuclide">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task1-solution">
+<h4>
+                Lời giải
+            </h4>
+<div id="task1Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task1Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task2Card">
+<h3>
+        Nhiệm vụ 2:
+        Nhận diện dạng phân rã
+    </h3>
+<p>
+        Quan sát hạt nhân mẹ và hạt nhân con.
+        Hãy xác định sự thay đổi của A, Z
+        và suy ra dạng phân rã tương ứng.
+    </p>
+<!-- =================================================
+         CẶP HẠT NHÂN
+    ================================================== -->
+<div class="task2-nuclei-area">
+<div class="task2-nucleus-box">
+<span class="task2-label">
+                Hạt nhân mẹ
+            </span>
+<div class="task2-big-notation" id="task2ParentNotation">
+                —
+            </div>
+<p id="task2ParentName">
+                —
+            </p>
+</div>
+<div class="task2-main-arrow">
+            →
+        </div>
+<div class="task2-nucleus-box daughter">
+<span class="task2-label">
+                Hạt nhân con
+            </span>
+<div class="task2-big-notation" id="task2DaughterNotation">
+                —
+            </div>
+<p id="task2DaughterName">
+                —
+            </p>
+</div>
+</div>
+<button class="secondary-task-button" id="newTask2QuestionButton">
+        Tạo câu hỏi mới
+    </button>
+<!-- =================================================
+         TÍNH DELTA A Z
+    ================================================== -->
+<div class="task2-delta-grid">
+<div class="task2-input-card">
+<label for="task2DeltaAInput">
+                ΔA = Acon − Amẹ
+            </label>
+<input id="task2DeltaAInput" placeholder="Nhập ΔA" type="number"/>
+<span class="answer-feedback" id="task2DeltaAFeedback">
+</span>
+</div>
+<div class="task2-input-card">
+<label for="task2DeltaZInput">
+                ΔZ = Zcon − Zmẹ
+            </label>
+<input id="task2DeltaZInput" placeholder="Nhập ΔZ" type="number"/>
+<span class="answer-feedback" id="task2DeltaZFeedback">
+</span>
+</div>
+<div class="task2-input-card">
+<label for="task2DeltaNInput">
+                ΔN = Ncon − Nmẹ
+            </label>
+<input id="task2DeltaNInput" placeholder="Nhập ΔN" type="number"/>
+<span class="answer-feedback" id="task2DeltaNFeedback">
+</span>
+</div>
+</div>
+<!-- =================================================
+         CHỌN DẠNG PHÂN RÃ BẰNG THẺ
+    ================================================== -->
+<div class="task2-type-question">
+<p class="task2-question-title">
+
+            Dạng biến đổi nào phù hợp
+            với sự thay đổi trên?
+
+        </p>
+<div class="task2-type-options" id="task2TypeOptions">
+</div>
+<span class="answer-feedback" id="task2TypeFeedback">
+</span>
+</div>
+<!-- =================================================
+         CHỌN QUY TẮC ĐÚNG
+    ================================================== -->
+<div class="task2-rule-question">
+<p class="task2-question-title">
+
+            Quy tắc nào mô tả đúng sự biến đổi?
+
+        </p>
+<div class="task2-rule-options" id="task2RuleOptions">
+</div>
+<span class="answer-feedback" id="task2RuleFeedback">
+</span>
+</div>
+<!-- =================================================
+         BUTTON
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask2Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask2Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task2Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task2Result">
+<h4>
+            Kết quả phân tích
+        </h4>
+<div class="task2-result-grid">
+<div class="task2-result-box">
+<span>
+                    ΔA
+                </span>
+<strong id="task2CorrectDeltaA">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    ΔZ
+                </span>
+<strong id="task2CorrectDeltaZ">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    ΔN
+                </span>
+<strong id="task2CorrectDeltaN">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    Dạng phân rã
+                </span>
+<strong id="task2CorrectType">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task2-solution">
+<h4>
+                Lời giải
+            </h4>
+<div id="task2Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task2Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task3Card">
+<h3>
+        Nhiệm vụ 3:
+        Phân tích chuỗi biến đổi hạt nhân
+    </h3>
+<p>
+        Bắt đầu từ một hạt nhân ban đầu,
+        hãy theo dõi lần lượt các quá trình phân rã,
+        xác định các hạt nhân được tạo thành
+        và phân tích sự biến đổi tổng cộng của A và Z.
+    </p>
+<!-- =================================================
+         ĐỀ BÀI
+    ================================================== -->
+<div class="task3-question-header">
+<div class="task3-start-box">
+<span>
+                Hạt nhân ban đầu
+            </span>
+<div class="task3-big-notation" id="task3InitialNotation">
+                —
+            </div>
+<p id="task3ChainName">
+                —
+            </p>
+</div>
+<div>
+<span class="task3-sequence-label">
+                Chuỗi biến đổi
+            </span>
+<div class="task3-decay-sequence" id="task3DecaySequence">
+                —
+            </div>
+</div>
+</div>
+<button class="secondary-task-button" id="newTask3QuestionButton">
+        Tạo chuỗi mới
+    </button>
+<!-- =================================================
+         HƯỚNG DẪN
+    ================================================== -->
+<div class="task3-hint-box">
+<strong>
+            Cách thực hiện
+        </strong>
+<p>
+            Thực hiện lần lượt từng phép biến đổi.
+            Kết quả của bước trước chính là
+            hạt nhân mẹ của bước tiếp theo.
+        </p>
+<p>
+            Với mỗi hạt nhân:
+            <strong>N = A − Z</strong>.
+        </p>
+</div>
+<!-- =================================================
+         BẢNG CÁC BƯỚC
+    ================================================== -->
+<div class="task3-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                        Bước
+                    </th>
+<th>
+                        Dạng biến đổi
+                    </th>
+<th>
+                        A của hạt nhân mới
+                    </th>
+<th>
+                        Z của hạt nhân mới
+                    </th>
+<th>
+                        N của hạt nhân mới
+                    </th>
+<th>
+                        Kết quả
+                    </th>
+</tr>
+</thead>
+<tbody id="task3StepTableBody">
+</tbody>
+</table>
+</div>
+<!-- =================================================
+         BIẾN ĐỔI TỔNG CỘNG
+    ================================================== -->
+<div class="task3-total-section">
+<h4>
+            Biến đổi tổng cộng của cả chuỗi
+        </h4>
+<div class="task3-total-grid">
+<div>
+<label for="task3TotalDeltaAInput">
+                    Tổng ΔA
+                </label>
+<input id="task3TotalDeltaAInput" placeholder="ΔA" type="number"/>
+<span class="answer-feedback" id="task3TotalDeltaAFeedback">
+</span>
+</div>
+<div>
+<label for="task3TotalDeltaZInput">
+                    Tổng ΔZ
+                </label>
+<input id="task3TotalDeltaZInput" placeholder="ΔZ" type="number"/>
+<span class="answer-feedback" id="task3TotalDeltaZFeedback">
+</span>
+</div>
+</div>
+</div>
+<!-- =================================================
+         CHỌN CHUỖI PHƯƠNG TRÌNH
+    ================================================== -->
+<div class="task3-equation-question">
+<p class="task3-question-title">
+
+            Chuỗi phương trình nào mô tả đúng
+            toàn bộ quá trình trên?
+
+        </p>
+<div class="task3-equation-options" id="task3EquationOptions">
+</div>
+<span class="answer-feedback" id="task3EquationFeedback">
+</span>
+</div>
+<!-- =================================================
+         BUTTON
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask3Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask3Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task3Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         RESULT
+    ================================================== -->
+<div class="task-result" hidden="" id="task3Result">
+<h4>
+            Kết quả chuỗi biến đổi
+        </h4>
+<div class="task3-result-grid">
+<div class="task3-result-box">
+<span>
+                    Hạt nhân đầu
+                </span>
+<strong id="task3InitialResult">
+                    —
+                </strong>
+</div>
+<div class="task3-result-box">
+<span>
+                    Hạt nhân cuối
+                </span>
+<strong id="task3FinalResult">
+                    —
+                </strong>
+</div>
+<div class="task3-result-box">
+<span>
+                    Tổng ΔA
+                </span>
+<strong id="task3CorrectDeltaA">
+                    —
+                </strong>
+</div>
+<div class="task3-result-box">
+<span>
+                    Tổng ΔZ
+                </span>
+<strong id="task3CorrectDeltaZ">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task3-solution">
+<h4>
+                Phân tích từng bước
+            </h4>
+<div id="task3Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task3Conclusion">
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- =================================================
+             KIỂM CHỨNG
+        ================================================== -->
+<section class="mode-panel" id="validationPanel">
+<h2>
+        Kiểm chứng mô hình
+    </h2>
+<p>
+        Chế độ này tự động kiểm tra các quy tắc biến đổi hạt nhân,
+        dữ liệu ví dụ, thuật toán nhận diện dạng phân rã
+        và các chuỗi biến đổi được sử dụng trong bài mô phỏng.
+    </p>
+<!-- =================================================
+         KIỂM CHỨNG 1
+    ================================================== -->
+<div class="decay-validation-block">
+<h3>
+            Kiểm chứng 1:
+            Quy tắc biến đổi A, Z và N
+        </h3>
+<p>
+            Chương trình kiểm tra bốn dạng biến đổi
+            α, β⁻, β⁺ và γ theo các quy tắc vật lí
+            được sử dụng trong mô hình.
+        </p>
+<div class="decay-validation-rule-grid">
+<div class="decay-validation-rule-card">
+<strong>
+                    α
+                </strong>
+<span>
+                    ΔA = −4
+                </span>
+<span>
+                    ΔZ = −2
+                </span>
+<span>
+                    ΔN = −2
+                </span>
+</div>
+<div class="decay-validation-rule-card">
+<strong>
+                    β⁻
+                </strong>
+<span>
+                    ΔA = 0
+                </span>
+<span>
+                    ΔZ = +1
+                </span>
+<span>
+                    ΔN = −1
+                </span>
+</div>
+<div class="decay-validation-rule-card">
+<strong>
+                    β⁺
+                </strong>
+<span>
+                    ΔA = 0
+                </span>
+<span>
+                    ΔZ = −1
+                </span>
+<span>
+                    ΔN = +1
+                </span>
+</div>
+<div class="decay-validation-rule-card">
+<strong>
+                    γ
+                </strong>
+<span>
+                    ΔA = 0
+                </span>
+<span>
+                    ΔZ = 0
+                </span>
+<span>
+                    ΔN = 0
+                </span>
+</div>
+</div>
+<div class="task-button-group">
+<button id="runDecayRuleValidationButton">
+                Chạy kiểm chứng quy tắc
+            </button>
+<button id="resetDecayRuleValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="decayRuleValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="decayRuleValidationResult">
+<div class="decay-validation-summary-grid">
+<div class="decay-validation-summary-box">
+<span>
+                        Dạng kiểm tra
+                    </span>
+<strong id="decayRuleTypeCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        ΔA
+                    </span>
+<strong id="decayRuleDeltaAStatus">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        ΔZ
+                    </span>
+<strong id="decayRuleDeltaZStatus">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        ΔN
+                    </span>
+<strong id="decayRuleDeltaNStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="decay-validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Dạng
+                            </th>
+<th>
+                                ΔA mô hình
+                            </th>
+<th>
+                                ΔZ mô hình
+                            </th>
+<th>
+                                ΔN suy ra
+                            </th>
+<th>
+                                Giá trị chuẩn
+                            </th>
+<th>
+                                Kết quả
+                            </th>
+</tr>
+</thead>
+<tbody id="decayRuleValidationTableBody">
+</tbody>
+</table>
+</div>
+<div class="decay-validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="decayRuleValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         KIỂM CHỨNG 2
+    ================================================== -->
+<div class="decay-validation-block">
+<h3>
+            Kiểm chứng 2:
+            Hạt nhân con của các ví dụ
+        </h3>
+<p>
+            Với mỗi ví dụ trong dữ liệu,
+            chương trình tính lại hạt nhân con từ hạt nhân mẹ
+            và quy tắc phân rã,
+            sau đó so sánh với hạt nhân con đã lưu trong dữ liệu.
+        </p>
+<div class="task-button-group">
+<button id="runDaughterValidationButton">
+                Kiểm chứng hạt nhân con
+            </button>
+<button id="resetDaughterValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="daughterValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="daughterValidationResult">
+<div class="decay-validation-summary-grid">
+<div class="decay-validation-summary-box">
+<span>
+                        Ví dụ kiểm tra
+                    </span>
+<strong id="daughterExampleCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Đúng A
+                    </span>
+<strong id="daughterAStatus">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Đúng Z
+                    </span>
+<strong id="daughterZStatus">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Trạng thái γ
+                    </span>
+<strong id="daughterGammaStateStatus">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Tổng thể
+                    </span>
+<strong id="daughterOverallStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="decay-validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Dạng
+                            </th>
+<th>
+                                Hạt nhân mẹ
+                            </th>
+<th>
+                                Con theo dữ liệu
+                            </th>
+<th>
+                                Con tính được
+                            </th>
+<th>
+                                A
+                            </th>
+<th>
+                                Z
+                            </th>
+<th>
+                                Trạng thái γ
+                            </th>
+<th>
+                                Kết quả
+                            </th>
+</tr>
+</thead>
+<tbody id="daughterValidationTableBody">
+</tbody>
+</table>
+</div>
+<div class="decay-validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="daughterValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         KIỂM CHỨNG 3
+    ================================================== -->
+<div class="decay-validation-block">
+<h3>
+            Kiểm chứng 3:
+            Thuật toán nhận diện dạng phân rã
+        </h3>
+<p>
+            Chương trình tính ΔA và ΔZ của từng ví dụ,
+            sau đó dùng một thuật toán nhận diện độc lập
+            để suy ra α, β⁻, β⁺ hoặc γ
+            và so sánh với loại phân rã đã lưu.
+        </p>
+<div class="task-button-group">
+<button id="runIdentificationValidationButton">
+                Kiểm chứng nhận diện
+            </button>
+<button id="resetIdentificationValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="identificationValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="identificationValidationResult">
+<div class="decay-validation-summary-grid">
+<div class="decay-validation-summary-box">
+<span>
+                        Trường hợp
+                    </span>
+<strong id="identificationCaseCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Nhận diện đúng
+                    </span>
+<strong id="identificationCorrectCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Sai lệch
+                    </span>
+<strong id="identificationMismatchCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Trạng thái
+                    </span>
+<strong id="identificationOverallStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="decay-validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Hạt nhân mẹ
+                            </th>
+<th>
+                                Hạt nhân con
+                            </th>
+<th>
+                                ΔA
+                            </th>
+<th>
+                                ΔZ
+                            </th>
+<th>
+                                Dữ liệu
+                            </th>
+<th>
+                                Nhận diện
+                            </th>
+<th>
+                                Kết quả
+                            </th>
+</tr>
+</thead>
+<tbody id="identificationValidationTableBody">
+</tbody>
+</table>
+</div>
+<div class="decay-validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="identificationValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         KIỂM CHỨNG 4
+    ================================================== -->
+<div class="decay-validation-block">
+<h3>
+            Kiểm chứng 4:
+            Tính nhất quán của các chuỗi biến đổi
+        </h3>
+<p>
+            Chương trình kiểm tra từng bước
+            trong các chuỗi của Nhiệm vụ 3.
+            Hạt nhân con của một bước phải đúng theo quy tắc
+            và đồng thời là hạt nhân mẹ của bước kế tiếp.
+        </p>
+<div class="task-button-group">
+<button id="runChainValidationButton">
+                Kiểm chứng các chuỗi
+            </button>
+<button id="resetChainValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="chainValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="chainValidationResult">
+<div class="decay-validation-summary-grid">
+<div class="decay-validation-summary-box">
+<span>
+                        Số chuỗi
+                    </span>
+<strong id="chainValidationChainCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Số bước
+                    </span>
+<strong id="chainValidationStepCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Sai lệch
+                    </span>
+<strong id="chainValidationMismatchCount">
+                        —
+                    </strong>
+</div>
+<div class="decay-validation-summary-box">
+<span>
+                        Trạng thái
+                    </span>
+<strong id="chainValidationOverallStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="decay-validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Chuỗi
+                            </th>
+<th>
+                                Bước
+                            </th>
+<th>
+                                Dạng
+                            </th>
+<th>
+                                Mẹ
+                            </th>
+<th>
+                                Con dự kiến
+                            </th>
+<th>
+                                Con trong chuỗi
+                            </th>
+<th>
+                                Kết quả
+                            </th>
+</tr>
+</thead>
+<tbody id="chainValidationTableBody">
+</tbody>
+</table>
+</div>
+<div class="decay-validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="chainValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         GHI CHÚ PHƯƠNG PHÁP
+    ================================================== -->
+<div class="decay-validation-method-note">
+<h3>
+            Ý nghĩa của chế độ Kiểm chứng
+        </h3>
+<p>
+            Các kiểm tra trên nhằm đánh giá
+            tính nhất quán nội bộ của dữ liệu
+            và thuật toán trong mô phỏng.
+        </p>
+<p>
+            Chúng không thay thế dữ liệu thực nghiệm
+            về xác suất phân rã, năng lượng phân rã
+            hay cấu trúc mức năng lượng của các hạt nhân thực.
+        </p>
+</div>
+</section>
+</div>
+<script src="js/decay-data.js?v=6"></script>
+<script src="js/physics.js?v=6"></script>
+<script src="js/simulation.js?v=2"></script>
+<script src="js/app.js?v=2"></script>
+<script src="js/task1.js?v=4"></script>
+<script src="js/task2.js?v=1"></script>
+<script src="js/task3.js?v=1"></script>
+<script src="js/validation.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>

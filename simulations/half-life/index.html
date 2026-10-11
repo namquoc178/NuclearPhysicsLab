@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mô phỏng định luật phóng xạ và chu kỳ bán rã</title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=15" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<div class="container">
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Định luật phóng xạ và chu kỳ bán rã</h1>
+<p class="page-description">Quan sát tính ngẫu nhiên của từng phân rã và quy luật thống kê của số hạt chưa phân rã theo thời gian.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/half-life.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Quan sát tính ngẫu nhiên của từng sự kiện phân rã.</li><li>So sánh mô phỏng Monte Carlo với đường cong suy giảm lí thuyết.</li><li>Khảo sát ảnh hưởng của chu kỳ bán rã và số hạt ban đầu.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">N = N<sub>0</sub>e<sup>−λt</sup></div><div class="lesson-formula-secondary">λ = ln2 / T<sub>1/2</sub></div></div>
+<div class="lesson-mini-visual"><div aria-label="Sau mỗi chu kỳ bán rã, số hạt chưa phân rã còn một nửa" class="half-life-flow"><span>N<sub>0</sub></span><b>→</b><span>N<sub>0</sub>/2</span><b>→</b><span>N<sub>0</sub>/4</span><b>→</b><span>N<sub>0</sub>/8</span></div><div class="mini-caption">mỗi mũi tên tương ứng 1 T<sub>1/2</sub></div></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Mô phỏng dùng quá trình ngẫu nhiên cho từng hạt nhân. Đường cong mũ biểu diễn xu hướng kì vọng của một tập hợp lớn, không phải thời điểm phân rã xác định của từng hạt nhân.</p>
+</article>
+</section><div class="lesson-learning-goal learning-goal">
+<strong>Mục tiêu học tập:</strong> Nhận biết tính ngẫu nhiên của phân rã phóng xạ, hiểu ý nghĩa chu kỳ bán rã và thấy được quy luật thống kê khi số hạt tăng.
+        </div>
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<main>
+<section class="simulation-layout">
+<aside class="control-panel">
+<h2>Thông số mô phỏng</h2>
+<div class="control-group">
+<label for="inputN0">Số hạt ban đầu N₀</label>
+<input id="inputN0" max="10000" min="10" step="10" type="number" value="1000"/>
+</div>
+<div class="control-group">
+<label for="inputHalfLife">Chu kỳ bán rã T₁/₂ (s)</label>
+<input id="inputHalfLife" min="0.1" step="0.1" type="number" value="10"/>
+</div>
+<div class="control-group advanced-only" id="dtControlGroup">
+<label for="inputDt">Bước thời gian Δt (s)</label>
+<input id="inputDt" min="0.01" step="0.01" type="number" value="0.1"/>
+</div>
+<div class="button-group">
+<button id="startButton">▶ Bắt đầu</button>
+<button disabled="" id="pauseButton">⏸ Tạm dừng</button>
+<button id="resetButton">↻ Đặt lại</button>
+</div>
+<div aria-live="polite" class="simulation-status ready" id="simulationStatusPanel">
+<span aria-hidden="true" class="status-dot" id="simulationStatusDot"></span>
+<span id="simulationStatusText">Sẵn sàng mô phỏng.</span>
+</div>
+</aside>
+<section class="simulation-panel">
+<h2>Mô hình hạt nhân</h2>
+<p class="canvas-note">
+                    Mỗi chấm đại diện cho một hạt nhân trong mô hình.
+                </p>
+<div aria-label="Chú giải trạng thái hạt nhân" class="particle-legend">
+<span class="legend-item"><span class="legend-dot alive"></span>Chưa phân rã</span>
+<span class="legend-item"><span class="legend-dot decayed"></span>Đã phân rã</span>
+</div>
+<canvas height="420" id="nucleiCanvas" width="700"></canvas>
+</section>
+</section>
+<section class="data-panel">
+<div class="data-box">
+<span>Thời gian</span>
+<strong id="timeDisplay">0.00 s</strong>
+</div>
+<div class="data-box">
+<span>Số hạt còn lại</span>
+<strong id="remainingDisplay">1000</strong>
+</div>
+<div class="data-box">
+<span>N/N₀</span>
+<strong id="ratioDisplay">1.000</strong>
+</div>
+<div class="data-box advanced-only" id="lambdaDataBox">
+<span>Hằng số phân rã λ</span>
+<strong id="lambdaDisplay">0.0693 s⁻¹</strong>
+</div>
+</section>
+<section class="chart-panel">
+<h2>Đồ thị phân rã</h2>
+<p class="chart-note">So sánh kết quả mô phỏng với đường lý thuyết. Các mốc T₁/₂, 2T₁/₂ và 3T₁/₂ giúp theo dõi quy luật giảm một nửa.</p>
+<div class="chart-container">
+<canvas id="decayChart"></canvas>
+</div>
+</section>
+<section class="mode-panel active" id="explorePanel">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Chế độ dành cho học sinh</span>
+<h2>Khám phá hiện tượng</h2>
+</div>
+<span class="mode-badge">Tự do khám phá</span>
+</div>
+<div class="step-grid">
+<div class="step-card">
+<span class="step-number">1</span>
+<h3>Chọn điều kiện</h3>
+<p>Thay đổi N₀ và T₁/₂ ở bảng điều khiển.</p>
+</div>
+<div class="step-card">
+<span class="step-number">2</span>
+<h3>Quan sát</h3>
+<p>Nhấn Bắt đầu, theo dõi các hạt và sự thay đổi của N/N₀.</p>
+</div>
+<div class="step-card">
+<span class="step-number">3</span>
+<h3>So sánh</h3>
+<p>Đối chiếu đường mô phỏng với đường lý thuyết và các mốc chu kỳ bán rã.</p>
+</div>
+</div>
+<div class="question-card">
+<h3>Câu hỏi gợi ý</h3>
+<ol>
+<li>Các hạt nhân có phân rã cùng một lúc không?</li>
+<li>Sau một chu kỳ bán rã, số hạt còn lại xấp xỉ bao nhiêu phần số hạt ban đầu?</li>
+<li>Nếu chạy lại với cùng điều kiện, kết quả có hoàn toàn giống nhau không?</li>
+</ol>
+</div>
+</section>
+<section class="mode-panel" id="experimentPanel">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Hoạt động học tập có hướng dẫn</span>
+<h2>Thí nghiệm ảo</h2>
+</div>
+<span class="mode-badge">3 nhiệm vụ</span>
+</div>
+<p class="section-intro">
+                Thực hiện theo thứ tự để đi từ quan sát chu kỳ bán rã đến nhận biết tính ngẫu nhiên và cuối cùng là quy luật thống kê của tập hợp lớn. Ở Nhiệm vụ 1, dùng nút Bắt đầu ở bảng điều khiển; ở Nhiệm vụ 2 và 3, dùng nút chạy ngay trong từng nhiệm vụ.
+            </p>
+<div aria-label="Tiến trình ba nhiệm vụ" class="task-progress">
+<span><strong>1</strong> Chu kỳ bán rã</span>
+<span class="progress-arrow">→</span>
+<span><strong>2</strong> Tính ngẫu nhiên</span>
+<span class="progress-arrow">→</span>
+<span><strong>3</strong> Ảnh hưởng của N₀</span>
+</div>
+<div class="experiment-task" id="experiment1Card">
+<h3>Nhiệm vụ 1: Khảo sát chu kỳ bán rã</h3>
+<p>
+                    Sử dụng mẫu phóng xạ giả định có
+                    <strong>N₀ = 1000 hạt</strong> và
+                    <strong>T₁/₂ = 10 s</strong>.
+                </p>
+<p>
+                    Trước khi chạy mô phỏng, hãy dự đoán số hạt chưa phân rã còn lại sau 10 s.
+                </p>
+<label for="predictionInput">Dự đoán của em:</label>
+<input id="predictionInput" max="1000" min="0" placeholder="Ví dụ: 500" type="number"/>
+<button id="loadExperiment1Button">Thiết lập thí nghiệm</button>
+<p>
+                    Sau khi thiết lập và nhập dự đoán, nhấn <strong>▶ Bắt đầu</strong> ở bảng điều khiển.
+                </p>
+<div class="experiment-feedback">
+<p>
+<strong>Trạng thái:</strong>
+<span id="experiment1Status">Chưa thiết lập</span>
+</p>
+<div hidden="" id="experiment1Result">
+<h4>Kết quả tại t = T₁/₂</h4>
+<div class="experiment-result-grid">
+<div>
+<span>Dự đoán</span>
+<strong id="experiment1PredictionDisplay">—</strong>
+</div>
+<div>
+<span>Kết quả mô phỏng</span>
+<strong id="experiment1ObservedDisplay">—</strong>
+</div>
+<div>
+<span>Giá trị lý thuyết</span>
+<strong id="experiment1TheoryDisplay">—</strong>
+</div>
+<div>
+<span>Sai khác mô phỏng</span>
+<strong id="experiment1DifferenceDisplay">—</strong>
+</div>
+</div>
+<p id="experiment1Message"></p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="experiment2Card">
+<h3>Nhiệm vụ 2: Kiểm tra tính ngẫu nhiên của phân rã</h3>
+<p>
+                    Giữ nguyên điều kiện <strong>N₀ = 100 hạt</strong> và <strong>T₁/₂ = 10 s</strong>.
+                    Hệ thống sẽ thực hiện <strong>5 lần thí nghiệm độc lập</strong>.
+                </p>
+<button id="loadExperiment2Button">Thiết lập nhiệm vụ</button>
+<button disabled="" id="runExperiment2Button">Chạy 5 lần thí nghiệm</button>
+<div class="experiment-feedback">
+<p>
+<strong>Trạng thái:</strong>
+<span id="experiment2Status">Chưa thiết lập</span>
+</p>
+<div hidden="" id="experiment2Result">
+<h4>Kết quả 5 lần thí nghiệm</h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>Lần thí nghiệm</th>
+<th>N(T₁/₂)</th>
+<th>So với 50 hạt</th>
+</tr>
+</thead>
+<tbody id="experiment2TableBody"></tbody>
+</table>
+</div>
+<div class="experiment-result-grid two-columns">
+<div>
+<span>Giá trị trung bình</span>
+<strong id="experiment2AverageDisplay">—</strong>
+</div>
+<div>
+<span>Giá trị lý thuyết</span>
+<strong id="experiment2TheoryDisplay">—</strong>
+</div>
+</div>
+<p id="experiment2Message"></p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="experiment3Card">
+<h3>Nhiệm vụ 3: Ảnh hưởng của số hạt ban đầu</h3>
+<p>
+                    Giữ nguyên <strong>T₁/₂ = 10 s</strong> và khảo sát ba trường hợp
+                    <strong>N₀ = 20, 100 và 1000 hạt</strong>.
+                </p>
+<p>
+                    Với mỗi trường hợp, chương trình thực hiện 5 lần mô phỏng tại t = T₁/₂ và đồng thời tạo một đường mô phỏng N/N₀ theo thời gian để so sánh trực quan với đường lý thuyết.
+                </p>
+<button id="loadExperiment3Button">Thiết lập nhiệm vụ</button>
+<button disabled="" id="runExperiment3Button">Chạy so sánh</button>
+<div class="experiment-feedback">
+<p>
+<strong>Trạng thái:</strong>
+<span id="experiment3Status">Chưa thiết lập</span>
+</p>
+<div hidden="" id="experiment3Result">
+<h4>Kết quả so sánh</h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>N₀</th>
+<th>Kết quả 5 lần</th>
+<th>Trung bình</th>
+<th>Lý thuyết N₀/2</th>
+<th>Độ lệch tương đối TB</th>
+</tr>
+</thead>
+<tbody id="experiment3TableBody"></tbody>
+</table>
+</div>
+<div class="experiment3-chart-section">
+<h4>So sánh quá trình phân rã</h4>
+<p>
+                                Trục tung biểu diễn tỉ lệ N/N₀ để có thể so sánh công bằng các mẫu có kích thước khác nhau.
+                            </p>
+<div class="experiment3-chart-container">
+<canvas id="experiment3Chart"></canvas>
+</div>
+</div>
+<div class="question-card experiment3-question">
+<h4>Câu hỏi quan sát</h4>
+<p>
+                                Khi N₀ tăng từ 20 lên 100 rồi 1000, mức dao động của đường mô phỏng so với đường lý thuyết thay đổi như thế nào?
+                            </p>
+</div>
+<p id="experiment3Message"></p>
+</div>
+</div>
+</div>
+</section>
+<section class="validation-panel mode-panel" id="validationPanel">
+<div class="validation-header">
+<div class="section-heading">
+<div>
+<span class="eyebrow">Chế độ nâng cao</span>
+<h2>Kiểm chứng thống kê Monte Carlo</h2>
+</div>
+<span class="mode-badge research">GV / nghiên cứu</span>
+</div>
+<p>
+                    Lặp lại thí nghiệm nhiều lần và so sánh giá trị trung bình với định luật phóng xạ.
+                </p>
+</div>
+<div class="validation-controls">
+<div class="validation-control-group">
+<label for="repeatCount">Số lần lặp</label>
+<select id="repeatCount">
+<option value="50">50 lần</option>
+<option selected="" value="100">100 lần</option>
+<option value="500">500 lần</option>
+<option value="1000">1000 lần</option>
+</select>
+</div>
+<button id="runValidationButton">Chạy kiểm chứng</button>
+</div>
+<div class="validation-results">
+<div class="validation-box">
+<span>Trạng thái</span>
+<strong id="validationStatus">Chưa chạy</strong>
+</div>
+<div class="validation-box">
+<span>Số lần lặp</span>
+<strong id="validationRuns">0</strong>
+</div>
+<div class="validation-box">
+<span>Sai số RMSE/N₀</span>
+<strong id="validationError">—</strong>
+</div>
+</div>
+</section>
+<section class="table-panel" id="dataTablePanel">
+<div class="table-header">
+<div>
+<h2>Bảng dữ liệu mô phỏng</h2>
+<p>Hiển thị 15 điểm dữ liệu gần nhất của mô phỏng chính.</p>
+</div>
+<button id="exportCsvButton">Xuất dữ liệu CSV</button>
+</div>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>t (s)</th>
+<th>N mô phỏng</th>
+<th>N lý thuyết</th>
+<th>N/N₀</th>
+</tr>
+</thead>
+<tbody id="dataTableBody"></tbody>
+</table>
+</div>
+</section>
+</main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/physics.js?v=15"></script>
+<script src="js/simulation.js?v=15"></script>
+<script src="js/app.js?v=15"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>

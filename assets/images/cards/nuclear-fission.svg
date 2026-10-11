@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <rect width="800" height="310" fill="#f3f8ff"/>
+  <circle cx="110" cy="155" r="10" fill="#2f7bdc"/>
+  <line x1="125" y1="155" x2="245" y2="155" stroke="#2f7bdc" stroke-width="4"/>
+  <polygon points="245,155 229,146 229,164" fill="#2f7bdc"/>
+  <circle cx="330" cy="155" r="72" fill="#fff" stroke="#8fb9ea" stroke-width="4"/>
+  <text x="330" y="164" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="#1f3f6f">U-235</text>
+  <path d="M405 150 C450 120, 485 100, 528 86" fill="none" stroke="#d06b38" stroke-width="4"/>
+  <path d="M405 160 C450 190, 490 210, 532 226" fill="none" stroke="#7a63d8" stroke-width="4"/>
+  <circle cx="585" cy="80" r="47" fill="#fde3cf" stroke="#d06b38" stroke-width="4"/>
+  <circle cx="590" cy="230" r="50" fill="#ebe4ff" stroke="#7a63d8" stroke-width="4"/>
+  <circle cx="690" cy="120" r="8" fill="#2f7bdc"/><circle cx="714" cy="151" r="8" fill="#2f7bdc"/><circle cx="680" cy="184" r="8" fill="#2f7bdc"/>
+  <text x="565" y="157" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">+ neutron + Q</text>
+</svg>

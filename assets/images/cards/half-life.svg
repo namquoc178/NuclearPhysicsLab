@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <rect width="800" height="310" fill="#f4f9ff"/>
+  <line x1="95" y1="245" x2="705" y2="245" stroke="#91a7be" stroke-width="3"/>
+  <line x1="95" y1="245" x2="95" y2="54" stroke="#91a7be" stroke-width="3"/>
+  <path d="M105 70 C210 85, 295 118, 380 162 C470 207, 575 229, 695 239" fill="none" stroke="#2f7bdc" stroke-width="6"/>
+  <line x1="95" y1="157" x2="360" y2="157" stroke="#8fb9ea" stroke-width="2" stroke-dasharray="8 8"/>
+  <line x1="360" y1="157" x2="360" y2="245" stroke="#8fb9ea" stroke-width="2" stroke-dasharray="8 8"/>
+  <text x="111" y="64" font-family="Segoe UI, Arial" font-size="20" fill="#486581">N₀</text>
+  <text x="107" y="151" font-family="Segoe UI, Arial" font-size="20" fill="#486581">N₀/2</text>
+  <text x="332" y="277" font-family="Segoe UI, Arial" font-size="20" font-weight="700" fill="#1f3f6f">T₁/₂</text>
+  <text x="530" y="100" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#1f3f6f">N = N₀e⁻λᵗ</text>
+</svg>

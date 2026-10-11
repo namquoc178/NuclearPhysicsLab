@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+        Phân hạch hạt nhân
+    </title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=6" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<div class="container">
+<!-- =====================================================
+         ĐIỀU HƯỚNG
+    ====================================================== -->
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Phân hạch hạt nhân</h1>
+<p class="page-description">Quan sát một kênh phân hạch đại diện của uranium-235, kiểm tra bảo toàn số nucleon, điện tích và xác định năng lượng tỏa ra từ chênh lệch khối lượng.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/nuclear-fission.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Kiểm tra bảo toàn số khối A và điện tích Z trong các kênh phân hạch.</li><li>Tính năng lượng tỏa ra Q từ chênh lệch khối lượng.</li><li>Khảo sát mô hình khái niệm của phản ứng dây chuyền.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">Q = (m<sub>trước</sub> − m<sub>sau</sub>)c²</div><div class="lesson-formula-secondary">ΣA<sub>trước</sub> = ΣA<sub>sau</sub>  •  ΣZ<sub>trước</sub> = ΣZ<sub>sau</sub></div></div>
+<div class="lesson-mini-visual"><div aria-label="Neutron kích thích phân hạch tạo hai mảnh và neutron mới" class="fission-visual"><span class="particle-dot neutron-dot">n</span><b>+</b><span class="nucleus-orb">U</span><b>→</b><span class="fragment-pill">mảnh 1</span><span class="fragment-pill">mảnh 2</span><span class="particle-dot neutron-dot">n</span><span class="energy-mark">Q</span></div></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Mô phỏng dây chuyền là mô hình giáo dục trừu tượng nhằm minh họa sự nhân lên của neutron. Các tham số không mô tả vận hành của một lò phản ứng hạt nhân thực.</p>
+</article>
+</section>
+<!-- =====================================================
+         MỤC TIÊU
+    ====================================================== -->
+<section class="learning-goals">
+<h2>
+            Mục tiêu học tập
+        </h2>
+<div class="goal-grid">
+<div class="goal-card">
+<strong>
+                    1
+                </strong>
+<p>
+                    Mô tả các giai đoạn cơ bản của
+                    quá trình phân hạch U-235 khi hấp thụ neutron.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    2
+                </strong>
+<p>
+                    Kiểm tra sự bảo toàn số nucleon
+                    và điện tích trong phản ứng phân hạch.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    3
+                </strong>
+<p>
+                    Liên hệ chênh lệch khối lượng
+                    với năng lượng tỏa ra của phản ứng.
+                </p>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         CHẾ ĐỘ
+    ====================================================== -->
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<!-- =====================================================
+         KHU MÔ PHỎNG
+    ====================================================== -->
+<section class="simulation-layout">
+<!-- =================================================
+             ĐIỀU KHIỂN
+        ================================================== -->
+<aside class="control-panel">
+<h2>
+                Điều khiển
+            </h2>
+<div class="control-group">
+<label>
+                    Kênh phân hạch
+                </label>
+<select disabled="" id="fissionChannelSelect">
+<option value="U235-Ba141-Kr92-3n">
+                        U-235 → Ba-141 + Kr-92 + 3n
+                    </option>
+</select>
+</div>
+<div class="button-group">
+<button id="startButton">
+                    ▶ Bắt đầu
+                </button>
+<button id="pauseButton">
+                    ⏸ Tạm dừng
+                </button>
+<button id="resetButton">
+                    ↻ Đặt lại
+                </button>
+</div>
+<div class="speed-control">
+<label for="speedSelect">
+                    Tốc độ mô phỏng
+                </label>
+<select id="speedSelect">
+<option value="0.7">
+                        Chậm
+                    </option>
+<option selected="" value="1">
+                        Bình thường
+                    </option>
+<option value="1.5">
+                        Nhanh
+                    </option>
+</select>
+</div>
+<div class="channel-note">
+<strong>
+                    Lưu ý
+                </strong>
+<p>
+                    Đây là một kênh phân hạch đại diện.
+                    U-235 có thể phân hạch theo nhiều kênh
+                    với các mảnh và năng lượng khác nhau.
+                </p>
+</div>
+</aside>
+<!-- =================================================
+             VÙNG ANIMATION
+        ================================================== -->
+<section class="simulation-panel">
+<div class="simulation-title-row">
+<div>
+<h2>
+                        Quá trình phân hạch
+                    </h2>
+<p id="stageDescription">
+                        Sẵn sàng bắt đầu mô phỏng.
+                    </p>
+</div>
+<span class="status-badge ready" id="statusBadge">
+                    Sẵn sàng
+                </span>
+</div>
+<canvas height="500" id="fissionCanvas" width="900"></canvas>
+<div class="stage-indicator">
+<div class="stage-item active" data-stage="0">
+<span>1</span>
+                    Neutron tới
+                </div>
+<div class="stage-item" data-stage="1">
+<span>2</span>
+                    Hấp thụ
+                </div>
+<div class="stage-item" data-stage="2">
+<span>3</span>
+                    U-236*
+                </div>
+<div class="stage-item" data-stage="3">
+<span>4</span>
+                    Biến dạng
+                </div>
+<div class="stage-item" data-stage="4">
+<span>5</span>
+                    Tách mảnh
+                </div>
+<div class="stage-item" data-stage="5">
+<span>6</span>
+                    Sản phẩm
+                </div>
+</div>
+<p class="visual-note">
+                Hình ảnh chỉ là mô hình trực quan hóa.
+                Kích thước, khoảng cách và chuyển động
+                không theo đúng tỉ lệ thực tế của hạt nhân.
+            </p>
+</section>
+</section>
+<!-- =====================================================
+         PHƯƠNG TRÌNH PHẢN ỨNG
+    ====================================================== -->
+<section class="reaction-panel">
+<h2>
+            Kênh phân hạch đang minh họa
+        </h2>
+<div class="reaction-equation">
+<span>
+<sup>235</sup><sub>92</sub>U
+            </span>
+<span>
+                +
+            </span>
+<span>
+<sup>1</sup><sub>0</sub>n
+            </span>
+<span>
+                →
+            </span>
+<span>
+<sup>141</sup><sub>56</sub>Ba
+            </span>
+<span>
+                +
+            </span>
+<span>
+<sup>92</sup><sub>36</sub>Kr
+            </span>
+<span>
+                +
+            </span>
+<span>
+                3<sup>1</sup><sub>0</sub>n
+            </span>
+</div>
+<p class="reaction-note">
+            Đây là một kênh minh họa,
+            không phải sản phẩm duy nhất của phân hạch U-235.
+        </p>
+</section>
+<!-- =====================================================
+         KẾT QUẢ
+    ====================================================== -->
+<section class="result-panel">
+<h2>
+            Kết quả vật lý
+        </h2>
+<div class="result-grid">
+<div class="result-box">
+<span>
+                    A trước phản ứng
+                </span>
+<strong id="initialADisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    A sau phản ứng
+                </span>
+<strong id="finalADisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Z trước phản ứng
+                </span>
+<strong id="initialZDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Z sau phản ứng
+                </span>
+<strong id="finalZDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Δm
+                </span>
+<strong id="massDifferenceDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box highlight-result">
+<span>
+                    Q của kênh này
+                </span>
+<strong id="qValueDisplay">
+                    —
+                </strong>
+</div>
+</div>
+<div class="conservation-row">
+<div id="massConservationStatus">
+                Bảo toàn A: —
+            </div>
+<div id="chargeConservationStatus">
+                Bảo toàn Z: —
+            </div>
+</div>
+</section>
+<!-- =====================================================
+         GIẢI THÍCH GIAI ĐOẠN
+    ====================================================== -->
+<section class="explanation-panel">
+<h2>
+            Diễn biến của quá trình
+        </h2>
+<div class="explanation-grid">
+<div class="explanation-card">
+<strong>
+                    1. Neutron tới
+                </strong>
+<p>
+                    Một neutron chuyển động về phía hạt nhân U-235.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    2. Hấp thụ neutron
+                </strong>
+<p>
+                    U-235 hấp thụ neutron,
+                    làm số nucleon của hệ tăng từ 235 lên 236.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    3. Hạt nhân hợp phần
+                </strong>
+<p>
+                    Hình thành trạng thái kích thích U-236*.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    4. Biến dạng
+                </strong>
+<p>
+                    Hạt nhân kích thích biến dạng
+                    trước khi tách thành các mảnh.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    5. Phân hạch
+                </strong>
+<p>
+                    Hệ tách thành hai mảnh hạt nhân
+                    và phát ra neutron thứ cấp.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    6. Năng lượng
+                </strong>
+<p>
+                    Khối lượng trạng thái sau nhỏ hơn trạng thái trước;
+                    phần chênh lệch tương ứng với Q của phản ứng.
+                </p>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         KHÁM PHÁ
+    ====================================================== -->
+<section class="mode-panel active" id="explorePanel">
+<h2>
+            Khám phá
+        </h2>
+<div class="question-card">
+<h3>
+                Câu hỏi gợi ý
+            </h3>
+<p>
+                Vì sao tổng số nucleon trước và sau phản ứng
+                vẫn bằng nhau dù hạt nhân U-235 đã bị tách thành nhiều phần?
+            </p>
+<p>
+                Tại sao Q của phản ứng dương
+                khi tổng khối lượng sau phản ứng nhỏ hơn tổng khối lượng trước?
+            </p>
+</div>
+</section>
+<!-- =====================================================
+         THÍ NGHIỆM - KHUNG
+    ====================================================== -->
+<section class="mode-panel" id="experimentPanel">
+<h2>
+            Thí nghiệm ảo
+        </h2>
+<div class="experiment-task" id="task1Card">
+<h3>
+        Nhiệm vụ 1:
+        Kiểm tra các định luật bảo toàn
+    </h3>
+<p>
+        Xét kênh phân hạch:
+    </p>
+<div class="task1-reaction">
+<span>
+<sup>235</sup><sub>92</sub>U
+        </span>
+<span>+</span>
+<span>
+<sup>1</sup><sub>0</sub>n
+        </span>
+<span>→</span>
+<span>
+<sup>141</sup><sub>56</sub>Ba
+        </span>
+<span>+</span>
+<span>
+<sup>92</sup><sub>36</sub>Kr
+        </span>
+<span>+</span>
+<span>
+            3<sup>1</sup><sub>0</sub>n
+        </span>
+</div>
+<div class="task1-instruction">
+<strong>
+            Yêu cầu
+        </strong>
+<p>
+            Hãy tự tính tổng số nucleon A
+            và tổng điện tích Z ở hai phía
+            của phản ứng trước khi kiểm tra.
+        </p>
+</div>
+<div class="task1-calculation-grid">
+<div class="task1-answer-card">
+<label for="task1InitialAInput">
+                A trước phản ứng
+            </label>
+<p class="task1-expression">
+                235 + 1 =
+            </p>
+<input id="task1InitialAInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1InitialAFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1FinalAInput">
+                A sau phản ứng
+            </label>
+<p class="task1-expression">
+                141 + 92 + 3 × 1 =
+            </p>
+<input id="task1FinalAInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1FinalAFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1InitialZInput">
+                Z trước phản ứng
+            </label>
+<p class="task1-expression">
+                92 + 0 =
+            </p>
+<input id="task1InitialZInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1InitialZFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1FinalZInput">
+                Z sau phản ứng
+            </label>
+<p class="task1-expression">
+                56 + 36 + 3 × 0 =
+            </p>
+<input id="task1FinalZInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1FinalZFeedback">
+</span>
+</div>
+</div>
+<div class="task1-conclusion-question">
+<label for="task1ConservationSelect">
+
+            Từ các kết quả trên,
+            nhận xét nào phù hợp?
+
+        </label>
+<select id="task1ConservationSelect">
+<option value="">
+                -- Chọn nhận xét --
+            </option>
+<option value="both">
+                Cả A và Z đều được bảo toàn
+            </option>
+<option value="a-only">
+                Chỉ A được bảo toàn
+            </option>
+<option value="z-only">
+                Chỉ Z được bảo toàn
+            </option>
+<option value="neither">
+                Cả A và Z đều không được bảo toàn
+            </option>
+</select>
+<span class="answer-feedback" id="task1ConservationFeedback">
+</span>
+</div>
+<div class="task1-neutron-question">
+<label for="task1NeutronSelect">
+
+            Vì sao neutron làm tăng số khối A
+            nhưng không làm thay đổi tổng Z?
+
+        </label>
+<select id="task1NeutronSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                Vì neutron có A = 1 nhưng Z = 0
+            </option>
+<option value="wrong-1">
+                Vì neutron có A = 0 và Z = 1
+            </option>
+<option value="wrong-2">
+                Vì neutron không có khối lượng
+            </option>
+<option value="wrong-3">
+                Vì neutron mang điện tích âm
+            </option>
+</select>
+<span class="answer-feedback" id="task1NeutronFeedback">
+</span>
+</div>
+<div class="task-button-group">
+<button id="checkTask1Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask1Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task1Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<div class="task-result" hidden="" id="task1Result">
+<h4>
+            Kiểm tra bằng chương trình
+        </h4>
+<div class="task1-result-grid">
+<div class="task1-result-box">
+<span>
+                    A trước
+                </span>
+<strong id="task1CorrectInitialA">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    A sau
+                </span>
+<strong id="task1CorrectFinalA">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Z trước
+                </span>
+<strong id="task1CorrectInitialZ">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Z sau
+                </span>
+<strong id="task1CorrectFinalZ">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task1-solution">
+<h4>
+                Phân tích
+            </h4>
+<div id="task1Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task1Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task2Card">
+<h3>
+        Nhiệm vụ 2:
+        Xác định năng lượng tỏa ra của phản ứng
+    </h3>
+<p>
+        Sử dụng dữ liệu khối lượng nguyên tử
+        của kênh phân hạch:
+    </p>
+<div class="task2-reaction">
+<span>
+<sup>235</sup><sub>92</sub>U
+        </span>
+<span>+</span>
+<span>
+<sup>1</sup><sub>0</sub>n
+        </span>
+<span>→</span>
+<span>
+<sup>141</sup><sub>56</sub>Ba
+        </span>
+<span>+</span>
+<span>
+<sup>92</sup><sub>36</sub>Kr
+        </span>
+<span>+</span>
+<span>
+            3<sup>1</sup><sub>0</sub>n
+        </span>
+</div>
+<div class="task2-given-data">
+<h4>
+            Dữ liệu
+        </h4>
+<div class="task2-data-grid">
+<div class="task2-data-box">
+<span>
+                    m(<sup>235</sup>U)
+                </span>
+<strong>
+                    235.0439301 u
+                </strong>
+</div>
+<div class="task2-data-box">
+<span>
+                    m(<sup>141</sup>Ba)
+                </span>
+<strong>
+                    140.9144033 u
+                </strong>
+</div>
+<div class="task2-data-box">
+<span>
+                    m(<sup>92</sup>Kr)
+                </span>
+<strong>
+                    91.9261731 u
+                </strong>
+</div>
+<div class="task2-data-box">
+<span>
+                    m<sub>n</sub>
+</span>
+<strong>
+                    1.00866491606 u
+                </strong>
+</div>
+<div class="task2-data-box">
+<span>
+                    1 u·c²
+                </span>
+<strong>
+                    931.49410242 MeV
+                </strong>
+</div>
+</div>
+</div>
+<div class="task2-instruction">
+<strong>
+            Yêu cầu
+        </strong>
+<p>
+            Hãy tự tính lần lượt khối lượng trước phản ứng,
+            khối lượng sau phản ứng, độ giảm khối lượng
+            và năng lượng Q.
+        </p>
+</div>
+<div class="task2-answer-grid">
+<div class="task2-answer-card">
+<label for="task2InitialMassInput">
+
+                1. Khối lượng trước phản ứng
+                m<sub>trước</sub> (u)
+
+            </label>
+<p class="task2-expression">
+
+                235.0439301
+                +
+                1.00866491606
+
+            </p>
+<input id="task2InitialMassInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2InitialMassFeedback">
+</span>
+</div>
+<div class="task2-answer-card">
+<label for="task2FinalMassInput">
+
+                2. Khối lượng sau phản ứng
+                m<sub>sau</sub> (u)
+
+            </label>
+<p class="task2-expression">
+
+                140.9144033
+                +
+                91.9261731
+                +
+                3 × 1.00866491606
+
+            </p>
+<input id="task2FinalMassInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2FinalMassFeedback">
+</span>
+</div>
+<div class="task2-answer-card">
+<label for="task2MassDifferenceInput">
+
+                3. Chênh lệch khối lượng
+                Δm (u)
+
+            </label>
+<p class="task2-expression">
+
+                Δm =
+                m<sub>trước</sub>
+                −
+                m<sub>sau</sub>
+</p>
+<input id="task2MassDifferenceInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2MassDifferenceFeedback">
+</span>
+</div>
+<div class="task2-answer-card">
+<label for="task2QValueInput">
+
+                4. Năng lượng phản ứng Q (MeV)
+
+            </label>
+<p class="task2-expression">
+
+                Q =
+                Δm × 931.49410242
+
+            </p>
+<input id="task2QValueInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2QValueFeedback">
+</span>
+</div>
+</div>
+<div class="task2-interpretation-question">
+<label for="task2EnergyMeaningSelect">
+
+            Vì sao phản ứng này tỏa năng lượng?
+
+        </label>
+<select id="task2EnergyMeaningSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                Vì tổng khối lượng sau nhỏ hơn tổng khối lượng trước,
+                nên Δm &gt; 0 và Q &gt; 0
+            </option>
+<option value="wrong-1">
+                Vì tổng khối lượng sau lớn hơn tổng khối lượng trước
+            </option>
+<option value="wrong-2">
+                Vì neutron không có khối lượng
+            </option>
+<option value="wrong-3">
+                Vì số nucleon sau phản ứng nhỏ hơn trước phản ứng
+            </option>
+</select>
+<span class="answer-feedback" id="task2EnergyMeaningFeedback">
+</span>
+</div>
+<div class="task-button-group">
+<button id="checkTask2Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask2Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task2Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<div class="task-result" hidden="" id="task2Result">
+<h4>
+            Kết quả tính từ dữ liệu
+        </h4>
+<div class="task2-result-grid">
+<div class="task2-result-box">
+<span>
+                    m trước
+                </span>
+<strong id="task2CorrectInitialMass">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    m sau
+                </span>
+<strong id="task2CorrectFinalMass">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    Δm
+                </span>
+<strong id="task2CorrectMassDifference">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    Q
+                </span>
+<strong id="task2CorrectQValue">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task2-mass-comparison">
+<h4>
+                So sánh khối lượng
+            </h4>
+<div class="task2-mass-row">
+<span>
+                    Trước phản ứng
+                </span>
+<div class="task2-mass-track">
+<div class="task2-mass-bar initial" id="task2InitialMassBar">
+</div>
+</div>
+<strong id="task2InitialMassBarLabel">
+                    —
+                </strong>
+</div>
+<div class="task2-mass-row">
+<span>
+                    Sau phản ứng
+                </span>
+<div class="task2-mass-track">
+<div class="task2-mass-bar final" id="task2FinalMassBar">
+</div>
+</div>
+<strong id="task2FinalMassBarLabel">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task2-solution">
+<h4>
+                Các bước tính
+            </h4>
+<div id="task2Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task2Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task3Card">
+<h3>
+        Nhiệm vụ 3:
+        So sánh các kênh phân hạch
+    </h3>
+<p>
+        Khảo sát ba cách phân chia minh họa của hệ
+        <sup>235</sup>U + n.
+        Với mỗi kênh, chương trình sẽ tự tính
+        khối lượng sản phẩm, Δm và Q.
+    </p>
+<div class="task3-warning">
+<strong>
+            Lưu ý khoa học
+        </strong>
+<p>
+            Ba kênh dưới đây được dùng để khảo sát
+            sự phụ thuộc của Q vào sản phẩm phân hạch.
+            Chúng không biểu diễn đầy đủ phân bố sản phẩm
+            hoặc xác suất xuất hiện của phân hạch U-235.
+        </p>
+</div>
+<div class="task-button-group">
+<button id="runTask3Button">
+            So sánh các kênh
+        </button>
+<button id="resetTask3Button">
+            Đặt lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task3Status">
+            Chưa thực hiện
+        </span>
+</p>
+<div hidden="" id="task3Result">
+<h4>
+            Kết quả tính toán
+        </h4>
+<div class="task3-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                            Kênh
+                        </th>
+<th>
+                            n phát ra
+                        </th>
+<th>
+                            A trước / sau
+                        </th>
+<th>
+                            Z trước / sau
+                        </th>
+<th>
+                            m sau (u)
+                        </th>
+<th>
+                            Δm (u)
+                        </th>
+<th>
+                            Q (MeV)
+                        </th>
+</tr>
+</thead>
+<tbody id="task3TableBody">
+</tbody>
+</table>
+</div>
+<div class="task3-chart-section">
+<h4>
+                So sánh Q của các kênh
+            </h4>
+<p>
+                Chiều cao cột biểu diễn năng lượng Q
+                tính từ chênh lệch khối lượng.
+            </p>
+<div class="task3-chart-container">
+<canvas id="task3Chart">
+</canvas>
+</div>
+</div>
+<div class="task3-summary-grid">
+<div class="task3-summary-box">
+<span>
+                    Q nhỏ nhất
+                </span>
+<strong id="task3MinimumQ">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Q lớn nhất
+                </span>
+<strong id="task3MaximumQ">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Khoảng biến thiên Q
+                </span>
+<strong id="task3QRange">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task3-question-section">
+<h4>
+                Phân tích kết quả
+            </h4>
+<div class="task3-question-card">
+<label for="task3HighestQSelect">
+
+                    1. Trong ba kênh đang xét,
+                    kênh nào có Q lớn nhất?
+
+                </label>
+<select id="task3HighestQSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="U235-Ba141-Kr92-3n">
+                        Ba-141 + Kr-92 + 3n
+                    </option>
+<option value="U235-Xe140-Sr94-2n">
+                        Xe-140 + Sr-94 + 2n
+                    </option>
+<option value="U235-Cs144-Rb89-3n">
+                        Cs-144 + Rb-89 + 3n
+                    </option>
+</select>
+<span class="answer-feedback" id="task3HighestQFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3MassRelationSelect">
+
+                    2. Kênh có Q lớn hơn tương ứng
+                    với nhận xét nào sau đây?
+
+                </label>
+<select id="task3MassRelationSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="correct">
+                        Tổng khối lượng sản phẩm nhỏ hơn nhiều hơn,
+                        nên Δm lớn hơn
+                    </option>
+<option value="wrong-1">
+                        Tổng khối lượng sản phẩm lớn hơn
+                    </option>
+<option value="wrong-2">
+                        Số proton không còn được bảo toàn
+                    </option>
+<option value="wrong-3">
+                        Số nucleon bị mất đi
+                    </option>
+</select>
+<span class="answer-feedback" id="task3MassRelationFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3SameEnergySelect">
+
+                    3. Có thể kết luận mọi kênh phân hạch U-235
+                    đều có đúng cùng một Q không?
+
+                </label>
+<select id="task3SameEnergySelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="yes">
+                        Có
+                    </option>
+<option value="no">
+                        Không
+                    </option>
+</select>
+<span class="answer-feedback" id="task3SameEnergyFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3ConservationSelect">
+
+                    4. Điều gì vẫn đúng đối với cả ba
+                    kênh đang xét?
+
+                </label>
+<select id="task3ConservationSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="both">
+                        Tổng A và tổng Z đều được bảo toàn
+                    </option>
+<option value="q">
+                        Q của mọi kênh bằng nhau
+                    </option>
+<option value="neutrons">
+                        Số neutron phát ra luôn bằng nhau
+                    </option>
+</select>
+<span class="answer-feedback" id="task3ConservationFeedback">
+</span>
+</div>
+<div class="task-button-group">
+<button id="checkTask3Button">
+                    Kiểm tra phân tích
+                </button>
+<button id="resetTask3AnswersButton">
+                    Làm lại câu hỏi
+                </button>
+</div>
+</div>
+<div class="task-conclusion" hidden="" id="task3ConclusionBox">
+<h4>
+                Kết luận
+            </h4>
+<p id="task3Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task chain-reaction-task" id="chainReactionCard">
+<h3>
+        Mô phỏng mở rộng:
+        Phản ứng phân hạch dây chuyền
+    </h3>
+<p>
+        Khảo sát bằng mô hình Monte Carlo
+        sự truyền tiếp của neutron qua nhiều thế hệ.
+    </p>
+<div class="chain-model-note">
+<strong>
+            Mô hình giáo dục
+        </strong>
+<p>
+            Mỗi neutron có một xác suất hiệu dụng gây ra
+            một sự kiện phân hạch trong thế hệ tiếp theo.
+            Nếu phân hạch xảy ra, mô hình sinh ngẫu nhiên
+            2 hoặc 3 neutron mới.
+        </p>
+<p>
+            Các xác suất sử dụng ở đây chỉ là tham số mô phỏng
+            không thứ nguyên và không đại diện cho cấu hình
+            của một hệ hạt nhân thực tế.
+        </p>
+</div>
+<div class="chain-controls">
+<div class="chain-control-group">
+<label for="chainPresetSelect">
+                Chế độ
+            </label>
+<select id="chainPresetSelect">
+<option value="decay">
+                    Chuỗi có xu hướng tắt dần
+                </option>
+<option selected="" value="balanced">
+                    Gần cân bằng
+                </option>
+<option value="growth">
+                    Chuỗi có xu hướng phát triển
+                </option>
+</select>
+</div>
+<div class="chain-control-group">
+<label for="chainGenerationSelect">
+                Số thế hệ tối đa
+            </label>
+<select id="chainGenerationSelect">
+<option value="6">
+                    6
+                </option>
+<option value="8">
+                    8
+                </option>
+<option selected="" value="10">
+                    10
+                </option>
+<option value="12">
+                    12
+                </option>
+</select>
+</div>
+</div>
+<div class="chain-parameter-panel">
+<div class="chain-parameter-box">
+<span>
+                Xác suất hiệu dụng p
+            </span>
+<strong id="chainProbabilityDisplay">
+                —
+            </strong>
+</div>
+<div class="chain-parameter-box">
+<span>
+                Số neutron trung bình mỗi phân hạch
+            </span>
+<strong>
+                2,5
+            </strong>
+</div>
+<div class="chain-parameter-box">
+<span>
+                Hệ số sinh trung bình của mô hình
+            </span>
+<strong id="chainReproductionDisplay">
+                —
+            </strong>
+</div>
+</div>
+<div class="task-button-group">
+<button id="runChainButton">
+            ▶ Chạy mô phỏng dây chuyền
+        </button>
+<button id="repeatChainButton">
+            ↻ Chạy lại ngẫu nhiên
+        </button>
+<button id="resetChainButton">
+            Đặt lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="chainStatus">
+            Chưa chạy
+        </span>
+</p>
+<div hidden="" id="chainResult">
+<div class="chain-summary-grid">
+<div class="chain-summary-box">
+<span>
+                    Số thế hệ thực tế
+                </span>
+<strong id="chainActualGenerations">
+                    —
+                </strong>
+</div>
+<div class="chain-summary-box">
+<span>
+                    Tổng số sự kiện phân hạch
+                </span>
+<strong id="chainTotalFissions">
+                    —
+                </strong>
+</div>
+<div class="chain-summary-box">
+<span>
+                    Số neutron lớn nhất
+                </span>
+<strong id="chainPeakNeutrons">
+                    —
+                </strong>
+</div>
+<div class="chain-summary-box">
+<span>
+                    Neutron ở thế hệ cuối
+                </span>
+<strong id="chainFinalNeutrons">
+                    —
+                </strong>
+</div>
+</div>
+<div class="chain-visual-section">
+<h4>
+                Hình ảnh các thế hệ neutron
+            </h4>
+<p>
+                Mỗi cột biểu diễn một thế hệ.
+                Khi số neutron lớn, chỉ một số điểm đại diện
+                được vẽ để giữ hình ảnh dễ quan sát.
+            </p>
+<canvas height="360" id="chainCanvas" width="900">
+</canvas>
+</div>
+<div class="chain-chart-section">
+<h4>
+                Số neutron theo thế hệ
+            </h4>
+<div class="chain-chart-container">
+<canvas id="chainChart">
+</canvas>
+</div>
+</div>
+<div class="chain-table-section">
+<h4>
+                Dữ liệu Monte Carlo
+            </h4>
+<div class="chain-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Thế hệ
+                            </th>
+<th>
+                                Neutron đầu thế hệ
+                            </th>
+<th>
+                                Sự kiện phân hạch
+                            </th>
+<th>
+                                Neutron không gây phân hạch
+                            </th>
+<th>
+                                Neutron tạo cho thế hệ sau
+                            </th>
+</tr>
+</thead>
+<tbody id="chainTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="chain-conclusion">
+<h4>
+                Nhận xét
+            </h4>
+<p id="chainConclusion">
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         KIỂM CHỨNG - KHUNG
+    ====================================================== -->
+<section class="mode-panel" id="validationPanel">
+<h2>
+        Kiểm chứng mô hình
+    </h2>
+<p>
+        Chế độ này kiểm tra hai thành phần chính của Bài 9:
+        các phép tính của phản ứng phân hạch
+        và thuật toán Monte Carlo của mô hình dây chuyền.
+    </p>
+<!-- =================================================
+         PHẦN 1
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 1:
+            Bảo toàn và năng lượng phản ứng
+        </h3>
+<p>
+            Chương trình tự kiểm tra toàn bộ các kênh phân hạch
+            đang có trong bộ dữ liệu.
+        </p>
+<div class="validation-formula-box">
+<p>
+<strong>Bảo toàn số nucleon:</strong>
+</p>
+<p class="validation-formula">
+                ΣA<sub>trước</sub>
+                =
+                ΣA<sub>sau</sub>
+</p>
+<p>
+<strong>Bảo toàn điện tích:</strong>
+</p>
+<p class="validation-formula">
+                ΣZ<sub>trước</sub>
+                =
+                ΣZ<sub>sau</sub>
+</p>
+<p>
+<strong>Năng lượng phản ứng:</strong>
+</p>
+<p class="validation-formula">
+                Q
+                =
+                (m<sub>trước</sub>
+                −
+                m<sub>sau</sub>)
+                ×
+                931.49410242
+            </p>
+</div>
+<div class="task-button-group">
+<button id="runReactionValidationButton">
+                Chạy kiểm chứng phản ứng
+            </button>
+<button id="resetReactionValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="reactionValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="reactionValidationResult">
+<div class="validation-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        Số kênh kiểm tra
+                    </span>
+<strong id="reactionValidationCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Bảo toàn A
+                    </span>
+<strong id="reactionValidationAStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Bảo toàn Z
+                    </span>
+<strong id="reactionValidationZStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Q dương
+                    </span>
+<strong id="reactionValidationQStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Bảng kiểm chứng chi tiết
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Kênh
+                                </th>
+<th>
+                                    A trước
+                                </th>
+<th>
+                                    A sau
+                                </th>
+<th>
+                                    Z trước
+                                </th>
+<th>
+                                    Z sau
+                                </th>
+<th>
+                                    Δm (u)
+                                </th>
+<th>
+                                    Q (MeV)
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="reactionValidationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="reactionValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         PHẦN 2
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 2:
+            Thuật toán Monte Carlo dây chuyền
+        </h3>
+<p>
+            Với một neutron ban đầu,
+            số neutron tạo ra ở thế hệ kế tiếp là một biến ngẫu nhiên.
+            Trong mô hình hiện tại:
+        </p>
+<div class="validation-formula-box">
+<p>
+                Xác suất gây phân hạch:
+                <strong>p</strong>
+</p>
+<p>
+                Nếu phân hạch xảy ra,
+                mô hình sinh 2 hoặc 3 neutron
+                với xác suất bằng nhau.
+            </p>
+<p class="validation-formula">
+                ν̄
+                =
+                (2 + 3)/2
+                =
+                2.5
+            </p>
+<p class="validation-formula">
+                R
+                =
+                pν̄
+                =
+                2.5p
+            </p>
+</div>
+<div class="monte-validation-controls">
+<div>
+<label for="monteValidationPresetSelect">
+                    Chế độ kiểm tra
+                </label>
+<select id="monteValidationPresetSelect">
+<option value="decay">
+                        Chuỗi có xu hướng tắt dần
+                    </option>
+<option selected="" value="balanced">
+                        Gần cân bằng
+                    </option>
+<option value="growth">
+                        Chuỗi có xu hướng phát triển
+                    </option>
+</select>
+</div>
+<div>
+<label for="monteValidationTrialsSelect">
+                    Số phép thử
+                </label>
+<select id="monteValidationTrialsSelect">
+<option value="1000">
+                        1 000
+                    </option>
+<option value="5000">
+                        5 000
+                    </option>
+<option selected="" value="10000">
+                        10 000
+                    </option>
+</select>
+</div>
+</div>
+<div class="task-button-group">
+<button id="runMonteValidationButton">
+                Chạy kiểm chứng Monte Carlo
+            </button>
+<button id="repeatMonteValidationButton">
+                Chạy lại ngẫu nhiên
+            </button>
+<button id="resetMonteValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="monteValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="monteValidationResult">
+<div class="validation-summary-grid monte-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        p
+                    </span>
+<strong id="monteValidationProbability">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        R lý thuyết
+                    </span>
+<strong id="monteValidationExpectedR">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        R Monte Carlo
+                    </span>
+<strong id="monteValidationMeasuredR">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Sai lệch
+                    </span>
+<strong id="monteValidationDifference">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="monte-validation-detail-grid">
+<div>
+<span>
+                        Số neutron ban đầu được thử
+                    </span>
+<strong id="monteValidationTrials">
+                        —
+                    </strong>
+</div>
+<div>
+<span>
+                        Số sự kiện phân hạch
+                    </span>
+<strong id="monteValidationFissions">
+                        —
+                    </strong>
+</div>
+<div>
+<span>
+                        Tổng neutron sinh ra
+                    </span>
+<strong id="monteValidationChildren">
+                        —
+                    </strong>
+</div>
+<div>
+<span>
+                        ν trung bình khi có phân hạch
+                    </span>
+<strong id="monteValidationAverageNu">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="monte-validation-chart-section">
+<h4>
+                    So sánh lý thuyết và Monte Carlo
+                </h4>
+<div class="monte-validation-chart-container">
+<canvas id="monteValidationChart">
+</canvas>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận thống kê
+                </h4>
+<p id="monteValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         Ý NGHĨA
+    ================================================== -->
+<div class="validation-method-note">
+<h3>
+            Ý nghĩa của chế độ Kiểm chứng
+        </h3>
+<p>
+            Phần thứ nhất kiểm tra tính nhất quán của dữ liệu,
+            các định luật bảo toàn và thuật toán tính Q.
+        </p>
+<p>
+            Phần thứ hai không kiểm chứng một hệ hạt nhân thực.
+            Nó chỉ kiểm tra rằng thuật toán Monte Carlo
+            tái tạo đúng kỳ vọng toán học của mô hình phân nhánh
+            khi số phép thử đủ lớn.
+        </p>
+</div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/fission-data.js?v=6"></script>
+<script src="js/physics.js?v=6"></script>
+<script src="js/simulation.js?v=6"></script>
+<script src="js/app.js?v=6"></script>
+<script src="js/task3.js?v=6"></script>
+<script src="js/chain-reaction.js?v=6"></script>
+<script src="js/validation.js?v=6"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>

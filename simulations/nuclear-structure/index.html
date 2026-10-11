@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+        Cấu tạo hạt nhân và đồng vị
+    </title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=6" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<div class="container">
+<!-- =================================================
+         ĐIỀU HƯỚNG
+    ================================================== -->
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<!-- =================================================
+         HEADER
+    ================================================== -->
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Cấu tạo hạt nhân và đồng vị</h1>
+<p class="page-description">Quan sát cấu tạo của các hạt nhân, xác định số proton, neutron và nucleon, đồng thời khám phá mối quan hệ giữa các đồng vị của cùng một nguyên tố.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/nuclear-structure.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Đọc kí hiệu hạt nhân và xác định số proton, neutron, nucleon.</li><li>Quan sát trực tiếp quan hệ giữa A, Z và N.</li><li>Nhận diện đồng vị: cùng Z nhưng khác A.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">A = Z + N</div><div class="lesson-formula-secondary">N = A − Z</div></div>
+<div class="lesson-mini-visual"><div aria-label="Proton cộng neutron bằng nucleon" class="mini-equation-flow"><span class="mini-token proton-token">Z proton</span><span class="mini-op">+</span><span class="mini-token neutron-token">N neutron</span><span class="mini-op">=</span><span class="mini-token result-token">A nucleon</span></div><div class="mini-isotope-note"><strong>Đồng vị:</strong> Z giữ nguyên • A thay đổi</div></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Vị trí và kích thước proton, neutron chỉ nhằm trực quan hóa số lượng; hình vẽ không mô tả cấu trúc lượng tử hay tỉ lệ kích thước thật của hạt nhân.</p>
+</article>
+</section>
+<!-- =================================================
+         MỤC TIÊU
+    ================================================== -->
+<section class="learning-goals">
+<h2>
+            Mục tiêu học tập
+        </h2>
+<div class="goal-grid">
+<div class="goal-card">
+<strong>1</strong>
+<p>
+                    Xác định số proton,
+                    neutron và nucleon
+                    từ kí hiệu hạt nhân.
+                </p>
+</div>
+<div class="goal-card">
+<strong>2</strong>
+<p>
+                    Nhận biết mối quan hệ
+                    A = Z + N
+                    và N = A − Z.
+                </p>
+</div>
+<div class="goal-card">
+<strong>3</strong>
+<p>
+                    So sánh các đồng vị
+                    và nhận biết đặc điểm
+                    cùng Z nhưng khác A.
+                </p>
+</div>
+</div>
+</section>
+<!-- =================================================
+         CHẾ ĐỘ
+    ================================================== -->
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<!-- =================================================
+         KHÁM PHÁ
+    ================================================== -->
+<section class="mode-panel active" id="explorePanel">
+<div class="simulation-layout">
+<!-- =========================================
+                 ĐIỀU KHIỂN
+            ========================================== -->
+<aside class="control-panel">
+<h2>
+                    Chọn hạt nhân
+                </h2>
+<div class="control-group">
+<label for="elementSelect">
+                        Nguyên tố
+                    </label>
+<select id="elementSelect">
+</select>
+</div>
+<div class="control-group">
+<label for="isotopeSelect">
+                        Đồng vị
+                    </label>
+<select id="isotopeSelect">
+</select>
+</div>
+<button class="full-button" id="resetExploreButton">
+                    ↻ Đặt lại
+                </button>
+<div class="legend-box">
+<h3>
+                        Chú giải
+                    </h3>
+<div class="legend-row">
+<span class="legend-particle proton">
+                            p
+                        </span>
+<span>
+                            Proton
+                        </span>
+</div>
+<div class="legend-row">
+<span class="legend-particle neutron">
+                            n
+                        </span>
+<span>
+                            Neutron
+                        </span>
+</div>
+</div>
+<div class="model-note">
+<strong>
+                        Lưu ý mô hình
+                    </strong>
+<p>
+                        Vị trí và kích thước các nucleon
+                        chỉ nhằm trực quan hóa số lượng.
+                        Hình vẽ không mô tả cấu trúc lượng tử
+                        hay tỉ lệ kích thước thật của hạt nhân.
+                    </p>
+</div>
+</aside>
+<!-- =========================================
+                 CANVAS
+            ========================================== -->
+<section class="simulation-panel">
+<div class="simulation-title-row">
+<div>
+<h2 id="nucleusTitle">
+                            Hạt nhân
+                        </h2>
+<p id="nucleusSubtitle">
+                            Chọn một đồng vị để quan sát.
+                        </p>
+</div>
+<span class="status-badge" id="stabilityBadge">
+                        —
+                    </span>
+</div>
+<canvas height="510" id="nucleusCanvas" width="900">
+</canvas>
+</section>
+</div>
+<!-- =============================================
+             KÍ HIỆU HẠT NHÂN
+        ============================================== -->
+<section class="notation-panel">
+<h2>
+                Kí hiệu và cấu tạo hạt nhân
+            </h2>
+<div class="notation-layout">
+<div class="big-nuclear-notation" id="nuclearNotation">
+                    —
+                </div>
+<div class="property-grid">
+<div class="property-box">
+<span>
+                            Số proton Z
+                        </span>
+<strong id="protonDisplay">
+                            —
+                        </strong>
+</div>
+<div class="property-box">
+<span>
+                            Số neutron N
+                        </span>
+<strong id="neutronDisplay">
+                            —
+                        </strong>
+</div>
+<div class="property-box">
+<span>
+                            Số nucleon A
+                        </span>
+<strong id="massNumberDisplay">
+                            —
+                        </strong>
+</div>
+<div class="property-box">
+<span>
+                            Nguyên tố
+                        </span>
+<strong id="elementNameDisplay">
+                            —
+                        </strong>
+</div>
+</div>
+</div>
+</section>
+<!-- =============================================
+             QUAN HỆ A, Z, N
+        ============================================== -->
+<section class="relation-panel">
+<h2>
+                Quan hệ giữa A, Z và N
+            </h2>
+<div class="relation-flow">
+<div class="relation-box">
+<span>
+                        Proton
+                    </span>
+<strong id="relationZ">
+                        Z = —
+                    </strong>
+</div>
+<span class="relation-plus">
+                    +
+                </span>
+<div class="relation-box">
+<span>
+                        Neutron
+                    </span>
+<strong id="relationN">
+                        N = —
+                    </strong>
+</div>
+<span class="relation-plus">
+                    =
+                </span>
+<div class="relation-box highlighted">
+<span>
+                        Nucleon
+                    </span>
+<strong id="relationA">
+                        A = —
+                    </strong>
+</div>
+</div>
+<p class="relation-calculation" id="relationCalculation">
+</p>
+</section>
+<!-- =============================================
+             SO SÁNH ĐỒNG VỊ
+        ============================================== -->
+<section class="comparison-panel">
+<h2>
+                So sánh hai đồng vị
+            </h2>
+<p>
+                Chọn hai đồng vị của cùng một nguyên tố
+                và quan sát đại lượng nào giữ nguyên,
+                đại lượng nào thay đổi.
+            </p>
+<div class="comparison-controls">
+<div>
+<label for="compareElementSelect">
+                        Nguyên tố
+                    </label>
+<select id="compareElementSelect">
+</select>
+</div>
+<div>
+<label for="compareIsotope1Select">
+                        Đồng vị 1
+                    </label>
+<select id="compareIsotope1Select">
+</select>
+</div>
+<div>
+<label for="compareIsotope2Select">
+                        Đồng vị 2
+                    </label>
+<select id="compareIsotope2Select">
+</select>
+</div>
+</div>
+<canvas height="430" id="comparisonCanvas" width="900">
+</canvas>
+<div class="comparison-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Đại lượng
+                            </th>
+<th id="compareHeader1">
+                                Đồng vị 1
+                            </th>
+<th id="compareHeader2">
+                                Đồng vị 2
+                            </th>
+<th>
+                                Nhận xét
+                            </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+                                Z
+                            </td>
+<td id="compareZ1">
+                                —
+                            </td>
+<td id="compareZ2">
+                                —
+                            </td>
+<td id="compareZComment">
+                                —
+                            </td>
+</tr>
+<tr>
+<td>
+                                N
+                            </td>
+<td id="compareN1">
+                                —
+                            </td>
+<td id="compareN2">
+                                —
+                            </td>
+<td id="compareNComment">
+                                —
+                            </td>
+</tr>
+<tr>
+<td>
+                                A
+                            </td>
+<td id="compareA1">
+                                —
+                            </td>
+<td id="compareA2">
+                                —
+                            </td>
+<td id="compareAComment">
+                                —
+                            </td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="isotope-conclusion" id="isotopeConclusion">
+</div>
+</section>
+<!-- =============================================
+             GỢI Ý KHÁM PHÁ
+        ============================================== -->
+<section class="exploration-questions">
+<h2>
+                Gợi ý khám phá
+            </h2>
+<div class="question-grid">
+<div class="question-card">
+<strong>
+                        Câu hỏi 1
+                    </strong>
+<p>
+                        Khi chuyển từ H-1 → H-2 → H-3,
+                        số proton có thay đổi không?
+                    </p>
+</div>
+<div class="question-card">
+<strong>
+                        Câu hỏi 2
+                    </strong>
+<p>
+                        So sánh C-12 và C-14:
+                        hạt nhân nào nhiều neutron hơn
+                        và nhiều hơn bao nhiêu?
+                    </p>
+</div>
+<div class="question-card">
+<strong>
+                        Câu hỏi 3
+                    </strong>
+<p>
+                        So sánh U-235 và U-238.
+                        Vì sao chúng vẫn được gọi
+                        là các đồng vị của urani?
+                    </p>
+</div>
+<div class="question-card">
+<strong>
+                        Câu hỏi 4
+                    </strong>
+<p>
+                        Hãy thử Co-59/Co-60,
+                        I-127/I-131 hoặc Cs-133/Cs-137.
+                        Đại lượng nào luôn giữ nguyên?
+                    </p>
+</div>
+</div>
+</section>
+<div class="dataset-note">
+<strong>
+                Ghi chú dữ liệu
+            </strong>
+<p>
+                Danh sách trên là một tập hợp đồng vị đại diện
+                phục vụ học tập, không phải danh mục đầy đủ
+                tất cả đồng vị đã biết.
+            </p>
+</div>
+</section>
+<!-- =================================================
+         THÍ NGHIỆM - PLACEHOLDER
+    ================================================== -->
+<section class="mode-panel" id="experimentPanel">
+<h2>
+            Thí nghiệm ảo
+        </h2>
+<div class="experiment-task" id="task1Card">
+<h3>
+        Nhiệm vụ 1:
+        Đọc kí hiệu hạt nhân
+    </h3>
+<p>
+        Quan sát kí hiệu hạt nhân được chương trình đưa ra,
+        sau đó xác định số khối A,
+        số proton Z,
+        số neutron N
+        và cấu tạo của hạt nhân.
+    </p>
+<!-- =================================================
+         ĐỀ BÀI
+    ================================================== -->
+<div class="task1-question-area">
+<p class="task1-question-label">
+            Hạt nhân cần phân tích
+        </p>
+<div class="task1-big-notation" id="task1NuclearNotation">
+            —
+        </div>
+<p class="task1-nuclide-name" id="task1NuclideName">
+            —
+        </p>
+<button id="newTask1QuestionButton">
+            🎲 Tạo câu hỏi mới
+        </button>
+</div>
+<!-- =================================================
+         CÔNG THỨC GỢI Ý
+    ================================================== -->
+<div class="task1-hint-box">
+<strong>
+            Gợi ý
+        </strong>
+<p>
+            Trong kí hiệu
+            <sup>A</sup><sub>Z</sub>X:
+        </p>
+<p>
+            Z = số proton
+        </p>
+<p>
+            A = số proton + số neutron
+        </p>
+<p>
+            N = A − Z
+        </p>
+</div>
+<!-- =================================================
+         NHẬP KẾT QUẢ
+    ================================================== -->
+<div class="task1-answer-grid">
+<div class="task1-answer-card">
+<label for="task1AInput">
+                Số khối A
+            </label>
+<input id="task1AInput" placeholder="Nhập A" type="number"/>
+<span class="answer-feedback" id="task1AFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1ZInput">
+                Số proton Z
+            </label>
+<input id="task1ZInput" placeholder="Nhập Z" type="number"/>
+<span class="answer-feedback" id="task1ZFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1NInput">
+                Số neutron N
+            </label>
+<input id="task1NInput" placeholder="Nhập N" type="number"/>
+<span class="answer-feedback" id="task1NFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1ProtonInput">
+                Số proton trong hạt nhân
+            </label>
+<input id="task1ProtonInput" placeholder="Nhập số proton" type="number"/>
+<span class="answer-feedback" id="task1ProtonFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1NeutronInput">
+                Số neutron trong hạt nhân
+            </label>
+<input id="task1NeutronInput" placeholder="Nhập số neutron" type="number"/>
+<span class="answer-feedback" id="task1NeutronFeedback">
+</span>
+</div>
+</div>
+<!-- =================================================
+         CÂU HỎI KHÁI NIỆM
+    ================================================== -->
+<div class="task1-concept-question">
+<label for="task1ConceptSelect">
+
+            Với một hạt nhân có kí hiệu
+            <sup>A</sup><sub>Z</sub>X,
+            phát biểu nào đúng?
+
+        </label>
+<select id="task1ConceptSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                Z là số proton và N = A − Z
+            </option>
+<option value="wrong-1">
+                A là số proton
+            </option>
+<option value="wrong-2">
+                Z là số neutron
+            </option>
+<option value="wrong-3">
+                N = A + Z
+            </option>
+</select>
+<span class="answer-feedback" id="task1ConceptFeedback">
+</span>
+</div>
+<!-- =================================================
+         BUTTON
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask1Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask1Button">
+            Làm lại câu này
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task1Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task1Result">
+<h4>
+            Phân tích hạt nhân
+        </h4>
+<div class="task1-result-grid">
+<div class="task1-result-box">
+<span>
+                    A
+                </span>
+<strong id="task1CorrectA">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Z
+                </span>
+<strong id="task1CorrectZ">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    N
+                </span>
+<strong id="task1CorrectN">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Proton
+                </span>
+<strong id="task1CorrectProtons">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Neutron
+                </span>
+<strong id="task1CorrectNeutrons">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task1-solution">
+<h4>
+                Lời giải
+            </h4>
+<div id="task1Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task1Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task2Card">
+<h3>
+        Nhiệm vụ 2:
+        Nhận diện đồng vị
+    </h3>
+<p>
+        Quan sát hai hạt nhân được chương trình đưa ra,
+        so sánh số proton Z, số neutron N và số khối A,
+        sau đó xác định chúng có phải là đồng vị hay không.
+    </p>
+<!-- =================================================
+         ĐỀ BÀI
+    ================================================== -->
+<div class="task2-question-area">
+<p class="task2-question-label">
+            Hai hạt nhân cần so sánh
+        </p>
+<div class="task2-nuclei-row">
+<div class="task2-nucleus-box">
+<span>
+                    Hạt nhân 1
+                </span>
+<div class="task2-big-notation" id="task2Notation1">
+                    —
+                </div>
+<strong id="task2Name1">
+                    —
+                </strong>
+</div>
+<div class="task2-versus">
+                và
+            </div>
+<div class="task2-nucleus-box">
+<span>
+                    Hạt nhân 2
+                </span>
+<div class="task2-big-notation" id="task2Notation2">
+                    —
+                </div>
+<strong id="task2Name2">
+                    —
+                </strong>
+</div>
+</div>
+<button id="newTask2QuestionButton">
+            🎲 Tạo cặp hạt nhân mới
+        </button>
+</div>
+<!-- =================================================
+         GỢI Ý
+    ================================================== -->
+<div class="task2-hint-box">
+<strong>
+            Gợi ý
+        </strong>
+<p>
+            Hai hạt nhân là đồng vị khi:
+        </p>
+<p class="task2-hint-formula">
+            Z<sub>1</sub> = Z<sub>2</sub>
+            nhưng
+            A<sub>1</sub> ≠ A<sub>2</sub>
+</p>
+<p>
+            Vì có cùng Z nên chúng thuộc cùng một nguyên tố,
+            nhưng khác số neutron nên số khối khác nhau.
+        </p>
+</div>
+<!-- =================================================
+         SO SÁNH ĐỊNH LƯỢNG
+    ================================================== -->
+<div class="task2-comparison-input-grid">
+<div class="task2-comparison-card">
+<h4>
+                Hạt nhân 1
+            </h4>
+<label for="task2Z1Input">
+                Z₁
+            </label>
+<input id="task2Z1Input" placeholder="Nhập Z₁" type="number"/>
+<span class="answer-feedback" id="task2Z1Feedback">
+</span>
+<label for="task2A1Input">
+                A₁
+            </label>
+<input id="task2A1Input" placeholder="Nhập A₁" type="number"/>
+<span class="answer-feedback" id="task2A1Feedback">
+</span>
+<label for="task2N1Input">
+                N₁
+            </label>
+<input id="task2N1Input" placeholder="Nhập N₁" type="number"/>
+<span class="answer-feedback" id="task2N1Feedback">
+</span>
+</div>
+<div class="task2-comparison-card">
+<h4>
+                Hạt nhân 2
+            </h4>
+<label for="task2Z2Input">
+                Z₂
+            </label>
+<input id="task2Z2Input" placeholder="Nhập Z₂" type="number"/>
+<span class="answer-feedback" id="task2Z2Feedback">
+</span>
+<label for="task2A2Input">
+                A₂
+            </label>
+<input id="task2A2Input" placeholder="Nhập A₂" type="number"/>
+<span class="answer-feedback" id="task2A2Feedback">
+</span>
+<label for="task2N2Input">
+                N₂
+            </label>
+<input id="task2N2Input" placeholder="Nhập N₂" type="number"/>
+<span class="answer-feedback" id="task2N2Feedback">
+</span>
+</div>
+</div>
+<!-- =================================================
+         CÂU HỎI ĐỒNG VỊ
+    ================================================== -->
+<div class="task2-question-card">
+<label for="task2IsotopeSelect">
+
+            Hai hạt nhân trên có phải là đồng vị
+            của nhau không?
+
+        </label>
+<select id="task2IsotopeSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="yes">
+                Có
+            </option>
+<option value="no">
+                Không
+            </option>
+</select>
+<span class="answer-feedback" id="task2IsotopeFeedback">
+</span>
+</div>
+<!-- =================================================
+         CÂU HỎI GIẢI THÍCH
+    ================================================== -->
+<div class="task2-question-card">
+<label for="task2ReasonSelect">
+
+            Lý do nào phù hợp nhất?
+
+        </label>
+<select id="task2ReasonSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="same-z-different-a">
+                Hai hạt nhân có cùng Z nhưng khác A
+            </option>
+<option value="same-a-different-z">
+                Hai hạt nhân có cùng A nhưng khác Z
+            </option>
+<option value="same-z-same-a">
+                Hai hạt nhân có cùng Z và cùng A
+            </option>
+<option value="different-z">
+                Hai hạt nhân có Z khác nhau
+            </option>
+</select>
+<span class="answer-feedback" id="task2ReasonFeedback">
+</span>
+</div>
+<!-- =================================================
+         CÂU HỎI NEUTRON
+    ================================================== -->
+<div class="task2-question-card">
+<label for="task2NeutronDifferenceInput">
+
+            Số neutron của hai hạt nhân chênh lệch bao nhiêu?
+
+        </label>
+<input id="task2NeutronDifferenceInput" placeholder="Nhập |N₂ − N₁|" type="number"/>
+<span class="answer-feedback" id="task2NeutronDifferenceFeedback">
+</span>
+</div>
+<!-- =================================================
+         BUTTON
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask2Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask2Button">
+            Làm lại câu này
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task2Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task2Result">
+<h4>
+            Kết quả so sánh
+        </h4>
+<div class="task2-result-grid">
+<div class="task2-result-box">
+<span>
+                    Z₁ / Z₂
+                </span>
+<strong id="task2CorrectZ">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    A₁ / A₂
+                </span>
+<strong id="task2CorrectA">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    N₁ / N₂
+                </span>
+<strong id="task2CorrectN">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    Đồng vị?
+                </span>
+<strong id="task2CorrectIsotope">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task2-solution">
+<h4>
+                Phân tích
+            </h4>
+<div id="task2Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task2Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task3Card">
+<h3>
+        Nhiệm vụ 3:
+        Phân tích một dãy đồng vị
+    </h3>
+<p>
+        Chọn một nguyên tố có nhiều đồng vị,
+        hoàn thành bảng số proton và neutron,
+        sau đó phân tích đại lượng nào giữ nguyên
+        và đại lượng nào thay đổi trong dãy đồng vị.
+    </p>
+<!-- =================================================
+         CHỌN NGUYÊN TỐ
+    ================================================== -->
+<div class="task3-element-selector">
+<label for="task3ElementSelect">
+            Chọn nguyên tố khảo sát
+        </label>
+<select id="task3ElementSelect">
+</select>
+</div>
+<!-- =================================================
+         THÔNG TIN
+    ================================================== -->
+<div class="task3-element-info">
+<div>
+<span>
+                Nguyên tố
+            </span>
+<strong id="task3ElementName">
+                —
+            </strong>
+</div>
+<div>
+<span>
+                Kí hiệu
+            </span>
+<strong id="task3ElementSymbol">
+                —
+            </strong>
+</div>
+<div>
+<span>
+                Số proton Z
+            </span>
+<strong id="task3ElementZ">
+                —
+            </strong>
+</div>
+<div>
+<span>
+                Số đồng vị khảo sát
+            </span>
+<strong id="task3IsotopeCount">
+                —
+            </strong>
+</div>
+</div>
+<!-- =================================================
+         HƯỚNG DẪN
+    ================================================== -->
+<div class="task3-hint-box">
+<strong>
+            Yêu cầu
+        </strong>
+<p>
+            Với mỗi đồng vị, hãy xác định:
+        </p>
+<p class="task3-formula">
+            Z = số proton
+        </p>
+<p class="task3-formula">
+            N = A − Z
+        </p>
+</div>
+<!-- =================================================
+         BẢNG ĐỒNG VỊ
+    ================================================== -->
+<div class="task3-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                        Đồng vị
+                    </th>
+<th>
+                        A
+                    </th>
+<th>
+                        Z
+                    </th>
+<th>
+                        N
+                    </th>
+<th>
+                        Trạng thái
+                    </th>
+<th>
+                        Kết quả
+                    </th>
+</tr>
+</thead>
+<tbody id="task3TableBody">
+</tbody>
+</table>
+</div>
+<!-- =================================================
+         CÂU HỎI PHÂN TÍCH 1
+    ================================================== -->
+<div class="task3-question-card">
+<label for="task3ConstantQuantitySelect">
+
+            1. Đại lượng nào giữ nguyên
+            trong toàn bộ dãy đồng vị này?
+
+        </label>
+<select id="task3ConstantQuantitySelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="z">
+                Số proton Z
+            </option>
+<option value="n">
+                Số neutron N
+            </option>
+<option value="a">
+                Số khối A
+            </option>
+<option value="all">
+                Cả A, Z và N
+            </option>
+</select>
+<span class="answer-feedback" id="task3ConstantQuantityFeedback">
+</span>
+</div>
+<!-- =================================================
+         CÂU HỎI PHÂN TÍCH 2
+    ================================================== -->
+<div class="task3-question-card">
+<label for="task3ChangingQuantitySelect">
+
+            2. Khi chuyển giữa các đồng vị
+            của cùng một nguyên tố,
+            những đại lượng nào có thể thay đổi?
+
+        </label>
+<select id="task3ChangingQuantitySelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                N và A
+            </option>
+<option value="wrong-1">
+                Chỉ Z
+            </option>
+<option value="wrong-2">
+                Z và A
+            </option>
+<option value="wrong-3">
+                Z và N
+            </option>
+</select>
+<span class="answer-feedback" id="task3ChangingQuantityFeedback">
+</span>
+</div>
+<!-- =================================================
+         SO SÁNH ĐẦU - CUỐI
+    ================================================== -->
+<div class="task3-difference-section">
+<h4>
+            So sánh đồng vị đầu và cuối dãy
+        </h4>
+<p id="task3DifferencePrompt">
+            —
+        </p>
+<div class="task3-difference-grid">
+<div>
+<label for="task3DeltaAInput">
+                    Độ chênh số khối |ΔA|
+                </label>
+<input id="task3DeltaAInput" placeholder="Nhập |ΔA|" type="number"/>
+<span class="answer-feedback" id="task3DeltaAFeedback">
+</span>
+</div>
+<div>
+<label for="task3DeltaNInput">
+                    Độ chênh số neutron |ΔN|
+                </label>
+<input id="task3DeltaNInput" placeholder="Nhập |ΔN|" type="number"/>
+<span class="answer-feedback" id="task3DeltaNFeedback">
+</span>
+</div>
+</div>
+</div>
+<!-- =================================================
+         CÂU HỎI KẾT LUẬN
+    ================================================== -->
+<div class="task3-question-card">
+<label for="task3DefinitionSelect">
+
+            3. Phát biểu nào mô tả đúng nhất
+            khái niệm đồng vị?
+
+        </label>
+<select id="task3DefinitionSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                Các hạt nhân có cùng số proton Z
+                nhưng khác số neutron nên khác số khối A
+            </option>
+<option value="wrong-1">
+                Các hạt nhân có cùng A nhưng khác Z
+            </option>
+<option value="wrong-2">
+                Các hạt nhân có cùng số neutron
+                nhưng khác số proton
+            </option>
+<option value="wrong-3">
+                Các hạt nhân có cùng A, Z và N
+            </option>
+</select>
+<span class="answer-feedback" id="task3DefinitionFeedback">
+</span>
+</div>
+<!-- =================================================
+         BUTTON
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask3Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask3Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task3Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task3Result">
+<h4>
+            Phân tích dãy đồng vị
+        </h4>
+<div class="task3-summary-grid">
+<div class="task3-summary-box">
+<span>
+                    Z không đổi
+                </span>
+<strong id="task3SummaryZ">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    N nhỏ nhất
+                </span>
+<strong id="task3MinimumN">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    N lớn nhất
+                </span>
+<strong id="task3MaximumN">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Khoảng biến thiên A
+                </span>
+<strong id="task3ARange">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task3-solution">
+<h4>
+                Phân tích
+            </h4>
+<div id="task3Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task3Conclusion">
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- =================================================
+         KIỂM CHỨNG - PLACEHOLDER
+    ================================================== -->
+<section class="mode-panel" id="validationPanel">
+<h2>
+        Kiểm chứng mô hình
+    </h2>
+<p>
+        Chế độ này kiểm tra tính nhất quán của toàn bộ dữ liệu hạt nhân
+        và các quan hệ vật lí được sử dụng trong bài mô phỏng.
+    </p>
+<!-- =================================================
+         KIỂM CHỨNG 1
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 1:
+            Quan hệ giữa A, Z và N
+        </h3>
+<p>
+            Chương trình tự động kiểm tra toàn bộ các đồng vị trong dữ liệu
+            theo các hệ thức:
+        </p>
+<div class="validation-formula-box">
+<p class="validation-formula">
+                A = Z + N
+            </p>
+<p class="validation-formula">
+                N = A − Z
+            </p>
+</div>
+<div class="task-button-group">
+<button id="runNuclearRelationValidationButton">
+                Chạy kiểm chứng A, Z, N
+            </button>
+<button id="resetNuclearRelationValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="nuclearRelationValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="nuclearRelationValidationResult">
+<div class="validation-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        Số đồng vị kiểm tra
+                    </span>
+<strong id="validationIsotopeCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        A = Z + N
+                    </span>
+<strong id="validationMassRelationStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        N = A − Z
+                    </span>
+<strong id="validationNeutronRelationStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Dữ liệu hợp lệ
+                    </span>
+<strong id="validationDataStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Bảng kiểm tra từng đồng vị
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Đồng vị
+                                </th>
+<th>
+                                    Z
+                                </th>
+<th>
+                                    A
+                                </th>
+<th>
+                                    N tính được
+                                </th>
+<th>
+                                    Z + N
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="nuclearRelationValidationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="nuclearRelationValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         KIỂM CHỨNG 2
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 2:
+            Tính nhất quán của các đồng vị
+        </h3>
+<p>
+            Với mỗi nguyên tố có từ hai đồng vị trở lên,
+            chương trình kiểm tra xem các đồng vị
+            có cùng số proton Z nhưng khác số khối A hay không.
+        </p>
+<div class="validation-formula-box">
+<p class="validation-formula">
+                Z₁ = Z₂
+            </p>
+<p class="validation-formula">
+                A₁ ≠ A₂
+            </p>
+</div>
+<div class="task-button-group">
+<button id="runIsotopeValidationButton">
+                Chạy kiểm chứng đồng vị
+            </button>
+<button id="resetIsotopeValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="isotopeValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="isotopeValidationResult">
+<div class="validation-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        Nguyên tố khảo sát
+                    </span>
+<strong id="validationElementCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Cùng Z
+                    </span>
+<strong id="validationSameZStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        A khác nhau
+                    </span>
+<strong id="validationDifferentAStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Trạng thái
+                    </span>
+<strong id="validationIsotopeOverallStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Kiểm tra dãy đồng vị theo nguyên tố
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Nguyên tố
+                                </th>
+<th>
+                                    Z
+                                </th>
+<th>
+                                    Các số khối A
+                                </th>
+<th>
+                                    Số đồng vị
+                                </th>
+<th>
+                                    Cùng Z
+                                </th>
+<th>
+                                    A không trùng
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="isotopeValidationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="isotopeValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         KIỂM CHỨNG 3
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 3:
+            Kiểm tra thuật toán nhận diện đồng vị
+        </h3>
+<p>
+            Chương trình tạo tất cả các cặp hạt nhân trong bộ dữ liệu,
+            sau đó so sánh kết quả của hàm nhận diện đồng vị
+            với điều kiện vật lí độc lập.
+        </p>
+<div class="validation-formula-box">
+<p class="validation-formula">
+                Đồng vị ⇔ Z₁ = Z₂ và A₁ ≠ A₂
+            </p>
+</div>
+<div class="task-button-group">
+<button id="runAlgorithmValidationButton">
+                Chạy kiểm chứng thuật toán
+            </button>
+<button id="resetAlgorithmValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="algorithmValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="algorithmValidationResult">
+<div class="validation-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        Tổng số cặp
+                    </span>
+<strong id="algorithmPairCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Cặp đồng vị
+                    </span>
+<strong id="algorithmIsotopePairCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Sai lệch
+                    </span>
+<strong id="algorithmMismatchCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Trạng thái
+                    </span>
+<strong id="algorithmValidationOverallStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Một số cặp đồng vị được nhận diện
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Hạt nhân 1
+                                </th>
+<th>
+                                    Hạt nhân 2
+                                </th>
+<th>
+                                    Z₁ / Z₂
+                                </th>
+<th>
+                                    A₁ / A₂
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="algorithmValidationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="algorithmValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         GHI CHÚ
+    ================================================== -->
+<div class="validation-method-note">
+<h3>
+            Ý nghĩa của kiểm chứng
+        </h3>
+<p>
+            Phần này kiểm tra tính nhất quán của dữ liệu
+            và thuật toán trong mô phỏng.
+        </p>
+<p>
+            Đây không phải là phép đo thực nghiệm cấu trúc hạt nhân,
+            mà là kiểm chứng logic mô hình dựa trên các quan hệ
+            A = Z + N và định nghĩa đồng vị.
+        </p>
+</div>
+</section>
+</div>
+<script src="js/nuclear-data.js?v=6"></script>
+<script src="js/physics.js?v=6"></script>
+<script src="js/simulation.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
+<script src="js/task1.js?v=4"></script>
+<script src="js/task2.js?v=3"></script>
+<script src="js/task3.js?v=2"></script>
+<script src="js/validation.js?v=1"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>

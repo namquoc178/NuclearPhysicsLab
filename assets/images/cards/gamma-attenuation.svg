@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <rect width="800" height="310" fill="#f4f9ff"/>
+  <g stroke="#d06b38" stroke-width="4">
+    <line x1="85" y1="110" x2="270" y2="110"/><line x1="85" y1="145" x2="270" y2="145"/><line x1="85" y1="180" x2="270" y2="180"/>
+  </g>
+  <rect x="280" y="65" width="95" height="160" rx="8" fill="#cfd8e3" stroke="#8795a5" stroke-width="3"/>
+  <g stroke="#d06b38" stroke-width="4" opacity=".75">
+    <line x1="386" y1="110" x2="535" y2="110"/><line x1="386" y1="145" x2="485" y2="145"/><line x1="386" y1="180" x2="445" y2="180"/>
+  </g>
+  <path d="M535 240 C575 195, 610 165, 650 142 C680 126, 705 118, 728 113" fill="none" stroke="#2f7bdc" stroke-width="5"/>
+  <text x="85" y="72" font-family="Segoe UI, Arial" font-size="21" font-weight="700" fill="#bd5c29">I₀</text>
+  <text x="405" y="82" font-family="Segoe UI, Arial" font-size="21" font-weight="700" fill="#bd5c29">I</text>
+  <text x="510" y="76" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#1f3f6f">I = I₀e⁻ᵘˣ</text>
+  <text x="300" y="254" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">vật chắn dày x</text>
+</svg>

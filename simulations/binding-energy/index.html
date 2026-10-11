@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+        Năng lượng liên kết hạt nhân
+    </title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=5" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<div class="container">
+<!-- =====================================================
+         ĐIỀU HƯỚNG
+    ====================================================== -->
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Năng lượng liên kết hạt nhân</h1>
+<p class="page-description">Khám phá độ hụt khối, năng lượng liên kết và năng lượng liên kết riêng của các hạt nhân từ dữ liệu khối lượng nguyên tử.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/binding-energy.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Tính độ hụt khối từ khối lượng nguyên tử và các nucleon tự do.</li><li>Chuyển độ hụt khối thành năng lượng liên kết.</li><li>So sánh năng lượng liên kết riêng Eᵦ/A giữa các hạt nhân.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">Δm = Zm<sub>H</sub> + Nm<sub>n</sub> − M<sub>atom</sub></div><div class="lesson-formula-secondary">E<sub>b</sub> = Δmc²  •  E<sub>b</sub>/A</div></div>
+<div class="lesson-mini-visual"><svg aria-label="Đường cong minh họa năng lượng liên kết riêng tăng nhanh rồi đạt vùng cao quanh sắt và niken" class="binding-mini-chart" role="img" viewbox="0 0 280 100"><path d="M16 82 C45 78 55 43 88 28 C120 14 170 16 205 25 C235 32 250 44 266 55" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"></path><circle cx="163" cy="18" fill="currentColor" r="5"></circle><text fill="currentColor" font-size="12" x="174" y="22">Fe / Ni</text><path d="M16 90H270M16 90V12" stroke="currentColor" stroke-opacity=".25" stroke-width="1.5"></path></svg></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Bài sử dụng khối lượng nguyên tử, vì vậy công thức dùng khối lượng nguyên tử hydrogen mH. Trong tập dữ liệu đang xét, Ni-62 có Eᵦ/A hơi lớn hơn Fe-56; không xem Fe-56 là cực đại tuyệt đối.</p>
+</article>
+</section>
+<!-- =====================================================
+         MỤC TIÊU
+    ====================================================== -->
+<section class="learning-goals">
+<h2>
+            Mục tiêu học tập
+        </h2>
+<div class="goal-grid">
+<div class="goal-card">
+<strong>
+                    1
+                </strong>
+<p>
+                    Xác định số proton, neutron
+                    và thành phần của một hạt nhân.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    2
+                </strong>
+<p>
+                    Hiểu ý nghĩa của độ hụt khối
+                    và năng lượng liên kết hạt nhân.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    3
+                </strong>
+<p>
+                    Sử dụng năng lượng liên kết riêng
+                    để so sánh mức độ liên kết
+                    của các hạt nhân.
+                </p>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         CHỌN CHẾ ĐỘ
+    ====================================================== -->
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<!-- =====================================================
+         KHU MÔ PHỎNG
+    ====================================================== -->
+<section class="simulation-layout">
+<!-- =================================================
+             ĐIỀU KHIỂN
+        ================================================== -->
+<aside class="control-panel">
+<h2>
+                Chọn hạt nhân
+            </h2>
+<div class="control-group">
+<label for="nuclideSelect">
+                    Đồng vị
+                </label>
+<select id="nuclideSelect">
+</select>
+</div>
+<div class="selected-nuclide-card">
+<span>
+                    Hạt nhân đang xét
+                </span>
+<strong id="nuclideNotation">
+                    —
+                </strong>
+<p id="nuclideName">
+                    —
+                </p>
+</div>
+<div class="button-group">
+<button id="calculateButton">
+                    Tính các đại lượng
+                </button>
+<button id="resetButton">
+                    ↻ Đặt lại
+                </button>
+</div>
+<div class="source-note">
+<strong>
+                    Nguồn dữ liệu
+                </strong>
+<p>
+                    Khối lượng nguyên tử được lấy từ
+                    dữ liệu chuẩn NIST/AME2020.
+                    Các đại lượng còn lại được chương trình
+                    tính từ dữ liệu gốc.
+                </p>
+</div>
+</aside>
+<!-- =================================================
+             HÌNH ẢNH HẠT NHÂN
+        ================================================== -->
+<section class="simulation-panel">
+<div class="simulation-title-row">
+<div>
+<h2>
+                        Cấu tạo hạt nhân
+                    </h2>
+<p>
+                        Hình minh họa proton và neutron
+                        trong hạt nhân đang xét.
+                    </p>
+</div>
+<span class="status-badge ready" id="statusBadge">
+                    Sẵn sàng
+                </span>
+</div>
+<div class="nucleon-legend">
+<span>
+<i class="legend-dot proton"></i>
+                    Proton
+                </span>
+<span>
+<i class="legend-dot neutron"></i>
+                    Neutron
+                </span>
+</div>
+<canvas height="430" id="nucleusCanvas" width="820"></canvas>
+<p class="visual-note">
+                Với các hạt nhân nặng, hình vẽ chỉ biểu diễn
+                số nucleon theo mô hình trực quan, không mô tả
+                cấu trúc lượng tử hay kích thước thực của hạt nhân.
+            </p>
+</section>
+</section>
+<!-- =====================================================
+         THÔNG TIN HẠT NHÂN
+    ====================================================== -->
+<section class="basic-info-panel">
+<div class="basic-info-box">
+<span>
+                Số khối A
+            </span>
+<strong id="aDisplay">
+                —
+            </strong>
+</div>
+<div class="basic-info-box">
+<span>
+                Số proton Z
+            </span>
+<strong id="zDisplay">
+                —
+            </strong>
+</div>
+<div class="basic-info-box">
+<span>
+                Số neutron N
+            </span>
+<strong id="nDisplay">
+                —
+            </strong>
+</div>
+<div class="basic-info-box">
+<span>
+                Khối lượng nguyên tử
+            </span>
+<strong id="atomicMassDisplay">
+                —
+            </strong>
+</div>
+</section>
+<!-- =====================================================
+         QUÁ TRÌNH TÍNH
+    ====================================================== -->
+<section class="calculation-panel">
+<h2>
+            Từ khối lượng đến năng lượng liên kết
+        </h2>
+<div class="calculation-flow">
+<div class="calculation-step">
+<span class="calculation-number">
+                    1
+                </span>
+<div>
+<h3>
+                        Khối lượng các nucleon tự do
+                    </h3>
+<p class="formula">
+                        m<sub>tự do</sub>
+                        =
+                        Zm<sub>H</sub>
+                        +
+                        Nm<sub>n</sub>
+</p>
+<strong id="freeMassDisplay">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="flow-arrow">
+                →
+            </div>
+<div class="calculation-step">
+<span class="calculation-number">
+                    2
+                </span>
+<div>
+<h3>
+                        Độ hụt khối
+                    </h3>
+<p class="formula">
+                        Δm
+                        =
+                        m<sub>tự do</sub>
+                        −
+                        M<sub>atom</sub>
+</p>
+<strong id="massDefectDisplay">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="flow-arrow">
+                →
+            </div>
+<div class="calculation-step">
+<span class="calculation-number">
+                    3
+                </span>
+<div>
+<h3>
+                        Năng lượng liên kết
+                    </h3>
+<p class="formula">
+                        E<sub>b</sub>
+                        =
+                        Δm c²
+                    </p>
+<strong id="bindingEnergyDisplay">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="flow-arrow">
+                →
+            </div>
+<div class="calculation-step">
+<span class="calculation-number">
+                    4
+                </span>
+<div>
+<h3>
+                        Năng lượng liên kết riêng
+                    </h3>
+<p class="formula">
+                        E<sub>b</sub> / A
+                    </p>
+<strong id="bindingEnergyPerNucleonDisplay">
+                        —
+                    </strong>
+</div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         SO SÁNH KHỐI LƯỢNG
+    ====================================================== -->
+<section class="mass-comparison-panel">
+<h2>
+            So sánh khối lượng
+        </h2>
+<p>
+            Khối lượng nguyên tử liên kết nhỏ hơn tổng khối lượng
+            của các nucleon tương ứng khi ở trạng thái tự do.
+            Hiệu hai giá trị là độ hụt khối.
+        </p>
+<div class="mass-bars">
+<div class="mass-row">
+<span>
+                    Nucleon tự do
+                </span>
+<div class="mass-track">
+<div class="mass-bar free-mass-bar" id="freeMassBar">
+</div>
+</div>
+<strong id="freeMassBarLabel">
+                    —
+                </strong>
+</div>
+<div class="mass-row">
+<span>
+                    Nguyên tử liên kết
+                </span>
+<div class="mass-track">
+<div class="mass-bar atomic-mass-bar" id="atomicMassBar">
+</div>
+</div>
+<strong id="atomicMassBarLabel">
+                    —
+                </strong>
+</div>
+</div>
+<div class="mass-defect-highlight">
+<span>
+                Phần chênh lệch
+            </span>
+<strong id="massDefectHighlight">
+                —
+            </strong>
+</div>
+</section>
+<!-- =====================================================
+         ĐỒ THỊ Eb/A
+    ====================================================== -->
+<section class="chart-panel">
+<div class="chart-heading">
+<h2>
+                Năng lượng liên kết riêng theo số khối
+            </h2>
+<p>
+                Mỗi điểm là một hạt nhân trong bộ dữ liệu.
+                Điểm lớn hơn theo phương thẳng đứng có
+                năng lượng liên kết riêng lớn hơn.
+            </p>
+</div>
+<div class="chart-container">
+<canvas id="bindingEnergyChart">
+</canvas>
+</div>
+<div class="chart-observation">
+<strong>
+                Gợi ý quan sát:
+            </strong>
+<span id="chartObservation">
+                Chọn một hạt nhân và quan sát vị trí của nó trên đồ thị.
+            </span>
+</div>
+</section>
+<!-- =====================================================
+         KHÁM PHÁ
+    ====================================================== -->
+<section class="mode-panel active" id="explorePanel">
+<h2>
+            Khám phá
+        </h2>
+<div class="explore-grid">
+<div class="explore-card">
+<span class="step-number">
+                    1
+                </span>
+<div>
+<strong>
+                        Chọn hạt nhân
+                    </strong>
+<p>
+                        Thử từ các hạt nhân rất nhẹ
+                        đến các hạt nhân nặng.
+                    </p>
+</div>
+</div>
+<div class="explore-card">
+<span class="step-number">
+                    2
+                </span>
+<div>
+<strong>
+                        Quan sát độ hụt khối
+                    </strong>
+<p>
+                        So sánh tổng khối lượng các nucleon
+                        với khối lượng nguyên tử liên kết.
+                    </p>
+</div>
+</div>
+<div class="explore-card">
+<span class="step-number">
+                    3
+                </span>
+<div>
+<strong>
+                        So sánh Eᵦ/A
+                    </strong>
+<p>
+                        Quan sát vị trí của các hạt nhân
+                        khác nhau trên đồ thị.
+                    </p>
+</div>
+</div>
+</div>
+<div class="question-card">
+<h3>
+                Câu hỏi gợi ý
+            </h3>
+<p>
+                Hạt nhân có năng lượng liên kết tổng cộng lớn hơn
+                có nhất thiết có năng lượng liên kết riêng lớn hơn không?
+            </p>
+<p>
+                So sánh
+                <sup>4</sup>He,
+                <sup>56</sup>Fe,
+                <sup>62</sup>Ni
+                và
+                <sup>238</sup>U.
+                Bạn nhận thấy điều gì?
+            </p>
+</div>
+</section>
+<!-- =====================================================
+         THÍ NGHIỆM - KHUNG
+    ====================================================== -->
+<section class="mode-panel" id="experimentPanel">
+<h2>
+            Thí nghiệm ảo
+        </h2>
+<p>
+            Các nhiệm vụ định lượng sẽ được xây dựng
+            sau khi chế độ Khám phá được kiểm tra ổn định.
+        </p>
+<div class="experiment-task" id="task1Card">
+<h3>
+        Nhiệm vụ 1:
+        Tính độ hụt khối và năng lượng liên kết
+    </h3>
+<p>
+        Chọn một hạt nhân, sử dụng dữ liệu khối lượng
+        được cung cấp để tự tính:
+    </p>
+<div class="task-formula-list">
+<p>
+<strong>1.</strong>
+            Δm = Zm<sub>H</sub> + Nm<sub>n</sub> − M<sub>atom</sub>
+</p>
+<p>
+<strong>2.</strong>
+            E<sub>b</sub> = Δm × 931,49410242
+        </p>
+<p>
+<strong>3.</strong>
+            E<sub>b</sub>/A
+        </p>
+</div>
+<div class="task1-setup">
+<div class="task-control-group">
+<label for="task1NuclideSelect">
+                Hạt nhân cần tính
+            </label>
+<select id="task1NuclideSelect">
+</select>
+</div>
+<button id="setupTask1Button">
+            Thiết lập nhiệm vụ
+        </button>
+</div>
+<div class="task-given-data" hidden="" id="task1GivenData">
+<h4>
+            Dữ liệu đã cho
+        </h4>
+<div class="task-data-grid">
+<div class="task-data-box">
+<span>
+                    Hạt nhân
+                </span>
+<strong id="task1NuclideDisplay">
+                    —
+                </strong>
+</div>
+<div class="task-data-box">
+<span>
+                    A
+                </span>
+<strong id="task1ADisplay">
+                    —
+                </strong>
+</div>
+<div class="task-data-box">
+<span>
+                    Z
+                </span>
+<strong id="task1ZDisplay">
+                    —
+                </strong>
+</div>
+<div class="task-data-box">
+<span>
+                    N
+                </span>
+<strong id="task1NDisplay">
+                    —
+                </strong>
+</div>
+<div class="task-data-box wide">
+<span>
+                    M<sub>atom</sub>
+</span>
+<strong id="task1AtomicMassDisplay">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task-constants">
+<strong>
+                Các hằng số sử dụng
+            </strong>
+<p>
+                m<sub>H</sub> =
+                1,00782503223 u
+            </p>
+<p>
+                m<sub>n</sub> =
+                1,00866491606 u
+            </p>
+<p>
+                1 u·c² =
+                931,49410242 MeV
+            </p>
+</div>
+<div class="task-question">
+<strong>
+                Yêu cầu:
+            </strong>
+<p>
+                Hãy tự tính ba đại lượng bên dưới
+                trước khi nhấn nút kiểm tra.
+            </p>
+</div>
+<div class="student-answer-grid">
+<div class="student-answer-card">
+<label for="task1MassDefectInput">
+                    Độ hụt khối Δm (u)
+                </label>
+<input id="task1MassDefectInput" inputmode="decimal" placeholder="Ví dụ: 0,09894" type="text"/>
+<span class="answer-feedback" id="task1MassDefectFeedback">
+</span>
+</div>
+<div class="student-answer-card">
+<label for="task1BindingEnergyInput">
+                    Năng lượng liên kết Eᵦ (MeV)
+                </label>
+<input id="task1BindingEnergyInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task1BindingEnergyFeedback">
+</span>
+</div>
+<div class="student-answer-card">
+<label for="task1BindingEnergyPerNucleonInput">
+                    Eᵦ/A (MeV/nucleon)
+                </label>
+<input id="task1BindingEnergyPerNucleonInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task1BindingEnergyPerNucleonFeedback">
+</span>
+</div>
+</div>
+<div class="task-button-group">
+<button id="checkTask1Button">
+                Kiểm tra kết quả
+            </button>
+<button id="clearTask1AnswersButton">
+                Xóa kết quả đã nhập
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="task1Status">
+                Chờ học sinh tính toán
+            </span>
+</p>
+<div class="task-result" hidden="" id="task1Result">
+<h4>
+                Kết quả chuẩn từ dữ liệu
+            </h4>
+<div class="task-result-grid">
+<div class="task-result-box">
+<span>
+                        Δm
+                    </span>
+<strong id="task1CorrectMassDefect">
+                        —
+                    </strong>
+</div>
+<div class="task-result-box">
+<span>
+                        Eᵦ
+                    </span>
+<strong id="task1CorrectBindingEnergy">
+                        —
+                    </strong>
+</div>
+<div class="task-result-box">
+<span>
+                        Eᵦ/A
+                    </span>
+<strong id="task1CorrectBindingEnergyPerNucleon">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="task-solution">
+<h4>
+                    Các bước tính
+                </h4>
+<div id="task1Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                    Nhận xét
+                </h4>
+<p id="task1Conclusion">
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task2Card">
+<h3>
+        Nhiệm vụ 2:
+        So sánh năng lượng liên kết và năng lượng liên kết riêng
+    </h3>
+<p>
+        Khảo sát bốn hạt nhân đại diện:
+        <sup>4</sup>He,
+        <sup>56</sup>Fe,
+        <sup>62</sup>Ni
+        và
+        <sup>238</sup>U.
+    </p>
+<p>
+        Hãy phân biệt hai đại lượng:
+    </p>
+<div class="task-formula-list">
+<p>
+<strong>
+                E<sub>b</sub>
+</strong>
+            — năng lượng liên kết của toàn bộ hạt nhân.
+        </p>
+<p>
+<strong>
+                E<sub>b</sub>/A
+            </strong>
+            — năng lượng liên kết trung bình trên mỗi nucleon.
+        </p>
+</div>
+<div class="task-button-group">
+<button id="setupTask2Button">
+            Tạo bảng so sánh
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task2Status">
+            Chưa thực hiện
+        </span>
+</p>
+<div hidden="" id="task2Result">
+<h4>
+            Bảng so sánh
+        </h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                            Hạt nhân
+                        </th>
+<th>
+                            A
+                        </th>
+<th>
+                            E<sub>b</sub> (MeV)
+                        </th>
+<th>
+                            E<sub>b</sub>/A
+                            (MeV/nucleon)
+                        </th>
+</tr>
+</thead>
+<tbody id="task2TableBody">
+</tbody>
+</table>
+</div>
+<div class="task2-chart-section">
+<h4>
+                So sánh năng lượng liên kết tổng cộng
+            </h4>
+<div class="task2-chart-container">
+<canvas id="task2TotalChart">
+</canvas>
+</div>
+</div>
+<div class="task2-chart-section">
+<h4>
+                So sánh năng lượng liên kết riêng
+            </h4>
+<div class="task2-chart-container">
+<canvas id="task2SpecificChart">
+</canvas>
+</div>
+</div>
+<div class="task2-question-section">
+<h4>
+                Kiểm tra nhận xét
+            </h4>
+<div class="task2-question-card">
+<label for="task2HighestTotalSelect">
+
+                    1. Hạt nhân nào có
+                    <strong>E<sub>b</sub></strong>
+                    lớn nhất trong bốn hạt nhân?
+
+                </label>
+<select id="task2HighestTotalSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+</select>
+<span class="answer-feedback" id="task2HighestTotalFeedback">
+</span>
+</div>
+<div class="task2-question-card">
+<label for="task2HighestSpecificSelect">
+
+                    2. Hạt nhân nào có
+                    <strong>E<sub>b</sub>/A</strong>
+                    lớn nhất?
+
+                </label>
+<select id="task2HighestSpecificSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+</select>
+<span class="answer-feedback" id="task2HighestSpecificFeedback">
+</span>
+</div>
+<div class="task2-question-card">
+<label for="task2RelationshipSelect">
+
+                    3. Hạt nhân có
+                    E<sub>b</sub> lớn nhất
+                    có nhất thiết cũng có
+                    E<sub>b</sub>/A lớn nhất không?
+
+                </label>
+<select id="task2RelationshipSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="yes">
+                        Có
+                    </option>
+<option value="no">
+                        Không
+                    </option>
+</select>
+<span class="answer-feedback" id="task2RelationshipFeedback">
+</span>
+</div>
+<div class="task-button-group">
+<button id="checkTask2Button">
+                    Kiểm tra nhận xét
+                </button>
+<button id="resetTask2AnswersButton">
+                    Làm lại
+                </button>
+</div>
+</div>
+<div class="task-conclusion" hidden="" id="task2ConclusionBox">
+<h4>
+                Kết luận
+            </h4>
+<p id="task2Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task3Card">
+<h3>
+        Nhiệm vụ 3:
+        Khảo sát xu hướng năng lượng liên kết riêng
+    </h3>
+<p>
+        Sử dụng toàn bộ các hạt nhân đại diện
+        trong bộ dữ liệu để khảo sát sự thay đổi của:
+    </p>
+<div class="task-formula-list">
+<p>
+<strong>
+                E<sub>b</sub>/A
+            </strong>
+            theo số khối
+            <strong>A</strong>.
+        </p>
+</div>
+<div class="task3-note">
+<strong>
+            Lưu ý
+        </strong>
+<p>
+            Đồ thị dưới đây được xây dựng từ các hạt nhân
+            đại diện trong bộ dữ liệu của mô phỏng,
+            không phải toàn bộ các nuclide đã biết.
+            Đường nối giữa các điểm chỉ giúp quan sát xu hướng.
+        </p>
+</div>
+<div class="task-button-group">
+<button id="setupTask3Button">
+            Khảo sát toàn bộ dữ liệu
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task3Status">
+            Chưa thực hiện
+        </span>
+</p>
+<div hidden="" id="task3Result">
+<div class="task3-summary">
+<div class="task3-summary-box">
+<span>
+                    Số hạt nhân khảo sát
+                </span>
+<strong id="task3NuclideCount">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Eᵦ/A lớn nhất trong bộ dữ liệu
+                </span>
+<strong id="task3MaximumNuclide">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Giá trị Eᵦ/A lớn nhất
+                </span>
+<strong id="task3MaximumValue">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task3-chart-section">
+<h4>
+                Eᵦ/A theo số khối A
+            </h4>
+<p>
+                Quan sát ba vùng:
+                hạt nhân nhẹ,
+                vùng số khối trung bình
+                và hạt nhân nặng.
+            </p>
+<div class="task3-chart-container">
+<canvas id="task3Chart">
+</canvas>
+</div>
+</div>
+<div class="task3-table-section">
+<h4>
+                Dữ liệu sử dụng trên đồ thị
+            </h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Hạt nhân
+                            </th>
+<th>
+                                A
+                            </th>
+<th>
+                                Z
+                            </th>
+<th>
+                                Eᵦ/A
+                                (MeV/nucleon)
+                            </th>
+<th>
+                                Vùng
+                            </th>
+</tr>
+</thead>
+<tbody id="task3TableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="task3-question-section">
+<h4>
+                Phân tích xu hướng
+            </h4>
+<div class="task3-question-card">
+<label for="task3PeakRegionSelect">
+
+                    1. Trong bộ dữ liệu đang xét,
+                    vùng nào có năng lượng liên kết riêng cao nhất?
+
+                </label>
+<select id="task3PeakRegionSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="light">
+                        Hạt nhân rất nhẹ
+                    </option>
+<option value="medium">
+                        Hạt nhân có số khối trung bình
+                    </option>
+<option value="heavy">
+                        Hạt nhân rất nặng
+                    </option>
+</select>
+<span class="answer-feedback" id="task3PeakRegionFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3LightTrendSelect">
+
+                    2. Khi đi từ các hạt nhân rất nhẹ
+                    về phía vùng có số khối trung bình,
+                    Eᵦ/A nhìn chung thay đổi như thế nào?
+
+                </label>
+<select id="task3LightTrendSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="increase">
+                        Nhìn chung tăng
+                    </option>
+<option value="decrease">
+                        Nhìn chung giảm
+                    </option>
+<option value="constant">
+                        Gần như không đổi
+                    </option>
+</select>
+<span class="answer-feedback" id="task3LightTrendFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3HeavyTrendSelect">
+
+                    3. Từ vùng Fe–Ni về phía các hạt nhân rất nặng,
+                    Eᵦ/A nhìn chung thay đổi như thế nào?
+
+                </label>
+<select id="task3HeavyTrendSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="increase">
+                        Nhìn chung tăng
+                    </option>
+<option value="decrease">
+                        Nhìn chung giảm
+                    </option>
+<option value="constant">
+                        Gần như không đổi
+                    </option>
+</select>
+<span class="answer-feedback" id="task3HeavyTrendFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3EnergyDirectionSelect">
+
+                    4. Xu hướng trên gợi ý điều gì
+                    về các quá trình có thể giải phóng năng lượng hạt nhân?
+
+                </label>
+<select id="task3EnergyDirectionSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="light-fusion-heavy-fission">
+                        Hạt nhân nhẹ có thể giải phóng năng lượng khi nhiệt hạch;
+                        hạt nhân rất nặng có thể giải phóng năng lượng khi phân hạch
+                    </option>
+<option value="light-fission-heavy-fusion">
+                        Hạt nhân nhẹ phân hạch;
+                        hạt nhân nặng nhiệt hạch
+                    </option>
+<option value="none">
+                        Đồ thị không liên quan tới năng lượng phản ứng
+                    </option>
+</select>
+<span class="answer-feedback" id="task3EnergyDirectionFeedback">
+</span>
+</div>
+<div class="task-button-group">
+<button id="checkTask3Button">
+                    Kiểm tra phân tích
+                </button>
+<button id="resetTask3AnswersButton">
+                    Làm lại
+                </button>
+</div>
+</div>
+<div class="task-conclusion" hidden="" id="task3ConclusionBox">
+<h4>
+                Kết luận
+            </h4>
+<p id="task3Conclusion">
+</p>
+</div>
+<div class="task3-physics-note">
+<strong>
+                Ghi chú vật lý
+            </strong>
+<p>
+                Đường cong năng lượng liên kết riêng giúp giải thích
+                xu hướng năng lượng của phản ứng hạt nhân,
+                nhưng Eᵦ/A không phải yếu tố duy nhất quyết định
+                một phản ứng có xảy ra hay không.
+                Còn phải xét phản ứng cụ thể, bảo toàn năng lượng,
+                điện tích, động lượng và các điều kiện vật lý khác.
+            </p>
+</div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         KIỂM CHỨNG - KHUNG
+    ====================================================== -->
+<section class="mode-panel validation-panel" id="validationPanel">
+<h2>
+        Kiểm chứng dữ liệu và thuật toán
+    </h2>
+<p>
+        Chế độ này đối chiếu năng lượng liên kết riêng
+        được chương trình tính từ khối lượng nguyên tử
+        với các giá trị tham chiếu của bộ dữ liệu hạt nhân.
+    </p>
+<div class="validation-explanation">
+<h3>
+            Quy trình kiểm chứng
+        </h3>
+<div class="validation-flow">
+<span>
+                M<sub>atom</sub>
+</span>
+<strong>→</strong>
+<span>
+                Δm
+            </span>
+<strong>→</strong>
+<span>
+                E<sub>b</sub>
+</span>
+<strong>→</strong>
+<span>
+                E<sub>b</sub>/A
+            </span>
+<strong>→</strong>
+<span>
+                So sánh tham chiếu
+            </span>
+</div>
+<p>
+            Giá trị tính toán và giá trị tham chiếu
+            được so sánh ở mức keV trên mỗi nucleon.
+        </p>
+</div>
+<div class="validation-source-note">
+<strong>
+            Nguồn tham chiếu
+        </strong>
+<p>
+            Atomic Mass Evaluation 2020 (AME2020).
+            NuDat 3 của National Nuclear Data Center
+            cũng sử dụng AME2020 cho đại lượng BE/A.
+        </p>
+</div>
+<div class="validation-controls">
+<button id="runBindingValidationButton">
+            Chạy kiểm chứng
+        </button>
+<button id="resetBindingValidationButton">
+            Đặt lại
+        </button>
+</div>
+<div class="validation-summary">
+<div class="validation-summary-box">
+<span>
+                Trạng thái
+            </span>
+<strong id="bindingValidationStatus">
+                Chưa chạy
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                Số hạt nhân
+            </span>
+<strong id="bindingValidationCount">
+                0
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                RMSE
+            </span>
+<strong id="bindingValidationRmse">
+                —
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                Sai lệch TB
+            </span>
+<strong id="bindingValidationMeanError">
+                —
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                Sai lệch lớn nhất
+            </span>
+<strong id="bindingValidationMaxError">
+                —
+            </strong>
+</div>
+</div>
+<div hidden="" id="bindingValidationResult">
+<div class="validation-chart-section">
+<h3>
+                So sánh Eᵦ/A
+            </h3>
+<p>
+                Nếu thuật toán và dữ liệu nhất quán,
+                hai tập điểm phải gần trùng nhau.
+            </p>
+<div class="validation-chart-container">
+<canvas id="bindingValidationChart">
+</canvas>
+</div>
+</div>
+<div class="validation-table-section">
+<h3>
+                Bảng kiểm chứng chi tiết
+            </h3>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Hạt nhân
+                            </th>
+<th>
+                                Eᵦ/A tính toán
+                                (keV/nucleon)
+                            </th>
+<th>
+                                Eᵦ/A tham chiếu
+                                (keV/nucleon)
+                            </th>
+<th>
+                                Sai lệch
+                                (keV/nucleon)
+                            </th>
+<th>
+                                Sai lệch (%)
+                            </th>
+</tr>
+</thead>
+<tbody id="bindingValidationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h3>
+                Kết luận kiểm chứng
+            </h3>
+<p id="bindingValidationConclusion">
+</p>
+</div>
+</div>
+<div class="validation-method-note">
+<h3>
+            Ý nghĩa
+        </h3>
+<p>
+            Sai lệch nhỏ không nhất thiết là lỗi chương trình.
+            Một phần sai khác có thể xuất hiện do số chữ số
+            được lưu trong khối lượng nguyên tử,
+            hằng số chuyển đổi và việc làm tròn
+            giá trị tham chiếu theo keV/nucleon.
+        </p>
+</div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/nuclear-data.js?v=5"></script>
+<script src="js/physics.js?v=5"></script>
+<script src="js/simulation.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
+<script src="js/validation.js?v=5"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>

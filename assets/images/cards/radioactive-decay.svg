@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <rect width="800" height="310" fill="#f3f8ff"/>
+  <circle cx="220" cy="155" r="72" fill="#fff" stroke="#8fb9ea" stroke-width="4"/>
+  <circle cx="195" cy="136" r="19" fill="#ef6b6b"/><circle cx="233" cy="126" r="19" fill="#5a9cf0"/>
+  <circle cx="250" cy="164" r="19" fill="#ef6b6b"/><circle cx="206" cy="176" r="19" fill="#5a9cf0"/>
+  <path d="M300 118 C360 92, 405 84, 462 85" fill="none" stroke="#7a63d8" stroke-width="4"/>
+  <path d="M300 150 C367 150, 420 150, 480 150" fill="none" stroke="#2f7bdc" stroke-width="4"/>
+  <path d="M296 185 C360 214, 411 225, 470 225" fill="none" stroke="#dc6f36" stroke-width="4"/>
+  <polygon points="462,85 446,78 449,94" fill="#7a63d8"/><polygon points="480,150 464,142 464,158" fill="#2f7bdc"/><polygon points="470,225 454,216 456,233" fill="#dc6f36"/>
+  <text x="495" y="92" font-family="Segoe UI, Arial" font-size="25" font-weight="700" fill="#6d55c7">α</text>
+  <text x="505" y="158" font-family="Segoe UI, Arial" font-size="25" font-weight="700" fill="#2f6fb6">β⁻ / β⁺</text>
+  <text x="492" y="234" font-family="Segoe UI, Arial" font-size="25" font-weight="700" fill="#bd5c29">γ</text>
+  <text x="92" y="280" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">Biến đổi A, Z, N và hạt nhân con</text>
+</svg>

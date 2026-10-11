@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <rect width="800" height="310" fill="#f3f8ff"/>
+  <text x="70" y="86" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#7259c9">α</text>
+  <text x="70" y="157" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#2f7bdc">β</text>
+  <text x="70" y="229" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#bd5c29">γ</text>
+  <line x1="110" y1="80" x2="260" y2="80" stroke="#7259c9" stroke-width="5"/>
+  <line x1="110" y1="151" x2="415" y2="151" stroke="#2f7bdc" stroke-width="5"/>
+  <line x1="110" y1="223" x2="685" y2="223" stroke="#bd5c29" stroke-width="5"/>
+  <rect x="270" y="45" width="28" height="205" fill="#f6d7b9" stroke="#c48c5a"/>
+  <rect x="430" y="45" width="34" height="205" fill="#d5dde7" stroke="#8d99a6"/>
+  <rect x="590" y="45" width="48" height="205" fill="#9aa6b5" stroke="#64748b"/>
+  <text x="257" y="282" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">Giấy</text>
+  <text x="414" y="282" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">Nhôm</text>
+  <text x="592" y="282" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">Chì</text>
+</svg>

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#edf7ff"/><stop offset="1" stop-color="#f8fbff"/></linearGradient></defs>
+  <rect width="800" height="310" fill="url(#bg)"/>
+  <line x1="95" y1="244" x2="700" y2="244" stroke="#91a7be" stroke-width="3"/>
+  <line x1="95" y1="244" x2="95" y2="60" stroke="#91a7be" stroke-width="3"/>
+  <path d="M105 225 C170 155, 220 120, 310 95 C390 75, 470 73, 545 84 C615 94, 660 108, 694 120" fill="none" stroke="#2f7bdc" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="455" cy="76" r="8" fill="#ef6b6b"/>
+  <text x="472" y="70" font-family="Segoe UI, Arial" font-size="18" font-weight="700" fill="#a94444">Fe / Ni</text>
+  <text x="115" y="50" font-family="Segoe UI, Arial" font-size="25" font-weight="700" fill="#1f3f6f">Eᵦ/A</text>
+  <text x="623" y="276" font-family="Segoe UI, Arial" font-size="21" fill="#486581">Số khối A</text>
+  <text x="110" y="282" font-family="Segoe UI, Arial" font-size="18" fill="#65758a">độ hụt khối • liên kết • độ bền</text>
+</svg>

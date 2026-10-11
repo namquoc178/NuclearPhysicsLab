@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <defs><linearGradient id="bg" x1="0" x2="1"><stop stop-color="#e8f2ff"/><stop offset="1" stop-color="#f7fbff"/></linearGradient></defs>
+  <rect width="800" height="310" fill="url(#bg)"/>
+  <circle cx="210" cy="155" r="92" fill="#ffffff" stroke="#8db9ef" stroke-width="4"/>
+  <g stroke="#fff" stroke-width="4">
+    <circle cx="175" cy="125" r="23" fill="#ef6b6b"/><circle cx="218" cy="116" r="23" fill="#5a9cf0"/>
+    <circle cx="251" cy="150" r="23" fill="#ef6b6b"/><circle cx="195" cy="166" r="23" fill="#5a9cf0"/>
+    <circle cx="235" cy="193" r="23" fill="#5a9cf0"/><circle cx="160" cy="183" r="23" fill="#ef6b6b"/>
+  </g>
+  <text x="410" y="106" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="#1f3f6f">HẠT NHÂN</text>
+  <text x="410" y="150" font-family="Segoe UI, Arial" font-size="22" fill="#486581">A = Z + N</text>
+  <text x="410" y="192" font-family="Segoe UI, Arial" font-size="21" fill="#b44949">proton</text>
+  <text x="510" y="192" font-family="Segoe UI, Arial" font-size="21" fill="#356ea8">neutron</text>
+  <text x="410" y="234" font-family="Segoe UI, Arial" font-size="19" fill="#65758a">cấu tạo • kí hiệu • đồng vị</text>
+</svg>

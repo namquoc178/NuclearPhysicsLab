@@ -1,0 +1,2248 @@
+* {
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    line-height: 1.6;
+
+    color: #1f2937;
+
+    background: #f4f7fa;
+}
+
+
+button,
+select {
+    font: inherit;
+}
+
+
+button {
+    cursor: pointer;
+}
+
+
+.container {
+    width: min(1220px, 94%);
+
+    margin: 0 auto;
+
+    padding:
+        22px
+        0
+        50px;
+}
+
+
+/* =====================================================
+   ĐIỀU HƯỚNG TRANG CHỦ
+===================================================== */
+
+.top-navigation {
+    width: min(1200px, 94%);
+
+    margin:
+        18px
+        auto
+        0;
+}
+
+
+.home-link {
+    display: inline-block;
+
+    padding:
+        8px
+        12px;
+
+    border-radius: 7px;
+
+    text-decoration: none;
+
+    color: #1d4ed8;
+
+    background: #eaf2ff;
+
+    border: 1px solid #dbeafe;
+
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.home-link:hover {
+    background: #dbeafe;
+
+    transform:
+        translateX(-2px);
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.page-header {
+    padding:
+        22px
+        10px
+        30px;
+
+    text-align: center;
+}
+
+
+.lesson-label {
+    margin-bottom: 6px;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.3px;
+}
+
+
+.page-header h1 {
+    margin:
+        0
+        0
+        10px;
+
+    font-size:
+        clamp(
+            30px,
+            4vw,
+            44px
+        );
+}
+
+
+.page-description {
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    color: #64748b;
+
+    font-size: 17px;
+}
+
+
+/* =====================================================
+   PANEL CHUNG
+===================================================== */
+
+.learning-goals,
+.control-panel,
+.simulation-panel,
+.notation-panel,
+.relation-panel,
+.comparison-panel,
+.exploration-questions,
+.mode-panel {
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0
+        2px
+        10px
+        rgba(0, 0, 0, 0.06);
+}
+
+
+/* =====================================================
+   GOALS
+===================================================== */
+
+.learning-goals {
+    padding: 20px;
+}
+
+
+.learning-goals h2 {
+    margin-top: 0;
+}
+
+
+.goal-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+}
+
+
+.goal-card {
+    display: flex;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: #fafcff;
+}
+
+
+.goal-card strong {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex:
+        0 0
+        32px;
+
+    width: 32px;
+
+    height: 32px;
+
+    border-radius: 50%;
+
+    color: #1d4ed8;
+
+    background: #dbeafe;
+}
+
+
+.goal-card p {
+    margin: 0;
+}
+
+
+/* =====================================================
+   MODE
+===================================================== */
+
+.mode-navigation {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin:
+        24px
+        0;
+}
+
+
+.mode-button {
+    padding:
+        11px
+        22px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.mode-button.active {
+    border: 2px solid #2563eb;
+
+    color: #1d4ed8;
+
+    font-weight: 700;
+}
+
+
+.mode-panel {
+    display: none;
+}
+
+
+.mode-panel.active {
+    display: block;
+}
+
+
+/* =====================================================
+   SIMULATION LAYOUT
+===================================================== */
+
+.simulation-layout {
+    display: grid;
+
+    grid-template-columns:
+        290px
+        1fr;
+
+    gap: 20px;
+}
+
+
+/* =====================================================
+   CONTROL PANEL
+===================================================== */
+
+.control-panel {
+    padding: 20px;
+}
+
+
+.control-panel h2 {
+    margin-top: 0;
+}
+
+
+.control-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-bottom: 18px;
+}
+
+
+.control-group label {
+    font-weight: 700;
+}
+
+
+.control-group select {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+.full-button {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+.legend-box {
+    margin-top: 22px;
+
+    padding: 14px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.legend-box h3 {
+    margin-top: 0;
+}
+
+
+.legend-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-top: 9px;
+}
+
+
+.legend-particle {
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 30px;
+
+    height: 30px;
+
+    border-radius: 50%;
+
+    font-weight: 700;
+}
+
+
+.legend-particle.proton {
+    color: #991b1b;
+
+    border: 2px solid #b91c1c;
+
+    background: #fee2e2;
+}
+
+
+.legend-particle.neutron {
+    color: #1e3a8a;
+
+    border: 2px solid #1d4ed8;
+
+    background: #dbeafe;
+}
+
+
+.model-note {
+    margin-top: 18px;
+
+    padding: 14px;
+
+    border-left: 4px solid #64748b;
+
+    border-radius: 7px;
+
+    background: #f8fafc;
+
+    font-size: 14px;
+}
+
+
+.model-note p {
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   MAIN CANVAS
+===================================================== */
+
+.simulation-panel {
+    padding: 20px;
+}
+
+
+.simulation-title-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 15px;
+}
+
+
+.simulation-title-row h2 {
+    margin:
+        0
+        0
+        4px;
+}
+
+
+.simulation-title-row p {
+    margin: 0;
+
+    color: #64748b;
+}
+
+
+.status-badge {
+    padding:
+        7px
+        11px;
+
+    border-radius: 999px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.status-badge.stable {
+    color: #166534;
+
+    background: #dcfce7;
+}
+
+
+.status-badge.radioactive {
+    color: #92400e;
+
+    background: #fef3c7;
+}
+
+
+#nucleusCanvas,
+#comparisonCanvas {
+    display: block;
+
+    width: 100%;
+
+    height: auto;
+
+    margin-top: 18px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 9px;
+
+    background: #f8fbff;
+}
+
+
+/* =====================================================
+   NOTATION
+===================================================== */
+
+.notation-panel {
+    margin-top: 20px;
+
+    padding: 20px;
+}
+
+
+.notation-panel h2 {
+    margin-top: 0;
+}
+
+
+.notation-layout {
+    display: grid;
+
+    grid-template-columns:
+        220px
+        1fr;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+
+.big-nuclear-notation {
+    padding: 20px;
+
+    text-align: center;
+
+    font-size: 58px;
+
+    font-weight: 700;
+}
+
+
+.property-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 12px;
+}
+
+
+.property-box {
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: #f8fafc;
+}
+
+
+.property-box span {
+    display: block;
+
+    color: #64748b;
+}
+
+
+.property-box strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 21px;
+}
+
+
+/* =====================================================
+   RELATION
+===================================================== */
+
+.relation-panel {
+    margin-top: 20px;
+
+    padding: 20px;
+}
+
+
+.relation-panel h2 {
+    margin-top: 0;
+}
+
+
+.relation-flow {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+
+.relation-box {
+    min-width: 150px;
+
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: #f8fafc;
+}
+
+
+.relation-box span {
+    display: block;
+
+    color: #64748b;
+}
+
+
+.relation-box strong {
+    font-size: 21px;
+}
+
+
+.relation-box.highlighted {
+    border-color: #93c5fd;
+
+    background: #eff6ff;
+}
+
+
+.relation-plus {
+    font-size: 28px;
+
+    font-weight: 700;
+
+    color: #64748b;
+}
+
+
+.relation-calculation {
+    text-align: center;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   COMPARISON
+===================================================== */
+
+.comparison-panel {
+    margin-top: 20px;
+
+    padding: 20px;
+}
+
+
+.comparison-panel h2 {
+    margin-top: 0;
+}
+
+
+.comparison-controls {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+
+.comparison-controls div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+
+.comparison-controls label {
+    font-weight: 700;
+}
+
+
+.comparison-controls select {
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+.comparison-table-wrapper {
+    margin-top: 20px;
+
+    overflow-x: auto;
+}
+
+
+.comparison-table-wrapper table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.comparison-table-wrapper th,
+.comparison-table-wrapper td {
+    padding: 11px;
+
+    border: 1px solid #dbe3ec;
+
+    text-align: center;
+}
+
+
+.comparison-table-wrapper th {
+    background: #f1f5f9;
+}
+
+
+.isotope-conclusion {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    border-left: 4px solid #3b82f6;
+
+    border-radius: 8px;
+
+    background: #eff6ff;
+}
+
+
+/* =====================================================
+   QUESTIONS
+===================================================== */
+
+.exploration-questions {
+    margin-top: 20px;
+
+    padding: 20px;
+}
+
+
+.exploration-questions h2 {
+    margin-top: 0;
+}
+
+
+.question-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+}
+
+
+.question-card {
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: #fafcff;
+}
+
+
+.question-card p {
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   DATASET NOTE
+===================================================== */
+
+.dataset-note {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border-left: 4px solid #64748b;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.dataset-note p {
+    margin-bottom: 0;
+}
+
+
+/* =====================================================
+   FUTURE TASK
+===================================================== */
+
+#experimentPanel,
+#validationPanel {
+    padding: 20px;
+
+    background: white;
+
+    border-radius: 12px;
+
+    box-shadow:
+        0
+        2px
+        10px
+        rgba(0, 0, 0, 0.06);
+}
+
+
+.future-task {
+    margin-top: 14px;
+
+    padding: 15px;
+
+    border: 1px solid #e2e8f0;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 950px) {
+
+    .simulation-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .goal-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .notation-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    .comparison-controls {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    .property-grid,
+    .question-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .big-nuclear-notation {
+        font-size: 45px;
+    }
+
+
+    .simulation-title-row {
+        flex-direction: column;
+    }
+
+}
+/* =====================================================
+   THÍ NGHIỆM - NHIỆM VỤ 1
+===================================================== */
+
+.experiment-task {
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 10px;
+
+    background: #fafcff;
+}
+
+
+.experiment-task h3 {
+    margin-top: 0;
+}
+
+
+/* =====================================================
+   ĐỀ BÀI
+===================================================== */
+
+.task1-question-area {
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    background: white;
+}
+
+
+.task1-question-label {
+    color: #64748b;
+
+    font-weight: 700;
+}
+
+
+.task1-big-notation {
+    margin:
+        16px
+        0;
+
+    font-size: 64px;
+
+    font-weight: 700;
+}
+
+
+.task1-nuclide-name {
+    margin-bottom: 16px;
+
+    color: #475569;
+
+    font-size: 17px;
+}
+
+
+.task1-question-area button {
+    padding:
+        10px
+        16px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   GỢI Ý
+===================================================== */
+
+.task1-hint-box {
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border-left: 4px solid #3b82f6;
+
+    border-radius: 8px;
+
+    background: #eff6ff;
+}
+
+
+.task1-hint-box p {
+    margin:
+        6px
+        0;
+}
+
+
+/* =====================================================
+   ANSWERS
+===================================================== */
+
+.task1-answer-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 14px;
+
+    margin-top: 20px;
+}
+
+
+.task1-answer-card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.task1-answer-card label {
+    font-weight: 700;
+}
+
+
+.task1-answer-card input {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+}
+
+
+/* =====================================================
+   CONCEPT
+===================================================== */
+
+.task1-concept-question {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.task1-concept-question label {
+    font-weight: 700;
+}
+
+
+.task1-concept-question select {
+    width: 100%;
+
+    max-width: 850px;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+/* =====================================================
+   FEEDBACK
+===================================================== */
+
+.answer-feedback {
+    min-height: 23px;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+
+.answer-feedback.correct {
+    color: #166534;
+}
+
+
+.answer-feedback.review {
+    color: #b45309;
+}
+
+
+.answer-feedback.invalid {
+    color: #b91c1c;
+}
+
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
+.task-button-group {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    margin-top: 18px;
+}
+
+
+.task-button-group button {
+    padding:
+        10px
+        16px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+.task-button-group button:hover {
+    background: #f8fafc;
+}
+
+
+.task-status-line {
+    margin-top: 16px;
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.task-result {
+    margin-top: 22px;
+
+    padding: 18px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 9px;
+
+    background: white;
+}
+
+
+.task-result > h4 {
+    margin-top: 0;
+}
+
+
+.task1-result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(5, 1fr);
+
+    gap: 10px;
+}
+
+
+.task1-result-box {
+    padding: 14px;
+
+    border: 1px solid #d1e7d8;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: #f0fdf4;
+}
+
+
+.task1-result-box span {
+    display: block;
+
+    color: #64748b;
+}
+
+
+.task1-result-box strong {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 21px;
+}
+
+
+.task1-solution {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.task1-solution h4 {
+    margin-top: 0;
+}
+
+
+.task1-solution p {
+    margin:
+        7px
+        0;
+}
+
+
+.task-conclusion {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    border: 1px solid #d1e7d8;
+
+    border-radius: 8px;
+
+    background: #f0fdf4;
+}
+
+
+.task-conclusion h4 {
+    margin-top: 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .task1-answer-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+
+    .task1-result-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 550px) {
+
+    .task1-answer-grid,
+    .task1-result-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .task1-big-notation {
+        font-size: 50px;
+    }
+
+}
+/* =====================================================
+   THÍ NGHIỆM - NHIỆM VỤ 2
+===================================================== */
+
+.task2-question-area {
+    margin-top: 18px;
+
+    padding: 20px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    background: white;
+}
+
+
+.task2-question-label {
+    color: #64748b;
+
+    font-weight: 700;
+}
+
+
+.task2-nuclei-row {
+    display: grid;
+
+    grid-template-columns:
+        1fr
+        70px
+        1fr;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin:
+        18px
+        0;
+}
+
+
+.task2-nucleus-box {
+    padding: 18px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 9px;
+
+    background: #f8fafc;
+}
+
+
+.task2-nucleus-box > span {
+    display: block;
+
+    color: #64748b;
+}
+
+
+.task2-big-notation {
+    margin:
+        12px
+        0;
+
+    font-size: 58px;
+
+    font-weight: 700;
+}
+
+
+.task2-versus {
+    color: #64748b;
+
+    font-weight: 700;
+}
+
+
+.task2-question-area button {
+    padding:
+        10px
+        16px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: #f8fafc;
+}
+
+
+/* =====================================================
+   GỢI Ý
+===================================================== */
+
+.task2-hint-box {
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border-left: 4px solid #3b82f6;
+
+    border-radius: 8px;
+
+    background: #eff6ff;
+}
+
+
+.task2-hint-box p {
+    margin:
+        7px
+        0;
+}
+
+
+.task2-hint-formula {
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   INPUT SO SÁNH
+===================================================== */
+
+.task2-comparison-input-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 16px;
+
+    margin-top: 20px;
+}
+
+
+.task2-comparison-card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    padding: 16px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.task2-comparison-card h4 {
+    margin:
+        0
+        0
+        6px;
+}
+
+
+.task2-comparison-card label {
+    font-weight: 700;
+}
+
+
+.task2-comparison-card input {
+    width: 100%;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+}
+
+
+/* =====================================================
+   QUESTIONS
+===================================================== */
+
+.task2-question-card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.task2-question-card label {
+    font-weight: 700;
+}
+
+
+.task2-question-card select,
+.task2-question-card input {
+    width: 100%;
+
+    max-width: 850px;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.task2-result-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+.task2-result-box {
+    padding: 14px;
+
+    border: 1px solid #d1e7d8;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: #f0fdf4;
+}
+
+
+.task2-result-box span {
+    display: block;
+
+    color: #64748b;
+}
+
+
+.task2-result-box strong {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 18px;
+}
+
+
+.task2-solution {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.task2-solution h4 {
+    margin-top: 0;
+}
+
+
+.task2-solution p {
+    margin:
+        7px
+        0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 750px) {
+
+    .task2-nuclei-row {
+        grid-template-columns: 1fr;
+    }
+
+
+    .task2-versus {
+        text-align: center;
+    }
+
+
+    .task2-comparison-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .task2-result-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    .task2-result-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .task2-big-notation {
+        font-size: 46px;
+    }
+
+}
+/* =====================================================
+   THÍ NGHIỆM - NHIỆM VỤ 3
+===================================================== */
+
+.task3-element-selector {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    margin-top: 18px;
+}
+
+
+.task3-element-selector label {
+    font-weight: 700;
+}
+
+
+.task3-element-selector select {
+    width: 100%;
+
+    max-width: 650px;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+/* =====================================================
+   THÔNG TIN NGUYÊN TỐ
+===================================================== */
+
+.task3-element-info {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-top: 18px;
+}
+
+
+.task3-element-info > div {
+    padding: 14px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: white;
+}
+
+
+.task3-element-info span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+.task3-element-info strong {
+    display: block;
+
+    margin-top: 5px;
+
+    font-size: 19px;
+}
+
+
+/* =====================================================
+   HINT
+===================================================== */
+
+.task3-hint-box {
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border-left: 4px solid #3b82f6;
+
+    border-radius: 8px;
+
+    background: #eff6ff;
+}
+
+
+.task3-hint-box p {
+    margin:
+        6px
+        0;
+}
+
+
+.task3-formula {
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.task3-table-wrapper {
+    width: 100%;
+
+    margin-top: 20px;
+
+    overflow-x: auto;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+}
+
+
+.task3-table-wrapper table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.task3-table-wrapper th,
+.task3-table-wrapper td {
+    padding: 10px;
+
+    border: 1px solid #dbe3ec;
+
+    text-align: center;
+}
+
+
+.task3-table-wrapper th {
+    background: #f1f5f9;
+}
+
+
+.task3-table-wrapper input {
+    width: 95px;
+
+    padding: 8px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 6px;
+
+    text-align: center;
+}
+
+
+.task3-row-feedback {
+    min-width: 105px;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+
+.task3-row-feedback.correct {
+    color: #166534;
+}
+
+
+.task3-row-feedback.review {
+    color: #b45309;
+}
+
+
+/* =====================================================
+   QUESTIONS
+===================================================== */
+
+.task3-question-card {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 9px;
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.task3-question-card label {
+    font-weight: 700;
+}
+
+
+.task3-question-card select {
+    width: 100%;
+
+    max-width: 900px;
+
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+
+    background: white;
+}
+
+
+/* =====================================================
+   DIFFERENCE
+===================================================== */
+
+.task3-difference-section {
+    margin-top: 18px;
+
+    padding: 16px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: white;
+}
+
+
+.task3-difference-section h4 {
+    margin-top: 0;
+}
+
+
+.task3-difference-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 14px;
+
+    margin-top: 14px;
+}
+
+
+.task3-difference-grid > div {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+}
+
+
+.task3-difference-grid label {
+    font-weight: 700;
+}
+
+
+.task3-difference-grid input {
+    padding: 10px;
+
+    border: 1px solid #cbd5e1;
+
+    border-radius: 7px;
+}
+
+
+/* =====================================================
+   RESULT
+===================================================== */
+
+.task3-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+
+.task3-summary-box {
+    padding: 14px;
+
+    border: 1px solid #d1e7d8;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: #f0fdf4;
+}
+
+
+.task3-summary-box span {
+    display: block;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+.task3-summary-box strong {
+    display: block;
+
+    margin-top: 6px;
+
+    font-size: 19px;
+}
+
+
+.task3-solution {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.task3-solution h4 {
+    margin-top: 0;
+}
+
+
+.task3-solution p {
+    margin:
+        7px
+        0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 850px) {
+
+    .task3-element-info,
+    .task3-summary-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .task3-element-info,
+    .task3-summary-grid,
+    .task3-difference-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+/* =====================================================
+   KIỂM CHỨNG - BÀI 1
+===================================================== */
+
+.validation-block {
+    margin-top: 22px;
+
+    padding: 20px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 10px;
+
+    background: #fafcff;
+}
+
+
+.validation-block h3 {
+    margin-top: 0;
+}
+
+
+.validation-formula-box {
+    margin-top: 16px;
+
+    padding: 16px;
+
+    border-left: 4px solid #3b82f6;
+
+    border-radius: 8px;
+
+    background: #eff6ff;
+}
+
+
+.validation-formula-box p {
+    margin:
+        7px
+        0;
+}
+
+
+.validation-formula {
+    text-align: center;
+
+    font-size: 20px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   SUMMARY
+===================================================== */
+
+.validation-summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 12px;
+
+    margin-top: 22px;
+}
+
+
+.validation-summary-box {
+    padding: 15px;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+
+    text-align: center;
+
+    background: white;
+}
+
+
+.validation-summary-box span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #64748b;
+
+    font-size: 14px;
+}
+
+
+.validation-summary-box strong {
+    font-size: 18px;
+}
+
+
+/* =====================================================
+   TABLE
+===================================================== */
+
+.validation-table-section {
+    margin-top: 24px;
+}
+
+
+.validation-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid #dbe3ec;
+
+    border-radius: 8px;
+}
+
+
+.validation-table-wrapper table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+
+.validation-table-wrapper th,
+.validation-table-wrapper td {
+    padding: 10px;
+
+    border: 1px solid #dbe3ec;
+
+    text-align: center;
+
+    white-space: nowrap;
+}
+
+
+.validation-table-wrapper th {
+    background: #f1f5f9;
+}
+
+
+.validation-pass {
+    color: #166534;
+
+    font-weight: 700;
+}
+
+
+.validation-review {
+    color: #b45309;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   CONCLUSION
+===================================================== */
+
+.validation-conclusion {
+    margin-top: 20px;
+
+    padding: 16px;
+
+    border: 1px solid #d1e7d8;
+
+    border-radius: 8px;
+
+    background: #f0fdf4;
+}
+
+
+.validation-conclusion h4 {
+    margin-top: 0;
+}
+
+
+.validation-method-note {
+    margin-top: 24px;
+
+    padding: 17px;
+
+    border-left: 4px solid #64748b;
+
+    border-radius: 8px;
+
+    background: #f8fafc;
+}
+
+
+.validation-method-note h3 {
+    margin-top: 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 900px) {
+
+    .validation-summary-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .validation-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+}

@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+        Suy giảm cường độ tia gamma qua vật chất
+    </title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=5" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<div class="container">
+<!-- =====================================================
+         ĐIỀU HƯỚNG
+    ====================================================== -->
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Suy giảm cường độ tia gamma qua vật chất</h1>
+<p class="page-description">Khảo sát định lượng sự thay đổi của cường độ bức xạ gamma khi truyền qua lớp vật liệu hấp thụ.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/gamma-attenuation.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Quan sát cường độ gamma giảm khi độ dày vật liệu tăng.</li><li>Xác định hệ số suy giảm μ từ dữ liệu mô phỏng.</li><li>Kiểm tra bề dày bán giá trị của vật liệu.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">I = I<sub>0</sub>e<sup>−μx</sup></div><div class="lesson-formula-secondary">x<sub>1/2</sub> = ln2 / μ</div></div>
+<div class="lesson-mini-visual"><div aria-label="Chùm gamma suy giảm sau khi qua lớp vật liệu" class="gamma-beam-visual"><span class="beam-source">I<sub>0</sub></span><span class="beam-line strong"></span><span class="shield-block">x</span><span class="beam-line weak"></span><span class="beam-source">I</span></div></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Các giá trị μ trong bài là tham số hiệu dụng của mô hình giáo dục hiện tại. Chúng giúp kiểm tra định luật suy giảm mũ và không đại diện cho mọi năng lượng gamma hay mọi điều kiện vật liệu.</p>
+</article>
+</section>
+<!-- =====================================================
+         MỤC TIÊU
+    ====================================================== -->
+<section class="learning-goals">
+<h2>
+            Mục tiêu học tập
+        </h2>
+<div class="goal-grid">
+<div class="goal-card">
+<strong>
+                    1
+                </strong>
+<p>
+                    Nhận biết cường độ bức xạ gamma
+                    giảm khi độ dày vật liệu tăng.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    2
+                </strong>
+<p>
+                    Quan sát dạng hàm mũ của quá trình
+                    suy giảm bức xạ gamma.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    3
+                </strong>
+<p>
+                    So sánh kết quả mô phỏng Monte Carlo
+                    với mô hình lý thuyết.
+                </p>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         CHỌN CHẾ ĐỘ
+    ====================================================== -->
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<!-- =====================================================
+         KHU MÔ PHỎNG
+    ====================================================== -->
+<section class="simulation-layout">
+<!-- =================================================
+             BẢNG ĐIỀU KHIỂN
+        ================================================== -->
+<aside class="control-panel">
+<h2>
+                Thông số
+            </h2>
+<div class="control-group">
+<label for="materialSelect">
+                    Vật liệu hấp thụ
+                </label>
+<select id="materialSelect">
+<option value="paper">
+                        Giấy
+                    </option>
+<option selected="" value="aluminum">
+                        Nhôm
+                    </option>
+<option value="lead">
+                        Chì
+                    </option>
+</select>
+</div>
+<div class="control-group">
+<label for="thicknessInput">
+
+                    Độ dày x:
+
+                    <strong id="thicknessDisplay">
+                        4.0 mm
+                    </strong>
+</label>
+<input id="thicknessInput" max="20" min="0" step="0.5" type="range" value="4"/>
+<div class="range-labels">
+<span>
+                        0 mm
+                    </span>
+<span>
+                        20 mm
+                    </span>
+</div>
+</div>
+<div class="control-group">
+<label for="photonCountInput">
+                    Số photon gamma đại diện
+                </label>
+<input id="photonCountInput" max="5000" min="50" step="50" type="number" value="1000"/>
+</div>
+<div class="advanced-controls" id="advancedControls">
+<div class="advanced-box">
+<span>
+                        Hệ số μ của mô hình
+                    </span>
+<strong id="muDisplay">
+                        —
+                    </strong>
+</div>
+<div class="advanced-box">
+<span>
+                        Bề dày bán giá trị
+                    </span>
+<strong id="hvlDisplay">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="button-group">
+<button id="runButton">
+                    ▶ Phát tia gamma
+                </button>
+<button id="resetButton">
+                    ↻ Đặt lại
+                </button>
+</div>
+<div class="model-note">
+<strong>
+                    Lưu ý
+                </strong>
+<p>
+                    Các hệ số μ trong phiên bản này là
+                    tham số của mô hình giáo dục.
+                    Chúng được dùng để mô phỏng xu hướng suy giảm,
+                    không phải bảng dữ liệu thực nghiệm phổ quát.
+                </p>
+</div>
+</aside>
+<!-- =================================================
+             MÀN HÌNH MÔ PHỎNG
+        ================================================== -->
+<section class="simulation-panel">
+<div class="simulation-title-row">
+<div>
+<h2>
+                        Mô hình truyền tia gamma
+                    </h2>
+<p>
+                        Photon gamma đi từ nguồn,
+                        qua vật liệu hấp thụ
+                        và tới đầu dò.
+                    </p>
+</div>
+<span class="status-badge ready" id="statusBadge">
+                    Sẵn sàng
+                </span>
+</div>
+<div class="legend">
+<span>
+<i class="legend-dot moving"></i>
+                    Photon gamma
+                </span>
+<span>
+<i class="legend-dot detected"></i>
+                    Tới đầu dò
+                </span>
+<span>
+<i class="legend-dot absorbed"></i>
+                    Không truyền qua
+                </span>
+</div>
+<canvas height="430" id="simulationCanvas" width="820"></canvas>
+</section>
+</section>
+<!-- =====================================================
+         KẾT QUẢ
+    ====================================================== -->
+<section class="result-panel">
+<div class="result-box">
+<span>
+                Photon phát ra
+            </span>
+<strong id="emittedDisplay">
+                0
+            </strong>
+</div>
+<div class="result-box">
+<span>
+                Photon tới đầu dò
+            </span>
+<strong id="transmittedDisplay">
+                0
+            </strong>
+</div>
+<div class="result-box">
+<span>
+                Không truyền qua
+            </span>
+<strong id="absorbedDisplay">
+                0
+            </strong>
+</div>
+<div class="result-box">
+<span>
+                I/I₀ mô phỏng
+            </span>
+<strong id="transmissionDisplay">
+                0.000
+            </strong>
+</div>
+<div class="result-box">
+<span>
+                I/I₀ lý thuyết
+            </span>
+<strong id="theoryDisplay">
+                —
+            </strong>
+</div>
+</section>
+<!-- =====================================================
+         ĐỒ THỊ
+    ====================================================== -->
+<section class="chart-panel">
+<div class="chart-heading">
+<h2>
+                Đồ thị suy giảm
+            </h2>
+<p>
+                So sánh điểm mô phỏng hiện tại
+                với đường lý thuyết
+                I/I₀ = e<sup>−μx</sup>.
+            </p>
+</div>
+<div class="chart-container">
+<canvas id="attenuationChart"></canvas>
+</div>
+</section>
+<!-- =====================================================
+         KHÁM PHÁ
+    ====================================================== -->
+<section class="mode-panel active" id="explorePanel">
+<h2>
+            Khám phá
+        </h2>
+<div class="explore-steps">
+<div class="explore-step">
+<span class="step-number">
+                    1
+                </span>
+<div>
+<strong>
+                        Chọn vật liệu
+                    </strong>
+<p>
+                        Thử Giấy, Nhôm hoặc Chì.
+                    </p>
+</div>
+</div>
+<div class="explore-step">
+<span class="step-number">
+                    2
+                </span>
+<div>
+<strong>
+                        Thay đổi độ dày
+                    </strong>
+<p>
+                        Quan sát đường lý thuyết
+                        và dự đoán số photon tới đầu dò.
+                    </p>
+</div>
+</div>
+<div class="explore-step">
+<span class="step-number">
+                    3
+                </span>
+<div>
+<strong>
+                        Phát tia gamma
+                    </strong>
+<p>
+                        So sánh kết quả Monte Carlo
+                        với giá trị lý thuyết.
+                    </p>
+</div>
+</div>
+</div>
+<div class="question-card">
+<h3>
+                Câu hỏi gợi ý
+            </h3>
+<p>
+                Khi độ dày của cùng một vật liệu tăng lên,
+                tỉ lệ photon gamma tới đầu dò thay đổi như thế nào?
+            </p>
+<p>
+                Đồ thị suy giảm có phải là một đường thẳng hay không?
+            </p>
+</div>
+</section>
+<!-- =====================================================
+         THÍ NGHIỆM - KHUNG SẴN
+    ====================================================== -->
+<section class="mode-panel" id="experimentPanel">
+<h2>
+        Thí nghiệm ảo
+    </h2>
+<p>
+        Thực hiện các nhiệm vụ định lượng để khảo sát
+        quy luật suy giảm cường độ tia gamma
+        và xử lý dữ liệu mô phỏng.
+    </p>
+<!-- =================================================
+         NHIỆM VỤ 1
+    ================================================== -->
+<div class="experiment-task" id="task1Card">
+<h3>
+            Nhiệm vụ 1:
+            Khảo sát I/I₀ theo độ dày vật liệu
+        </h3>
+<p>
+            Giữ cố định bức xạ gamma,
+            vật liệu <strong>Chì</strong>
+            và số photon ban đầu
+            <strong>N₀ = 1000</strong>.
+            Thay đổi độ dày lớp chì và ghi nhận
+            tỉ lệ photon tới đầu dò.
+        </p>
+<div class="task-condition-grid">
+<div class="task-condition-box">
+<span>
+                    Bức xạ
+                </span>
+<strong>
+                    γ
+                </strong>
+</div>
+<div class="task-condition-box">
+<span>
+                    Vật liệu
+                </span>
+<strong>
+                    Chì
+                </strong>
+</div>
+<div class="task-condition-box">
+<span>
+                    Photon mỗi lần
+                </span>
+<strong>
+                    1000
+                </strong>
+</div>
+</div>
+<div class="task-question">
+<strong>
+                Dự đoán trước khi chạy:
+            </strong>
+<p>
+                Khi độ dày lớp chì tăng dần,
+                tỉ lệ I/I₀ sẽ giảm theo đường thẳng
+                hay theo một đường cong?
+            </p>
+</div>
+<div class="task-button-group">
+<button id="setupTask1Button">
+                Thiết lập nhiệm vụ
+            </button>
+<button disabled="" id="runTask1Button">
+                Chạy khảo sát
+            </button>
+</div>
+<div class="experiment-feedback">
+<p>
+<strong>
+                    Trạng thái:
+                </strong>
+<span id="task1Status">
+                    Chưa thiết lập
+                </span>
+</p>
+<div hidden="" id="task1Result">
+<h4>
+                    Bảng số liệu
+                </h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    x (mm)
+                                </th>
+<th>
+                                    N₀
+                                </th>
+<th>
+                                    N mô phỏng
+                                </th>
+<th>
+                                    I/I₀ mô phỏng
+                                </th>
+<th>
+                                    I/I₀ lý thuyết
+                                </th>
+</tr>
+</thead>
+<tbody id="task1TableBody">
+</tbody>
+</table>
+</div>
+<div class="task1-chart-section">
+<h4>
+                        Đồ thị suy giảm
+                    </h4>
+<p>
+                        Các điểm biểu diễn kết quả Monte Carlo.
+                        Đường liên tục biểu diễn
+                        I/I₀ = e<sup>−μx</sup>.
+                    </p>
+<div class="task1-chart-container">
+<canvas id="task1Chart"></canvas>
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                        Nhận xét
+                    </h4>
+<p id="task1Conclusion">
+</p>
+</div>
+<div class="task-question">
+<strong>
+                        Câu hỏi suy nghĩ:
+                    </strong>
+<p>
+                        Khoảng giảm của I/I₀ khi tăng thêm
+                        1 mm chì có giống nhau tại mọi độ dày không?
+                        Kết quả này cho biết gì về dạng của quy luật suy giảm?
+                    </p>
+</div>
+</div>
+</div>
+</div>
+<!-- =================================================
+         NHIỆM VỤ 2
+    ================================================== -->
+<div class="experiment-task" id="task2Card">
+<h3>
+        Nhiệm vụ 2:
+        Xác định hệ số suy giảm μ từ dữ liệu mô phỏng
+    </h3>
+<p>
+        Sử dụng dữ liệu Monte Carlo của
+        <strong>Nhiệm vụ 1</strong>,
+        biến đổi tỉ lệ cường độ theo:
+    </p>
+<div class="task-formula">
+
+        ln(I/I₀) = −μx
+
+    </div>
+<p>
+        Sau đó khảo sát đồ thị
+        <strong>ln(I/I₀) theo x</strong>
+        và xác định μ từ hệ số góc của đường hồi quy.
+    </p>
+<div class="task-question">
+<strong>
+            Dự đoán:
+        </strong>
+<p>
+            Nếu quy luật suy giảm có dạng hàm mũ,
+            đồ thị ln(I/I₀) theo x sẽ có dạng như thế nào?
+        </p>
+</div>
+<div class="task-button-group">
+<button id="setupTask2Button">
+            Lấy dữ liệu Nhiệm vụ 1
+        </button>
+<button disabled="" id="runTask2Button">
+            Xử lý dữ liệu và xác định μ
+        </button>
+</div>
+<div class="experiment-feedback">
+<p>
+<strong>
+                Trạng thái:
+            </strong>
+<span id="task2Status">
+                Chưa lấy dữ liệu
+            </span>
+</p>
+<div hidden="" id="task2Result">
+<h4>
+                Bảng dữ liệu biến đổi
+            </h4>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                x (mm)
+                            </th>
+<th>
+                                I/I₀ mô phỏng
+                            </th>
+<th>
+                                ln(I/I₀)
+                            </th>
+</tr>
+</thead>
+<tbody id="task2TableBody">
+</tbody>
+</table>
+</div>
+<div class="task2-chart-section">
+<h4>
+                    Đồ thị tuyến tính hóa
+                </h4>
+<p>
+                    Các điểm là dữ liệu Monte Carlo.
+                    Đường thẳng biểu diễn kết quả hồi quy tuyến tính.
+                </p>
+<div class="task2-chart-container">
+<canvas id="task2Chart"></canvas>
+</div>
+</div>
+<div class="regression-summary">
+<div class="regression-box">
+<span>
+                        Phương trình hồi quy
+                    </span>
+<strong id="task2Equation">
+                        —
+                    </strong>
+</div>
+<div class="regression-box">
+<span>
+                        μ xác định từ mô phỏng
+                    </span>
+<strong id="task2MuExperimental">
+                        —
+                    </strong>
+</div>
+<div class="regression-box">
+<span>
+                        μ của mô hình
+                    </span>
+<strong id="task2MuModel">
+                        0.240 mm⁻¹
+                    </strong>
+</div>
+<div class="regression-box">
+<span>
+                        R²
+                    </span>
+<strong id="task2R2">
+                        —
+                    </strong>
+</div>
+<div class="regression-box">
+<span>
+                        Sai lệch tương đối
+                    </span>
+<strong id="task2RelativeError">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                    Nhận xét
+                </h4>
+<p id="task2Conclusion">
+</p>
+</div>
+<div class="task-question">
+<strong>
+                    Câu hỏi suy nghĩ:
+                </strong>
+<p>
+                    Vì sao đường cong I/I₀ theo x
+                    trở thành gần đường thẳng
+                    khi biểu diễn ln(I/I₀) theo x?
+                    Hệ số góc của đường thẳng mang ý nghĩa vật lý gì?
+                </p>
+</div>
+</div>
+</div>
+</div>
+<!-- =================================================
+         NHIỆM VỤ 3
+    ================================================== -->
+<div class="experiment-task" id="task3Card">
+<h3>
+        Nhiệm vụ 3:
+        Xác định và kiểm tra bề dày bán giá trị
+    </h3>
+<p>
+        Sử dụng hệ số suy giảm
+        <strong>μ xác định từ Nhiệm vụ 2</strong>
+        để tính bề dày bán giá trị:
+    </p>
+<div class="task-formula">
+        x₁/₂ = ln2 / μ
+    </div>
+<p>
+        Sau đó thực hiện nhiều phép mô phỏng tại
+        độ dày vừa xác định để kiểm tra xem
+        cường độ bức xạ gamma có giảm còn gần một nửa hay không.
+    </p>
+<div class="task-question">
+<strong>
+            Dự đoán:
+        </strong>
+<p>
+            Nếu x = x₁/₂ thì giá trị I/I₀
+            trong mỗi lần mô phỏng có bắt buộc
+            đúng bằng 0,500 hay không?
+        </p>
+</div>
+<div class="task-button-group">
+<button id="setupTask3Button">
+            Tính bề dày bán giá trị
+        </button>
+<button disabled="" id="runTask3Button">
+            Kiểm tra bằng mô phỏng
+        </button>
+</div>
+<div class="experiment-feedback">
+<p>
+<strong>
+                Trạng thái:
+            </strong>
+<span id="task3Status">
+                Chưa có dữ liệu từ Nhiệm vụ 2
+            </span>
+</p>
+<div hidden="" id="task3Result">
+<div class="hvl-summary">
+<div class="hvl-box">
+<span>
+                        μ từ mô phỏng
+                    </span>
+<strong id="task3MuExperimental">
+                        —
+                    </strong>
+</div>
+<div class="hvl-box">
+<span>
+                        x₁/₂ từ μ mô phỏng
+                    </span>
+<strong id="task3HvlExperimental">
+                        —
+                    </strong>
+</div>
+<div class="hvl-box">
+<span>
+                        x₁/₂ của mô hình
+                    </span>
+<strong id="task3HvlModel">
+                        —
+                    </strong>
+</div>
+<div class="hvl-box">
+<span>
+                        Sai lệch x₁/₂
+                    </span>
+<strong id="task3HvlError">
+                        —
+                    </strong>
+</div>
+</div>
+<h4>
+                Kiểm tra Monte Carlo tại x = x₁/₂
+            </h4>
+<p>
+                Chương trình thực hiện 5 phép mô phỏng độc lập,
+                mỗi phép sử dụng 2000 photon gamma.
+            </p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Lần
+                            </th>
+<th>
+                                N₀
+                            </th>
+<th>
+                                N tới đầu dò
+                            </th>
+<th>
+                                I/I₀
+                            </th>
+</tr>
+</thead>
+<tbody id="task3TableBody">
+</tbody>
+</table>
+</div>
+<div class="task3-result-summary">
+<div class="hvl-box">
+<span>
+                        I/I₀ trung bình
+                    </span>
+<strong id="task3AverageRatio">
+                        —
+                    </strong>
+</div>
+<div class="hvl-box">
+<span>
+                        Giá trị mục tiêu
+                    </span>
+<strong>
+                        0.500
+                    </strong>
+</div>
+<div class="hvl-box">
+<span>
+                        Lý thuyết mô hình tại x₁/₂,TN
+                    </span>
+<strong id="task3TheoryRatio">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="task3-chart-section">
+<h4>
+                    Dao động của các lần mô phỏng
+                </h4>
+<p>
+                    Các điểm biểu diễn I/I₀ của từng lần.
+                    Đường ngang biểu diễn giá trị 0,500.
+                </p>
+<div class="task3-chart-container">
+<canvas id="task3Chart"></canvas>
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                    Nhận xét
+                </h4>
+<p id="task3Conclusion">
+</p>
+</div>
+<div class="task-question">
+<strong>
+                    Câu hỏi suy nghĩ:
+                </strong>
+<p>
+                    Tại sao các lần mô phỏng riêng lẻ
+                    dao động quanh 0,500 thay vì đều bằng
+                    chính xác 0,500?
+                </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         KIỂM CHỨNG - KHUNG SẴN
+    ====================================================== -->
+<section class="mode-panel validation-panel" id="validationPanel">
+<h2>
+        Kiểm chứng mô hình
+    </h2>
+<p>
+        Chế độ này kiểm tra độ ổn định của quá trình
+        xác định hệ số suy giảm μ từ dữ liệu Monte Carlo.
+    </p>
+<div class="validation-explanation">
+<h3>
+            Quy trình kiểm chứng
+        </h3>
+<p>
+            Mỗi bộ dữ liệu gồm các phép mô phỏng tại
+            x = 0, 1, 2, 3, 4, 5, 6, 8 và 10 mm.
+            Với mỗi độ dày, chương trình sử dụng
+            1000 photon gamma.
+        </p>
+<p>
+            Từ mỗi bộ dữ liệu, chương trình thực hiện hồi quy:
+        </p>
+<div class="task-formula">
+            ln(I/I₀) = a − μx
+        </div>
+<p>
+            Sau đó giá trị μ thu được từ nhiều bộ dữ liệu
+            độc lập được so sánh với giá trị của mô hình.
+        </p>
+</div>
+<div class="validation-controls">
+<div class="validation-control-group">
+<label for="validationRepeatCount">
+                Số bộ dữ liệu độc lập
+            </label>
+<select id="validationRepeatCount">
+<option value="20">
+                    20 bộ
+                </option>
+<option selected="" value="50">
+                    50 bộ
+                </option>
+<option value="100">
+                    100 bộ
+                </option>
+<option value="200">
+                    200 bộ
+                </option>
+</select>
+</div>
+<button id="runValidationButton">
+            Chạy kiểm chứng
+        </button>
+</div>
+<div class="validation-summary">
+<div class="validation-summary-box">
+<span>
+                Trạng thái
+            </span>
+<strong id="validationStatus">
+                Chưa chạy
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                μ trung bình
+            </span>
+<strong id="validationMeanMu">
+                —
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                Độ lệch chuẩn
+            </span>
+<strong id="validationSdMu">
+                —
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                Sai lệch tương đối
+            </span>
+<strong id="validationRelativeError">
+                —
+            </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                R² trung bình
+            </span>
+<strong id="validationMeanR2">
+                —
+            </strong>
+</div>
+</div>
+<div hidden="" id="validationResult">
+<div class="validation-chart-section">
+<h3>
+                Giá trị μ qua các lần kiểm chứng
+            </h3>
+<p>
+                Mỗi điểm biểu diễn μ xác định từ
+                một bộ dữ liệu Monte Carlo độc lập.
+                Đường ngang biểu diễn μ của mô hình.
+            </p>
+<div class="validation-chart-container">
+<canvas id="validationChart"></canvas>
+</div>
+</div>
+<div class="validation-table-section">
+<h3>
+                Bảng kết quả
+            </h3>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                Bộ dữ liệu
+                            </th>
+<th>
+                                μ xác định (mm⁻¹)
+                            </th>
+<th>
+                                R²
+                            </th>
+<th>
+                                Sai lệch μ (%)
+                            </th>
+</tr>
+</thead>
+<tbody id="validationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h3>
+                Nhận xét
+            </h3>
+<p id="validationConclusion">
+</p>
+</div>
+</div>
+<div class="validation-model-note">
+<h3>
+            Giá trị tham chiếu của mô hình
+        </h3>
+<p>
+            Với lớp chì trong mô hình giáo dục hiện tại:
+        </p>
+<div class="task-formula">
+            μ = 0.240 mm⁻¹
+        </div>
+<p>
+            Mục tiêu của kiểm chứng không phải làm cho
+            mọi lần mô phỏng đều cho đúng 0,240 mm⁻¹,
+            mà kiểm tra xem các giá trị thu được có
+            dao động thống kê quanh giá trị này hay không.
+        </p>
+</div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/physics.js?v=5"></script>
+<script src="js/simulation.js?v=5"></script>
+<script src="js/app.js?v=5"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>

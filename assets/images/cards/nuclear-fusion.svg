@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <defs><radialGradient id="glow"><stop stop-color="#fff7cc"/><stop offset="1" stop-color="#f3f8ff"/></radialGradient></defs>
+  <rect width="800" height="310" fill="url(#glow)"/>
+  <circle cx="170" cy="155" r="54" fill="#dcecff" stroke="#2f7bdc" stroke-width="4"/>
+  <circle cx="315" cy="155" r="54" fill="#f2e8ff" stroke="#7a63d8" stroke-width="4"/>
+  <text x="170" y="164" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="#255f9e">D</text>
+  <text x="315" y="164" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="#684db8">T</text>
+  <text x="243" y="165" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" fill="#65758a">+</text>
+  <line x1="380" y1="155" x2="500" y2="155" stroke="#d06b38" stroke-width="4"/>
+  <polygon points="500,155 483,146 483,164" fill="#d06b38"/>
+  <circle cx="590" cy="155" r="66" fill="#fff3d4" stroke="#e6a23c" stroke-width="4"/>
+  <text x="590" y="164" text-anchor="middle" font-family="Segoe UI, Arial" font-size="28" font-weight="700" fill="#96621e">He-4</text>
+  <circle cx="710" cy="102" r="10" fill="#2f7bdc"/>
+  <text x="677" y="225" font-family="Segoe UI, Arial" font-size="22" font-weight="700" fill="#1f3f6f">+ n + Q</text>
+</svg>

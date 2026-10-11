@@ -1,0 +1,1588 @@
+<!DOCTYPE html>
+
+<html lang="vi">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>
+        Nhiệt hạch hạt nhân
+    </title>
+<link href="data:," rel="icon"/>
+<link href="css/style.css?v=6" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<body class="lesson-ui">
+<div class="container">
+<!-- =====================================================
+         ĐIỀU HƯỚNG
+    ====================================================== -->
+<div class="top-navigation">
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+</div>
+<!-- =====================================================
+         HEADER
+    ====================================================== -->
+<header class="page-header lesson-hero">
+<div class="lesson-hero-copy">
+<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<h1>Nhiệt hạch hạt nhân</h1>
+<p class="page-description">Khám phá quá trình kết hợp các hạt nhân nhẹ, kiểm tra các định luật bảo toàn và xác định năng lượng phản ứng từ chênh lệch khối lượng.</p>
+</div>
+<div aria-hidden="true" class="lesson-hero-visual">
+<img alt="" src="../../assets/images/cards/nuclear-fusion.svg"/>
+</div>
+</header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
+<article class="lesson-insight-card lesson-discovery-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<ul class="lesson-mini-list"><li>Kiểm tra bảo toàn A và Z trong các phản ứng nhiệt hạch.</li><li>Tính Q từ khối lượng trước và sau phản ứng.</li><li>So sánh năng lượng của một số kênh phản ứng nhẹ trong bộ dữ liệu.</li></ul>
+</article>
+<article class="lesson-insight-card lesson-formula-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">Q = (m<sub>trước</sub> − m<sub>sau</sub>)c²</div><div class="lesson-formula-secondary">D + T → ⁴He + n  •  Q ≈ 17,59 MeV</div></div>
+<div class="lesson-mini-visual"><div aria-label="Deuteri và triti kết hợp tạo helium bốn, neutron và năng lượng" class="fusion-visual"><span class="fusion-particle">D</span><span class="fusion-particle">T</span><b>→</b><span class="fusion-product">⁴He</span><span class="particle-dot neutron-dot">n</span><span class="energy-mark">Q</span></div></div>
+</article>
+<article class="lesson-insight-card lesson-model-card">
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
+<p>Hình ảnh chỉ minh họa sự kết hợp của các hạt nhân nhẹ và cân bằng năng lượng của phản ứng; không mô phỏng đầy đủ plasma, phân bố vận tốc hay điều kiện vật lí của môi trường nhiệt hạch.</p>
+</article>
+</section>
+<!-- =====================================================
+         MỤC TIÊU
+    ====================================================== -->
+<section class="learning-goals">
+<h2>
+            Mục tiêu học tập
+        </h2>
+<div class="goal-grid">
+<div class="goal-card">
+<strong>
+                    1
+                </strong>
+<p>
+                    Mô tả các giai đoạn cơ bản
+                    của một số phản ứng nhiệt hạch minh họa.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    2
+                </strong>
+<p>
+                    Kiểm tra sự bảo toàn số nucleon A
+                    và điện tích Z trong phản ứng.
+                </p>
+</div>
+<div class="goal-card">
+<strong>
+                    3
+                </strong>
+<p>
+                    Liên hệ chênh lệch khối lượng
+                    với năng lượng tỏa ra của phản ứng nhiệt hạch.
+                </p>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         CHẾ ĐỘ
+    ====================================================== -->
+<nav aria-label="Chọn chế độ học tập" class="mode-navigation">
+<button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
+<button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+</nav>
+<!-- =====================================================
+         KHU MÔ PHỎNG
+    ====================================================== -->
+<section class="simulation-layout">
+<!-- =================================================
+             ĐIỀU KHIỂN
+        ================================================== -->
+<aside class="control-panel">
+<h2>
+                Điều khiển
+            </h2>
+<div class="control-group">
+<label for="fusionReactionSelect">
+                    Chọn phản ứng nhiệt hạch
+                </label>
+<select id="fusionReactionSelect">
+<option value="D-T-He4-n">
+                        D + T → He-4 + n
+                    </option>
+<option value="D-D-He3-n">
+                        D + D → He-3 + n
+                    </option>
+<option value="D-D-T-H1">
+                        D + D → T + H-1
+                    </option>
+<option value="D-He3-He4-H1">
+                        D + He-3 → He-4 + H-1
+                    </option>
+</select>
+</div>
+<div class="button-group">
+<button id="startButton">
+                    ▶ Bắt đầu
+                </button>
+<button id="pauseButton">
+                    ⏸ Tạm dừng
+                </button>
+<button id="resetButton">
+                    ↻ Đặt lại
+                </button>
+</div>
+<div class="speed-control">
+<label for="speedSelect">
+                    Tốc độ mô phỏng
+                </label>
+<select id="speedSelect">
+<option value="0.7">
+                        Chậm
+                    </option>
+<option selected="" value="1">
+                        Bình thường
+                    </option>
+<option value="1.5">
+                        Nhanh
+                    </option>
+</select>
+</div>
+<div class="reaction-info">
+<strong id="selectedReactionTitle">
+                    D + T → He-4 + n
+                </strong>
+<p id="selectedReactionDescription">
+                    Đơteri và triti kết hợp tạo heli-4
+                    và một neutron.
+                </p>
+</div>
+<div class="model-note">
+<strong>
+                    Lưu ý
+                </strong>
+<p>
+                    Hình ảnh chỉ là mô hình trực quan hóa.
+                    Khoảng cách, kích thước và chuyển động
+                    không theo đúng tỉ lệ thực tế của hạt nhân.
+                </p>
+</div>
+</aside>
+<!-- =================================================
+             VÙNG ANIMATION
+        ================================================== -->
+<section class="simulation-panel">
+<div class="simulation-title-row">
+<div>
+<h2 id="simulationReactionTitle">
+                        Quá trình nhiệt hạch D + T
+                    </h2>
+<p id="stageDescription">
+                        Sẵn sàng bắt đầu mô phỏng.
+                    </p>
+</div>
+<span class="status-badge ready" id="statusBadge">
+                    Sẵn sàng
+                </span>
+</div>
+<canvas height="500" id="fusionCanvas" width="900">
+</canvas>
+<div class="stage-indicator">
+<div class="stage-item active" data-stage="0">
+<span>1</span>
+
+                    Ban đầu
+
+                </div>
+<div class="stage-item" data-stage="1">
+<span>2</span>
+
+                    Tiến lại gần
+
+                </div>
+<div class="stage-item" data-stage="2">
+<span>3</span>
+
+                    Tương tác
+
+                </div>
+<div class="stage-item" data-stage="3">
+<span>4</span>
+
+                    Tái sắp xếp
+
+                </div>
+<div class="stage-item" data-stage="4">
+<span>5</span>
+
+                    Sản phẩm
+
+                </div>
+<div class="stage-item" data-stage="5">
+<span>6</span>
+
+                    Năng lượng
+
+                </div>
+</div>
+<p class="visual-note">
+                Animation chỉ minh họa diễn biến của phản ứng,
+                không phải mô tả quỹ đạo cổ điển chính xác
+                của các hạt nhân hay nucleon.
+            </p>
+</section>
+</section>
+<!-- =====================================================
+         PHƯƠNG TRÌNH PHẢN ỨNG
+    ====================================================== -->
+<section class="reaction-panel">
+<h2>
+            Phản ứng đang minh họa
+        </h2>
+<div class="reaction-equation" id="reactionEquation">
+</div>
+<p class="reaction-note" id="reactionNote">
+</p>
+</section>
+<!-- =====================================================
+         KẾT QUẢ
+    ====================================================== -->
+<section class="result-panel">
+<h2>
+            Kết quả vật lý
+        </h2>
+<div class="result-grid">
+<div class="result-box">
+<span>
+                    A trước
+                </span>
+<strong id="initialADisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    A sau
+                </span>
+<strong id="finalADisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Z trước
+                </span>
+<strong id="initialZDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Z sau
+                </span>
+<strong id="finalZDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Δm
+                </span>
+<strong id="massDifferenceDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box highlight-result">
+<span>
+                    Q
+                </span>
+<strong id="qValueDisplay">
+                    —
+                </strong>
+</div>
+</div>
+<div class="conservation-row">
+<div id="massConservationStatus">
+                Bảo toàn A: —
+            </div>
+<div id="chargeConservationStatus">
+                Bảo toàn Z: —
+            </div>
+</div>
+</section>
+<!-- =====================================================
+         SO SÁNH KHỐI LƯỢNG
+    ====================================================== -->
+<section class="mass-panel">
+<h2>
+            So sánh khối lượng trước và sau phản ứng
+        </h2>
+<div class="mass-comparison">
+<div class="mass-row">
+<span>
+                    Trước phản ứng
+                </span>
+<div class="mass-track">
+<div class="mass-bar initial" id="initialMassBar">
+</div>
+</div>
+<strong id="initialMassDisplay">
+                    —
+                </strong>
+</div>
+<div class="mass-row">
+<span>
+                    Sau phản ứng
+                </span>
+<div class="mass-track">
+<div class="mass-bar final" id="finalMassBar">
+</div>
+</div>
+<strong id="finalMassDisplay">
+                    —
+                </strong>
+</div>
+</div>
+<p class="mass-note">
+            Hai thanh có thể rất gần nhau vì chênh lệch khối lượng
+            chỉ chiếm một phần nhỏ tổng khối lượng của hệ.
+        </p>
+</section>
+<!-- =====================================================
+         DIỄN BIẾN
+    ====================================================== -->
+<section class="explanation-panel">
+<h2>
+            Diễn biến của mô hình
+        </h2>
+<div class="explanation-grid">
+<div class="explanation-card">
+<strong>
+                    1. Các hạt nhân ban đầu
+                </strong>
+<p>
+                    Hai hạt nhân nhẹ tạo thành
+                    trạng thái ban đầu của phản ứng.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    2. Tiến lại gần
+                </strong>
+<p>
+                    Các hạt nhân được minh họa
+                    tiến vào gần vùng tương tác.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    3. Vùng tương tác
+                </strong>
+<p>
+                    Khi khoảng cách đủ nhỏ trong mô hình,
+                    tương tác hạt nhân trở nên quan trọng.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    4. Tái sắp xếp nucleon
+                </strong>
+<p>
+                    Các proton và neutron được minh họa
+                    chuyển sang cấu hình sản phẩm mới.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    5. Sản phẩm
+                </strong>
+<p>
+                    Các sản phẩm của phản ứng
+                    được hình thành và tách ra.
+                </p>
+</div>
+<div class="explanation-card">
+<strong>
+                    6. Năng lượng
+                </strong>
+<p>
+                    Nếu khối lượng trạng thái sau nhỏ hơn trạng thái trước
+                    thì phản ứng có Q dương.
+                </p>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         LIÊN HỆ BÀI 8
+    ====================================================== -->
+<section class="binding-link-panel">
+<h2>
+            Liên hệ với năng lượng liên kết
+        </h2>
+<div class="binding-flow">
+<span>
+                Các hạt nhân nhẹ
+            </span>
+<strong>
+                →
+            </strong>
+<span>
+                Trạng thái sản phẩm
+            </span>
+<strong>
+                →
+            </strong>
+<span>
+                m<sub>sau</sub>
+                &lt;
+                m<sub>trước</sub>
+</span>
+<strong>
+                →
+            </strong>
+<span>
+                Q &gt; 0
+            </span>
+</div>
+<p>
+            Sự thay đổi năng lượng liên kết của hệ
+            liên quan trực tiếp đến năng lượng
+            được giải phóng trong phản ứng.
+        </p>
+</section>
+<!-- =====================================================
+         KHÁM PHÁ
+    ====================================================== -->
+<section class="mode-panel active" id="explorePanel">
+<h2>
+            Khám phá
+        </h2>
+<div class="question-card">
+<h3>
+                Câu hỏi gợi ý
+            </h3>
+<p>
+                Hãy thử lần lượt các phản ứng và quan sát:
+                tổng A và tổng Z có thay đổi không?
+            </p>
+<p>
+                Những phản ứng có cùng hạt nhân ban đầu
+                nhưng sản phẩm khác nhau
+                có cùng năng lượng Q không?
+            </p>
+<p>
+                Phản ứng nào trong bộ dữ liệu đang khảo sát
+                có Q lớn hơn?
+            </p>
+</div>
+</section>
+<!-- =====================================================
+         THÍ NGHIỆM
+    ====================================================== -->
+<section class="mode-panel" id="experimentPanel">
+<h2>
+            Thí nghiệm ảo
+        </h2>
+<div class="experiment-task" id="task1Card">
+<h3>
+        Nhiệm vụ 1:
+        Kiểm tra các định luật bảo toàn
+    </h3>
+<p>
+        Chọn một phản ứng nhiệt hạch,
+        sau đó tự tính tổng số nucleon A
+        và tổng điện tích Z ở hai phía.
+    </p>
+<!-- =================================================
+         CHỌN PHẢN ỨNG
+    ================================================== -->
+<div class="task1-reaction-selector">
+<label for="task1ReactionSelect">
+            Phản ứng khảo sát
+        </label>
+<select id="task1ReactionSelect">
+<option value="D-T-He4-n">
+                D + T → He-4 + n
+            </option>
+<option value="D-D-He3-n">
+                D + D → He-3 + n
+            </option>
+<option value="D-D-T-H1">
+                D + D → T + H-1
+            </option>
+<option value="D-He3-He4-H1">
+                D + He-3 → He-4 + H-1
+            </option>
+</select>
+</div>
+<!-- =================================================
+         PHƯƠNG TRÌNH
+    ================================================== -->
+<div class="task1-reaction-equation" id="task1ReactionEquation">
+</div>
+<div class="task1-instruction">
+<strong>
+            Yêu cầu
+        </strong>
+<p>
+            Hãy tính bốn đại lượng bên dưới
+            trước khi nhấn nút kiểm tra.
+        </p>
+</div>
+<!-- =================================================
+         NHẬP KẾT QUẢ
+    ================================================== -->
+<div class="task1-calculation-grid">
+<div class="task1-answer-card">
+<label for="task1InitialAInput">
+                A trước phản ứng
+            </label>
+<p class="task1-expression" id="task1InitialAExpression">
+                —
+            </p>
+<input id="task1InitialAInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1InitialAFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1FinalAInput">
+                A sau phản ứng
+            </label>
+<p class="task1-expression" id="task1FinalAExpression">
+                —
+            </p>
+<input id="task1FinalAInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1FinalAFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1InitialZInput">
+                Z trước phản ứng
+            </label>
+<p class="task1-expression" id="task1InitialZExpression">
+                —
+            </p>
+<input id="task1InitialZInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1InitialZFeedback">
+</span>
+</div>
+<div class="task1-answer-card">
+<label for="task1FinalZInput">
+                Z sau phản ứng
+            </label>
+<p class="task1-expression" id="task1FinalZExpression">
+                —
+            </p>
+<input id="task1FinalZInput" placeholder="Nhập kết quả" type="number"/>
+<span class="answer-feedback" id="task1FinalZFeedback">
+</span>
+</div>
+</div>
+<!-- =================================================
+         CÂU HỎI KẾT LUẬN
+    ================================================== -->
+<div class="task1-question-card">
+<label for="task1ConservationSelect">
+
+            Từ các kết quả trên,
+            nhận xét nào phù hợp?
+
+        </label>
+<select id="task1ConservationSelect">
+<option value="">
+                -- Chọn nhận xét --
+            </option>
+<option value="both">
+                Cả tổng A và tổng Z đều được bảo toàn
+            </option>
+<option value="a-only">
+                Chỉ tổng A được bảo toàn
+            </option>
+<option value="z-only">
+                Chỉ tổng Z được bảo toàn
+            </option>
+<option value="neither">
+                Cả A và Z đều không được bảo toàn
+            </option>
+</select>
+<span class="answer-feedback" id="task1ConservationFeedback">
+</span>
+</div>
+<!-- =================================================
+         CÂU HỎI Ý NGHĨA
+    ================================================== -->
+<div class="task1-question-card">
+<label for="task1MeaningSelect">
+
+            Điều nào mô tả phù hợp nhất
+            về sự thay đổi của hệ trong phản ứng nhiệt hạch?
+
+        </label>
+<select id="task1MeaningSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                Các nucleon được sắp xếp lại thành các hạt nhân mới,
+                nhưng tổng A và tổng Z vẫn được bảo toàn
+            </option>
+<option value="wrong-1">
+                Một số nucleon biến mất để tạo ra năng lượng
+            </option>
+<option value="wrong-2">
+                Điện tích hạt nhân không cần được bảo toàn
+            </option>
+<option value="wrong-3">
+                Nhiệt hạch luôn làm giảm tổng số nucleon của hệ
+            </option>
+</select>
+<span class="answer-feedback" id="task1MeaningFeedback">
+</span>
+</div>
+<!-- =================================================
+         NÚT
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask1Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask1Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task1Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task1Result">
+<h4>
+            Kiểm tra bằng chương trình
+        </h4>
+<div class="task1-result-grid">
+<div class="task1-result-box">
+<span>
+                    A trước
+                </span>
+<strong id="task1CorrectInitialA">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    A sau
+                </span>
+<strong id="task1CorrectFinalA">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Z trước
+                </span>
+<strong id="task1CorrectInitialZ">
+                    —
+                </strong>
+</div>
+<div class="task1-result-box">
+<span>
+                    Z sau
+                </span>
+<strong id="task1CorrectFinalZ">
+                    —
+                </strong>
+</div>
+</div>
+<div class="task1-solution">
+<h4>
+                Phân tích
+            </h4>
+<div id="task1Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task1Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task2Card">
+<h3>
+        Nhiệm vụ 2:
+        Xác định năng lượng của phản ứng nhiệt hạch
+    </h3>
+<p>
+        Chọn một phản ứng,
+        sử dụng dữ liệu khối lượng nguyên tử
+        để tính chênh lệch khối lượng
+        và năng lượng phản ứng Q.
+    </p>
+<!-- =================================================
+         CHỌN PHẢN ỨNG
+    ================================================== -->
+<div class="task2-reaction-selector">
+<label for="task2ReactionSelect">
+            Phản ứng khảo sát
+        </label>
+<select id="task2ReactionSelect">
+<option value="D-T-He4-n">
+                D + T → He-4 + n
+            </option>
+<option value="D-D-He3-n">
+                D + D → He-3 + n
+            </option>
+<option value="D-D-T-H1">
+                D + D → T + H-1
+            </option>
+<option value="D-He3-He4-H1">
+                D + He-3 → He-4 + H-1
+            </option>
+</select>
+</div>
+<!-- =================================================
+         PHƯƠNG TRÌNH
+    ================================================== -->
+<div class="task2-reaction-equation" id="task2ReactionEquation">
+</div>
+<!-- =================================================
+         DỮ LIỆU
+    ================================================== -->
+<div class="task2-data-panel">
+<h4>
+            Dữ liệu khối lượng
+        </h4>
+<div class="task2-data-grid" id="task2MassDataGrid">
+</div>
+<div class="task2-conversion-box">
+<span>
+                Hệ số chuyển đổi
+            </span>
+<strong>
+                1 u·c² = 931.49410242 MeV
+            </strong>
+</div>
+</div>
+<!-- =================================================
+         YÊU CẦU
+    ================================================== -->
+<div class="task2-instruction">
+<strong>
+            Yêu cầu
+        </strong>
+<p>
+            Hãy tính lần lượt khối lượng trước phản ứng,
+            khối lượng sau phản ứng,
+            chênh lệch khối lượng Δm
+            và năng lượng phản ứng Q.
+        </p>
+</div>
+<!-- =================================================
+         CÁC Ô NHẬP
+    ================================================== -->
+<div class="task2-calculation-grid">
+<div class="task2-answer-card">
+<label for="task2InitialMassInput">
+                1. Khối lượng trước phản ứng
+                m<sub>trước</sub> (u)
+            </label>
+<p class="task2-expression" id="task2InitialMassExpression">
+                —
+            </p>
+<input id="task2InitialMassInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2InitialMassFeedback">
+</span>
+</div>
+<div class="task2-answer-card">
+<label for="task2FinalMassInput">
+                2. Khối lượng sau phản ứng
+                m<sub>sau</sub> (u)
+            </label>
+<p class="task2-expression" id="task2FinalMassExpression">
+                —
+            </p>
+<input id="task2FinalMassInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2FinalMassFeedback">
+</span>
+</div>
+<div class="task2-answer-card">
+<label for="task2MassDifferenceInput">
+                3. Chênh lệch khối lượng
+                Δm (u)
+            </label>
+<p class="task2-expression">
+                Δm =
+                m<sub>trước</sub>
+                −
+                m<sub>sau</sub>
+</p>
+<input id="task2MassDifferenceInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2MassDifferenceFeedback">
+</span>
+</div>
+<div class="task2-answer-card">
+<label for="task2QInput">
+                4. Năng lượng phản ứng Q (MeV)
+            </label>
+<p class="task2-expression">
+                Q =
+                Δm × 931.49410242
+            </p>
+<input id="task2QInput" inputmode="decimal" placeholder="Nhập kết quả" type="text"/>
+<span class="answer-feedback" id="task2QFeedback">
+</span>
+</div>
+</div>
+<!-- =================================================
+         CÂU HỎI 1
+    ================================================== -->
+<div class="task2-question-card">
+<label for="task2MassRelationSelect">
+
+            Trong phản ứng đang xét,
+            quan hệ nào giữa khối lượng trước
+            và sau phản ứng phù hợp với kết quả?
+
+        </label>
+<select id="task2MassRelationSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                m trước &gt; m sau
+            </option>
+<option value="equal">
+                m trước = m sau
+            </option>
+<option value="less">
+                m trước &lt; m sau
+            </option>
+</select>
+<span class="answer-feedback" id="task2MassRelationFeedback">
+</span>
+</div>
+<!-- =================================================
+         CÂU HỎI 2
+    ================================================== -->
+<div class="task2-question-card">
+<label for="task2EnergyMeaningSelect">
+
+            Ý nghĩa của Q &gt; 0 là gì?
+
+        </label>
+<select id="task2EnergyMeaningSelect">
+<option value="">
+                -- Chọn câu trả lời --
+            </option>
+<option value="correct">
+                Phản ứng giải phóng năng lượng
+            </option>
+<option value="wrong-1">
+                Phản ứng phải nhận thêm năng lượng đúng bằng Q
+            </option>
+<option value="wrong-2">
+                Tổng số nucleon bị giảm
+            </option>
+<option value="wrong-3">
+                Điện tích của hệ không được bảo toàn
+            </option>
+</select>
+<span class="answer-feedback" id="task2EnergyMeaningFeedback">
+</span>
+</div>
+<!-- =================================================
+         NÚT
+    ================================================== -->
+<div class="task-button-group">
+<button id="checkTask2Button">
+            Kiểm tra kết quả
+        </button>
+<button id="resetTask2Button">
+            Làm lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task2Status">
+            Chờ học sinh thực hiện
+        </span>
+</p>
+<!-- =================================================
+         KẾT QUẢ
+    ================================================== -->
+<div class="task-result" hidden="" id="task2Result">
+<h4>
+            Kết quả tính toán
+        </h4>
+<div class="task2-result-grid">
+<div class="task2-result-box">
+<span>
+                    m trước
+                </span>
+<strong id="task2CorrectInitialMass">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    m sau
+                </span>
+<strong id="task2CorrectFinalMass">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    Δm
+                </span>
+<strong id="task2CorrectMassDifference">
+                    —
+                </strong>
+</div>
+<div class="task2-result-box">
+<span>
+                    Q
+                </span>
+<strong id="task2CorrectQ">
+                    —
+                </strong>
+</div>
+</div>
+<!-- =============================================
+             SO SÁNH KHỐI LƯỢNG
+        ============================================== -->
+<div class="task2-mass-comparison">
+<h4>
+                So sánh khối lượng
+            </h4>
+<div class="task2-mass-row">
+<span>
+                    Trước phản ứng
+                </span>
+<div class="task2-mass-track">
+<div class="task2-mass-bar initial" id="task2InitialMassBar">
+</div>
+</div>
+<strong id="task2InitialMassBarLabel">
+                    —
+                </strong>
+</div>
+<div class="task2-mass-row">
+<span>
+                    Sau phản ứng
+                </span>
+<div class="task2-mass-track">
+<div class="task2-mass-bar final" id="task2FinalMassBar">
+</div>
+</div>
+<strong id="task2FinalMassBarLabel">
+                    —
+                </strong>
+</div>
+</div>
+<!-- =============================================
+             LỜI GIẢI
+        ============================================== -->
+<div class="task2-solution">
+<h4>
+                Các bước tính
+            </h4>
+<div id="task2Solution">
+</div>
+</div>
+<div class="task-conclusion">
+<h4>
+                Kết luận
+            </h4>
+<p id="task2Conclusion">
+</p>
+</div>
+</div>
+</div>
+<div class="experiment-task" id="task3Card">
+<h3>
+        Nhiệm vụ 3:
+        So sánh năng lượng các phản ứng nhiệt hạch
+    </h3>
+<p>
+        Sử dụng cùng một mô hình tính toán
+        để so sánh bốn phản ứng nhiệt hạch minh họa.
+    </p>
+<div class="task3-note">
+<strong>
+            Mục tiêu
+        </strong>
+<p>
+            Quan sát sự thay đổi của chênh lệch khối lượng Δm
+            và năng lượng Q khi sản phẩm phản ứng thay đổi.
+        </p>
+</div>
+<div class="task-button-group">
+<button id="runTask3Button">
+            So sánh các phản ứng
+        </button>
+<button id="resetTask3Button">
+            Đặt lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task3Status">
+            Chưa thực hiện
+        </span>
+</p>
+<div class="task-result" hidden="" id="task3Result">
+<!-- =============================================
+             BẢNG
+        ============================================== -->
+<h4>
+            Bảng kết quả
+        </h4>
+<div class="task3-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                            Phản ứng
+                        </th>
+<th>
+                            A trước/sau
+                        </th>
+<th>
+                            Z trước/sau
+                        </th>
+<th>
+                            m trước (u)
+                        </th>
+<th>
+                            m sau (u)
+                        </th>
+<th>
+                            Δm (u)
+                        </th>
+<th>
+                            Q (MeV)
+                        </th>
+</tr>
+</thead>
+<tbody id="task3TableBody">
+</tbody>
+</table>
+</div>
+<!-- =============================================
+             ĐỒ THỊ
+        ============================================== -->
+<div class="task3-chart-section">
+<h4>
+                So sánh năng lượng Q
+            </h4>
+<p>
+                Chiều cao mỗi cột biểu diễn
+                năng lượng Q của một phản ứng.
+            </p>
+<div class="task3-chart-container">
+<canvas id="task3Chart">
+</canvas>
+</div>
+</div>
+<!-- =============================================
+             TÓM TẮT
+        ============================================== -->
+<div class="task3-summary-grid">
+<div class="task3-summary-box">
+<span>
+                    Q nhỏ nhất
+                </span>
+<strong id="task3MinimumQ">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Q lớn nhất
+                </span>
+<strong id="task3MaximumQ">
+                    —
+                </strong>
+</div>
+<div class="task3-summary-box">
+<span>
+                    Khoảng biến thiên Q
+                </span>
+<strong id="task3QRange">
+                    —
+                </strong>
+</div>
+</div>
+<!-- =============================================
+             PHÂN TÍCH
+        ============================================== -->
+<div class="task3-analysis-section">
+<h4>
+                Phân tích kết quả
+            </h4>
+<div class="task3-question-card">
+<label for="task3HighestQSelect">
+
+                    1. Trong bốn phản ứng đang xét,
+                    phản ứng nào có Q lớn nhất?
+
+                </label>
+<select id="task3HighestQSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="D-T-He4-n">
+                        D + T → He-4 + n
+                    </option>
+<option value="D-D-He3-n">
+                        D + D → He-3 + n
+                    </option>
+<option value="D-D-T-H1">
+                        D + D → T + H-1
+                    </option>
+<option value="D-He3-He4-H1">
+                        D + He-3 → He-4 + H-1
+                    </option>
+</select>
+<span class="answer-feedback" id="task3HighestQFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3DDComparisonSelect">
+
+                    2. Hai phản ứng D + D có cùng trạng thái ban đầu
+                    nhưng Q khác nhau. Nguyên nhân phù hợp nhất là gì?
+
+                </label>
+<select id="task3DDComparisonSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="correct">
+                        Sản phẩm khác nhau nên tổng khối lượng sau
+                        và Δm khác nhau
+                    </option>
+<option value="wrong-1">
+                        Tổng số nucleon trước hai phản ứng khác nhau
+                    </option>
+<option value="wrong-2">
+                        Tổng điện tích trước hai phản ứng khác nhau
+                    </option>
+<option value="wrong-3">
+                        Một phản ứng không bảo toàn năng lượng
+                    </option>
+</select>
+<span class="answer-feedback" id="task3DDComparisonFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3MassQRelationSelect">
+
+                    3. Quan hệ nào giữa Δm và Q phù hợp với bảng?
+
+                </label>
+<select id="task3MassQRelationSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="correct">
+                        Δm càng lớn thì Q càng lớn
+                    </option>
+<option value="wrong-1">
+                        Δm càng lớn thì Q càng nhỏ
+                    </option>
+<option value="wrong-2">
+                        Q không phụ thuộc vào Δm
+                    </option>
+</select>
+<span class="answer-feedback" id="task3MassQRelationFeedback">
+</span>
+</div>
+<div class="task3-question-card">
+<label for="task3ConservationSelect">
+
+                    4. Điều gì đúng đối với cả bốn phản ứng?
+
+                </label>
+<select id="task3ConservationSelect">
+<option value="">
+                        -- Chọn câu trả lời --
+                    </option>
+<option value="correct">
+                        Tổng A và tổng Z đều được bảo toàn
+                    </option>
+<option value="wrong-1">
+                        Tất cả có cùng Q
+                    </option>
+<option value="wrong-2">
+                        Tất cả đều phát ra neutron tự do
+                    </option>
+<option value="wrong-3">
+                        Tất cả đều có cùng sản phẩm
+                    </option>
+</select>
+<span class="answer-feedback" id="task3ConservationFeedback">
+</span>
+</div>
+<div class="task-button-group">
+<button id="checkTask3Button">
+                    Kiểm tra phân tích
+                </button>
+<button id="resetTask3AnswersButton">
+                    Làm lại câu hỏi
+                </button>
+</div>
+</div>
+<!-- =============================================
+             KẾT LUẬN
+        ============================================== -->
+<div class="task-conclusion" hidden="" id="task3ConclusionBox">
+<h4>
+                Kết luận
+            </h4>
+<p id="task3Conclusion">
+</p>
+</div>
+</div>
+</div>
+</section>
+<!-- =====================================================
+         KIỂM CHỨNG
+    ====================================================== -->
+<section class="mode-panel" id="validationPanel">
+<h2>
+        Kiểm chứng mô hình
+    </h2>
+<p>
+        Chế độ này kiểm tra tính nhất quán của dữ liệu hạt nhân,
+        các định luật bảo toàn
+        và thuật toán tính năng lượng phản ứng Q
+        cho toàn bộ bốn phản ứng nhiệt hạch đang khảo sát.
+    </p>
+<!-- =================================================
+         KIỂM CHỨNG 1
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 1:
+            Dữ liệu và các định luật bảo toàn
+        </h3>
+<p>
+            Chương trình đối chiếu các khối lượng nguyên tử
+            đang sử dụng với bộ dữ liệu tham chiếu,
+            đồng thời kiểm tra tổng A và tổng Z
+            của từng phản ứng.
+        </p>
+<div class="validation-formula-box">
+<p>
+<strong>Bảo toàn số nucleon:</strong>
+</p>
+<p class="validation-formula">
+                ΣA<sub>trước</sub>
+                =
+                ΣA<sub>sau</sub>
+</p>
+<p>
+<strong>Bảo toàn điện tích:</strong>
+</p>
+<p class="validation-formula">
+                ΣZ<sub>trước</sub>
+                =
+                ΣZ<sub>sau</sub>
+</p>
+</div>
+<div class="task-button-group">
+<button id="runDataValidationButton">
+                Chạy kiểm chứng dữ liệu
+            </button>
+<button id="resetDataValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="dataValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="dataValidationResult">
+<div class="validation-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        Số đồng vị đối chiếu
+                    </span>
+<strong id="validationNuclideCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Khối lượng khớp
+                    </span>
+<strong id="validationMassStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Bảo toàn A
+                    </span>
+<strong id="validationAStatus">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Bảo toàn Z
+                    </span>
+<strong id="validationZStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Đối chiếu khối lượng nguyên tử
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Đồng vị
+                                </th>
+<th>
+                                    Trong mô phỏng (u)
+                                </th>
+<th>
+                                    Tham chiếu (u)
+                                </th>
+<th>
+                                    Sai lệch (u)
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="validationMassTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Kiểm tra bảo toàn cho các phản ứng
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Phản ứng
+                                </th>
+<th>
+                                    A trước
+                                </th>
+<th>
+                                    A sau
+                                </th>
+<th>
+                                    Z trước
+                                </th>
+<th>
+                                    Z sau
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="validationConservationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="dataValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         KIỂM CHỨNG 2
+    ================================================== -->
+<div class="validation-block">
+<h3>
+            Kiểm chứng 2:
+            Đối chiếu thuật toán tính Q
+        </h3>
+<p>
+            Giá trị Q của chương trình được so sánh
+            với một phép tính độc lập từ bộ khối lượng tham chiếu.
+        </p>
+<div class="validation-formula-box">
+<p class="validation-formula">
+                Δm
+                =
+                m<sub>trước</sub>
+                −
+                m<sub>sau</sub>
+</p>
+<p class="validation-formula">
+                Q
+                =
+                Δm
+                ×
+                931.49410242
+            </p>
+</div>
+<div class="task-button-group">
+<button id="runQValidationButton">
+                Chạy kiểm chứng Q
+            </button>
+<button id="resetQValidationButton">
+                Đặt lại
+            </button>
+</div>
+<p class="task-status-line">
+<strong>
+                Trạng thái:
+            </strong>
+<span id="qValidationStatus">
+                Chưa chạy
+            </span>
+</p>
+<div hidden="" id="qValidationResult">
+<div class="validation-summary-grid">
+<div class="validation-summary-box">
+<span>
+                        Số phản ứng
+                    </span>
+<strong id="qValidationReactionCount">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Sai lệch trung bình
+                    </span>
+<strong id="qValidationMAE">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Sai lệch lớn nhất
+                    </span>
+<strong id="qValidationMaxDifference">
+                        —
+                    </strong>
+</div>
+<div class="validation-summary-box">
+<span>
+                        Trạng thái
+                    </span>
+<strong id="qValidationOverallStatus">
+                        —
+                    </strong>
+</div>
+</div>
+<div class="validation-table-section">
+<h4>
+                    Đối chiếu Q
+                </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                                    Phản ứng
+                                </th>
+<th>
+                                    Δm (u)
+                                </th>
+<th>
+                                    Q chương trình (MeV)
+                                </th>
+<th>
+                                    Q tham chiếu (MeV)
+                                </th>
+<th>
+                                    Sai lệch (MeV)
+                                </th>
+<th>
+                                    Kết quả
+                                </th>
+</tr>
+</thead>
+<tbody id="qValidationTableBody">
+</tbody>
+</table>
+</div>
+</div>
+<div class="q-validation-chart-section">
+<h4>
+                    So sánh Q chương trình và Q tham chiếu
+                </h4>
+<div class="q-validation-chart-container">
+<canvas id="qValidationChart">
+</canvas>
+</div>
+</div>
+<div class="validation-conclusion">
+<h4>
+                    Kết luận
+                </h4>
+<p id="qValidationConclusion">
+</p>
+</div>
+</div>
+</div>
+<!-- =================================================
+         GHI CHÚ PHƯƠNG PHÁP
+    ================================================== -->
+<div class="validation-method-note">
+<h3>
+            Ý nghĩa của kiểm chứng
+        </h3>
+<p>
+            Đây là kiểm chứng số liệu và thuật toán:
+            chương trình đối chiếu dữ liệu đang dùng
+            và kiểm tra tính nhất quán của phép tính Q.
+        </p>
+<p>
+            Phần này không được hiểu là kiểm chứng thực nghiệm
+            của phản ứng nhiệt hạch trong phòng thí nghiệm.
+        </p>
+</div>
+</section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="js/fusion-data.js?v=6"></script>
+<script src="js/physics.js?v=6"></script>
+<script src="js/simulation.js?v=6"></script>
+<script src="js/app.js?v=6"></script>
+<script src="js/task1.js?v=4"></script>
+<script src="js/task2.js?v=3"></script>
+<script src="js/task3.js?v=2"></script>
+<script src="js/validation.js?v=1"></script>
+<script src="../../assets/shared/lesson-ui.js?v=2"></script></body>
+</html>
