@@ -1,0 +1,27 @@
+LAYER 1 - CHUẨN HÓA GIAO DIỆN 8 BÀI MÔ PHỎNG
+Ngày cập nhật: 2026-10-07
+
+1. Tạo assets/shared/lesson-ui.css dùng chung cho 8 bài.
+2. Tạo assets/shared/lesson-ui.js dùng chung cho điều hướng cuối mỗi chế độ.
+3. Chuẩn hóa font: Segoe UI, Arial, Helvetica, sans-serif.
+4. Chuẩn hóa nút ← Trang chủ.
+5. Chuẩn hóa header theo bố cục 2 cột trên desktop, 1 cột trên mobile.
+6. Dùng lại 8 SVG minh họa của trang chủ trong header mỗi bài.
+7. Chuẩn hóa ba thẻ chế độ:
+   - Khám phá — Quan sát & tìm quy luật
+   - Thí nghiệm — Thực hiện nhiệm vụ
+   - Kiểm chứng — Đối chiếu mô hình
+8. Thêm icon SVG đơn giản cho ba chế độ.
+9. Thêm điều hướng cuối mỗi chế độ:
+   - Khám phá → Thí nghiệm
+   - Thí nghiệm ↔ Khám phá / Kiểm chứng
+   - Kiểm chứng → Thí nghiệm / Trang chủ
+10. Chuẩn hóa responsive ở 900 px, 720 px và 420 px.
+11. Bổ sung focus-visible và prefers-reduced-motion.
+12. Không thay đổi lõi vật lý, dữ liệu hay logic nhiệm vụ của 8 bài.
+
+KIỂM TRA TỰ ĐỘNG SAU SỬA:
+- JavaScript syntax: đạt.
+- Duplicate HTML id: không phát hiện.
+- Đường dẫn nội bộ href/src/img: không phát hiện file thiếu.
+- getElementById trong JS so với HTML: không phát hiện ID thiếu.

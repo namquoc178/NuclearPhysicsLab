@@ -1,0 +1,39 @@
+NuclearPhysicsLab - UI Layer 3
+================================
+
+Mục tiêu:
+Tăng trải nghiệm học tập mà không thay đổi lõi vật lý, dữ liệu, nhiệm vụ hoặc thuật toán kiểm chứng.
+
+Các thay đổi:
+1. Nâng lesson-ui.js lên Version 2.
+2. Nâng lesson-ui.css lên Version 3.
+3. Thêm “Hành trình bài học” 3 bước:
+   - Khám phá
+   - Thí nghiệm
+   - Kiểm chứng
+   Có trạng thái bước hiện tại, đánh dấu bước đã xem và cho phép chuyển chế độ trực tiếp.
+4. Cuối phần Khám phá của mỗi bài:
+   - Card “Bạn vừa quan sát”.
+   - Hai ý tóm tắt riêng theo nội dung từng bài.
+   - Một “Câu hỏi trước khi tiếp tục” và gợi ý có thể mở/đóng.
+5. Cuối phần Thí nghiệm của mỗi bài:
+   - Card “Bạn vừa luyện tập”.
+   - Hai ý kết nối kiến thức.
+   - Một câu hỏi chuyển tiếp trước Kiểm chứng.
+6. Cuối phần Kiểm chứng của mỗi bài:
+   - Card “Tự đánh giá nhanh” gồm 3 mục riêng theo bài.
+   - Bộ đếm 0/3 đến 3/3, không dùng làm điểm số và không lưu dữ liệu.
+7. Chuẩn hóa responsive của các thành phần Layer 3 cho desktop, tablet và điện thoại.
+8. Bổ sung focus-visible, aria-live và điều khiển bằng bàn phím cho các thành phần mới.
+9. Không dùng localStorage/cookie; trạng thái chỉ tồn tại trong phiên trang hiện tại.
+10. Không thay đổi các file physics.js, simulation.js, task*.js, validation.js hoặc dữ liệu hạt nhân.
+
+Nội dung Layer 3 được cấu hình riêng cho đủ 8 bài:
+- nuclear-structure
+- radioactive-decay-types
+- half-life
+- radiation-penetration
+- gamma-attenuation
+- binding-energy
+- nuclear-fission
+- nuclear-fusion

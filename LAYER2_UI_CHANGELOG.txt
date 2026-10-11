@@ -1,0 +1,10 @@
+LAYER 2 – TĂNG TRỰC QUAN CHO 8 BÀI MÔ PHỎNG
+
+Đã thêm cho cả 8 bài:
+- Card “Bạn sẽ khám phá gì?” với 3 định hướng ngắn.
+- Card “Công thức / quy tắc trọng tâm”.
+- Mini infographic riêng theo từng bài.
+- Card “Lưu ý về mô hình” để làm rõ giới hạn sư phạm/khoa học.
+- Responsive chung cho desktop, tablet và mobile trong lesson-ui.css v2.
+
+Không thay đổi thuật toán, dữ liệu vật lý, nhiệm vụ hoặc chế độ kiểm chứng.

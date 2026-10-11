@@ -1,0 +1,36 @@
+FINAL TEST REPORT - NuclearPhysicsLab
+Date: 2026-10-11
+
+Scope
+- Homepage + 8 simulation lessons
+- Desktop viewport: 1440 x 1000
+- Mobile viewport: 390 x 844
+- Static structure, internal paths, HTML IDs, JavaScript syntax
+- Shared UI layers 1-3, mode switching, learning journey, reflection cards, self-check
+
+Results
+1. JavaScript syntax: PASS (all local .js files)
+2. Internal href/src paths: PASS
+3. Duplicate HTML IDs: PASS (none found)
+4. JS getElementById / HTML structure consistency: PASS
+5. Homepage layout desktop/mobile: PASS
+6. Eight lesson headers and shared visual overview: PASS
+7. Mode navigation Explore / Experiment / Validation: PASS on all 8 lessons
+8. Exactly one mode panel visible after each mode switch: PASS
+9. Learning journey active state follows mode: PASS
+10. Reflection cards: present on Explore and Experiment for all 8 lessons
+11. Self-check card: present in Validation for all 8 lessons
+12. Horizontal page overflow at 1440px: none detected
+13. Horizontal page overflow at 390px: none detected
+14. Visible interactive targets below ~40px in tested layouts: none detected
+15. Shared hero/card visual consistency: PASS
+
+Notes
+- Homepage lesson images use loading="lazy". Images below the fold may remain blank until the user scrolls near them; this is expected browser behavior and reduces initial page load.
+- Chart.js is loaded from jsDelivr on lessons that use charts. The final production deployment should have network access to the CDN. Pinning Chart.js to a tested version remains a recommended future hardening step.
+- The shared mode cards and the learning-journey bar intentionally repeat the three learning stages for orientation. This is not a functional issue; it can be simplified later if a more compact mobile header is desired.
+
+Final assessment
+- Critical issues: 0
+- Blocking issues before deployment: 0
+- Status: READY FOR DEPLOYMENT, subject to a quick real-device/browser smoke test after publishing.
