@@ -42,7 +42,7 @@
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Mô phỏng dây chuyền là mô hình giáo dục trừu tượng nhằm minh họa sự nhân lên của neutron. Các tham số không mô tả vận hành của một lò phản ứng hạt nhân thực.</p>
+<p>U-235 phân hạch chủ yếu khi hấp thụ neutron chậm (neutron nhiệt, cỡ 0,025 eV). Q tính trong bài (170–185 MeV) là năng lượng tỏa ra lúc tách thành hai mảnh; các mảnh sau đó còn phân rã β và γ, nên tổng năng lượng mỗi phân hạch khoảng 200 MeV như SGK nêu (một phần do phản neutrino mang đi). Mô phỏng dây chuyền là mô hình giáo dục, không mô tả vận hành của một lò phản ứng thực.</p>
 </article>
 </section>
 <!-- =====================================================
@@ -320,7 +320,7 @@
                     1. Neutron tới
                 </strong>
 <p>
-                    Một neutron chuyển động về phía hạt nhân U-235.
+                    Một neutron chậm (neutron nhiệt) chuyển động về phía hạt nhân U-235.
                 </p>
 </div>
 <div class="explanation-card">
@@ -365,6 +365,8 @@
 <p>
                     Khối lượng trạng thái sau nhỏ hơn trạng thái trước;
                     phần chênh lệch tương ứng với Q của phản ứng.
+                    Cộng thêm năng lượng từ phân rã β, γ sau đó của các mảnh,
+                    mỗi phân hạch tỏa ra tổng cộng khoảng 200 MeV.
                 </p>
 </div>
 </div>
@@ -1138,10 +1140,14 @@
             Mô hình giáo dục
         </strong>
 <p>
-            Mỗi neutron có một xác suất hiệu dụng gây ra
-            một sự kiện phân hạch trong thế hệ tiếp theo.
-            Nếu phân hạch xảy ra, mô hình sinh ngẫu nhiên
-            2 hoặc 3 neutron mới.
+            Chuỗi bắt đầu với 20 neutron. Mỗi neutron có một xác suất
+            hiệu dụng p gây ra một sự kiện phân hạch; nếu phân hạch xảy ra,
+            mô hình sinh ngẫu nhiên 2 hoặc 3 neutron mới.
+            Hệ số nhân neutron k = p·ν̄ cho biết trung bình mỗi neutron
+            tạo ra bao nhiêu neutron ở thế hệ sau:
+            k &lt; 1 dưới tới hạn (chuỗi tắt dần), k = 1 tới hạn
+            (duy trì ổn định, như trong lò phản ứng), k &gt; 1 vượt hạn
+            (tăng nhanh, như trong bom nguyên tử).
         </p>
 <p>
             Các xác suất sử dụng ở đây chỉ là tham số mô phỏng
@@ -1156,13 +1162,13 @@
             </label>
 <select id="chainPresetSelect">
 <option value="decay">
-                    Chuỗi có xu hướng tắt dần
+                    Dưới tới hạn (k ≈ 0,6)
                 </option>
 <option selected="" value="balanced">
-                    Gần cân bằng
+                    Tới hạn (k = 1)
                 </option>
 <option value="growth">
-                    Chuỗi có xu hướng phát triển
+                    Vượt hạn (k ≈ 1,3)
                 </option>
 </select>
 </div>
@@ -1205,7 +1211,7 @@
 </div>
 <div class="chain-parameter-box">
 <span>
-                Hệ số sinh trung bình của mô hình
+                Hệ số nhân neutron k
             </span>
 <strong id="chainReproductionDisplay">
                 —
@@ -1511,7 +1517,7 @@
                 2.5
             </p>
 <p class="validation-formula">
-                R
+                k
                 =
                 pν̄
                 =
@@ -1525,13 +1531,13 @@
                 </label>
 <select id="monteValidationPresetSelect">
 <option value="decay">
-                        Chuỗi có xu hướng tắt dần
+                        Dưới tới hạn (k ≈ 0,6)
                     </option>
 <option selected="" value="balanced">
-                        Gần cân bằng
+                        Tới hạn (k = 1)
                     </option>
 <option value="growth">
-                        Chuỗi có xu hướng phát triển
+                        Vượt hạn (k ≈ 1,3)
                     </option>
 </select>
 </div>
@@ -1583,7 +1589,7 @@
 </div>
 <div class="validation-summary-box">
 <span>
-                        R lý thuyết
+                        k lý thuyết
                     </span>
 <strong id="monteValidationExpectedR">
                         —
@@ -1591,7 +1597,7 @@
 </div>
 <div class="validation-summary-box">
 <span>
-                        R Monte Carlo
+                        k Monte Carlo
                     </span>
 <strong id="monteValidationMeasuredR">
                         —
@@ -1679,12 +1685,12 @@
 </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/fission-data.js?v=6"></script>
+<script src="js/fission-data.js?v=8"></script>
 <script src="js/physics.js?v=6"></script>
 <script src="js/simulation.js?v=6"></script>
 <script src="js/app.js?v=6"></script>
 <script src="js/task3.js?v=6"></script>
-<script src="js/chain-reaction.js?v=6"></script>
-<script src="js/validation.js?v=6"></script>
+<script src="js/chain-reaction.js?v=8"></script>
+<script src="js/validation.js?v=8"></script>
 <script src="../../assets/shared/lesson-ui.js?v=3"></script></body>
 </html>

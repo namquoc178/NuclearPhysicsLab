@@ -18,10 +18,16 @@ console.log(
 // Số neutron trung bình:
 // nu_bar = 2.5
 //
-// R = p * nu_bar
+// k = p * nu_bar  (hệ số nhân neutron của MÔ HÌNH)
 //
-// R chỉ là hệ số sinh trung bình của MÔ HÌNH,
-// không phải tham số của một hệ hạt nhân thực tế.
+// k < 1: dưới tới hạn, k = 1: tới hạn, k > 1: vượt hạn.
+// k ở đây là tham số của mô hình giáo dục,
+// không phải tham số của một lò phản ứng thực tế.
+//
+// Chuỗi bắt đầu với CHAIN_INITIAL_NEUTRONS neutron. Nếu chỉ bắt đầu
+// từ 1 neutron, ngay cả khi k = 1,3 chuỗi vẫn tắt hẳn với xác suất
+// khoảng 0,69 (nghiệm của q = f(q)), dễ gây hiểu nhầm.
+// Với 20 neutron, xác suất tất cả cùng tắt chỉ còn khoảng 0,0006.
 // ======================================================
 
 
@@ -30,7 +36,7 @@ const CHAIN_PRESETS = {
     decay: {
 
         label:
-            "Chuỗi có xu hướng tắt dần",
+            "Dưới tới hạn (k < 1)",
 
         probability:
             0.24
@@ -41,7 +47,7 @@ const CHAIN_PRESETS = {
     balanced: {
 
         label:
-            "Gần cân bằng",
+            "Tới hạn (k = 1)",
 
         probability:
             0.40
@@ -52,7 +58,7 @@ const CHAIN_PRESETS = {
     growth: {
 
         label:
-            "Chuỗi có xu hướng phát triển",
+            "Vượt hạn (k > 1)",
 
         probability:
             0.52
@@ -68,6 +74,10 @@ const CHAIN_AVERAGE_NEUTRONS_PER_FISSION =
 
 const CHAIN_MAX_NEUTRONS =
     5000;
+
+
+const CHAIN_INITIAL_NEUTRONS =
+    20;
 
 
 // ======================================================
@@ -321,7 +331,7 @@ function simulateChainReaction(
 
 
     let activeNeutrons =
-        1;
+        CHAIN_INITIAL_NEUTRONS;
 
 
     let totalFissions =
@@ -343,7 +353,7 @@ function simulateChainReaction(
                 0,
 
             incomingNeutrons:
-                1,
+                CHAIN_INITIAL_NEUTRONS,
 
             fissions:
                 0,
@@ -352,7 +362,7 @@ function simulateChainReaction(
                 0,
 
             nextNeutrons:
-                1
+                CHAIN_INITIAL_NEUTRONS
 
         }
     );
@@ -419,6 +429,14 @@ function simulateChainReaction(
 
                 capped =
                     true;
+
+
+                // Các neutron chưa xét của thế hệ này không được mô phỏng
+                // tiếp; ghi nhận chúng là không gây phân hạch để bảng số liệu
+                // luôn thỏa: phân hạch + không phân hạch = neutron đầu thế hệ.
+                lostNeutrons +=
+                    activeNeutrons -
+                    (neutronIndex + 1);
 
 
                 break;
@@ -993,7 +1011,7 @@ function buildChainConclusion(
             +
             `và mô phỏng đã dừng ở giới hạn an toàn của chương trình. `
             +
-            `Hệ số sinh trung bình của mô hình là R = `
+            `Hệ số nhân neutron của mô hình là k = `
             +
             `${reproduction.toFixed(2)}. `
             +
@@ -1016,7 +1034,7 @@ function buildChainConclusion(
             +
             `các lần chạy khác nhau vẫn có thể cho số thế hệ khác nhau. `
             +
-            `Hệ số sinh trung bình của mô hình là R = `
+            `Hệ số nhân neutron của mô hình là k = `
             +
             `${reproduction.toFixed(2)}.`
         );
@@ -1029,7 +1047,7 @@ function buildChainConclusion(
     ) {
 
         return (
-            `Mô hình có R = ${reproduction.toFixed(2)} < 1, `
+            `Mô hình có k = ${reproduction.toFixed(2)} < 1 (dưới tới hạn), `
             +
             `nên về trung bình chuỗi có xu hướng giảm. `
             +
@@ -1046,7 +1064,7 @@ function buildChainConclusion(
     ) {
 
         return (
-            `Mô hình có R ≈ ${reproduction.toFixed(2)}, gần 1. `
+            `Mô hình có k ≈ ${reproduction.toFixed(2)} (tới hạn). `
             +
             `Vì vậy số neutron có thể dao động mạnh giữa các thế hệ `
             +
@@ -1056,7 +1074,7 @@ function buildChainConclusion(
 
 
     return (
-        `Mô hình có R = ${reproduction.toFixed(2)} > 1, `
+        `Mô hình có k = ${reproduction.toFixed(2)} > 1 (vượt hạn), `
         +
         `nên về trung bình số neutron có xu hướng tăng qua các thế hệ. `
         +

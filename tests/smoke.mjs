@@ -73,7 +73,10 @@ for (const [w, h, tag] of [[1440, 1000, "desktop"], [390, 844, "mobile"]]) {
         tab.on("pageerror", e => errors.push(e.message));
         tab.on("console", m => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
         tab.on("dialog", d => { dialogs.push(d.message()); d.dismiss(); });
-        if (STUB_CHART) {
+        if (process.env.CHART_JS_FILE) {
+            // Dùng một bản Chart.js có sẵn trên máy thay cho CDN (khi không có mạng).
+            await tab.route(/cdn\.jsdelivr\.net\/npm\/chart\.js/, r => r.fulfill({ status: 200, contentType: "text/javascript", body: fs.readFileSync(process.env.CHART_JS_FILE, "utf8") }));
+        } else if (STUB_CHART) {
             await tab.route(/chart(\.umd)?(\.min)?\.js/, r => r.fulfill({ status: 200, contentType: "text/javascript", body: CHART_STUB }));
         }
         await tab.goto(BASE + page, { waitUntil: "load" });

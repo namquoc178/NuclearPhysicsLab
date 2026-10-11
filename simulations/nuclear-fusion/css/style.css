@@ -2327,3 +2327,35 @@ button {
     }
 
 }
+
+/* ======================================================
+   ĐIỀU KIỆN NHIỆT HẠCH (thanh nhiệt độ)
+   ====================================================== */
+.fusion-condition-card {
+    margin: 0 0 18px;
+    padding: 18px 20px;
+    border: 1px solid #f0d9a8;
+    border-radius: 14px;
+    background: #fffaf0;
+}
+.fusion-condition-card h3 { margin: 0 0 8px; }
+.fusion-condition-card label { display: block; margin: 12px 0 6px; font-weight: 600; }
+.fusion-condition-card input[type="range"] { width: 100%; }
+.fusion-condition-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
+    margin: 12px 0;
+}
+.fusion-condition-grid div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #f0e2c4;
+}
+.fusion-condition-grid span { font-size: 13px; color: #6b5a3a; }
+.fusion-condition-grid strong { font-size: 18px; font-variant-numeric: tabular-nums; }
+.fusion-condition-note { font-weight: 600; color: #8a5a12; min-height: 2.6em; }

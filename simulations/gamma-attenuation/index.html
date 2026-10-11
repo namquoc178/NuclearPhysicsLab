@@ -25,7 +25,7 @@
 <div class="lesson-hero-copy">
 <p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
 <h1>Suy giảm cường độ tia gamma qua vật chất</h1>
-<p class="page-description">Khảo sát định lượng sự thay đổi của cường độ bức xạ gamma khi truyền qua lớp vật liệu hấp thụ.</p>
+<p class="page-description">Khảo sát định lượng sự suy giảm cường độ tia γ 662 keV (nguồn Cs-137) khi truyền qua lớp vật liệu hấp thụ.</p>
 </div>
 <div aria-hidden="true" class="lesson-hero-visual">
 <img alt="" src="../../assets/images/cards/gamma-attenuation.svg?v=2"/>
@@ -42,7 +42,7 @@
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Các giá trị μ trong bài là tham số hiệu dụng của mô hình giáo dục hiện tại. Chúng giúp kiểm tra định luật suy giảm mũ và không đại diện cho mọi năng lượng gamma hay mọi điều kiện vật liệu.</p>
+<p>Nguồn giả định là Cs-137, phát tia γ 662 keV, trong điều kiện chùm hẹp. Hệ số μ lấy từ bảng NIST: chì 0,126 mm⁻¹ (x<sub>1/2</sub> ≈ 5,5 mm), nhôm 0,0201 mm⁻¹ (≈ 34 mm), giấy ≈ 0,0069 mm⁻¹. Với năng lượng photon khác, μ sẽ khác.</p>
 </article>
 </section>
 <!-- =====================================================
@@ -126,13 +126,13 @@
                         4.0 mm
                     </strong>
 </label>
-<input id="thicknessInput" max="20" min="0" step="0.5" type="range" value="4"/>
+<input id="thicknessInput" max="50" min="0" step="0.5" type="range" value="4"/>
 <div class="range-labels">
 <span>
                         0 mm
                     </span>
 <span>
-                        20 mm
+                        50 mm
                     </span>
 </div>
 </div>
@@ -173,10 +173,10 @@
                     Lưu ý
                 </strong>
 <p>
-                    Các hệ số μ trong phiên bản này là
-                    tham số của mô hình giáo dục.
-                    Chúng được dùng để mô phỏng xu hướng suy giảm,
-                    không phải bảng dữ liệu thực nghiệm phổ quát.
+                    Hệ số μ ứng với tia γ 662 keV của Cs-137,
+                    lấy từ bảng NIST (chùm hẹp).
+                    Nhôm và giấy chắn γ kém hơn chì nhiều,
+                    nên hãy thử độ dày lớn tới 50 mm.
                 </p>
 </div>
 </aside>
@@ -591,7 +591,7 @@
                         μ của mô hình
                     </span>
 <strong id="task2MuModel">
-                        0.240 mm⁻¹
+                        0.126 mm⁻¹
                     </strong>
 </div>
 <div class="regression-box">
@@ -820,7 +820,7 @@
         </h3>
 <p>
             Mỗi bộ dữ liệu gồm các phép mô phỏng tại
-            x = 0, 1, 2, 3, 4, 5, 6, 8 và 10 mm.
+            x = 0, 2, 4, 6, 8, 10, 12, 15 và 20 mm.
             Với mỗi độ dày, chương trình sử dụng
             1000 photon gamma.
         </p>
@@ -958,11 +958,11 @@
             Với lớp chì trong mô hình giáo dục hiện tại:
         </p>
 <div class="task-formula">
-            μ = 0.240 mm⁻¹
+            μ = 0,126 mm⁻¹ (chì, 662 keV, theo NIST)
         </div>
 <p>
             Mục tiêu của kiểm chứng không phải làm cho
-            mọi lần mô phỏng đều cho đúng 0,240 mm⁻¹,
+            mọi lần mô phỏng đều cho đúng 0,126 mm⁻¹,
             mà kiểm tra xem các giá trị thu được có
             dao động thống kê quanh giá trị này hay không.
         </p>
@@ -970,8 +970,8 @@
 </section>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/physics.js?v=5"></script>
+<script src="js/physics.js?v=7"></script>
 <script src="js/simulation.js?v=5"></script>
-<script src="js/app.js?v=5"></script>
+<script src="js/app.js?v=7"></script>
 <script src="../../assets/shared/lesson-ui.js?v=3"></script></body>
 </html>

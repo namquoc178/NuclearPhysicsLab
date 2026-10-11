@@ -22,6 +22,8 @@
 // HẰNG SỐ
 // ======================================================
 
+// Khối lượng neutron: CODATA 2022.
+// 1 u·c² = 931,49410242 MeV: CODATA 2018 (giá trị AME2020 dùng).
 const NEUTRON_MASS_U =
     1.00866491606;
 
@@ -52,7 +54,7 @@ const FISSION_NUCLIDES = {
             "Uranium",
 
         vietnameseName:
-            "Urani",
+            "Uranium",
 
         A:
             235,
@@ -86,7 +88,7 @@ const FISSION_NUCLIDES = {
             "Barium",
 
         vietnameseName:
-            "Bari",
+            "Barium",
 
         A:
             141,
@@ -115,7 +117,7 @@ const FISSION_NUCLIDES = {
             "Krypton",
 
         vietnameseName:
-            "Kripton",
+            "Krypton",
 
         A:
             92,
@@ -178,7 +180,7 @@ const FISSION_NUCLIDES = {
             "Strontium",
 
         vietnameseName:
-            "Stronti",
+            "Strontium",
 
         A:
             94,
@@ -212,7 +214,7 @@ const FISSION_NUCLIDES = {
             "Cesium",
 
         vietnameseName:
-            "Xêzi",
+            "Caesium",
 
         A:
             144,
@@ -241,7 +243,7 @@ const FISSION_NUCLIDES = {
             "Rubidium",
 
         vietnameseName:
-            "Rubidi",
+            "Rubidium",
 
         A:
             89,

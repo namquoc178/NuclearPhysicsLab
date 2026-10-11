@@ -710,8 +710,8 @@ function createMonteValidationChart(
 
                     labels:
                     [
-                        "R lý thuyết",
-                        "R Monte Carlo"
+                        "k lý thuyết",
+                        "k Monte Carlo"
                     ],
 
 
@@ -768,7 +768,7 @@ function createMonteValidationChart(
                                     true,
 
                                 text:
-                                    "R"
+                                    "k"
 
                             }
 
@@ -915,7 +915,7 @@ function runMonteValidation() {
         monteValidationConclusion.textContent =
             `Với p = ${probability.toFixed(2)}, `
             +
-            `mô hình dự đoán R = 2,5p = `
+            `mô hình dự đoán k = 2,5p = `
             +
             `${expectedR.toFixed(4)}. `
             +

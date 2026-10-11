@@ -16,17 +16,17 @@ const DECAY_ELEMENTS = {
 
     2: {
         symbol: "He",
-        vietnameseName: "Heli"
+        vietnameseName: "Helium"
     },
 
     6: {
         symbol: "C",
-        vietnameseName: "Cacbon"
+        vietnameseName: "Carbon"
     },
 
     7: {
         symbol: "N",
-        vietnameseName: "Nitơ"
+        vietnameseName: "Nitrogen"
     },
 
     10: {
@@ -36,32 +36,32 @@ const DECAY_ELEMENTS = {
 
     11: {
         symbol: "Na",
-        vietnameseName: "Natri"
+        vietnameseName: "Sodium"
     },
 
     27: {
         symbol: "Co",
-        vietnameseName: "Coban"
+        vietnameseName: "Cobalt"
     },
 
     28: {
         symbol: "Ni",
-        vietnameseName: "Niken"
+        vietnameseName: "Nickel"
     },
 
     88: {
         symbol: "Ra",
-        vietnameseName: "Radi"
+        vietnameseName: "Radium"
     },
 
     90: {
         symbol: "Th",
-        vietnameseName: "Thori"
+        vietnameseName: "Thorium"
     },
 
     92: {
         symbol: "U",
-        vietnameseName: "Urani"
+        vietnameseName: "Uranium"
     }
 
 };
@@ -91,7 +91,7 @@ const RADIOACTIVE_DECAY_TYPES = {
             -2,
 
         description:
-            "Hạt nhân mẹ phát ra một hạt alpha, tương ứng với hạt nhân heli-4.",
+            "Hạt nhân mẹ phát ra một hạt alpha, tương ứng với hạt nhân helium-4.",
 
         emittedParticles:
         [
