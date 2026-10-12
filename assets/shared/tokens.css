@@ -1,0 +1,89 @@
+/* =====================================================
+   tokens.css – bản sắc thị giác chung của NuclearPhysicsLab
+   Dùng cho trang chủ và mọi bài mô phỏng.
+
+   Nguyên tắc: màu sắc dành cho vật lí. Khung giao diện chỉ dùng
+   mực xanh đen và các sắc xám; màu đỏ, xanh lam, tím, xanh lục lam,
+   hổ phách chỉ xuất hiện khi chúng mã hóa proton, neutron, α, β, γ.
+===================================================== */
+
+@font-face {
+    font-family: "Literata";
+    src: url("../fonts/literata.woff") format("woff");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Lab Sans";
+    src: url("../fonts/lab-sans.woff") format("woff");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    /* Mực và giấy */
+    --lab-ink: #15233b;
+    --lab-text: #1f2d44;
+    --lab-text-2: #3d4b60;
+    --lab-muted: #5b687c;
+    --lab-paper: #f3f5f8;
+    --lab-grid: rgba(21, 35, 59, 0.045);
+    --lab-surface: #ffffff;
+    --lab-surface-2: #f7f9fb;
+    --lab-surface-3: #eef1f5;
+    --lab-rule: #dde3eb;
+    --lab-rule-strong: #c3ccd8;
+
+    /* Điểm nhấn giao diện: mực xanh đen, không trùng màu hạt */
+    --lab-accent: #2c4a74;
+    --lab-accent-strong: #15233b;
+    --lab-accent-wash: #eef2f7;
+    --lab-accent-tint: #d9e1ec;
+    --lab-accent-line: #9fb0c8;
+    --lab-focus: #d97706;
+
+    /* Màu vật lí: dùng thống nhất ở mọi bài */
+    --lab-proton: #b91c1c;
+    --lab-proton-wash: #fdecec;
+    --lab-neutron: #1d4ed8;
+    --lab-neutron-wash: #e8eefc;
+    --lab-alpha: #6d28d9;
+    --lab-alpha-wash: #f1ebfd;
+    --lab-beta: #0f766e;
+    --lab-beta-wash: #e3f4f1;
+    --lab-gamma: #b45309;
+    --lab-gamma-wash: #fdf1e3;
+
+    /* Phản hồi */
+    --lab-success: #15803d;
+    --lab-success-wash: #ecf8f0;
+    --lab-danger: #b42318;
+    --lab-danger-wash: #fdeeec;
+
+    /* Chữ. Hai phông không có ₗ ₖ ⁻: trình duyệt lấy các kí tự này
+       từ phông kế tiếp trong danh sách. */
+    --lab-serif: "Literata", "Noto Serif", Cambria, Georgia, "Times New Roman", serif;
+    --lab-sans: "Lab Sans", "Segoe UI", "Noto Sans", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* Hình khối */
+    --lab-radius-lg: 14px;
+    --lab-radius: 10px;
+    --lab-radius-sm: 6px;
+    --lab-shadow: 0 1px 2px rgba(21, 35, 59, 0.05);
+    --lab-shadow-raised: 0 10px 30px rgba(21, 35, 59, 0.12);
+
+    /* Bố cục */
+    --lab-page: min(1360px, calc(100% - 32px));
+}
+
+/* Giấy kẻ ô của sổ thí nghiệm */
+.lab-paper {
+    background-color: var(--lab-paper);
+    background-image:
+        linear-gradient(var(--lab-grid) 1px, transparent 1px),
+        linear-gradient(90deg, var(--lab-grid) 1px, transparent 1px);
+    background-size: 24px 24px;
+}

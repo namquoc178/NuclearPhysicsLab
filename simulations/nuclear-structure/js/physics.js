@@ -237,7 +237,7 @@ function calculateNucleonNumber(
 
 
 // ======================================================
-// TẠO KÝ HIỆU HẠT NHÂN DẠNG TEXT
+// TẠO KÍ HIỆU HẠT NHÂN DẠNG TEXT
 // ======================================================
 
 function buildNuclearNotationText(
@@ -255,7 +255,7 @@ function buildNuclearNotationText(
 
 
 // ======================================================
-// TẠO KÝ HIỆU HẠT NHÂN DẠNG HTML
+// TẠO KÍ HIỆU HẠT NHÂN DẠNG HTML
 //
 // Ví dụ:
 // 12

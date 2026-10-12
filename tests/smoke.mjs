@@ -5,8 +5,10 @@
 //
 // Cài một lần:  npm install --no-save playwright && npx playwright install chromium
 // Chạy:         node tests/smoke.mjs            (ảnh chụp lưu ở tests/output/)
-//               node tests/smoke.mjs --stub-chart   (khi máy không có mạng
-//               và Chart.js vẫn nạp từ CDN: thay Chart.js bằng bản giả)
+//
+// Mọi tệp (kể cả Chart.js và phông chữ) nằm trong kho mã, nên kiểm thử chạy
+// được khi không có mạng. Kiểm thử báo lỗi nếu trang tải tệp từ máy chủ khác
+// hoặc có tệp nào trả về lỗi 404.
 // =====================================================================
 
 import http from "node:http";
@@ -29,10 +31,9 @@ try {
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, "tests", "output");
 fs.mkdirSync(OUT, { recursive: true });
-const STUB_CHART = process.argv.includes("--stub-chart");
 
 const TYPES = { ".html": "text/html", ".js": "text/javascript", ".mjs": "text/javascript", ".css": "text/css",
-    ".svg": "image/svg+xml", ".png": "image/png", ".woff2": "font/woff2", ".json": "application/json" };
+    ".svg": "image/svg+xml", ".png": "image/png", ".woff": "font/woff", ".woff2": "font/woff2", ".json": "application/json" };
 
 const server = http.createServer((req, res) => {
     let file = decodeURIComponent(new URL(req.url, "http://x").pathname);
@@ -45,7 +46,6 @@ const server = http.createServer((req, res) => {
 await new Promise(resolve => server.listen(0, resolve));
 const BASE = `http://localhost:${server.address().port}/`;
 
-const CHART_STUB = `window.Chart=class{constructor(c,cfg){this.canvas=c;this.config=cfg||{};this.data=(cfg&&cfg.data)||{datasets:[]};this.options=(cfg&&cfg.options)||{};}update(){}destroy(){}resize(){}static register(){}};window.Chart.defaults={font:{},plugins:{legend:{labels:{}},tooltip:{}},color:''};`;
 
 // Nút "chạy" chính của từng bài (bấm thử ở chế độ Khám phá).
 const LESSONS = [
@@ -73,12 +73,9 @@ for (const [w, h, tag] of [[1440, 1000, "desktop"], [390, 844, "mobile"]]) {
         tab.on("pageerror", e => errors.push(e.message));
         tab.on("console", m => { if (m.type() === "error" && !/Failed to load resource/.test(m.text())) errors.push(m.text()); });
         tab.on("dialog", d => { dialogs.push(d.message()); d.dismiss(); });
-        if (process.env.CHART_JS_FILE) {
-            // Dùng một bản Chart.js có sẵn trên máy thay cho CDN (khi không có mạng).
-            await tab.route(/cdn\.jsdelivr\.net\/npm\/chart\.js/, r => r.fulfill({ status: 200, contentType: "text/javascript", body: fs.readFileSync(process.env.CHART_JS_FILE, "utf8") }));
-        } else if (STUB_CHART) {
-            await tab.route(/chart(\.umd)?(\.min)?\.js/, r => r.fulfill({ status: 200, contentType: "text/javascript", body: CHART_STUB }));
-        }
+        // Trang phải tự đủ: không tải gì từ máy chủ khác, không có tệp thiếu.
+        tab.on("request", r => { if (!r.url().startsWith(BASE) && !r.url().startsWith("data:")) errors.push(`tải từ ngoài: ${r.url()}`); });
+        tab.on("response", r => { if (r.status() >= 400) errors.push(`${r.status()} ${r.url().replace(BASE, "")}`); });
         await tab.goto(BASE + page, { waitUntil: "load" });
         await tab.waitForTimeout(400);
 
@@ -103,6 +100,28 @@ for (const [w, h, tag] of [[1440, 1000, "desktop"], [390, 844, "mobile"]]) {
                 ["explorePanel", "experimentPanel", "validationPanel"]
                     .filter(id => { const el = document.getElementById(id); return el && el.offsetParent !== null; }));
             if (visible.length !== 1 || !visible[0].startsWith(mode)) errors.push(`chế độ ${mode}: thấy ${visible.join(",") || "không bảng nào"}`);
+        }
+
+        // Trang bài học: các phần do lesson-ui.js dựng phải có mặt.
+        if (page) {
+            const shell = await tab.evaluate(() => ({
+                briefing: !!document.querySelector(".lesson-briefing .lesson-visual-overview"),
+                steps: document.querySelectorAll(".mode-button .mode-step").length,
+                footers: document.querySelectorAll(".lesson-mode-footer").length
+            }));
+            if (!shell.briefing) errors.push("thiếu khối định hướng thu gọn");
+            if (shell.steps !== 3) errors.push(`có ${shell.steps} số bước trên nút chế độ`);
+            if (shell.footers !== 3) errors.push(`có ${shell.footers} thanh chuyển chế độ`);
+        }
+
+        // Nhập sai phải hiện thông báo trong trang, không bật hộp alert chặn trang.
+        if (page.includes("half-life")) {
+            await tab.fill("#inputN0", "0");
+            await tab.click("#startButton");
+            await tab.waitForTimeout(200);
+            const toast = await tab.textContent(".lab-toast").catch(() => null);
+            if (!toast || !toast.includes("N₀")) errors.push("không thấy thông báo khi nhập N₀ = 0");
+            if (dialogs.length) errors.push("vẫn còn hộp alert của trình duyệt");
         }
 
         if (errors.length) problems += errors.length;

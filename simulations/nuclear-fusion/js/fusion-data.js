@@ -18,14 +18,14 @@
 // HẰNG SỐ
 // ======================================================
 
-// Khối lượng neutron: CODATA 2022.
-// 1 u·c² = 931,49410242 MeV: CODATA 2018 (giá trị AME2020 dùng).
+// Khối lượng neutron và năng lượng nghỉ của 1 u lấy từ
+// assets/shared/constants.js (xem nguồn và lí do chọn giá trị ở đó).
 const NEUTRON_MASS_U =
-    1.00866491606;
+    NPL_CONSTANTS.NEUTRON_MASS_U;
 
 
 const U_TO_MEV =
-    931.49410242;
+    NPL_CONSTANTS.U_TO_MEV;
 
 
 // ======================================================

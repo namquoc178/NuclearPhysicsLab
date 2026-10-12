@@ -8,32 +8,33 @@
         Suy giảm cường độ tia gamma qua vật chất
     </title>
 <link href="data:," rel="icon"/>
-<link href="css/style.css?v=5" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/>
-<link href="../../assets/shared/real-data.css?v=2" rel="stylesheet"/></head>
+<link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
+<link href="css/style.css?v=6" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=4" rel="stylesheet"/>
+<link href="../../assets/shared/real-data.css?v=3" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="container">
 <!-- =====================================================
          ĐIỀU HƯỚNG
     ====================================================== -->
 <div class="top-navigation">
-<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lí hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
 </div>
 <!-- =====================================================
          HEADER
     ====================================================== -->
 <header class="page-header lesson-hero">
 <div class="lesson-hero-copy">
-<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<p class="lesson-label">Mô-đun 3: Tương tác của bức xạ với vật chất</p>
 <h1>Suy giảm cường độ tia gamma qua vật chất</h1>
 <p class="page-description">Khảo sát định lượng sự suy giảm cường độ tia γ 662 keV (nguồn Cs-137) khi truyền qua lớp vật liệu hấp thụ.</p>
 </div>
 <div aria-hidden="true" class="lesson-hero-visual">
-<img alt="" src="../../assets/images/cards/gamma-attenuation.svg?v=2"/>
+<img alt="" src="../../assets/images/cards/gamma-attenuation.svg?v=4"/>
 </div>
 </header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
 <article class="lesson-insight-card lesson-discovery-card">
-<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Em sẽ khám phá gì?</h2></div></div>
 <ul class="lesson-mini-list"><li>Quan sát cường độ gamma giảm khi độ dày vật liệu tăng.</li><li>Xác định hệ số suy giảm μ từ dữ liệu mô phỏng.</li><li>Kiểm tra bề dày bán giá trị của vật liệu.</li></ul>
 </article>
 <article class="lesson-insight-card lesson-formula-card">
@@ -78,7 +79,7 @@
                 </strong>
 <p>
                     So sánh kết quả mô phỏng Monte Carlo
-                    với mô hình lý thuyết.
+                    với mô hình lí thuyết.
                 </p>
 </div>
 </div>
@@ -255,7 +256,7 @@
 </div>
 <div class="result-box">
 <span>
-                I/I₀ lý thuyết
+                I/I₀ lí thuyết
             </span>
 <strong id="theoryDisplay">
                 —
@@ -272,7 +273,7 @@
             </h2>
 <p>
                 So sánh điểm mô phỏng hiện tại
-                với đường lý thuyết
+                với đường lí thuyết
                 I/I₀ = e<sup>−μx</sup>.
             </p>
 </div>
@@ -310,7 +311,7 @@
                         Thay đổi độ dày
                     </strong>
 <p>
-                        Quan sát đường lý thuyết
+                        Quan sát đường lí thuyết
                         và dự đoán số photon tới đầu dò.
                     </p>
 </div>
@@ -325,7 +326,7 @@
                     </strong>
 <p>
                         So sánh kết quả Monte Carlo
-                        với giá trị lý thuyết.
+                        với giá trị lí thuyết.
                     </p>
 </div>
 </div>
@@ -353,7 +354,7 @@
 <p>
         Thực hiện các nhiệm vụ định lượng để khảo sát
         quy luật suy giảm cường độ tia gamma
-        và xử lý dữ liệu mô phỏng.
+        và xử lí dữ liệu mô phỏng.
     </p>
 <!-- =================================================
          NHIỆM VỤ 1
@@ -445,7 +446,7 @@
                                     I/I₀ mô phỏng
                                 </th>
 <th>
-                                    I/I₀ lý thuyết
+                                    I/I₀ lí thuyết
                                 </th>
 </tr>
 </thead>
@@ -523,7 +524,7 @@
             Lấy dữ liệu Nhiệm vụ 1
         </button>
 <button disabled="" id="runTask2Button">
-            Xử lý dữ liệu và xác định μ
+            Xử lí dữ liệu và xác định μ
         </button>
 </div>
 <div class="experiment-feedback">
@@ -627,7 +628,7 @@
                     Vì sao đường cong I/I₀ theo x
                     trở thành gần đường thẳng
                     khi biểu diễn ln(I/I₀) theo x?
-                    Hệ số góc của đường thẳng mang ý nghĩa vật lý gì?
+                    Hệ số góc của đường thẳng mang ý nghĩa vật lí gì?
                 </p>
 </div>
 </div>
@@ -764,7 +765,7 @@
 </div>
 <div class="hvl-box">
 <span>
-                        Lý thuyết mô hình tại x₁/₂,TN
+                        Lí thuyết mô hình tại x₁/₂,TN
                     </span>
 <strong id="task3TheoryRatio">
                         —
@@ -970,11 +971,11 @@
 </div>
 </section>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/physics.js?v=7"></script>
+<script src="../../assets/vendor/chartjs/chart.umd.min.js?v=4.4.1"></script>
+<script src="js/physics.js?v=8"></script>
 <script src="js/simulation.js?v=5"></script>
-<script src="js/app.js?v=7"></script>
-<script src="../../assets/shared/real-data.js?v=2"></script>
+<script src="js/app.js?v=9"></script>
+<script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
-<script src="../../assets/shared/lesson-ui.js?v=4"></script></body>
+<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
 </html>

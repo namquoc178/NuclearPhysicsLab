@@ -1,8 +1,3 @@
-console.log(
-    "TASK3.JS - FISSION CHANNEL COMPARISON VERSION 1"
-);
-
-
 // ======================================================
 // DOM
 // ======================================================
@@ -316,7 +311,7 @@ function evaluateTask3Choice(
     ) {
 
         feedbackElement.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedbackElement.classList.add(

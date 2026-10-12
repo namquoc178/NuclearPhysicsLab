@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - BINDING ENERGY TASK 3 VERSION 4"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================
@@ -688,7 +683,7 @@ function populateNuclideSelect() {
 
 
 // ======================================================
-// 4. KÝ HIỆU HẠT NHÂN
+// 4. KÍ HIỆU HẠT NHÂN
 // ======================================================
 
 function buildNuclideNotation(
@@ -1905,7 +1900,7 @@ function checkTask1Answers() {
         task1Conclusion.textContent =
             "Ba kết quả đều phù hợp trong giới hạn làm tròn. "
             +
-            "Bạn đã sử dụng đúng dữ liệu khối lượng để xác định độ hụt khối, "
+            "Em đã sử dụng đúng dữ liệu khối lượng để xác định độ hụt khối, "
             +
             "năng lượng liên kết và năng lượng liên kết riêng.";
 
@@ -2047,7 +2042,7 @@ function clearTask1Answers() {
     ) {
 
         task1Status.textContent =
-            "Đã xóa kết quả. Bạn có thể tính và nhập lại.";
+            "Đã xóa kết quả. Em có thể tính và nhập lại.";
     }
 }
 
@@ -2619,7 +2614,7 @@ function evaluateChoice(
     ) {
 
         feedbackElement.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedbackElement.classList.add(

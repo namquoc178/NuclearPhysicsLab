@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - NUCLEAR FUSION MULTI REACTION EXPLORE VERSION 2"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================
@@ -345,7 +340,7 @@ function getNuclideVietnameseName(
 
 
 // ======================================================
-// KÝ HIỆU HẠT NHÂN HTML
+// KÍ HIỆU HẠT NHÂN HTML
 // ======================================================
 
 function getNuclideHtml(

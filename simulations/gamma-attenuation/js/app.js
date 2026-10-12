@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - GAMMA ATTENUATION VALIDATION VERSION 5"
-);
-
-
 // ======================================================
 // HÀM LẤY PHẦN TỬ HTML AN TOÀN
 // ======================================================
@@ -1344,7 +1339,7 @@ function animatePhotonResults(
 
 
 // ======================================================
-// 11. ĐƯỜNG LÝ THUYẾT
+// 11. ĐƯỜNG LÍ THUYẾT
 // ======================================================
 
 function generateTheoryCurve(
@@ -1444,7 +1439,7 @@ function createOrUpdateChart() {
 
                         {
                             label:
-                                "Lý thuyết I/I₀ = e^(-μx)",
+                                "Lí thuyết I/I₀ = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -1947,7 +1942,7 @@ function createTask1Chart(
 
                         {
                             label:
-                                "Lý thuyết I/I₀ = e^(-μx)",
+                                "Lí thuyết I/I₀ = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -2150,7 +2145,7 @@ function runTask1() {
     task1Conclusion.textContent =
         "Khi độ dày lớp chì tăng, tỉ lệ I/I₀ giảm nhưng không giảm đều theo từng milimét. "
         +
-        "Các điểm Monte Carlo dao động quanh đường lý thuyết và cho thấy quá trình suy giảm có dạng hàm mũ.";
+        "Các điểm Monte Carlo dao động quanh đường lí thuyết và cho thấy quá trình suy giảm có dạng hàm mũ.";
 
 
     task1Ready =
@@ -2162,7 +2157,7 @@ function runTask1() {
 
 
     task2Status.textContent =
-        "Dữ liệu Nhiệm vụ 1 đã sẵn sàng để xử lý.";
+        "Dữ liệu Nhiệm vụ 1 đã sẵn sàng để xử lí.";
 
 
     setStatus(
@@ -2251,7 +2246,7 @@ function setupTask2() {
     ) {
 
         alert(
-            "Bạn cần hoàn thành Nhiệm vụ 1 trước để có dữ liệu xử lý."
+            "Em cần hoàn thành Nhiệm vụ 1 trước để có dữ liệu xử lí."
         );
 
 
@@ -2661,7 +2656,7 @@ function runTask2() {
 
 
     setStatus(
-        "Đang xử lý Nhiệm vụ 2...",
+        "Đang xử lí Nhiệm vụ 2...",
         "running"
     );
 
@@ -2808,7 +2803,7 @@ task3Status.textContent =
 
 
         task2Status.textContent =
-            "Có lỗi khi xử lý dữ liệu.";
+            "Có lỗi khi xử lí dữ liệu.";
 
 
         alert(
@@ -2905,7 +2900,7 @@ function setupTask3() {
     ) {
 
         alert(
-            "Bạn cần hoàn thành Nhiệm vụ 2 trước để xác định μ."
+            "Em cần hoàn thành Nhiệm vụ 2 trước để xác định μ."
         );
 
 
@@ -4069,7 +4064,7 @@ async function runValidation() {
         ) {
 
             validationStatus.textContent =
-                `Đang xử lý bộ ${run + 1}/${repeatCount}...`;
+                `Đang xử lí bộ ${run + 1}/${repeatCount}...`;
 
 
             let dataset =

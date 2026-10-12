@@ -5,8 +5,8 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f6f8;
-    color: #1f2937;
+    background: var(--lab-paper);
+    color: var(--lab-ink);
 }
 
 button,
@@ -50,7 +50,7 @@ button {
 
 .mode-button {
     padding: 12px 24px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 8px;
     background: white;
 }
@@ -102,7 +102,7 @@ button {
 .validation-control-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 6px;
     background: white;
 }
@@ -117,7 +117,7 @@ button {
 .validation-controls button,
 #exportCsvButton {
     padding: 10px 14px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 7px;
     background: white;
 }
@@ -152,7 +152,7 @@ button:disabled {
 .data-box {
     padding: 15px;
     border-radius: 8px;
-    background: #f8fafc;
+    background: var(--lab-surface-2);
     text-align: center;
 }
 
@@ -439,7 +439,7 @@ tbody tr:nth-child(even) {
     margin: 14px auto 0;
     padding: 12px 16px;
     border-radius: 10px;
-    background: #eef4ff;
+    background: var(--lab-accent-wash);
     line-height: 1.55;
 }
 
@@ -457,7 +457,7 @@ tbody tr:nth-child(even) {
 
 .mode-subtitle {
     font-size: 12px;
-    color: #64748b;
+    color: var(--lab-muted);
     font-weight: 400;
 }
 
@@ -471,9 +471,9 @@ tbody tr:nth-child(even) {
     gap: 9px;
     margin-top: 16px;
     padding: 11px 12px;
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
     border-radius: 8px;
-    background: #f8fafc;
+    background: var(--lab-surface-2);
     line-height: 1.4;
 }
 
@@ -516,7 +516,7 @@ tbody tr:nth-child(even) {
 
 .chart-note,
 .section-intro {
-    color: #475569;
+    color: var(--lab-text-2);
     line-height: 1.55;
 }
 
@@ -543,7 +543,7 @@ tbody tr:nth-child(even) {
     letter-spacing: .06em;
     font-size: 12px;
     font-weight: 700;
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 .mode-badge {
@@ -552,7 +552,7 @@ tbody tr:nth-child(even) {
     white-space: nowrap;
     padding: 7px 10px;
     border-radius: 999px;
-    background: #eef4ff;
+    background: var(--lab-accent-wash);
     font-size: 13px;
     font-weight: 700;
 }
@@ -571,9 +571,9 @@ tbody tr:nth-child(even) {
 .step-card {
     position: relative;
     padding: 18px;
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
     border-radius: 10px;
-    background: #fafcff;
+    background: var(--lab-surface-2);
 }
 
 .step-card h3 {
@@ -583,7 +583,7 @@ tbody tr:nth-child(even) {
 
 .step-card p {
     margin: 0;
-    color: #475569;
+    color: var(--lab-text-2);
     line-height: 1.5;
 }
 
@@ -606,18 +606,18 @@ tbody tr:nth-child(even) {
     margin: 18px 0 22px;
     padding: 12px;
     border-radius: 10px;
-    background: #f8fafc;
+    background: var(--lab-surface-2);
 }
 
 .task-progress span:not(.progress-arrow) {
     padding: 7px 10px;
     border-radius: 999px;
     background: white;
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 }
 
 .progress-arrow {
-    color: #64748b;
+    color: var(--lab-muted);
     font-weight: 700;
 }
 
@@ -668,11 +668,11 @@ tbody tr:nth-child(even) {
 
     text-decoration: none;
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eaf2ff;
+    background: var(--lab-accent-wash);
 
-    border: 1px solid #dbeafe;
+    border: 1px solid var(--lab-accent-tint);
 
     font-weight: 600;
 
@@ -683,7 +683,7 @@ tbody tr:nth-child(even) {
 
 
 .home-link:hover {
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 
     transform:
         translateX(-2px);

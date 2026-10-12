@@ -1,8 +1,3 @@
-console.log(
-    "TASK3.JS - NUCLEAR FUSION COMPARISON VERSION 1"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================
@@ -301,7 +296,7 @@ function evaluateTask3Choice(
     ) {
 
         feedback.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedback.classList.add(

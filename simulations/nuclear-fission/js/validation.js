@@ -1,8 +1,3 @@
-console.log(
-    "VALIDATION.JS - NUCLEAR FISSION VERSION 1"
-);
-
-
 // ======================================================
 // DOM - KIỂM CHỨNG PHẢN ỨNG
 // ======================================================
@@ -710,7 +705,7 @@ function createMonteValidationChart(
 
                     labels:
                     [
-                        "k lý thuyết",
+                        "k lí thuyết",
                         "k Monte Carlo"
                     ],
 
@@ -909,7 +904,7 @@ function runMonteValidation() {
     ) {
 
         monteValidationStatus.textContent =
-            "Kết quả phù hợp với kỳ vọng của mô hình";
+            "Kết quả phù hợp với kì vọng của mô hình";
 
 
         monteValidationConclusion.textContent =
@@ -925,7 +920,7 @@ function runMonteValidation() {
             +
             `sai lệch ${difference.toFixed(4)}. `
             +
-            `Kết quả phù hợp với kỳ vọng thống kê của mô hình. `
+            `Kết quả phù hợp với kì vọng thống kê của mô hình. `
             +
             `Nếu chạy lại, giá trị sẽ thay đổi một ít do tính ngẫu nhiên.`;
 
@@ -938,7 +933,7 @@ function runMonteValidation() {
         monteValidationConclusion.textContent =
             `Lần chạy này cho sai lệch ${difference.toFixed(4)} `
             +
-            `so với R lý thuyết = ${expectedR.toFixed(4)}. `
+            `so với R lí thuyết = ${expectedR.toFixed(4)}. `
             +
             `Do đây là mô phỏng ngẫu nhiên, có thể chạy lại `
             +

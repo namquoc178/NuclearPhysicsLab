@@ -28,22 +28,18 @@
 // CÁC HẰNG SỐ
 // ======================================================
 
-// Khối lượng nguyên tử hydrogen-1.
+// Các hằng số lấy từ assets/shared/constants.js
+// (xem nguồn và lí do chọn giá trị ở đó).
 const HYDROGEN_ATOM_MASS_U =
-    1.00782503223;
+    NPL_CONSTANTS.HYDROGEN_ATOM_MASS_U;
 
 
-// Khối lượng neutron.
-// CODATA 2022.
 const NEUTRON_MASS_U =
-    1.00866491606;
+    NPL_CONSTANTS.NEUTRON_MASS_U;
 
 
-// Năng lượng tương đương của 1 u.
-// Giá trị CODATA 2018, cũng là giá trị AME2020 dùng.
-// (CODATA 2022: 931,49410372 MeV; chênh lệch cỡ 1 phần tỷ, không ảnh hưởng kết quả.)
 const U_TO_MEV =
-    931.49410242;
+    NPL_CONSTANTS.U_TO_MEV;
 
 
 // ======================================================

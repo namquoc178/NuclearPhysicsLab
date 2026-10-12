@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
-  <rect width="800" height="310" fill="#f3f8ff"/>
+  <rect width="800" height="310" fill="none"/>
   <text x="70" y="86" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#7259c9">α</text>
   <text x="70" y="157" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#2f7bdc">β</text>
   <text x="70" y="229" font-family="Segoe UI, Arial" font-size="24" font-weight="700" fill="#bd5c29">γ</text>
