@@ -79,10 +79,10 @@ function calculateMassDefectU(
 // ======================================================
 // NĂNG LƯỢNG LIÊN KẾT
 //
-// Eb = Δm*c²
+// Eₗₖ = Δm·c²
 //
 // Với:
-// 1 u*c² = 931.49410242 MeV
+// 1 u·c² = U_TO_MEV (MeV), xem assets/shared/constants.js
 // ======================================================
 
 function calculateBindingEnergyMeV(

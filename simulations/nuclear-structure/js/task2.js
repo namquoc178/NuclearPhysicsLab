@@ -1,8 +1,3 @@
-console.log(
-    "TASK2.JS - NUCLEAR STRUCTURE ISOTOPE RECOGNITION VERSION 1"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================

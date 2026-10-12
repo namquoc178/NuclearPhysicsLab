@@ -1,8 +1,3 @@
-console.log(
-    "TASK1.JS - RADIOACTIVE DECAY DAUGHTER NUCLEUS VERSION 4"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================

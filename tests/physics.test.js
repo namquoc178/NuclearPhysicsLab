@@ -55,6 +55,9 @@ function stubDocument(returnNull) {
 // Nạp các tệp JS của một bài vào cùng một ngữ cảnh, theo đúng thứ tự.
 function loadLesson(lesson, files, extraGlobals = {}) {
     const context = vm.createContext({ console, Math, Number, Array, Object, Error, Set, Map, JSON, String, ...extraGlobals });
+    // Hằng số dùng chung được nạp trước, giống thứ tự <script> trong trang.
+    const shared = path.join(ROOT, "assets", "shared", "constants.js");
+    vm.runInContext(fs.readFileSync(shared, "utf8"), context, { filename: shared });
     for (const file of files) {
         const full = path.join(ROOT, "simulations", lesson, "js", file);
         vm.runInContext(fs.readFileSync(full, "utf8"), context, { filename: full });
@@ -259,6 +262,27 @@ function seededRandom(seed) {
     // Đối chiếu với bảng NIST ở 662 keV: x½(chì) ≈ 5,5 mm, x½(nhôm) ≈ 34 mm.
     near("suy giảm γ: x½ của chì (mm)", run(`calculateHalfValueLayer(getGammaMu("lead"))`), 5.50, 0.1);
     near("suy giảm γ: x½ của nhôm (mm)", run(`calculateHalfValueLayer(getGammaMu("aluminum"))`), 34.4, 0.5);
+}
+
+// ---------------------------------------------------------------------
+// 9. Hằng số dùng chung: ba bài tính năng lượng dùng cùng một giá trị
+// ---------------------------------------------------------------------
+{
+    const lessons = [["binding-energy", "nuclear-data.js"], ["nuclear-fission", "fission-data.js"], ["nuclear-fusion", "fusion-data.js"]];
+    for (const [lesson, file] of lessons) {
+        const run = loadLesson(lesson, [file]);
+        check(`hằng số: ${lesson} dùng U_TO_MEV chung`, run("U_TO_MEV === NPL_CONSTANTS.U_TO_MEV"));
+        check(`hằng số: ${lesson} dùng NEUTRON_MASS_U chung`, run("NEUTRON_MASS_U === NPL_CONSTANTS.NEUTRON_MASS_U"));
+    }
+    // Không tệp nào của bài được tự khai báo lại giá trị 931,494… bằng một con số.
+    for (const lesson of fs.readdirSync(path.join(ROOT, "simulations"))) {
+        const dir = path.join(ROOT, "simulations", lesson, "js");
+        for (const file of fs.readdirSync(dir)) {
+            if (file === "validation.js") continue; // số liệu tham chiếu độc lập để đối chiếu
+            const source = fs.readFileSync(path.join(dir, file), "utf8");
+            check(`hằng số: ${lesson}/${file} không khai báo riêng 931,494`, !/=\s*931\.494/.test(source));
+        }
+    }
 }
 
 // ---------------------------------------------------------------------

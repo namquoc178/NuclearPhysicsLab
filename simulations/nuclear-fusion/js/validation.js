@@ -1,8 +1,3 @@
-console.log(
-    "VALIDATION.JS - NUCLEAR FUSION VERSION 1"
-);
-
-
 // ======================================================
 // DỮ LIỆU THAM CHIẾU ĐỘC LẬP
 //
