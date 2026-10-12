@@ -483,22 +483,39 @@ function updateAdvancedInfo() {
         readParameters();
 
 
-    const mu =
-        getEffectiveMu(
-            parameters.radiationType,
-            parameters.material
-        );
-
-
     const probability =
-        calculateTransmissionProbability(
-            mu,
+        calculateTransmissionFor(
+            parameters.radiationType,
+            parameters.material,
             parameters.thicknessMm
         );
 
 
-    muDisplay.textContent =
-        `${mu.toFixed(3)} mm⁻¹`;
+    if (
+        parameters.radiationType === "alpha"
+    ) {
+
+        // α không suy giảm theo hàm mũ: hiển thị tầm xa thay cho μ.
+        muDisplay.textContent =
+            `không dùng μ · tầm xa R ≈ ${(
+                getAlphaRangeMm(
+                    parameters.material
+                ) * 1000
+            ).toFixed(0)} µm`;
+
+    } else {
+
+        const mu =
+            getEffectiveMu(
+                parameters.radiationType,
+                parameters.material
+            );
+
+
+        muDisplay.textContent =
+            `${mu.toFixed(3)} mm⁻¹`;
+
+    }
 
 
     probabilityDisplay.textContent =
@@ -932,10 +949,11 @@ function buildAnimatedRays(
 
             } else {
 
+                // α dừng ngay ở mặt trước lớp chắn (tầm xa chỉ vài chục µm).
                 const fractionInsideShield =
-                    0.15 +
-                    result.randomValue *
-                    0.75;
+                    radiationSelect.value === "alpha"
+                        ? 0.02 + result.randomValue * 0.04
+                        : 0.15 + result.randomValue * 0.75;
 
 
                 endX =
@@ -1136,15 +1154,31 @@ function generateTheoryCurve(
     material
 ) {
 
-    const mu =
-        getEffectiveMu(
-            radiationType,
-            material
+    const data =
+        [];
+
+
+    if (
+        radiationType === "alpha"
+    ) {
+
+        // Đường bậc thang: truyền qua hoàn toàn khi x < R, bị chặn khi x ≥ R.
+        const range =
+            getAlphaRangeMm(
+                material
+            );
+
+
+        data.push(
+            { x: 0, y: 1 },
+            { x: range, y: 1 },
+            { x: range, y: 0 },
+            { x: 10, y: 0 }
         );
 
 
-    const data =
-        [];
+        return data;
+    }
 
 
     for (
@@ -1162,8 +1196,9 @@ function generateTheoryCurve(
                     ),
 
                 y:
-                    calculateTransmissionProbability(
-                        mu,
+                    calculateTransmissionFor(
+                        radiationType,
+                        material,
                         thickness
                     )
 
@@ -1373,16 +1408,10 @@ function runSimulation() {
     );
 
 
-    const mu =
-        getEffectiveMu(
-            parameters.radiationType,
-            parameters.material
-        );
-
-
     const probability =
-        calculateTransmissionProbability(
-            mu,
+        calculateTransmissionFor(
+            parameters.radiationType,
+            parameters.material,
             parameters.thicknessMm
         );
 
@@ -1600,16 +1629,10 @@ function runTask1Trial(
         200;
 
 
-    const mu =
-        getEffectiveMu(
-            radiationType,
-            material
-        );
-
-
     const theoreticalProbability =
-        calculateTransmissionProbability(
-            mu,
+        calculateTransmissionFor(
+            radiationType,
+            material,
             thicknessMm
         );
 
@@ -1849,7 +1872,7 @@ function runTask1() {
 
 
     task1Conclusion.textContent =
-        "Trong cùng điều kiện của mô hình, α có tỉ lệ truyền qua thấp nhất, β cao hơn và γ cao nhất.";
+        "Với lớp nhôm 1 mm, α bị chặn hoàn toàn (tầm xa của α trong nhôm chỉ khoảng 0,02 mm), β truyền qua một phần và γ truyền qua nhiều nhất.";
 
 
     runTask1Button.disabled =

@@ -637,7 +637,7 @@ function createBindingValidationChart(
                                     true,
 
                                 text:
-                                    "Eᵦ/A (MeV/nucleon)"
+                                    "Eₗₖ/A (MeV/nucleon)"
 
                             }
 
