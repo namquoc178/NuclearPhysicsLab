@@ -1,5 +1,3 @@
-console.log("APP.JS - STUDENT READY VERSION 6");
-
 function getRequiredElement(id) {
     const element = document.getElementById(id);
 
@@ -1962,11 +1960,6 @@ function runExperiment3() {
     experiment3Message.textContent =
         "Ba đường mô phỏng đều có dao động ngẫu nhiên. Khi N₀ tăng, mức dao động tương đối có xu hướng nhỏ hơn và đường N/N₀ thường bám sát đường lí thuyết hơn. " +
         "Không nhất thiết mọi lần chạy riêng lẻ đều cho mức lệch giảm đều từ N₀ = 20 đến 1000; cần quan sát xu hướng thống kê qua nhiều lần lặp.";
-
-    console.log(
-        "Kết quả Nhiệm vụ 3:",
-        experiment3Results
-    );
 }
 
 // ======================================================

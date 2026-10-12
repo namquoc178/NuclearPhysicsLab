@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - NUCLEAR FUSION MULTI REACTION EXPLORE VERSION 2"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================

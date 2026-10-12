@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - GAMMA ATTENUATION VALIDATION VERSION 5"
-);
-
-
 // ======================================================
 // HÀM LẤY PHẦN TỬ HTML AN TOÀN
 // ======================================================
