@@ -16,26 +16,26 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     H: {
         symbol: "H",
         name: "Hydrogen",
-        vietnameseName: "Hiđrô",
+        vietnameseName: "Hydrogen",
         Z: 1,
 
         isotopes: [
             {
                 A: 1,
                 label: "H-1",
-                commonName: "Proti",
+                commonName: "Protium",
                 category: "stable"
             },
             {
                 A: 2,
                 label: "H-2",
-                commonName: "Đơteri",
+                commonName: "Deuterium",
                 category: "stable"
             },
             {
                 A: 3,
                 label: "H-3",
-                commonName: "Triti",
+                commonName: "Tritium",
                 category: "radioactive"
             }
         ]
@@ -45,7 +45,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     He: {
         symbol: "He",
         name: "Helium",
-        vietnameseName: "Heli",
+        vietnameseName: "Helium",
         Z: 2,
 
         isotopes: [
@@ -66,7 +66,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     C: {
         symbol: "C",
         name: "Carbon",
-        vietnameseName: "Cacbon",
+        vietnameseName: "Carbon",
         Z: 6,
 
         isotopes: [
@@ -92,7 +92,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     O: {
         symbol: "O",
         name: "Oxygen",
-        vietnameseName: "Oxi",
+        vietnameseName: "Oxygen",
         Z: 8,
 
         isotopes: [
@@ -160,7 +160,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     Cl: {
         symbol: "Cl",
         name: "Chlorine",
-        vietnameseName: "Clo",
+        vietnameseName: "Chlorine",
         Z: 17,
 
         isotopes: [
@@ -212,7 +212,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     Co: {
         symbol: "Co",
         name: "Cobalt",
-        vietnameseName: "Coban",
+        vietnameseName: "Cobalt",
         Z: 27,
 
         isotopes: [
@@ -233,7 +233,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     Sr: {
         symbol: "Sr",
         name: "Strontium",
-        vietnameseName: "Stronti",
+        vietnameseName: "Strontium",
         Z: 38,
 
         isotopes: [
@@ -254,7 +254,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     I: {
         symbol: "I",
         name: "Iodine",
-        vietnameseName: "Iốt",
+        vietnameseName: "Iodine",
         Z: 53,
 
         isotopes: [
@@ -275,7 +275,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     Cs: {
         symbol: "Cs",
         name: "Caesium",
-        vietnameseName: "Xêsi",
+        vietnameseName: "Caesium",
         Z: 55,
 
         isotopes: [
@@ -296,7 +296,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     Lu: {
         symbol: "Lu",
         name: "Lutetium",
-        vietnameseName: "Luteti",
+        vietnameseName: "Lutetium",
         Z: 71,
 
         isotopes: [
@@ -338,7 +338,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     Ra: {
         symbol: "Ra",
         name: "Radium",
-        vietnameseName: "Radi",
+        vietnameseName: "Radium",
         Z: 88,
 
         isotopes: [
@@ -359,7 +359,7 @@ const NUCLEAR_STRUCTURE_ELEMENTS = {
     U: {
         symbol: "U",
         name: "Uranium",
-        vietnameseName: "Urani",
+        vietnameseName: "Uranium",
         Z: 92,
 
         isotopes: [

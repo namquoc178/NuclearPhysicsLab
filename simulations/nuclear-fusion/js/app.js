@@ -179,6 +179,13 @@ const qValueDisplay =
     );
 
 
+// Q chia cho tổng số nucleon: để so sánh với phân hạch (≈ 0,85 MeV/nucleon).
+const qPerNucleonDisplay =
+    document.getElementById(
+        "qPerNucleonDisplay"
+    );
+
+
 const massConservationStatus =
     getRequiredElement(
         "massConservationStatus"
@@ -1676,6 +1683,12 @@ function showFinalResults() {
         `${p.qValueMeV.toFixed(3)} MeV`;
 
 
+    if (qPerNucleonDisplay) {
+        qPerNucleonDisplay.textContent =
+            `${(p.qValueMeV / p.initialA).toFixed(2)} MeV/nucleon`;
+    }
+
+
     massConservationStatus.textContent =
         p.massNumberConserved
             ?
@@ -1751,6 +1764,12 @@ function clearResults() {
 
     qValueDisplay.textContent =
         "—";
+
+
+    if (qPerNucleonDisplay) {
+        qPerNucleonDisplay.textContent =
+            "—";
+    }
 
 
     massConservationStatus.textContent =

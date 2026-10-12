@@ -434,7 +434,7 @@ function buildPhysicsExplanation(
                 <p>
                     Hạt nhân mẹ phát ra một hạt α,
                     tương ứng với hạt nhân
-                    <strong>heli-4 gồm 2 proton và 2 neutron</strong>.
+                    <strong>helium-4 gồm 2 proton và 2 neutron</strong>.
                 </p>
 
                 <p class="physics-equation">

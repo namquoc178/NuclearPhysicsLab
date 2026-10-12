@@ -29,12 +29,12 @@
 </article>
 <article class="lesson-insight-card lesson-formula-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
-<div class="lesson-formula-wrap"><div class="lesson-formula-main">P = e<sup>−μx</sup></div><div class="lesson-formula-secondary">β, γ: μ là hệ số hiệu dụng • x: độ dày lớp chắn<br/>α: đi hết tầm xa R rồi dừng, P = 0 khi x ≥ R</div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">P = e<sup>−μx</sup></div><div class="lesson-formula-secondary">γ (Cs-137) và β (Sr-90): μ = (μ/ρ)·ρ • x: độ dày lớp chắn<br/>α đi hết tầm xa R rồi dừng; β cũng có tầm xa cực đại: P = 0 khi x ≥ R</div></div>
 <div class="lesson-mini-visual"><div aria-label="Minh họa mức đâm xuyên tương đối" class="penetration-visual"><div><b>α</b><span class="ray short"></span><em>giấy</em></div><div><b>β</b><span class="ray medium"></span><em>nhôm</em></div><div><b>γ</b><span class="ray long"></span><em>chì</em></div></div></div>
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Hạt α dừng lại sau một tầm xa xác định (cỡ vài chục µm trong chất rắn), nên mọi lớp chắn trong bài, dày từ 0,1 mm, đều chặn hoàn toàn α. Với β và γ, công thức mũ là mô hình hiệu dụng phục vụ mục đích sư phạm; với β, nó không phải mô hình vi mô đầy đủ cho hạt mang điện.</p>
+<p>Nguồn giả định: α khoảng 5 MeV, β từ Sr-90/Y-90 (E<sub>max</sub> = 2,28 MeV), γ 662 keV từ Cs-137. Hạt α dừng sau tầm xa cỡ vài chục µm nên mọi lớp chắn trong bài đều chặn hoàn toàn α. Với β, hàm mũ là công thức thực nghiệm gần đúng, kèm tầm xa cực đại; với γ, μ lấy theo bảng NIST cho chùm hẹp.</p>
 </article>
 </section>
 <section class="learning-goal">
@@ -76,7 +76,7 @@
 </div>
 <div class="advanced-controls" id="advancedControls">
 <div class="control-group">
-<label>Hệ số hiệu dụng μ</label>
+<label>Hệ số suy giảm μ</label>
 <output id="muDisplay">—</output>
 </div>
 <div class="control-group">
@@ -152,7 +152,7 @@
 <li>Cùng một bức xạ và độ dày, thay vật liệu có làm kết quả thay đổi không?</li>
 </ol>
 </div>
-<p class="model-note"><strong>Lưu ý:</strong> Đây là mô hình giáo dục định tính. Hạt α được mô tả bằng tầm xa (khoảng 0,01–0,05 mm với α cỡ 5 MeV), nên bị chặn hoàn toàn ở mọi độ dày trong bài. Với β và γ, các hệ số tương tác hiệu dụng dùng để thể hiện xu hướng; chúng không phải số liệu tuyệt đối cho mọi năng lượng bức xạ và mọi vật liệu thực tế.</p>
+<p class="model-note"><strong>Lưu ý:</strong> Hạt α được mô tả bằng tầm xa (khoảng 0,01–0,05 mm với α cỡ 5 MeV), nên bị chặn hoàn toàn ở mọi độ dày trong bài. Hệ số của β (μ/ρ ≈ 17·E<sub>max</sub><sup>−1,14</sup> cm²/g) và tầm xa cực đại của β (công thức Katz–Penfold) là công thức thực nghiệm gần đúng. Hệ số của γ lấy từ bảng NIST ở 662 keV. Các số này đúng cho nguồn đã nêu, không đúng cho mọi năng lượng bức xạ.</p>
 </section>
 <section class="mode-panel" id="experimentPanel">
 <h2>
@@ -683,17 +683,16 @@
 </strong>
 </p>
 <p>
-            Hệ số μ là hệ số tương tác hiệu dụng
-            được sử dụng để mô tả xu hướng định tính
-            của mô hình, không phải dữ liệu thực nghiệm
-            phổ quát cho mọi năng lượng bức xạ.
+            Với γ 662 keV của Cs-137, μ của chì là 0,126 mm⁻¹
+            (theo bảng NIST), tương ứng bề dày bán giảm khoảng 5,5 mm.
+            Giá trị này chỉ đúng cho năng lượng photon đã nêu.
         </p>
 </div>
 </section>
 </main>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/physics.js?v=7"></script>
+<script src="js/physics.js?v=9"></script>
 <script src="js/simulation.js?v=6"></script>
 <script src="js/app.js?v=7"></script>
 <script src="../../assets/shared/lesson-ui.js?v=3"></script></body>

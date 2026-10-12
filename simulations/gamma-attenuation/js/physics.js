@@ -10,21 +10,32 @@
 //
 // I / I0 = exp(-mu * x)
 //
-// Các giá trị mu bên dưới là tham số hiệu dụng
-// dùng trong mô hình giáo dục hiện tại.
+// Nguồn: tia γ 662 keV của Cs-137, chùm hẹp.
+// μ = (μ/ρ)·ρ, với μ/ρ nội suy log–log từ bảng NIST
+// (X-Ray Mass Attenuation Coefficients, Hubbell & Seltzer):
+//   chì    μ/ρ = 0,1111 cm²/g, ρ = 11,35 g/cm³ → μ = 0,126 mm⁻¹ (x½ ≈ 5,5 mm)
+//   nhôm   μ/ρ = 0,0746 cm²/g, ρ = 2,699 g/cm³ → μ = 0,0201 mm⁻¹ (x½ ≈ 34 mm)
+//   giấy   coi gần đúng μ/ρ như nước 0,0857 cm²/g, ρ ≈ 0,8 g/cm³
+//          → μ = 0,0069 mm⁻¹ (x½ ≈ 100 mm)
+// Phiên bản trước dùng bộ số hiệu dụng (0,015; 0,055; 0,240 mm⁻¹)
+// không ứng với một năng lượng photon nào.
 // ======================================================
+
+
+const GAMMA_SOURCE_LABEL =
+    "Cs-137 (662 keV)";
 
 
 const GAMMA_MODEL_MU = {
 
     paper:
-        0.015,
+        0.0069,
 
     aluminum:
-        0.055,
+        0.0201,
 
     lead:
-        0.240
+        0.126
 
 };
 

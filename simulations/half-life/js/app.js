@@ -96,6 +96,12 @@ const realTimeInterval = 100;
 
 let experimentalData = [];
 let theoreticalData = [];
+
+// Dải thăng giáng ±σ của MỘT lần mô phỏng quanh đường lí thuyết.
+// Mỗi hạt nhân còn lại sau thời gian t với xác suất p = e^(−λt), độc lập
+// nhau, nên N(t) tuân theo phân bố nhị thức: σ = √(N₀·p·(1 − p)).
+let theoreticalUpperData = [];
+let theoreticalLowerData = [];
 let averageMonteCarloData = [];
 
 let decayChart = null;
@@ -303,6 +309,8 @@ function drawNuclei() {
 
 function generateTheoreticalData() {
     theoreticalData = [];
+    theoreticalUpperData = [];
+    theoreticalLowerData = [];
 
     const lambda =
         calculateLambda(currentHalfLife);
@@ -331,6 +339,29 @@ function generateTheoreticalData() {
                 lambda,
                 time
             )
+        });
+
+        const survivalProbability =
+            Math.exp(-lambda * time);
+
+        const sigma =
+            Math.sqrt(
+                currentN0 *
+                survivalProbability *
+                (1 - survivalProbability)
+            );
+
+        const expected =
+            currentN0 * survivalProbability;
+
+        theoreticalUpperData.push({
+            x: time,
+            y: Math.min(currentN0, expected + sigma)
+        });
+
+        theoreticalLowerData.push({
+            x: time,
+            y: Math.max(0, expected - sigma)
         });
     }
 }
@@ -478,6 +509,10 @@ function createChart() {
                     {
                         label:
                             "Kết quả mô phỏng",
+                        borderColor:
+                            "#2563eb",
+                        backgroundColor:
+                            "#2563eb",
 
                         data:
                             experimentalData,
@@ -495,6 +530,10 @@ function createChart() {
                     {
                         label:
                             "Giá trị lý thuyết",
+                        borderColor:
+                            "#1f2937",
+                        backgroundColor:
+                            "#1f2937",
 
                         data:
                             theoreticalData,
@@ -512,6 +551,10 @@ function createChart() {
                     {
                         label:
                             "Trung bình nhiều lần mô phỏng",
+                        borderColor:
+                            "#d97706",
+                        backgroundColor:
+                            "#d97706",
 
                         data:
                             averageMonteCarloData,
@@ -527,6 +570,46 @@ function createChart() {
 
                         borderDash:
                             [8, 4]
+                    },
+                    {
+                        label:
+                            "Dải thăng giáng ±σ quanh lí thuyết",
+                        borderColor:
+                            "rgba(37, 99, 235, 0.45)",
+                        backgroundColor:
+                            "rgba(37, 99, 235, 0.10)",
+                        data:
+                            theoreticalUpperData,
+                        borderWidth:
+                            1,
+                        borderDash:
+                            [3, 3],
+                        pointRadius:
+                            0,
+                        showLine:
+                            true,
+                        fill:
+                            false
+                    },
+                    {
+                        label:
+                            "Lí thuyết − σ",
+                        borderColor:
+                            "rgba(37, 99, 235, 0.45)",
+                        data:
+                            theoreticalLowerData,
+                        borderWidth:
+                            1,
+                        borderDash:
+                            [3, 3],
+                        pointRadius:
+                            0,
+                        showLine:
+                            true,
+                        fill:
+                            "-1",
+                        backgroundColor:
+                            "rgba(37, 99, 235, 0.10)"
                     }
                 ]
             },
@@ -570,7 +653,11 @@ function createChart() {
 
                 plugins: {
                     legend: {
-                        display: true
+                        display: true,
+                        labels: {
+                            filter:
+                                item => item.text !== "Lí thuyết − σ"
+                        }
                     },
 
                     halfLifeMarkers: {
@@ -2202,8 +2289,26 @@ async function runValidationExperiment() {
                 repeatCount
             );
 
+        // RMSE kì vọng của đường trung bình nếu mô hình đúng:
+        // phương sai tại mỗi điểm = N₀·p·(1 − p) / số lần lặp.
+        let expectedVarianceSum = 0;
+
+        for (const point of averageMonteCarloData) {
+            const p = Math.exp(-lambda * point.x);
+            expectedVarianceSum +=
+                currentN0 * p * (1 - p) / repeatCount;
+        }
+
+        const expectedNormalizedRMSE =
+            Math.sqrt(
+                expectedVarianceSum /
+                averageMonteCarloData.length
+            ) /
+            currentN0 *
+            100;
+
         validationError.textContent =
-            `${normalizedRMSE.toFixed(3)} %`;
+            `${normalizedRMSE.toFixed(3)} % (kì vọng ≈ ${expectedNormalizedRMSE.toFixed(3)} %)`;
 
         setSimulationStatus(
             "Kiểm chứng thống kê đã hoàn thành.",
