@@ -1,0 +1,202 @@
+/* =====================================================================
+   assets/shared/real-data.css
+   Phần "Đối chiếu với dữ liệu thực" và khối kiểm tra nội bộ thu gọn.
+   ===================================================================== */
+
+.real-data-check {
+    margin: 0 0 20px;
+    padding: 22px 24px;
+    border: 1px solid #bcd3ea;
+    border-radius: 16px;
+    background: #f6faff;
+}
+
+.real-data-check h2 {
+    margin: 2px 0 8px;
+    font-size: 1.35rem;
+}
+
+.rd-kicker {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    color: #2f6fb6;
+}
+
+.rd-intro {
+    max-width: 72ch;
+    margin: 0 0 14px;
+    color: #344054;
+}
+
+.rd-body {
+    display: grid;
+    gap: 14px;
+}
+
+.rd-step {
+    padding: 14px 16px;
+    border-radius: 12px;
+    background: #ffffff;
+    border: 1px solid #dbe6f2;
+}
+
+.rd-step h3 {
+    margin: 0 0 8px;
+    font-size: 1.02rem;
+}
+
+.rd-step p {
+    margin: 6px 0;
+}
+
+.rd-table-wrap {
+    overflow-x: auto;
+}
+
+.rd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+}
+
+.rd-table th,
+.rd-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #e4ebf3;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.rd-table th:first-child,
+.rd-table td:first-child {
+    text-align: left;
+}
+
+.rd-table th {
+    font-size: 13px;
+    color: #475467;
+    font-weight: 600;
+}
+
+.rd-input-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    margin: 8px 0;
+}
+
+.rd-input-row label {
+    font-weight: 600;
+}
+
+.rd-input-row input,
+.rd-input-row select {
+    min-width: 120px;
+    min-height: 40px;
+    padding: 6px 10px;
+    border: 1px solid #b8c7d9;
+    border-radius: 8px;
+    font: inherit;
+}
+
+.rd-input-row button {
+    min-height: 40px;
+    padding: 6px 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #2563eb;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.rd-input-row button.rd-secondary {
+    background: #e8eef7;
+    color: #1f2937;
+}
+
+.rd-feedback {
+    min-height: 1.5em;
+    margin: 6px 0 0;
+    font-weight: 600;
+}
+
+.rd-ok { color: #15803d; }
+.rd-bad { color: #b42318; }
+
+.rd-reveal {
+    margin-top: 8px;
+    padding: 10px 12px;
+    border-left: 3px solid #2563eb;
+    background: #f1f6ff;
+    border-radius: 0 8px 8px 0;
+}
+
+.rd-chain {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+    margin: 8px 0;
+    padding: 0;
+    list-style: none;
+}
+
+.rd-chain li {
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #eef3fa;
+    font-variant-numeric: tabular-nums;
+}
+
+.rd-chain li.rd-arrow {
+    background: none;
+    color: #667085;
+    font-size: 13px;
+}
+
+.rd-sources {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #475467;
+}
+
+.rd-sources ul {
+    margin: 4px 0 0;
+    padding-left: 18px;
+}
+
+details.teacher-checks {
+    margin: 0 0 20px;
+    border: 1px dashed #c3ccd8;
+    border-radius: 14px;
+    background: #fbfcfe;
+}
+
+details.teacher-checks > summary {
+    padding: 14px 18px;
+    cursor: pointer;
+    min-height: 44px;
+}
+
+details.teacher-checks > summary span {
+    color: #667085;
+}
+
+details.teacher-checks[open] > summary {
+    border-bottom: 1px dashed #c3ccd8;
+}
+
+.teacher-checks-body {
+    padding: 4px 18px 18px;
+}
+
+@media (max-width: 600px) {
+    .real-data-check {
+        padding: 16px;
+    }
+}
