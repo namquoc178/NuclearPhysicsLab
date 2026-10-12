@@ -1,4 +1,4 @@
-console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
+// lesson-ui.js – khung chung của các bài: định hướng, ba chế độ, suy ngẫm, tự đánh giá, thông báo.
 
 (function () {
     const modeButtons = {
@@ -27,8 +27,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             },
             experiment: {
                 bullets: [
-                    "Bạn đã đọc kí hiệu hạt nhân và suy ra A, Z, N.",
-                    "Bạn đã dùng Z và A để nhận diện, so sánh các đồng vị."
+                    "Em đã đọc kí hiệu hạt nhân và suy ra A, Z, N.",
+                    "Em đã dùng Z và A để nhận diện, so sánh các đồng vị."
                 ],
                 question: "Nếu A tăng 1 nhưng Z không đổi thì N thay đổi thế nào?",
                 hint: "Từ N = A − Z, khi Z cố định thì ΔN = ΔA."
@@ -50,8 +50,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             },
             experiment: {
                 bullets: [
-                    "Bạn đã suy ra hạt nhân con từ dạng phân rã và nhận diện chiều ngược lại từ ΔA, ΔZ.",
-                    "Bạn đã ghép nhiều bước thành một chuỗi biến đổi hạt nhân."
+                    "Em đã suy ra hạt nhân con từ dạng phân rã và nhận diện chiều ngược lại từ ΔA, ΔZ.",
+                    "Em đã ghép nhiều bước thành một chuỗi biến đổi hạt nhân."
                 ],
                 question: "Sau một phân rã α rồi hai phân rã β⁻, tổng ΔZ bằng bao nhiêu?",
                 hint: "Cộng lần lượt −2, +1 và +1."
@@ -66,22 +66,22 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             explore: {
                 bullets: [
                     "Số hạt chưa phân rã giảm theo quy luật mũ và không giảm tuyến tính theo thời gian.",
-                    "Sau mỗi chu kỳ bán rã, giá trị kì vọng của số hạt còn lại giảm còn một nửa."
+                    "Sau mỗi chu kì bán rã, giá trị kì vọng của số hạt còn lại giảm còn một nửa."
                 ],
-                question: "Sau 3 chu kỳ bán rã, phần số hạt còn lại theo lí thuyết là bao nhiêu so với N₀?",
-                hint: "Mỗi chu kỳ bán rã nhân thêm một hệ số 1/2."
+                question: "Sau 3 chu kì bán rã, phần số hạt còn lại theo lí thuyết là bao nhiêu so với N₀?",
+                hint: "Mỗi chu kì bán rã nhân thêm một hệ số 1/2."
             },
             experiment: {
                 bullets: [
-                    "Bạn đã so sánh kết quả Monte Carlo với đường cong phân rã lí thuyết.",
-                    "Bạn đã quan sát vai trò của số hạt ban đầu và dao động thống kê."
+                    "Em đã so sánh kết quả Monte Carlo với đường cong phân rã lí thuyết.",
+                    "Em đã quan sát vai trò của số hạt ban đầu và dao động thống kê."
                 ],
                 question: "Khi tăng N₀ rất lớn, đường mô phỏng thường tiến gần đường lí thuyết hơn hay xa hơn?",
                 hint: "Hãy nghĩ đến dao động tương đối của một mẫu ngẫu nhiên lớn."
             },
             selfCheck: [
                 "Tôi dùng được N = N₀e^(−λt) và λ = ln2/T₁/₂.",
-                "Tôi giải thích được ý nghĩa của chu kỳ bán rã.",
+                "Tôi giải thích được ý nghĩa của chu kì bán rã.",
                 "Tôi phân biệt được giá trị lí thuyết với dao động ngẫu nhiên của mô phỏng."
             ]
         },
@@ -96,8 +96,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             },
             experiment: {
                 bullets: [
-                    "Bạn đã so sánh các loại bức xạ qua nhiều vật liệu và độ dày khác nhau.",
-                    "Bạn đã liên hệ hệ số suy giảm hiệu dụng với mức truyền qua."
+                    "Em đã so sánh các loại bức xạ qua nhiều vật liệu và độ dày khác nhau.",
+                    "Em đã liên hệ hệ số suy giảm hiệu dụng với mức truyền qua."
                 ],
                 question: "Hai trường hợp có cùng x nhưng μ lớn hơn thì trường hợp nào truyền qua ít hơn?",
                 hint: "Trong số mũ −μx, μ lớn làm e^(−μx) nhỏ hơn."
@@ -119,8 +119,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             },
             experiment: {
                 bullets: [
-                    "Bạn đã thay đổi μ, x và so sánh I với I₀.",
-                    "Bạn đã dùng tuyến tính hóa để kiểm tra dạng hàm mũ của định luật suy giảm."
+                    "Em đã thay đổi μ, x và so sánh I với I₀.",
+                    "Em đã dùng tuyến tính hóa để kiểm tra dạng hàm mũ của định luật suy giảm."
                 ],
                 question: "Đồ thị ln(I/I₀) theo x có hệ số góc bằng đại lượng nào?",
                 hint: "Lấy logarit tự nhiên hai vế của I/I₀ = e^(−μx)."
@@ -142,8 +142,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             },
             experiment: {
                 bullets: [
-                    "Bạn đã tính Δm, Eₗₖ và Eₗₖ/A từ dữ liệu khối lượng.",
-                    "Bạn đã so sánh nhiều hạt nhân và nhận ra vùng Fe/Ni có Eₗₖ/A lớn trong tập dữ liệu."
+                    "Em đã tính Δm, Eₗₖ và Eₗₖ/A từ dữ liệu khối lượng.",
+                    "Em đã so sánh nhiều hạt nhân và nhận ra vùng Fe/Ni có Eₗₖ/A lớn trong tập dữ liệu."
                 ],
                 question: "Nếu hai hạt nhân có cùng Eₗₖ nhưng A khác nhau, Eₗₖ/A của hạt nhân nào lớn hơn?",
                 hint: "Với cùng tử số, mẫu số A nhỏ hơn cho thương lớn hơn."
@@ -160,13 +160,13 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
                     "Một hạt nhân nặng có thể tách thành các mảnh nhẹ hơn và giải phóng neutron cùng năng lượng.",
                     "Trong mỗi phương trình hạt nhân, tổng A và tổng Z phải được bảo toàn."
                 ],
-                question: "Trong một phương trình phân hạch, bạn nên kiểm tra hai đại lượng bảo toàn nào trước tiên?",
+                question: "Trong một phương trình phân hạch, em nên kiểm tra hai đại lượng bảo toàn nào trước tiên?",
                 hint: "Đó là hai số xuất hiện trong kí hiệu hạt nhân: số khối và số proton."
             },
             experiment: {
                 bullets: [
-                    "Bạn đã kiểm tra bảo toàn A, Z và phân tích phản ứng phân hạch mẫu.",
-                    "Bạn đã khảo sát mô hình phản ứng dây chuyền ở mức khái niệm."
+                    "Em đã kiểm tra bảo toàn A, Z và phân tích phản ứng phân hạch mẫu.",
+                    "Em đã khảo sát mô hình phản ứng dây chuyền ở mức khái niệm."
                 ],
                 question: "Vì sao mô hình phản ứng dây chuyền trong bài không nên được hiểu là mô hình lò phản ứng thực?",
                 hint: "Mô hình đã giản lược mạnh hình học, xác suất, năng lượng và nhiều cơ chế vật lí thực tế."
@@ -188,8 +188,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
             },
             experiment: {
                 bullets: [
-                    "Bạn đã kiểm tra bảo toàn A, Z và tính Q từ chênh lệch khối lượng.",
-                    "Bạn đã so sánh nhiều kênh phản ứng nhiệt hạch điển hình."
+                    "Em đã kiểm tra bảo toàn A, Z và tính Q từ chênh lệch khối lượng.",
+                    "Em đã so sánh nhiều kênh phản ứng nhiệt hạch điển hình."
                 ],
                 question: "Nếu khối lượng nghỉ của hệ trước phản ứng lớn hơn hệ sau phản ứng, Q có dấu gì?",
                 hint: "Phần khối lượng giảm được chuyển thành năng lượng theo E = mc²."
@@ -213,7 +213,138 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
 
     const lessonKey = getLessonKey();
     const lessonData = LESSON_EXPERIENCE[lessonKey] || null;
+    const MODE_ORDER = ["explore", "experiment", "validation"];
     const visitedModes = new Set(["explore"]);
+
+    // ---------------- Thông báo thay cho hộp alert ----------------
+    // Hộp alert của trình duyệt chặn cả trang và trông khác nhau trên mỗi máy.
+    // Thông báo này không chặn thao tác, được đọc bởi trình đọc màn hình và tự ẩn.
+    let toastRegion = null;
+
+    function showToast(message) {
+        if (!toastRegion) {
+            toastRegion = document.createElement("div");
+            toastRegion.className = "lab-toast-region";
+            toastRegion.setAttribute("role", "status");
+            toastRegion.setAttribute("aria-live", "assertive");
+            document.body.appendChild(toastRegion);
+        }
+
+        const text = String(message == null ? "" : message).trim();
+        const toast = document.createElement("div");
+        toast.className = "lab-toast";
+        const body = document.createElement("span");
+        body.textContent = text;
+        const close = document.createElement("button");
+        close.type = "button";
+        close.setAttribute("aria-label", "Đóng thông báo");
+        close.textContent = "×";
+        toast.append(body, close);
+
+        const remove = () => toast.remove();
+        close.addEventListener("click", remove);
+        window.setTimeout(remove, Math.min(14000, 5000 + text.length * 45));
+
+        while (toastRegion.children.length >= 3) toastRegion.firstElementChild.remove();
+        toastRegion.appendChild(toast);
+    }
+
+    window.LabToast = showToast;
+    window.alert = showToast;
+
+    // ---------------- Định hướng bài học (thu gọn được) ----------------
+    function buildBriefing() {
+        const overview = document.querySelector(".lesson-visual-overview");
+        if (!overview || overview.closest(".lesson-briefing")) return;
+
+        const parts = [overview];
+        let next = overview.nextElementSibling;
+        if (next && next.matches(".learning-goals, .learning-goal, .lesson-learning-goal")) {
+            parts.push(next);
+        }
+
+        const details = document.createElement("details");
+        details.className = "lesson-briefing";
+
+        const summary = document.createElement("summary");
+        const title = document.createElement("span");
+        title.className = "briefing-title";
+        title.textContent = "Mục tiêu, công thức trọng tâm và lưu ý về mô hình";
+        summary.appendChild(title);
+
+        const formula = overview.querySelector(".lesson-formula-main");
+        if (formula) {
+            const preview = document.createElement("span");
+            preview.className = "briefing-formula";
+            preview.setAttribute("aria-hidden", "true");
+            preview.innerHTML = formula.innerHTML;
+            summary.appendChild(preview);
+        }
+
+        const body = document.createElement("div");
+        body.className = "lesson-briefing-body";
+
+        overview.parentNode.insertBefore(details, overview);
+        details.append(summary, body);
+        parts.forEach((part) => body.appendChild(part));
+
+        // Lần đầu vào bài: mở sẵn trên màn hình rộng, thu gọn trên điện thoại để
+        // học sinh tới phần mô phỏng nhanh hơn. Những lần sau giữ lựa chọn của người học.
+        const storageKey = `npl-briefing-${lessonKey}`;
+        let saved = null;
+        try { saved = window.localStorage.getItem(storageKey); } catch (error) { saved = null; }
+        details.open = saved ? saved === "open" : window.matchMedia("(min-width: 721px)").matches;
+        details.addEventListener("toggle", () => {
+            try { window.localStorage.setItem(storageKey, details.open ? "open" : "closed"); } catch (error) { /* bỏ qua */ }
+        });
+    }
+
+    // ---------------- Bố cục rộng: đồ thị cạnh mô phỏng ----------------
+    const STAGE_LESSONS = ["half-life", "radiation-penetration", "gamma-attenuation"];
+
+    function buildStage() {
+        if (!STAGE_LESSONS.includes(lessonKey) || document.querySelector(".lesson-stage")) return;
+        const sim = document.querySelector(".simulation-layout, .workspace");
+        const results = document.querySelector(".data-panel, .results-panel, .result-panel");
+        const chart = document.querySelector(".chart-panel");
+        if (!sim || !results || !chart) return;
+        if (sim.parentNode !== results.parentNode || sim.parentNode !== chart.parentNode) return;
+
+        const stage = document.createElement("div");
+        stage.className = "lesson-stage";
+        sim.parentNode.insertBefore(stage, sim);
+        sim.classList.add("stage-sim");
+        results.classList.add("stage-results");
+        chart.classList.add("stage-chart");
+        stage.append(sim, results, chart);
+    }
+
+    // ---------------- Ba chế độ là ba bước của bài ----------------
+    function decorateModeButtons() {
+        MODE_ORDER.forEach((mode, index) => {
+            const button = modeButtons[mode];
+            if (!button || button.querySelector(".mode-step")) return;
+            const step = document.createElement("span");
+            step.className = "mode-step";
+            step.setAttribute("aria-hidden", "true");
+            step.textContent = String(index + 1);
+            button.insertBefore(step, button.firstChild);
+        });
+    }
+
+    function updateModeButtons() {
+        MODE_ORDER.forEach((mode, index) => {
+            const button = modeButtons[mode];
+            if (!button) return;
+            const active = button.classList.contains("active");
+            const visited = visitedModes.has(mode);
+            button.classList.toggle("visited", visited);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+            button.setAttribute("aria-current", active ? "step" : "false");
+            const step = button.querySelector(".mode-step");
+            if (step) step.textContent = visited && !active ? "✓" : String(index + 1);
+        });
+    }
 
     function scrollToModes() {
         if (!nav) return;
@@ -224,8 +355,6 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
         const button = modeButtons[mode];
         if (!button) return;
         button.click();
-        visitedModes.add(mode);
-        updateJourney(mode);
         window.setTimeout(scrollToModes, 30);
     }
 
@@ -243,24 +372,24 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
 
         const footer = document.createElement("div");
         footer.className = "lesson-mode-footer";
-        footer.setAttribute("aria-label", "Điều hướng giữa các chế độ học tập");
+        footer.setAttribute("aria-label", "Chuyển sang chế độ khác");
 
         if (mode === "explore") {
             footer.appendChild(document.createElement("span")).className = "footer-spacer";
-            footer.appendChild(createModeButton("Tiếp tục: THÍ NGHIỆM →", "experiment", true));
+            footer.appendChild(createModeButton("Tiếp tục với Thí nghiệm", "experiment", true));
         }
 
         if (mode === "experiment") {
-            footer.appendChild(createModeButton("← KHÁM PHÁ", "explore", false));
-            footer.appendChild(createModeButton("Tiếp tục: KIỂM CHỨNG →", "validation", true));
+            footer.appendChild(createModeButton("Quay lại Khám phá", "explore", false));
+            footer.appendChild(createModeButton("Tiếp tục với Kiểm chứng", "validation", true));
         }
 
         if (mode === "validation") {
-            footer.appendChild(createModeButton("← THÍ NGHIỆM", "experiment", false));
+            footer.appendChild(createModeButton("Quay lại Thí nghiệm", "experiment", false));
 
             const home = document.createElement("a");
             home.href = "../../index.html";
-            home.textContent = "Về Trang chủ";
+            home.textContent = "Về trang chủ";
             home.className = "next-mode";
             footer.appendChild(home);
         }
@@ -268,91 +397,16 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
         panel.appendChild(footer);
     }
 
-    function buildJourney() {
-        if (!nav || document.querySelector(".lesson-journey")) return;
-
-        const journey = document.createElement("section");
-        journey.className = "lesson-journey";
-        journey.setAttribute("aria-label", "Hành trình bài học");
-        journey.innerHTML = `
-            <div class="lesson-journey-heading">
-                <div>
-                    <span class="lesson-journey-kicker">HÀNH TRÌNH BÀI HỌC</span>
-                    <strong>Khám phá → Thực hành → Kiểm chứng</strong>
-                </div>
-                <span class="lesson-journey-status" aria-live="polite">Bước 1/3 · Khám phá</span>
-            </div>
-            <div class="lesson-journey-track" role="list">
-                <button type="button" class="lesson-journey-step" data-mode="explore" role="listitem">
-                    <span class="journey-dot">1</span>
-                    <span><b>Khám phá</b><small>Quan sát & tìm quy luật</small></span>
-                </button>
-                <span class="journey-connector" aria-hidden="true"></span>
-                <button type="button" class="lesson-journey-step" data-mode="experiment" role="listitem">
-                    <span class="journey-dot">2</span>
-                    <span><b>Thí nghiệm</b><small>Thực hiện nhiệm vụ</small></span>
-                </button>
-                <span class="journey-connector" aria-hidden="true"></span>
-                <button type="button" class="lesson-journey-step" data-mode="validation" role="listitem">
-                    <span class="journey-dot">3</span>
-                    <span><b>Kiểm chứng</b><small>Đối chiếu mô hình</small></span>
-                </button>
-            </div>
-        `;
-
-        journey.querySelectorAll(".lesson-journey-step").forEach((button) => {
-            button.addEventListener("click", () => goToMode(button.dataset.mode));
-        });
-
-        nav.insertAdjacentElement("afterend", journey);
-        updateJourney("explore");
-    }
-
-    function updateJourney(activeMode) {
-        const journey = document.querySelector(".lesson-journey");
-        if (!journey) return;
-
-        const order = ["explore", "experiment", "validation"];
-        const labels = {
-            explore: "Khám phá",
-            experiment: "Thí nghiệm",
-            validation: "Kiểm chứng"
-        };
-        const activeIndex = Math.max(0, order.indexOf(activeMode));
-
-        journey.querySelectorAll(".lesson-journey-step").forEach((step) => {
-            const mode = step.dataset.mode;
-            step.classList.toggle("active", mode === activeMode);
-            step.classList.toggle("visited", visitedModes.has(mode));
-            step.setAttribute("aria-current", mode === activeMode ? "step" : "false");
-        });
-
-        journey.querySelectorAll(".journey-connector").forEach((connector, index) => {
-            connector.classList.toggle("visited", index < activeIndex);
-        });
-
-        const status = journey.querySelector(".lesson-journey-status");
-        if (status) {
-            status.textContent = `Bước ${activeIndex + 1}/3 · ${labels[activeMode]}`;
-        }
-    }
-
     function createReflectionCard(mode, data) {
         const card = document.createElement("section");
         card.className = `lesson-reflection-card ${mode === "experiment" ? "practice-reflection" : ""}`;
-        card.setAttribute("aria-label", mode === "explore" ? "Tóm tắt phần khám phá" : "Tóm tắt phần thực hành");
+        card.setAttribute("aria-label", mode === "explore" ? "Tóm tắt phần khám phá" : "Tóm tắt phần thí nghiệm");
 
-        const heading = mode === "explore" ? "Bạn vừa quan sát" : "Bạn vừa luyện tập";
-        const kicker = mode === "explore" ? "DỪNG LẠI 30 GIÂY" : "KẾT NỐI KIẾN THỨC";
-        const icon = mode === "explore" ? "✓" : "↗";
+        const heading = mode === "explore" ? "Em vừa quan sát" : "Em vừa luyện tập";
 
         card.innerHTML = `
             <div class="lesson-reflection-heading">
-                <span class="lesson-reflection-icon" aria-hidden="true">${icon}</span>
-                <div>
-                    <span class="lesson-reflection-kicker">${kicker}</span>
-                    <h3>${heading}</h3>
-                </div>
+                <h3>${heading}</h3>
             </div>
             <ul class="lesson-reflection-points">
                 ${data.bullets.map((item) => `<li>${item}</li>`).join("")}
@@ -370,15 +424,18 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
         return card;
     }
 
-    function addReflection(panel, mode, data) {
-        if (!panel || !data || panel.querySelector(":scope > .lesson-reflection-card")) return;
-        const card = createReflectionCard(mode, data);
+    function insertBeforeFooter(panel, card) {
         const footer = panel.querySelector(":scope > .lesson-mode-footer");
         if (footer) {
             panel.insertBefore(card, footer);
         } else {
             panel.appendChild(card);
         }
+    }
+
+    function addReflection(panel, mode, data) {
+        if (!panel || !data || panel.querySelector(":scope > .lesson-reflection-card")) return;
+        insertBeforeFooter(panel, createReflectionCard(mode, data));
     }
 
     function createSelfCheckCard(items) {
@@ -389,9 +446,8 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
         card.innerHTML = `
             <div class="lesson-self-check-heading">
                 <div>
-                    <span class="lesson-reflection-kicker">TRƯỚC KHI KẾT THÚC</span>
                     <h3>Tự đánh giá nhanh</h3>
-                    <p>Đánh dấu những điều bạn cảm thấy mình đã làm được sau bài học.</p>
+                    <p>Đánh dấu những điều em đã làm được sau bài học.</p>
                 </div>
                 <span class="lesson-self-check-count" aria-live="polite">0/${items.length}</span>
             </div>
@@ -404,7 +460,7 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
                     </label>
                 `).join("")}
             </div>
-            <p class="lesson-self-check-note">Đây là phần tự đánh giá, không phải điểm số. Nếu còn mục chưa chắc chắn, bạn có thể quay lại Khám phá hoặc Thí nghiệm để xem lại.</p>
+            <p class="lesson-self-check-note">Đây là phần tự đánh giá, không phải điểm số. Mục nào chưa chắc, em có thể quay lại Khám phá hoặc Thí nghiệm để xem lại.</p>
         `;
 
         const checkboxes = card.querySelectorAll("input[type='checkbox']");
@@ -424,17 +480,13 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
 
     function addSelfCheck(panel, items) {
         if (!panel || !items || panel.querySelector(":scope > .lesson-self-check-card")) return;
-        const card = createSelfCheckCard(items);
-        const footer = panel.querySelector(":scope > .lesson-mode-footer");
-        if (footer) {
-            panel.insertBefore(card, footer);
-        } else {
-            panel.appendChild(card);
-        }
+        insertBeforeFooter(panel, createSelfCheckCard(items));
     }
 
+    buildBriefing();
+    buildStage();
+    decorateModeButtons();
     Object.entries(panels).forEach(([mode, panel]) => addFooter(panel, mode));
-    buildJourney();
 
     if (lessonData) {
         addReflection(panels.explore, "explore", lessonData.explore);
@@ -444,16 +496,11 @@ console.log("LESSON-UI.JS - SHARED LESSON INTERFACE VERSION 2 - LAYER 3");
 
     Object.entries(modeButtons).forEach(([mode, button]) => {
         if (!button) return;
-        button.setAttribute("aria-pressed", button.classList.contains("active") ? "true" : "false");
         button.addEventListener("click", () => {
             visitedModes.add(mode);
-            updateJourney(mode);
-            window.setTimeout(() => {
-                Object.values(modeButtons).forEach((candidate) => {
-                    if (!candidate) return;
-                    candidate.setAttribute("aria-pressed", candidate.classList.contains("active") ? "true" : "false");
-                });
-            }, 0);
+            // app.js của từng bài đổi lớp .active trong cùng sự kiện click.
+            window.setTimeout(updateModeButtons, 0);
         });
     });
+    updateModeButtons();
 })();

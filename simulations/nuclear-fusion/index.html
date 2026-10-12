@@ -8,41 +8,43 @@
         Nhiệt hạch hạt nhân
     </title>
 <link href="data:," rel="icon"/>
-<link href="css/style.css?v=6" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
+<link href="css/style.css?v=9" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=4" rel="stylesheet"/>
+<link href="../../assets/shared/real-data.css?v=3" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="container">
 <!-- =====================================================
          ĐIỀU HƯỚNG
     ====================================================== -->
 <div class="top-navigation">
-<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lí hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
 </div>
 <!-- =====================================================
          HEADER
     ====================================================== -->
 <header class="page-header lesson-hero">
 <div class="lesson-hero-copy">
-<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<p class="lesson-label">Mô-đun 4: Phản ứng hạt nhân</p>
 <h1>Nhiệt hạch hạt nhân</h1>
 <p class="page-description">Khám phá quá trình kết hợp các hạt nhân nhẹ, kiểm tra các định luật bảo toàn và xác định năng lượng phản ứng từ chênh lệch khối lượng.</p>
 </div>
 <div aria-hidden="true" class="lesson-hero-visual">
-<img alt="" src="../../assets/images/cards/nuclear-fusion.svg"/>
+<img alt="" src="../../assets/images/cards/nuclear-fusion.svg?v=4"/>
 </div>
 </header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
 <article class="lesson-insight-card lesson-discovery-card">
-<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Em sẽ khám phá gì?</h2></div></div>
 <ul class="lesson-mini-list"><li>Kiểm tra bảo toàn A và Z trong các phản ứng nhiệt hạch.</li><li>Tính Q từ khối lượng trước và sau phản ứng.</li><li>So sánh năng lượng của một số kênh phản ứng nhẹ trong bộ dữ liệu.</li></ul>
 </article>
 <article class="lesson-insight-card lesson-formula-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
 <div class="lesson-formula-wrap"><div class="lesson-formula-main">Q = (m<sub>trước</sub> − m<sub>sau</sub>)c²</div><div class="lesson-formula-secondary">D + T → ⁴He + n  •  Q ≈ 17,59 MeV</div></div>
-<div class="lesson-mini-visual"><div aria-label="Deuteri và triti kết hợp tạo helium bốn, neutron và năng lượng" class="fusion-visual"><span class="fusion-particle">D</span><span class="fusion-particle">T</span><b>→</b><span class="fusion-product">⁴He</span><span class="particle-dot neutron-dot">n</span><span class="energy-mark">Q</span></div></div>
+<div class="lesson-mini-visual"><div aria-label="Deuterium và tritium kết hợp tạo helium bốn, neutron và năng lượng" class="fusion-visual"><span class="fusion-particle">D</span><span class="fusion-particle">T</span><b>→</b><span class="fusion-product">⁴He</span><span class="particle-dot neutron-dot">n</span><span class="energy-mark">Q</span></div></div>
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Hình ảnh chỉ minh họa sự kết hợp của các hạt nhân nhẹ và cân bằng năng lượng của phản ứng; không mô phỏng đầy đủ plasma, phân bố vận tốc hay điều kiện vật lí của môi trường nhiệt hạch.</p>
+<p>Hình ảnh chỉ minh họa sự kết hợp của các hạt nhân nhẹ và cân bằng năng lượng của phản ứng. Nhiệt hạch chỉ xảy ra ở nhiệt độ rất cao (cỡ 10⁷–10⁸ K) vì hai hạt nhân phải vượt rào thế Coulomb; phần Khám phá có một thanh nhiệt độ để so sánh, nhưng bài không mô phỏng đầy đủ plasma hay phân bố vận tốc.</p>
 </article>
 </section>
 <!-- =====================================================
@@ -88,7 +90,7 @@
 <nav aria-label="Chọn chế độ học tập" class="mode-navigation">
 <button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
 <button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
-<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu dữ liệu thực</span></button>
 </nav>
 <!-- =====================================================
          KHU MÔ PHỎNG
@@ -152,7 +154,7 @@
                     D + T → He-4 + n
                 </strong>
 <p id="selectedReactionDescription">
-                    Đơteri và triti kết hợp tạo heli-4
+                    Deuterium và tritium kết hợp tạo helium-4
                     và một neutron.
                 </p>
 </div>
@@ -248,7 +250,7 @@
     ====================================================== -->
 <section class="result-panel">
 <h2>
-            Kết quả vật lý
+            Kết quả vật lí
         </h2>
 <div class="result-grid">
 <div class="result-box">
@@ -296,6 +298,14 @@
                     Q
                 </span>
 <strong id="qValueDisplay">
+                    —
+                </strong>
+</div>
+<div class="result-box">
+<span>
+                    Q trên mỗi nucleon
+                </span>
+<strong id="qPerNucleonDisplay">
                     —
                 </strong>
 </div>
@@ -456,6 +466,27 @@
 <h2>
             Khám phá
         </h2>
+<div class="fusion-condition-card">
+<h3>Vì sao nhiệt hạch cần nhiệt độ rất cao?</h3>
+<p>
+                Hai hạt nhân nhẹ đều mang điện dương nên đẩy nhau. Muốn hợp nhất, chúng phải tiến
+                sát nhau cỡ vài fm để lực hạt nhân tác dụng, tức là vượt qua rào thế Coulomb.
+                Kéo thanh nhiệt độ để so động năng trung bình của hạt với rào thế của cặp D–T.
+            </p>
+<label for="fusionTemperatureInput">Nhiệt độ plasma: <strong id="fusionTemperatureDisplay">—</strong></label>
+<input id="fusionTemperatureInput" max="9" min="6" step="0.05" type="range" value="8"/>
+<div class="fusion-condition-grid">
+<div><span>Động năng trung bình (3/2)k<sub>B</sub>T</span><strong id="fusionMeanEnergyDisplay">—</strong></div>
+<div><span>Rào thế Coulomb D–T</span><strong id="fusionBarrierDisplay">—</strong></div>
+<div><span>Rào thế lớn hơn động năng trung bình</span><strong id="fusionBarrierRatioDisplay">—</strong></div>
+</div>
+<p class="fusion-condition-note" id="fusionConditionNote" aria-live="polite"></p>
+<p>
+                So sánh năng lượng: phản ứng D + T tỏa khoảng 17,6 MeV cho 5 nucleon, tức khoảng
+                3,5 MeV/nucleon; phân hạch U-235 tỏa khoảng 200 MeV cho 236 nucleon, chỉ khoảng
+                0,85 MeV/nucleon. Vì vậy với cùng khối lượng nhiên liệu, nhiệt hạch tỏa nhiều năng lượng hơn.
+            </p>
+</div>
 <div class="question-card">
 <h3>
                 Câu hỏi gợi ý
@@ -1575,14 +1606,18 @@
 </div>
 </section>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/fusion-data.js?v=6"></script>
+<script src="../../assets/vendor/chartjs/chart.umd.min.js?v=4.4.1"></script>
+<script src="../../assets/shared/constants.js?v=2"></script>
+<script src="js/fusion-data.js?v=9"></script>
 <script src="js/physics.js?v=6"></script>
 <script src="js/simulation.js?v=6"></script>
-<script src="js/app.js?v=6"></script>
-<script src="js/task1.js?v=4"></script>
-<script src="js/task2.js?v=3"></script>
-<script src="js/task3.js?v=2"></script>
-<script src="js/validation.js?v=1"></script>
-<script src="../../assets/shared/lesson-ui.js?v=3"></script></body>
+<script src="js/app.js?v=10"></script>
+<script src="js/task1.js?v=6"></script>
+<script src="js/task2.js?v=5"></script>
+<script src="js/task3.js?v=4"></script>
+<script src="js/validation.js?v=2"></script>
+<script src="js/fusion-conditions.js?v=3"></script>
+<script src="../../assets/shared/real-data.js?v=3"></script>
+<script src="js/real-data.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
 </html>

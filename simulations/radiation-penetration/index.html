@@ -6,35 +6,37 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Khả năng đâm xuyên của bức xạ</title>
 <link href="data:," rel="icon"/>
-<link href="css/style.css?v=1" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
+<link href="css/style.css?v=2" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=4" rel="stylesheet"/>
+<link href="../../assets/shared/real-data.css?v=3" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="top-navigation">
-<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lí hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
 </div>
 <div class="container">
 <header class="page-header lesson-hero">
 <div class="lesson-hero-copy">
-<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<p class="lesson-label">Mô-đun 3: Tương tác của bức xạ với vật chất</p>
 <h1>Khả năng đâm xuyên của bức xạ</h1>
 <p class="page-description">Quan sát sự truyền qua và hấp thụ của bức xạ α, β và γ khi đi qua các lớp vật chất khác nhau.</p>
 </div>
 <div aria-hidden="true" class="lesson-hero-visual">
-<img alt="" src="../../assets/images/cards/radiation-penetration.svg"/>
+<img alt="" src="../../assets/images/cards/radiation-penetration.svg?v=4"/>
 </div>
 </header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
 <article class="lesson-insight-card lesson-discovery-card">
-<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Em sẽ khám phá gì?</h2></div></div>
 <ul class="lesson-mini-list"><li>So sánh khả năng đâm xuyên tương đối của α, β và γ.</li><li>Thay đổi vật liệu và độ dày lớp chắn để quan sát truyền qua.</li><li>Đối chiếu kết quả Monte Carlo với mô hình truyền qua hiệu dụng.</li></ul>
 </article>
 <article class="lesson-insight-card lesson-formula-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
-<div class="lesson-formula-wrap"><div class="lesson-formula-main">P = e<sup>−μx</sup></div><div class="lesson-formula-secondary">β, γ: μ là hệ số hiệu dụng • x: độ dày lớp chắn<br/>α: đi hết tầm xa R rồi dừng, P = 0 khi x ≥ R</div></div>
+<div class="lesson-formula-wrap"><div class="lesson-formula-main">P = e<sup>−μx</sup></div><div class="lesson-formula-secondary">γ (Cs-137) và β (Sr-90): μ = (μ/ρ)·ρ • x: độ dày lớp chắn<br/>α đi hết tầm xa R rồi dừng; β cũng có tầm xa cực đại: P = 0 khi x ≥ R</div></div>
 <div class="lesson-mini-visual"><div aria-label="Minh họa mức đâm xuyên tương đối" class="penetration-visual"><div><b>α</b><span class="ray short"></span><em>giấy</em></div><div><b>β</b><span class="ray medium"></span><em>nhôm</em></div><div><b>γ</b><span class="ray long"></span><em>chì</em></div></div></div>
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Hạt α dừng lại sau một tầm xa xác định (cỡ vài chục µm trong chất rắn), nên mọi lớp chắn trong bài, dày từ 0,1 mm, đều chặn hoàn toàn α. Với β và γ, công thức mũ là mô hình hiệu dụng phục vụ mục đích sư phạm; với β, nó không phải mô hình vi mô đầy đủ cho hạt mang điện.</p>
+<p>Nguồn giả định: α khoảng 5 MeV, β từ Sr-90/Y-90 (E<sub>max</sub> = 2,28 MeV), γ 662 keV từ Cs-137. Hạt α dừng sau tầm xa cỡ vài chục µm nên mọi lớp chắn trong bài đều chặn hoàn toàn α. Với β, hàm mũ là công thức thực nghiệm gần đúng, kèm tầm xa cực đại; với γ, μ lấy theo bảng NIST cho chùm hẹp.</p>
 </article>
 </section>
 <section class="learning-goal">
@@ -44,7 +46,7 @@
 <nav aria-label="Chọn chế độ học tập" class="mode-navigation">
 <button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
 <button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
-<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu dữ liệu thực</span></button>
 </nav>
 <main>
 <section class="workspace">
@@ -76,11 +78,11 @@
 </div>
 <div class="advanced-controls" id="advancedControls">
 <div class="control-group">
-<label>Hệ số hiệu dụng μ</label>
+<label>Hệ số suy giảm μ</label>
 <output id="muDisplay">—</output>
 </div>
 <div class="control-group">
-<label>Xác suất truyền lý thuyết</label>
+<label>Xác suất truyền lí thuyết</label>
 <output id="probabilityDisplay">—</output>
 </div>
 </div>
@@ -127,7 +129,7 @@
 <div class="chart-header">
 <div>
 <h2>Tỉ lệ truyền qua theo độ dày</h2>
-<p>Điểm mô phỏng hiện tại được đặt trên đường lý thuyết của lựa chọn đang dùng.</p>
+<p>Điểm mô phỏng hiện tại được đặt trên đường lí thuyết của lựa chọn đang dùng.</p>
 </div>
 </div>
 <div class="chart-container">
@@ -141,7 +143,7 @@
 <ol>
 <li>Chọn một loại bức xạ α, β hoặc γ.</li>
 <li>Chọn vật liệu và thay đổi độ dày lớp chắn.</li>
-<li>Nhấn <strong>Phát bức xạ</strong>, quan sát số tia tới đầu dò và so sánh với đường lý thuyết.</li>
+<li>Nhấn <strong>Phát bức xạ</strong>, quan sát số tia tới đầu dò và so sánh với đường lí thuyết.</li>
 </ol>
 </div>
 <div class="question-card">
@@ -152,7 +154,7 @@
 <li>Cùng một bức xạ và độ dày, thay vật liệu có làm kết quả thay đổi không?</li>
 </ol>
 </div>
-<p class="model-note"><strong>Lưu ý:</strong> Đây là mô hình giáo dục định tính. Hạt α được mô tả bằng tầm xa (khoảng 0,01–0,05 mm với α cỡ 5 MeV), nên bị chặn hoàn toàn ở mọi độ dày trong bài. Với β và γ, các hệ số tương tác hiệu dụng dùng để thể hiện xu hướng; chúng không phải số liệu tuyệt đối cho mọi năng lượng bức xạ và mọi vật liệu thực tế.</p>
+<p class="model-note"><strong>Lưu ý:</strong> Hạt α được mô tả bằng tầm xa (khoảng 0,01–0,05 mm với α cỡ 5 MeV), nên bị chặn hoàn toàn ở mọi độ dày trong bài. Hệ số của β (μ/ρ ≈ 17·E<sub>max</sub><sup>−1,14</sup> cm²/g) và tầm xa cực đại của β (công thức Katz–Penfold) là công thức thực nghiệm gần đúng. Hệ số của γ lấy từ bảng NIST ở 662 keV. Các số này đúng cho nguồn đã nêu, không đúng cho mọi năng lượng bức xạ.</p>
 </section>
 <section class="mode-panel" id="experimentPanel">
 <h2>
@@ -248,7 +250,7 @@
                                     Tỉ lệ mô phỏng
                                 </th>
 <th>
-                                    Tỉ lệ lý thuyết
+                                    Tỉ lệ lí thuyết
                                 </th>
 </tr>
 </thead>
@@ -377,7 +379,7 @@
                                 I/I₀ mô phỏng
                             </th>
 <th>
-                                I/I₀ lý thuyết
+                                I/I₀ lí thuyết
                             </th>
 </tr>
 </thead>
@@ -391,7 +393,7 @@
                 </h4>
 <p>
                     So sánh kết quả mô phỏng Monte Carlo
-                    với đường lý thuyết.
+                    với đường lí thuyết.
                 </p>
 <div class="task2-chart-container">
 <canvas id="task2Chart"></canvas>
@@ -509,7 +511,7 @@
                                 I/I₀ mô phỏng
                             </th>
 <th>
-                                I/I₀ lý thuyết
+                                I/I₀ lí thuyết
                             </th>
 </tr>
 </thead>
@@ -557,7 +559,7 @@
 <p>
         Chế độ này dùng để kiểm tra mức độ phù hợp
         giữa kết quả trung bình của nhiều lần mô phỏng
-        với mô hình lý thuyết.
+        với mô hình lí thuyết.
     </p>
 <div class="validation-note">
 <strong>
@@ -640,7 +642,7 @@
                             x (mm)
                         </th>
 <th>
-                            Lý thuyết
+                            Lí thuyết
                         </th>
 <th>
                             Trung bình Monte Carlo
@@ -656,7 +658,7 @@
 </div>
 <div class="validation-chart-section">
 <h3>
-                So sánh mô phỏng và lý thuyết
+                So sánh mô phỏng và lí thuyết
             </h3>
 <div class="validation-chart-container">
 <canvas id="validationChart"></canvas>
@@ -683,18 +685,19 @@
 </strong>
 </p>
 <p>
-            Hệ số μ là hệ số tương tác hiệu dụng
-            được sử dụng để mô tả xu hướng định tính
-            của mô hình, không phải dữ liệu thực nghiệm
-            phổ quát cho mọi năng lượng bức xạ.
+            Với γ 662 keV của Cs-137, μ của chì là 0,126 mm⁻¹
+            (theo bảng NIST), tương ứng bề dày bán giảm khoảng 5,5 mm.
+            Giá trị này chỉ đúng cho năng lượng photon đã nêu.
         </p>
 </div>
 </section>
 </main>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/physics.js?v=7"></script>
+<script src="../../assets/vendor/chartjs/chart.umd.min.js?v=4.4.1"></script>
+<script src="js/physics.js?v=10"></script>
 <script src="js/simulation.js?v=6"></script>
-<script src="js/app.js?v=7"></script>
-<script src="../../assets/shared/lesson-ui.js?v=3"></script></body>
+<script src="js/app.js?v=9"></script>
+<script src="../../assets/shared/real-data.js?v=3"></script>
+<script src="js/real-data.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
 </html>

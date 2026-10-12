@@ -1,8 +1,3 @@
-console.log(
-    "TASK1.JS - RADIOACTIVE DECAY DAUGHTER NUCLEUS VERSION 4"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================
@@ -1140,7 +1135,7 @@ function evaluateTask1Element() {
     ) {
 
         task1ElementFeedback.textContent =
-            "Bạn chưa chọn nguyên tố.";
+            "Em chưa chọn nguyên tố.";
 
 
         task1ElementFeedback.classList.add(
@@ -1217,7 +1212,7 @@ function evaluateTask1Equation() {
     ) {
 
         task1EquationFeedback.textContent =
-            "Bạn chưa chọn phương trình.";
+            "Em chưa chọn phương trình.";
 
 
         task1EquationFeedback.classList.add(
@@ -1621,7 +1616,7 @@ function checkTask1() {
     ) {
 
         task1Conclusion.textContent +=
-            " Bạn đã xác định chính xác toàn bộ hạt nhân con.";
+            " Em đã xác định chính xác toàn bộ hạt nhân con.";
 
     } else {
 

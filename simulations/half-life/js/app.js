@@ -1,5 +1,3 @@
-console.log("APP.JS - STUDENT READY VERSION 6");
-
 function getRequiredElement(id) {
     const element = document.getElementById(id);
 
@@ -96,6 +94,12 @@ const realTimeInterval = 100;
 
 let experimentalData = [];
 let theoreticalData = [];
+
+// Dải thăng giáng ±σ của MỘT lần mô phỏng quanh đường lí thuyết.
+// Mỗi hạt nhân còn lại sau thời gian t với xác suất p = e^(−λt), độc lập
+// nhau, nên N(t) tuân theo phân bố nhị thức: σ = √(N₀·p·(1 − p)).
+let theoreticalUpperData = [];
+let theoreticalLowerData = [];
 let averageMonteCarloData = [];
 
 let decayChart = null;
@@ -190,7 +194,7 @@ function validateInputs() {
     }
 
     if (!Number.isFinite(currentHalfLife) || currentHalfLife <= 0) {
-        alert("Chu kỳ bán rã T₁/₂ phải lớn hơn 0.");
+        alert("Chu kì bán rã T₁/₂ phải lớn hơn 0.");
         return false;
     }
 
@@ -303,6 +307,8 @@ function drawNuclei() {
 
 function generateTheoreticalData() {
     theoreticalData = [];
+    theoreticalUpperData = [];
+    theoreticalLowerData = [];
 
     const lambda =
         calculateLambda(currentHalfLife);
@@ -332,11 +338,34 @@ function generateTheoreticalData() {
                 time
             )
         });
+
+        const survivalProbability =
+            Math.exp(-lambda * time);
+
+        const sigma =
+            Math.sqrt(
+                currentN0 *
+                survivalProbability *
+                (1 - survivalProbability)
+            );
+
+        const expected =
+            currentN0 * survivalProbability;
+
+        theoreticalUpperData.push({
+            x: time,
+            y: Math.min(currentN0, expected + sigma)
+        });
+
+        theoreticalLowerData.push({
+            x: time,
+            y: Math.max(0, expected - sigma)
+        });
     }
 }
 
 // ======================================================
-// 5. PLUGIN MỐC CHU KỲ BÁN RÃ
+// 5. PLUGIN MỐC CHU KÌ BÁN RÃ
 // ======================================================
 
 const halfLifeMarkerPlugin = {
@@ -478,6 +507,10 @@ function createChart() {
                     {
                         label:
                             "Kết quả mô phỏng",
+                        borderColor:
+                            "#2563eb",
+                        backgroundColor:
+                            "#2563eb",
 
                         data:
                             experimentalData,
@@ -494,7 +527,11 @@ function createChart() {
 
                     {
                         label:
-                            "Giá trị lý thuyết",
+                            "Giá trị lí thuyết",
+                        borderColor:
+                            "#1f2937",
+                        backgroundColor:
+                            "#1f2937",
 
                         data:
                             theoreticalData,
@@ -512,6 +549,10 @@ function createChart() {
                     {
                         label:
                             "Trung bình nhiều lần mô phỏng",
+                        borderColor:
+                            "#d97706",
+                        backgroundColor:
+                            "#d97706",
 
                         data:
                             averageMonteCarloData,
@@ -527,6 +568,46 @@ function createChart() {
 
                         borderDash:
                             [8, 4]
+                    },
+                    {
+                        label:
+                            "Dải thăng giáng ±σ quanh lí thuyết",
+                        borderColor:
+                            "rgba(37, 99, 235, 0.45)",
+                        backgroundColor:
+                            "rgba(37, 99, 235, 0.10)",
+                        data:
+                            theoreticalUpperData,
+                        borderWidth:
+                            1,
+                        borderDash:
+                            [3, 3],
+                        pointRadius:
+                            0,
+                        showLine:
+                            true,
+                        fill:
+                            false
+                    },
+                    {
+                        label:
+                            "Lí thuyết − σ",
+                        borderColor:
+                            "rgba(37, 99, 235, 0.45)",
+                        data:
+                            theoreticalLowerData,
+                        borderWidth:
+                            1,
+                        borderDash:
+                            [3, 3],
+                        pointRadius:
+                            0,
+                        showLine:
+                            true,
+                        fill:
+                            "-1",
+                        backgroundColor:
+                            "rgba(37, 99, 235, 0.10)"
                     }
                 ]
             },
@@ -570,7 +651,14 @@ function createChart() {
 
                 plugins: {
                     legend: {
-                        display: true
+                        display: true,
+                        labels: {
+                            // Ẩn mục "Lí thuyết − σ" (đã có dải tô) và mục trung bình
+                            // nhiều lần mô phỏng khi chưa ở chế độ Kiểm chứng.
+                            filter:
+                                item => item.text !== "Lí thuyết − σ" &&
+                                    !(item.datasetIndex === 2 && currentMode !== "validation")
+                        }
                     },
 
                     halfLifeMarkers: {
@@ -861,7 +949,7 @@ function finishExperiment1() {
         "Hoàn thành";
 
     setSimulationStatus(
-        "Nhiệm vụ 1 đã hoàn thành tại một chu kỳ bán rã.",
+        "Nhiệm vụ 1 đã hoàn thành tại một chu kì bán rã.",
         "finished"
     );
 
@@ -870,7 +958,7 @@ function finishExperiment1() {
     );
 
     experiment1Message.textContent =
-        `Sau một chu kỳ bán rã, giá trị lý thuyết kỳ vọng là ${theoreticalValue.toFixed(0)} hạt. ` +
+        `Sau một chu kì bán rã, giá trị lí thuyết kì vọng là ${theoreticalValue.toFixed(0)} hạt. ` +
         `Kết quả của một lần mô phỏng có thể khác giá trị này vì thời điểm phân rã của từng hạt nhân có tính ngẫu nhiên. ` +
         `Trong lần này, sai khác tương đối là ${percentDifference.toFixed(1)}%.`;
 }
@@ -1360,7 +1448,7 @@ function runExperiment2() {
             difference === 0
         ) {
             differenceText =
-                "Bằng giá trị lý thuyết";
+                "Bằng giá trị lí thuyết";
         } else if (
             difference > 0
         ) {
@@ -1425,7 +1513,7 @@ function runExperiment2() {
 
     experiment2Message.textContent =
         `Năm lần thí nghiệm được thực hiện với cùng N₀ và T₁/₂ nhưng kết quả không nhất thiết giống nhau. ` +
-        `Các giá trị dao động quanh giá trị lý thuyết ${theoreticalValue.toFixed(0)} hạt.`;
+        `Các giá trị dao động quanh giá trị lí thuyết ${theoreticalValue.toFixed(0)} hạt.`;
 }
 
 // ======================================================
@@ -1624,7 +1712,7 @@ function createExperiment3Chart(
 
                         {
                             label:
-                                "Lý thuyết N/N₀ = e^(-λt)",
+                                "Lí thuyết N/N₀ = e^(-λt)",
 
                             data:
                                 theoreticalCurve,
@@ -1870,13 +1958,8 @@ function runExperiment3() {
         "Hoàn thành";
 
     experiment3Message.textContent =
-        "Ba đường mô phỏng đều có dao động ngẫu nhiên. Khi N₀ tăng, mức dao động tương đối có xu hướng nhỏ hơn và đường N/N₀ thường bám sát đường lý thuyết hơn. " +
+        "Ba đường mô phỏng đều có dao động ngẫu nhiên. Khi N₀ tăng, mức dao động tương đối có xu hướng nhỏ hơn và đường N/N₀ thường bám sát đường lí thuyết hơn. " +
         "Không nhất thiết mọi lần chạy riêng lẻ đều cho mức lệch giảm đều từ N₀ = 20 đến 1000; cần quan sát xu hướng thống kê qua nhiều lần lặp.";
-
-    console.log(
-        "Kết quả Nhiệm vụ 3:",
-        experiment3Results
-    );
 }
 
 // ======================================================
@@ -2202,8 +2285,26 @@ async function runValidationExperiment() {
                 repeatCount
             );
 
+        // RMSE kì vọng của đường trung bình nếu mô hình đúng:
+        // phương sai tại mỗi điểm = N₀·p·(1 − p) / số lần lặp.
+        let expectedVarianceSum = 0;
+
+        for (const point of averageMonteCarloData) {
+            const p = Math.exp(-lambda * point.x);
+            expectedVarianceSum +=
+                currentN0 * p * (1 - p) / repeatCount;
+        }
+
+        const expectedNormalizedRMSE =
+            Math.sqrt(
+                expectedVarianceSum /
+                averageMonteCarloData.length
+            ) /
+            currentN0 *
+            100;
+
         validationError.textContent =
-            `${normalizedRMSE.toFixed(3)} %`;
+            `${normalizedRMSE.toFixed(3)} % (kì vọng ≈ ${expectedNormalizedRMSE.toFixed(3)} %)`;
 
         setSimulationStatus(
             "Kiểm chứng thống kê đã hoàn thành.",
@@ -2482,7 +2583,7 @@ function setMode(mode) {
 }
 
 // ======================================================
-// 16. XỬ LÝ NÚT BẮT ĐẦU / TẠM DỪNG / ĐẶT LẠI
+// 16. XỬ LÍ NÚT BẮT ĐẦU / TẠM DỪNG / ĐẶT LẠI
 // ======================================================
 
 function handleStart() {

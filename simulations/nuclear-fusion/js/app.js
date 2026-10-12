@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - NUCLEAR FUSION MULTI REACTION EXPLORE VERSION 2"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================
@@ -179,6 +174,13 @@ const qValueDisplay =
     );
 
 
+// Q chia cho tổng số nucleon: để so sánh với phân hạch (≈ 0,85 MeV/nucleon).
+const qPerNucleonDisplay =
+    document.getElementById(
+        "qPerNucleonDisplay"
+    );
+
+
 const massConservationStatus =
     getRequiredElement(
         "massConservationStatus"
@@ -338,7 +340,7 @@ function getNuclideVietnameseName(
 
 
 // ======================================================
-// KÝ HIỆU HẠT NHÂN HTML
+// KÍ HIỆU HẠT NHÂN HTML
 // ======================================================
 
 function getNuclideHtml(
@@ -1676,6 +1678,12 @@ function showFinalResults() {
         `${p.qValueMeV.toFixed(3)} MeV`;
 
 
+    if (qPerNucleonDisplay) {
+        qPerNucleonDisplay.textContent =
+            `${(p.qValueMeV / p.initialA).toFixed(2)} MeV/nucleon`;
+    }
+
+
     massConservationStatus.textContent =
         p.massNumberConserved
             ?
@@ -1751,6 +1759,12 @@ function clearResults() {
 
     qValueDisplay.textContent =
         "—";
+
+
+    if (qPerNucleonDisplay) {
+        qPerNucleonDisplay.textContent =
+            "—";
+    }
 
 
     massConservationStatus.textContent =

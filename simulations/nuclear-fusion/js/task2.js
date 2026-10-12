@@ -1,8 +1,3 @@
-console.log(
-    "TASK2.JS - NUCLEAR FUSION Q VALUE VERSION 1"
-);
-
-
 // ======================================================
 // DOM AN TOÀN
 // ======================================================
@@ -234,7 +229,7 @@ let task2CurrentProperties =
 
 
 // ======================================================
-// KÝ HIỆU HẠT NHÂN HTML
+// KÍ HIỆU HẠT NHÂN HTML
 // ======================================================
 
 function getTask2NuclideHtml(
@@ -751,7 +746,7 @@ function evaluateTask2Choice(
     ) {
 
         feedback.textContent =
-            "Bạn chưa chọn câu trả lời.";
+            "Em chưa chọn câu trả lời.";
 
 
         feedback.classList.add(
@@ -972,7 +967,7 @@ function checkTask2() {
 
 
     /*
-     * Cho phép học sinh làm tròn hợp lý.
+     * Cho phép học sinh làm tròn hợp lí.
      */
 
     const result1 =

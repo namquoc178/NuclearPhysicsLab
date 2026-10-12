@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - RADIATION PENETRATION VALIDATION VERSION 5"
-);
-
-
 // ======================================================
 // HÀM LẤY PHẦN TỬ HTML AN TOÀN
 // ======================================================
@@ -1261,7 +1256,7 @@ function createOrUpdateChart() {
 
                         {
                             label:
-                                "Lý thuyết P = e^(-μx)",
+                                "Lí thuyết P = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -1725,7 +1720,7 @@ function createTask1Chart(
 
                         {
                             label:
-                                "Giá trị lý thuyết",
+                                "Giá trị lí thuyết",
 
                             data:
                                 results.map(
@@ -2091,7 +2086,7 @@ function createTask2Chart(
 
                         {
                             label:
-                                "Lý thuyết I/I₀ = e^(-μx)",
+                                "Lí thuyết I/I₀ = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -2451,7 +2446,7 @@ function createTask3Chart(
 
                         {
                             label:
-                                "Lý thuyết",
+                                "Lí thuyết",
 
                             data:
                                 results.map(
@@ -2865,7 +2860,7 @@ function createValidationChart(
 
                         {
                             label:
-                                "Lý thuyết I/I₀ = e^(-μx)",
+                                "Lí thuyết I/I₀ = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -3197,7 +3192,7 @@ async function runValidation() {
         validationConclusion.textContent =
             "Khi lặp lại mô phỏng nhiều lần và lấy giá trị trung bình, "
             +
-            "các điểm Monte Carlo tiến gần đường lý thuyết I/I₀ = e^(-μx). "
+            "các điểm Monte Carlo tiến gần đường lí thuyết I/I₀ = e^(-μx). "
             +
             "Sai số còn lại phản ánh dao động thống kê của mô phỏng với số tia hữu hạn. "
             +

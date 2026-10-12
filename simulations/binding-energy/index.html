@@ -8,37 +8,39 @@
         Năng lượng liên kết hạt nhân
     </title>
 <link href="data:," rel="icon"/>
-<link href="css/style.css?v=5" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=3" rel="stylesheet"/></head>
+<link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
+<link href="css/style.css?v=6" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=4" rel="stylesheet"/>
+<link href="../../assets/shared/real-data.css?v=3" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="container">
 <!-- =====================================================
          ĐIỀU HƯỚNG
     ====================================================== -->
 <div class="top-navigation">
-<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lý hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
+<a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lí hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
 </div>
 <!-- =====================================================
          HEADER
     ====================================================== -->
 <header class="page-header lesson-hero">
 <div class="lesson-hero-copy">
-<p class="lesson-label">MÔ PHỎNG VẬT LÝ HẠT NHÂN</p>
+<p class="lesson-label">Mô-đun 1: Cấu tạo và năng lượng hạt nhân</p>
 <h1>Năng lượng liên kết hạt nhân</h1>
 <p class="page-description">Khám phá độ hụt khối, năng lượng liên kết và năng lượng liên kết riêng của các hạt nhân từ dữ liệu khối lượng nguyên tử.</p>
 </div>
 <div aria-hidden="true" class="lesson-hero-visual">
-<img alt="" src="../../assets/images/cards/binding-energy.svg?v=2"/>
+<img alt="" src="../../assets/images/cards/binding-energy.svg?v=4"/>
 </div>
 </header><section aria-label="Tổng quan trực quan của bài học" class="lesson-visual-overview">
 <article class="lesson-insight-card lesson-discovery-card">
-<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Bạn sẽ khám phá gì?</h2></div></div>
+<div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon">◎</span><div><span class="lesson-insight-kicker">ĐỊNH HƯỚNG</span><h2>Em sẽ khám phá gì?</h2></div></div>
 <ul class="lesson-mini-list"><li>Tính độ hụt khối từ khối lượng nguyên tử và các nucleon tự do.</li><li>Chuyển độ hụt khối thành năng lượng liên kết.</li><li>So sánh năng lượng liên kết riêng Eₗₖ/A giữa các hạt nhân.</li></ul>
 </article>
 <article class="lesson-insight-card lesson-formula-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon formula-icon">∑</span><div><span class="lesson-insight-kicker">GHI NHỚ</span><h2>Công thức / quy tắc trọng tâm</h2></div></div>
 <div class="lesson-formula-wrap"><div class="lesson-formula-main">Δm = Zm<sub>H</sub> + Nm<sub>n</sub> − M<sub>atom</sub></div><div class="lesson-formula-secondary">E<sub>lk</sub> = Δmc²  •  E<sub>lk</sub>/A</div></div>
-<div class="lesson-mini-visual"><svg aria-label="Đường cong minh họa năng lượng liên kết riêng tăng nhanh rồi đạt vùng cao quanh sắt và niken" class="binding-mini-chart" role="img" viewbox="0 0 280 100"><path d="M16 82 C45 78 55 43 88 28 C120 14 170 16 205 25 C235 32 250 44 266 55" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"></path><circle cx="163" cy="18" fill="currentColor" r="5"></circle><text fill="currentColor" font-size="12" x="174" y="22">Fe / Ni</text><path d="M16 90H270M16 90V12" stroke="currentColor" stroke-opacity=".25" stroke-width="1.5"></path></svg></div>
+<div class="lesson-mini-visual"><svg aria-label="Đường cong minh họa năng lượng liên kết riêng tăng nhanh rồi đạt vùng cao quanh sắt và nickel (A ≈ 56–62)" class="binding-mini-chart" role="img" viewbox="0 0 280 100"><path d="M18 81 C20 50 24 32 29 26 C40 20 60 17 82 17 C140 18 210 22 270 27" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="4"></path><circle cx="80" cy="17" fill="currentColor" r="5"></circle><text fill="currentColor" font-size="12" x="92" y="12">Fe / Ni</text><path d="M16 90H270M16 90V12" stroke="currentColor" stroke-opacity=".25" stroke-width="1.5"></path></svg></div>
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
@@ -89,7 +91,7 @@
 <nav aria-label="Chọn chế độ học tập" class="mode-navigation">
 <button aria-pressed="true" class="mode-button active" id="exploreModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><circle cx="11" cy="11" r="6.5" stroke-width="2"></circle><path d="m16 16 4 4" stroke-linecap="round" stroke-width="2"></path><path d="M8.5 11h5M11 8.5v5" stroke-linecap="round" stroke-width="1.6"></path></svg></span><span class="mode-title">Khám phá</span><span class="mode-subtitle">Quan sát &amp; tìm quy luật</span></button>
 <button aria-pressed="false" class="mode-button" id="experimentModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 8.2A2.5 2.5 0 0 0 7.1 21h9.8a2.5 2.5 0 0 0 2.1-3.8L14 9V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path><path d="M7.5 16h9" stroke-linecap="round" stroke-width="1.7"></path></svg></span><span class="mode-title">Thí nghiệm</span><span class="mode-subtitle">Thực hiện nhiệm vụ</span></button>
-<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu mô hình</span></button>
+<button aria-pressed="false" class="mode-button" id="validationModeButton" type="button"><span class="mode-icon"><svg aria-hidden="true" fill="none" viewbox="0 0 24 24"><path d="M5 12.5 9.2 17 19 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2"></path><circle cx="12" cy="12" r="9" stroke-width="1.6"></circle></svg></span><span class="mode-title">Kiểm chứng</span><span class="mode-subtitle">Đối chiếu dữ liệu thực</span></button>
 </nav>
 <!-- =====================================================
          KHU MÔ PHỎNG
@@ -446,7 +448,7 @@
                 <sup>62</sup>Ni
                 và
                 <sup>238</sup>U.
-                Bạn nhận thấy điều gì?
+                Em nhận thấy điều gì?
             </p>
 </div>
 </section>
@@ -1058,7 +1060,7 @@
 </div>
 <div class="task3-physics-note">
 <strong>
-                Ghi chú vật lý
+                Ghi chú vật lí
             </strong>
 <p>
                 Đường cong năng lượng liên kết riêng giúp giải thích
@@ -1066,7 +1068,7 @@
                 nhưng Eₗₖ/A không phải yếu tố duy nhất quyết định
                 một phản ứng có xảy ra hay không.
                 Còn phải xét phản ứng cụ thể, bảo toàn năng lượng,
-                điện tích, động lượng và các điều kiện vật lý khác.
+                điện tích, động lượng và các điều kiện vật lí khác.
             </p>
 </div>
 </div>
@@ -1243,11 +1245,14 @@
 </div>
 </section>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="js/nuclear-data.js?v=5"></script>
-<script src="js/physics.js?v=5"></script>
+<script src="../../assets/vendor/chartjs/chart.umd.min.js?v=4.4.1"></script>
+<script src="../../assets/shared/constants.js?v=2"></script>
+<script src="js/nuclear-data.js?v=9"></script>
+<script src="js/physics.js?v=6"></script>
 <script src="js/simulation.js?v=5"></script>
-<script src="js/app.js?v=6"></script>
-<script src="js/validation.js?v=6"></script>
-<script src="../../assets/shared/lesson-ui.js?v=3"></script></body>
+<script src="js/app.js?v=8"></script>
+<script src="js/validation.js?v=7"></script>
+<script src="../../assets/shared/real-data.js?v=3"></script>
+<script src="js/real-data.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
 </html>

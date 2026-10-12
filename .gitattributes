@@ -1,0 +1,12 @@
+# Tệp nhị phân: không bao giờ đổi kí tự xuống dòng.
+*.woff   binary
+*.woff2  binary
+*.png    binary
+*.jpg    binary
+*.ico    binary
+
+# Thư viện bên ngoài: giữ nguyên như bản phát hành gốc, không xem diff.
+assets/vendor/** -diff linguist-vendored
+
+# Hình bản đồ hạt nhân được tạo tự động bằng tools/build-nuclide-chart.py.
+assets/images/nuclide-chart.svg linguist-generated

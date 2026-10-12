@@ -22,12 +22,14 @@
 // HẰNG SỐ
 // ======================================================
 
+// Khối lượng neutron và năng lượng nghỉ của 1 u lấy từ
+// assets/shared/constants.js (xem nguồn và lí do chọn giá trị ở đó).
 const NEUTRON_MASS_U =
-    1.00866491606;
+    NPL_CONSTANTS.NEUTRON_MASS_U;
 
 
 const U_TO_MEV =
-    931.49410242;
+    NPL_CONSTANTS.U_TO_MEV;
 
 
 // ======================================================
@@ -52,7 +54,7 @@ const FISSION_NUCLIDES = {
             "Uranium",
 
         vietnameseName:
-            "Urani",
+            "Uranium",
 
         A:
             235,
@@ -86,7 +88,7 @@ const FISSION_NUCLIDES = {
             "Barium",
 
         vietnameseName:
-            "Bari",
+            "Barium",
 
         A:
             141,
@@ -115,7 +117,7 @@ const FISSION_NUCLIDES = {
             "Krypton",
 
         vietnameseName:
-            "Kripton",
+            "Krypton",
 
         A:
             92,
@@ -178,7 +180,7 @@ const FISSION_NUCLIDES = {
             "Strontium",
 
         vietnameseName:
-            "Stronti",
+            "Strontium",
 
         A:
             94,
@@ -212,7 +214,7 @@ const FISSION_NUCLIDES = {
             "Cesium",
 
         vietnameseName:
-            "Xêzi",
+            "Caesium",
 
         A:
             144,
@@ -241,7 +243,7 @@ const FISSION_NUCLIDES = {
             "Rubidium",
 
         vietnameseName:
-            "Rubidi",
+            "Rubidium",
 
         A:
             89,

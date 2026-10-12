@@ -1,23 +1,46 @@
 // physics.js
 // Mô hình giáo dục về khả năng đâm xuyên của bức xạ.
-// Các hệ số dưới đây là hệ số hiệu dụng dùng để tạo hành vi định tính,
-// KHÔNG phải dữ liệu thực nghiệm tuyệt đối cho mọi năng lượng bức xạ.
+// Nguồn giả định: α ~5 MeV (ví dụ Am-241), β từ Sr-90/Y-90
+// (E_max = 2,28 MeV), γ 662 keV từ Cs-137.
+// Khối lượng riêng: giấy ≈ 0,8; nhôm 2,699; chì 11,35 g/cm³.
 
 // α không có μ: xem ALPHA_RANGE_MM và calculateTransmissionFor() bên dưới.
 // (Phiên bản trước dùng μ_α = 3,2 mm⁻¹ cho giấy, nên một tờ giấy 0,1 mm
 // vẫn cho khoảng 73 % hạt α đi qua, trái với kết luận trong SGK.)
+//
+// β: hệ số hấp thụ khối theo công thức thực nghiệm
+//    μ/ρ ≈ 17·E_max^(−1,14) cm²/g ≈ 6,64 cm²/g với E_max = 2,28 MeV,
+//    nhân với ρ của từng vật liệu. Vì vậy mỗi mm chì chắn β tốt hơn
+//    mỗi mm nhôm khoảng 4,2 lần (đúng tỉ số khối lượng riêng).
+// γ: μ = (μ/ρ)·ρ theo bảng NIST ở 662 keV (giống bài Suy giảm γ).
 const EFFECTIVE_MU = {
     beta: {
-        paper: 0.22,
-        aluminum: 1.15,
-        lead: 1.75
+        paper: 0.531,
+        aluminum: 1.79,
+        lead: 7.54
     },
 
     gamma: {
-        paper: 0.015,
-        aluminum: 0.055,
-        lead: 0.24
+        paper: 0.0069,
+        aluminum: 0.0201,
+        lead: 0.126
     }
+};
+
+
+// ======================================================
+// TẦM XA CỰC ĐẠI CỦA HẠT β (mm)
+//
+// Công thức Katz–Penfold: R (g/cm²) = 0,412·E^(1,265 − 0,0954·ln E)
+// với E = 2,28 MeV cho R ≈ 1,10 g/cm². Chia cho ρ:
+// giấy ≈ 13,7 mm, nhôm ≈ 4,06 mm, chì ≈ 0,96 mm.
+// Dày hơn tầm xa này thì không còn hạt β nào đi qua.
+// ======================================================
+
+const BETA_MAX_RANGE_MM = {
+    paper: 13.7,
+    aluminum: 4.06,
+    lead: 0.96
 };
 
 
@@ -74,7 +97,8 @@ function getAlphaRangeMm(
 // XÁC SUẤT TRUYỀN QUA THEO LOẠI BỨC XẠ
 //
 // α: P = 1 nếu x < R, P = 0 nếu x ≥ R (mô hình tầm xa)
-// β, γ: P = exp(-μx) (mô hình hiệu dụng)
+// β: P = exp(-μx) khi x < R_max, P = 0 khi x ≥ R_max
+// γ: P = exp(-μx) (chùm hẹp)
 // ======================================================
 
 function calculateTransmissionFor(
@@ -95,6 +119,17 @@ function calculateTransmissionFor(
         )
             ? 1
             : 0;
+
+    }
+
+
+    if (
+        radiationType === "beta"
+        &&
+        thicknessMm >= BETA_MAX_RANGE_MM[material]
+    ) {
+
+        return 0;
 
     }
 
@@ -170,7 +205,7 @@ function calculateTransmissionProbability(
 
 
 // ======================================================
-// SỐ TIA TRUYỀN QUA KỲ VỌNG
+// SỐ TIA TRUYỀN QUA KÌ VỌNG
 // ======================================================
 
 function calculateExpectedTransmittedCount(

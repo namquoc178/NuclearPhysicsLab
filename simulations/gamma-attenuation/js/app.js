@@ -1,8 +1,3 @@
-console.log(
-    "APP.JS - GAMMA ATTENUATION VALIDATION VERSION 5"
-);
-
-
 // ======================================================
 // HÀM LẤY PHẦN TỬ HTML AN TOÀN
 // ======================================================
@@ -569,11 +564,11 @@ function validateParameters(
         ||
         parameters.thicknessMm < 0
         ||
-        parameters.thicknessMm > 20
+        parameters.thicknessMm > 50
     ) {
 
         alert(
-            "Độ dày phải nằm trong khoảng từ 0 đến 20 mm."
+            "Độ dày phải nằm trong khoảng từ 0 đến 50 mm."
         );
 
 
@@ -845,7 +840,7 @@ function drawStaticScene() {
                 130,
                 20 +
                 parameters.thicknessMm *
-                5
+                2.2
             )
             :
             0;
@@ -1076,7 +1071,7 @@ function buildAnimatedPhotons(
                 130,
                 20 +
                 parameters.thicknessMm *
-                5
+                2.2
             )
             :
             0;
@@ -1344,7 +1339,7 @@ function animatePhotonResults(
 
 
 // ======================================================
-// 11. ĐƯỜNG LÝ THUYẾT
+// 11. ĐƯỜNG LÍ THUYẾT
 // ======================================================
 
 function generateTheoryCurve(
@@ -1363,7 +1358,7 @@ function generateTheoryCurve(
 
     for (
         let x = 0;
-        x <= 20.0001;
+        x <= 50.0001;
         x += 0.25
     ) {
 
@@ -1444,7 +1439,7 @@ function createOrUpdateChart() {
 
                         {
                             label:
-                                "Lý thuyết I/I₀ = e^(-μx)",
+                                "Lí thuyết I/I₀ = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -1514,7 +1509,7 @@ function createOrUpdateChart() {
                                 0,
 
                             max:
-                                20,
+                                50,
 
                             title:
                             {
@@ -1947,7 +1942,7 @@ function createTask1Chart(
 
                         {
                             label:
-                                "Lý thuyết I/I₀ = e^(-μx)",
+                                "Lí thuyết I/I₀ = e^(-μx)",
 
                             data:
                                 theoryData,
@@ -2002,7 +1997,7 @@ function createTask1Chart(
                                 0,
 
                             max:
-                                10,
+                                20,
 
                             title:
                             {
@@ -2078,17 +2073,18 @@ function runTask1() {
     );
 
 
+    // Độ dày khảo sát trải tới khoảng 3,6 bề dày bán giảm của chì (x½ ≈ 5,5 mm).
     const thicknessValues =
     [
         0,
-        1,
         2,
-        3,
         4,
-        5,
         6,
         8,
-        10
+        10,
+        12,
+        15,
+        20
     ];
 
 
@@ -2149,7 +2145,7 @@ function runTask1() {
     task1Conclusion.textContent =
         "Khi độ dày lớp chì tăng, tỉ lệ I/I₀ giảm nhưng không giảm đều theo từng milimét. "
         +
-        "Các điểm Monte Carlo dao động quanh đường lý thuyết và cho thấy quá trình suy giảm có dạng hàm mũ.";
+        "Các điểm Monte Carlo dao động quanh đường lí thuyết và cho thấy quá trình suy giảm có dạng hàm mũ.";
 
 
     task1Ready =
@@ -2161,7 +2157,7 @@ function runTask1() {
 
 
     task2Status.textContent =
-        "Dữ liệu Nhiệm vụ 1 đã sẵn sàng để xử lý.";
+        "Dữ liệu Nhiệm vụ 1 đã sẵn sàng để xử lí.";
 
 
     setStatus(
@@ -2202,7 +2198,7 @@ function resetTask2Display() {
 
 
     task2MuModel.textContent =
-        "0.240 mm⁻¹";
+        `${getGammaMu("lead").toFixed(3)} mm⁻¹`;
 
 
     task2R2.textContent =
@@ -2250,7 +2246,7 @@ function setupTask2() {
     ) {
 
         alert(
-            "Bạn cần hoàn thành Nhiệm vụ 1 trước để có dữ liệu xử lý."
+            "Em cần hoàn thành Nhiệm vụ 1 trước để có dữ liệu xử lí."
         );
 
 
@@ -2298,7 +2294,11 @@ function setupTask2() {
                 lnRatio:
                     Math.log(
                         point.simulatedRatio
-                    )
+                    ),
+
+                // Số photon tới đầu dò: dùng làm trọng số hồi quy.
+                weight:
+                    point.transmitted
 
             })
         );
@@ -2333,152 +2333,81 @@ function calculateLinearRegression(
     data
 ) {
 
-    const n =
-        data.length;
+    // Hồi quy tuyến tính có trọng số cho y = a + b·x với y = ln(I/I₀).
+    // Số photon đếm được N tuân theo phân bố Poisson nên phương sai của
+    // ln N xấp xỉ 1/N: điểm có nhiều photon được tin cậy hơn, trọng số w = N.
+    // Điểm không có trường "weight" được coi có trọng số 1 (hồi quy thường).
 
+    const weightOf = point =>
+        Number.isFinite(point.weight) && point.weight > 0 ? point.weight : 1;
 
-    let sumX =
-        0;
+    let sumW = 0;
+    let sumX = 0;
+    let sumY = 0;
+    let sumXX = 0;
+    let sumXY = 0;
 
-
-    let sumY =
-        0;
-
-
-    let sumXY =
-        0;
-
-
-    let sumX2 =
-        0;
-
-
-    for (
-        const point
-        of
-        data
-    ) {
-
-        sumX +=
-            point.x;
-
-
-        sumY +=
-            point.lnRatio;
-
-
-        sumXY +=
-            point.x *
-            point.lnRatio;
-
-
-        sumX2 +=
-            point.x *
-            point.x;
+    for (const point of data) {
+        const w = weightOf(point);
+        sumW += w;
+        sumX += w * point.x;
+        sumY += w * point.lnRatio;
+        sumXX += w * point.x * point.x;
+        sumXY += w * point.x * point.lnRatio;
     }
 
-
     const denominator =
-        n *
-        sumX2 -
-        sumX *
-        sumX;
-
+        sumW * sumXX - sumX * sumX;
 
     if (
-        Math.abs(
-            denominator
-        ) <
-        1e-12
+        data.length < 2 ||
+        Math.abs(denominator) < 1e-12
     ) {
-
         throw new Error(
             "Không thể thực hiện hồi quy tuyến tính với dữ liệu hiện tại."
         );
     }
 
-
     const slope =
-        (
-            n *
-            sumXY -
-            sumX *
-            sumY
-        )
-        /
-        denominator;
-
+        (sumW * sumXY - sumX * sumY) / denominator;
 
     const intercept =
-        (
-            sumY -
-            slope *
-            sumX
-        )
-        /
-        n;
-
+        (sumY - slope * sumX) / sumW;
 
     const meanY =
-        sumY /
-        n;
+        sumY / sumW;
 
+    let ssTotal = 0;
+    let ssResidual = 0;
 
-    let ssTotal =
-        0;
-
-
-    let ssResidual =
-        0;
-
-
-    for (
-        const point
-        of
-        data
-    ) {
-
-        const predicted =
-            intercept +
-            slope *
-            point.x;
-
-
-        ssTotal +=
-            Math.pow(
-                point.lnRatio -
-                meanY,
-                2
-            );
-
-
-        ssResidual +=
-            Math.pow(
-                point.lnRatio -
-                predicted,
-                2
-            );
+    for (const point of data) {
+        const w = weightOf(point);
+        const predicted = intercept + slope * point.x;
+        ssTotal += w * Math.pow(point.lnRatio - meanY, 2);
+        ssResidual += w * Math.pow(point.lnRatio - predicted, 2);
     }
 
-
     const rSquared =
-        ssTotal > 0
-            ?
-            1 -
-            ssResidual /
-            ssTotal
-            :
-            1;
+        ssTotal > 0 ? 1 - ssResidual / ssTotal : 1;
 
+    // Sai số chuẩn của hệ số góc.
+    // Có trọng số Poisson: σ_b = √(Σw / D). Không trọng số: ước lượng từ phần dư.
+    const weighted =
+        data.every(point => Number.isFinite(point.weight) && point.weight > 0);
+
+    const slopeStandardError =
+        weighted
+            ? Math.sqrt(sumW / denominator)
+            : (data.length > 2
+                ? Math.sqrt(ssResidual / (data.length - 2) * sumW / denominator)
+                : NaN);
 
     return {
-
         slope,
-
         intercept,
-
-        rSquared
-
+        rSquared,
+        slopeStandardError,
+        weighted
     };
 }
 
@@ -2655,7 +2584,7 @@ function createTask2Chart(
                                 0,
 
                             max:
-                                10,
+                                20,
 
                             title:
                             {
@@ -2727,7 +2656,7 @@ function runTask2() {
 
 
     setStatus(
-        "Đang xử lý Nhiệm vụ 2...",
+        "Đang xử lí Nhiệm vụ 2...",
         "running"
     );
 
@@ -2820,7 +2749,9 @@ task2ExperimentalMu =
 
 
         task2MuExperimental.textContent =
-            `${experimentalMu.toFixed(4)} mm⁻¹`;
+            Number.isFinite(regression.slopeStandardError)
+                ? `${experimentalMu.toFixed(4)} ± ${regression.slopeStandardError.toFixed(4)} mm⁻¹`
+                : `${experimentalMu.toFixed(4)} mm⁻¹`;
 
 
         task2MuModel.textContent =
@@ -2842,7 +2773,9 @@ task2ExperimentalMu =
             +
             "Theo ln(I/I₀) = −μx, độ lớn hệ số góc của đường hồi quy cho phép xác định hệ số suy giảm μ. "
             +
-            "Giá trị thu được từ dữ liệu Monte Carlo dao động quanh giá trị μ của mô hình do số photon mô phỏng là hữu hạn.";
+            "Hồi quy có trọng số theo số photon đếm được, vì điểm có ít photon có sai số tương đối lớn hơn. "
+            +
+            "Giá trị thu được dao động quanh μ của mô hình trong phạm vi sai số ± do số photon mô phỏng là hữu hạn.";
 
 
         task2Result.hidden =
@@ -2870,7 +2803,7 @@ task3Status.textContent =
 
 
         task2Status.textContent =
-            "Có lỗi khi xử lý dữ liệu.";
+            "Có lỗi khi xử lí dữ liệu.";
 
 
         alert(
@@ -2967,7 +2900,7 @@ function setupTask3() {
     ) {
 
         alert(
-            "Bạn cần hoàn thành Nhiệm vụ 2 trước để xác định μ."
+            "Em cần hoàn thành Nhiệm vụ 2 trước để xác định μ."
         );
 
 
@@ -3571,17 +3504,18 @@ function simulateValidationRatio(
 
 function generateValidationDataset() {
 
+    // Độ dày khảo sát trải tới khoảng 3,6 bề dày bán giảm của chì (x½ ≈ 5,5 mm).
     const thicknessValues =
     [
         0,
-        1,
         2,
-        3,
         4,
-        5,
         6,
         8,
-        10
+        10,
+        12,
+        15,
+        20
     ];
 
 
@@ -3646,7 +3580,10 @@ function generateValidationDataset() {
                 lnRatio:
                     Math.log(
                         ratio
-                    )
+                    ),
+
+                weight:
+                    Math.round(ratio * totalPhotons)
 
             }
         );
@@ -3926,7 +3863,7 @@ function createValidationChart(
 
                         {
                             label:
-                                "μ mô hình = 0,240 mm⁻¹",
+                                `μ mô hình = ${getGammaMu("lead").toFixed(3).replace(".", ",")} mm⁻¹`,
 
                             data:
                                 modelLine,
@@ -4127,7 +4064,7 @@ async function runValidation() {
         ) {
 
             validationStatus.textContent =
-                `Đang xử lý bộ ${run + 1}/${repeatCount}...`;
+                `Đang xử lí bộ ${run + 1}/${repeatCount}...`;
 
 
             let dataset =

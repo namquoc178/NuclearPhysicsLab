@@ -28,21 +28,18 @@
 // CÁC HẰNG SỐ
 // ======================================================
 
-// Khối lượng nguyên tử hydrogen-1.
+// Các hằng số lấy từ assets/shared/constants.js
+// (xem nguồn và lí do chọn giá trị ở đó).
 const HYDROGEN_ATOM_MASS_U =
-    1.00782503223;
+    NPL_CONSTANTS.HYDROGEN_ATOM_MASS_U;
 
 
-// Khối lượng neutron.
-// CODATA 2022.
 const NEUTRON_MASS_U =
-    1.00866491606;
+    NPL_CONSTANTS.NEUTRON_MASS_U;
 
 
-// Năng lượng tương đương của 1 u.
-// AME2020.
 const U_TO_MEV =
-    931.49410242;
+    NPL_CONSTANTS.U_TO_MEV;
 
 
 // ======================================================
@@ -55,7 +52,7 @@ const NUCLEAR_DATA = [
         id: "H-2",
         symbol: "H",
         elementName: "Hydrogen",
-        vietnameseName: "Hiđrô",
+        vietnameseName: "Hydrogen",
         A: 2,
         Z: 1,
         atomicMassU: 2.01410177812,
@@ -66,7 +63,7 @@ const NUCLEAR_DATA = [
         id: "H-3",
         symbol: "H",
         elementName: "Hydrogen",
-        vietnameseName: "Hiđrô",
+        vietnameseName: "Hydrogen",
         A: 3,
         Z: 1,
         atomicMassU: 3.0160492779,
@@ -77,7 +74,7 @@ const NUCLEAR_DATA = [
         id: "He-3",
         symbol: "He",
         elementName: "Helium",
-        vietnameseName: "Heli",
+        vietnameseName: "Helium",
         A: 3,
         Z: 2,
         atomicMassU: 3.0160293201,
@@ -88,7 +85,7 @@ const NUCLEAR_DATA = [
         id: "He-4",
         symbol: "He",
         elementName: "Helium",
-        vietnameseName: "Heli",
+        vietnameseName: "Helium",
         A: 4,
         Z: 2,
         atomicMassU: 4.00260325413,
@@ -99,7 +96,7 @@ const NUCLEAR_DATA = [
         id: "Li-6",
         symbol: "Li",
         elementName: "Lithium",
-        vietnameseName: "Liti",
+        vietnameseName: "Lithium",
         A: 6,
         Z: 3,
         atomicMassU: 6.0151228874,
@@ -110,7 +107,7 @@ const NUCLEAR_DATA = [
         id: "Li-7",
         symbol: "Li",
         elementName: "Lithium",
-        vietnameseName: "Liti",
+        vietnameseName: "Lithium",
         A: 7,
         Z: 3,
         atomicMassU: 7.0160034366,
@@ -121,7 +118,7 @@ const NUCLEAR_DATA = [
         id: "C-12",
         symbol: "C",
         elementName: "Carbon",
-        vietnameseName: "Cacbon",
+        vietnameseName: "Carbon",
         A: 12,
         Z: 6,
         atomicMassU: 12.00000000000,
@@ -132,7 +129,7 @@ const NUCLEAR_DATA = [
         id: "O-16",
         symbol: "O",
         elementName: "Oxygen",
-        vietnameseName: "Oxi",
+        vietnameseName: "Oxygen",
         A: 16,
         Z: 8,
         atomicMassU: 15.99491461957,
@@ -154,7 +151,7 @@ const NUCLEAR_DATA = [
         id: "Ca-40",
         symbol: "Ca",
         elementName: "Calcium",
-        vietnameseName: "Canxi",
+        vietnameseName: "Calcium",
         A: 40,
         Z: 20,
         atomicMassU: 39.962590863,
@@ -176,7 +173,7 @@ const NUCLEAR_DATA = [
         id: "Ni-62",
         symbol: "Ni",
         elementName: "Nickel",
-        vietnameseName: "Niken",
+        vietnameseName: "Nickel",
         A: 62,
         Z: 28,
         atomicMassU: 61.92834537,
@@ -187,7 +184,7 @@ const NUCLEAR_DATA = [
         id: "Zr-90",
         symbol: "Zr",
         elementName: "Zirconium",
-        vietnameseName: "Zirconi",
+        vietnameseName: "Zirconium",
         A: 90,
         Z: 40,
         atomicMassU: 89.9046977,
@@ -220,7 +217,7 @@ const NUCLEAR_DATA = [
         id: "U-235",
         symbol: "U",
         elementName: "Uranium",
-        vietnameseName: "Urani",
+        vietnameseName: "Uranium",
         A: 235,
         Z: 92,
         atomicMassU: 235.0439301,
@@ -231,7 +228,7 @@ const NUCLEAR_DATA = [
         id: "U-238",
         symbol: "U",
         elementName: "Uranium",
-        vietnameseName: "Urani",
+        vietnameseName: "Uranium",
         A: 238,
         Z: 92,
         atomicMassU: 238.0507884,

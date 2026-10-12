@@ -5,8 +5,8 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f4f7fa;
-    color: #1f2937;
+    background: var(--lab-paper);
+    color: var(--lab-ink);
     line-height: 1.55;
 }
 
@@ -58,11 +58,11 @@ button {
 
     text-decoration: none;
 
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 
-    background: #eaf2ff;
+    background: var(--lab-accent-wash);
 
-    border: 1px solid #dbeafe;
+    border: 1px solid var(--lab-accent-tint);
 
     font-weight: 600;
 
@@ -73,7 +73,7 @@ button {
 
 
 .home-link:hover {
-    background: #dbeafe;
+    background: var(--lab-accent-tint);
 
     transform:
         translateX(-2px);
@@ -84,7 +84,7 @@ button {
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 1.2px;
-    color: #2563eb;
+    color: var(--lab-accent);
 }
 
 .page-header h1 {
@@ -132,14 +132,14 @@ button {
 
 .mode-button {
     padding: 11px 22px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 8px;
     background: #fff;
 }
 
 .mode-button.active {
     font-weight: 700;
-    border: 2px solid #2563eb;
+    border: 2px solid var(--lab-accent);
 }
 
 .workspace {
@@ -175,7 +175,7 @@ button {
 .control-group input[type="number"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 7px;
     background: #fff;
 }
@@ -195,7 +195,7 @@ button {
     display: none;
     margin-top: 10px;
     padding-top: 12px;
-    border-top: 1px dashed #cbd5e1;
+    border-top: 1px dashed var(--lab-rule-strong);
 }
 
 .button-group {
@@ -205,7 +205,7 @@ button {
 
 .button-group button {
     padding: 11px 14px;
-    border: 1px solid #cbd5e1;
+    border: 1px solid var(--lab-rule-strong);
     border-radius: 8px;
     background: #fff;
 }
@@ -213,8 +213,8 @@ button {
 .primary-button {
     font-weight: 700;
     color: #fff;
-    background: #2563eb !important;
-    border-color: #2563eb !important;
+    background: var(--lab-accent) !important;
+    border-color: var(--lab-accent) !important;
 }
 
 .simulation-title-row {
@@ -242,12 +242,12 @@ button {
 
 .status-badge.ready {
     background: #eef2f7;
-    color: #475569;
+    color: var(--lab-text-2);
 }
 
 .status-badge.running {
     background: #e8f1ff;
-    color: #1d4ed8;
+    color: var(--lab-accent-strong);
 }
 
 .status-badge.finished {
@@ -316,7 +316,7 @@ button {
 .result-box span {
     display: block;
     margin-bottom: 6px;
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 .result-box strong {
@@ -330,7 +330,7 @@ button {
 
 .chart-header p {
     margin-top: -4px;
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 .chart-container {
@@ -406,7 +406,7 @@ button {
 
     padding: 20px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 12px;
 
@@ -437,7 +437,7 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 8px;
 
@@ -452,7 +452,7 @@ button {
 
     margin-bottom: 7px;
 
-    color: #64748b;
+    color: var(--lab-muted);
 }
 
 
@@ -468,10 +468,10 @@ button {
 
     border-left:
         4px solid
-        #3b82f6;
+        var(--lab-accent);
 
     background:
-        #eff6ff;
+        var(--lab-accent-wash);
 
     border-radius:
         6px;
@@ -501,7 +501,7 @@ button {
 
     border:
         1px solid
-        #cbd5e1;
+        var(--lab-rule-strong);
 
     border-radius: 7px;
 
@@ -547,7 +547,7 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 8px;
 
@@ -614,7 +614,7 @@ button {
 
     border:
         1px solid
-        #dbe3ec;
+        var(--lab-rule);
 
     border-radius: 8px;
 
@@ -649,7 +649,7 @@ button {
 
     padding: 10px;
 
-    border: 1px solid #dbe3ec;
+    border: 1px solid var(--lab-rule);
 
     border-radius: 8px;
 

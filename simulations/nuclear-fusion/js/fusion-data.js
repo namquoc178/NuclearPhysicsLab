@@ -18,12 +18,14 @@
 // HẰNG SỐ
 // ======================================================
 
+// Khối lượng neutron và năng lượng nghỉ của 1 u lấy từ
+// assets/shared/constants.js (xem nguồn và lí do chọn giá trị ở đó).
 const NEUTRON_MASS_U =
-    1.00866491606;
+    NPL_CONSTANTS.NEUTRON_MASS_U;
 
 
 const U_TO_MEV =
-    931.49410242;
+    NPL_CONSTANTS.U_TO_MEV;
 
 
 // ======================================================
@@ -45,7 +47,7 @@ const FUSION_NUCLIDES = {
             "Hydrogen-1",
 
         vietnameseName:
-            "Hiđrô-1",
+            "Hydrogen-1",
 
         A:
             1,
@@ -77,7 +79,7 @@ const FUSION_NUCLIDES = {
             "Deuterium",
 
         vietnameseName:
-            "Đơteri",
+            "Deuterium",
 
         A:
             2,
@@ -109,7 +111,7 @@ const FUSION_NUCLIDES = {
             "Tritium",
 
         vietnameseName:
-            "Triti",
+            "Tritium",
 
         A:
             3,
@@ -138,7 +140,7 @@ const FUSION_NUCLIDES = {
             "Helium-3",
 
         vietnameseName:
-            "Heli-3",
+            "Helium-3",
 
         A:
             3,
@@ -167,7 +169,7 @@ const FUSION_NUCLIDES = {
             "Helium-4",
 
         vietnameseName:
-            "Heli-4",
+            "Helium-4",
 
         A:
             4,
@@ -219,7 +221,7 @@ const FUSION_REACTIONS = [
             1,
 
         description:
-            "Đơteri và triti kết hợp tạo heli-4 và một neutron."
+            "Deuterium và tritium kết hợp tạo helium-4 và một neutron."
 
     },
 
@@ -250,7 +252,7 @@ const FUSION_REACTIONS = [
             1,
 
         description:
-            "Hai hạt nhân đơteri phản ứng tạo heli-3 và một neutron."
+            "Hai hạt nhân deuterium phản ứng tạo helium-3 và một neutron."
 
     },
 
@@ -282,7 +284,7 @@ const FUSION_REACTIONS = [
             0,
 
         description:
-            "Hai hạt nhân đơteri phản ứng tạo triti và hiđrô-1."
+            "Hai hạt nhân deuterium phản ứng tạo tritium và hydrogen-1."
 
     },
 
@@ -314,7 +316,7 @@ const FUSION_REACTIONS = [
             0,
 
         description:
-            "Đơteri và heli-3 phản ứng tạo heli-4 và hiđrô-1."
+            "Deuterium và helium-3 phản ứng tạo helium-4 và hydrogen-1."
 
     }
 
