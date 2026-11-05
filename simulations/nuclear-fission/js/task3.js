@@ -447,7 +447,7 @@ function createTask3Chart(
                                         return (
                                             `Q = `
                                             +
-                                            `${Number(context.raw).toFixed(3)} MeV`
+                                            `${Number(context.raw).toFixedVi(3)} MeV`
                                         );
                                     }
 
@@ -569,15 +569,15 @@ function runTask3() {
             </td>
 
             <td>
-                ${item.finalMassU.toFixed(9)}
+                ${item.finalMassU.toFixedVi(9)}
             </td>
 
             <td>
-                ${item.massDifferenceU.toFixed(6)}
+                ${item.massDifferenceU.toFixedVi(6)}
             </td>
 
             <td>
-                ${item.qValueMeV.toFixed(3)}
+                ${item.qValueMeV.toFixedVi(3)}
             </td>
             `;
 
@@ -628,15 +628,15 @@ function runTask3() {
 
 
     task3MinimumQ.textContent =
-        `${minimum.qValueMeV.toFixed(3)} MeV`;
+        `${minimum.qValueMeV.toFixedVi(3)} MeV`;
 
 
     task3MaximumQ.textContent =
-        `${maximum.qValueMeV.toFixed(3)} MeV`;
+        `${maximum.qValueMeV.toFixedVi(3)} MeV`;
 
 
     task3QRange.textContent =
-        `${qRange.toFixed(3)} MeV`;
+        `${qRange.toFixedVi(3)} MeV`;
 
 
     // --------------------------------------------------
@@ -782,11 +782,11 @@ function checkTask3Answers() {
     task3Conclusion.textContent =
         `Trong ba kênh minh họa, ${maximum.label} có Q lớn nhất `
         +
-        `với khoảng ${maximum.qValueMeV.toFixed(3)} MeV, `
+        `với khoảng ${maximum.qValueMeV.toFixedVi(3)} MeV, `
         +
         `trong khi ${minimum.label} có Q khoảng `
         +
-        `${minimum.qValueMeV.toFixed(3)} MeV. `
+        `${minimum.qValueMeV.toFixedVi(3)} MeV. `
         +
         `Các kênh đều bảo toàn tổng A và tổng Z, `
         +

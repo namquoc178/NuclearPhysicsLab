@@ -600,14 +600,14 @@ function runDataValidation() {
                         rowData.projectMass
                     )
                         ?
-                        rowData.projectMass.toFixed(11)
+                        rowData.projectMass.toFixedVi(11)
                         :
                         "Không có"
                 }
             </td>
 
             <td>
-                ${rowData.referenceMass.toFixed(11)}
+                ${rowData.referenceMass.toFixedVi(11)}
             </td>
 
             <td>
@@ -1046,7 +1046,7 @@ function createQValidationChart(
                                         return (
                                             `${context.dataset.label}: `
                                             +
-                                            `${Number(context.raw).toFixed(6)} MeV`
+                                            `${Number(context.raw).toFixedVi(6)} MeV`
                                         );
                                     }
 
@@ -1158,15 +1158,15 @@ function runQValidation() {
             </td>
 
             <td>
-                ${item.massDifferenceU.toFixed(9)}
+                ${item.massDifferenceU.toFixedVi(9)}
             </td>
 
             <td>
-                ${item.projectQ.toFixed(6)}
+                ${item.projectQ.toFixedVi(6)}
             </td>
 
             <td>
-                ${item.referenceQ.toFixed(6)}
+                ${item.referenceQ.toFixedVi(6)}
             </td>
 
             <td>

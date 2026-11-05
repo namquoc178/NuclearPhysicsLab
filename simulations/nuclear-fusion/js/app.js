@@ -362,11 +362,7 @@ function getNuclideHtml(
 
 
     return (
-        `<sup>${nuclide.A}</sup>`
-        +
-        `<sub>${nuclide.Z}</sub>`
-        +
-        `${nuclide.symbol}`
+        nuclideHtml(nuclide.A, nuclide.Z, nuclide.symbol)
     );
 }
 
@@ -427,10 +423,10 @@ function updateReactionEquation() {
             1
 
             ?
-            "<sup>1</sup><sub>0</sub>n"
+            nuclideHtml(1, 0, "n")
 
             :
-            `${number}<sup>1</sup><sub>0</sub>n`;
+            `${number}${nuclideHtml(1, 0, "n")}`;
 
 
         productParts.push(
@@ -540,7 +536,7 @@ function buildStageDescriptions() {
 
         `Hình thành ${products.join(" và ")}.`,
 
-        `Khối lượng trạng thái sau nhỏ hơn trạng thái trước; Q ≈ ${currentFusionProperties.qValueMeV.toFixed(2)} MeV.`
+        `Khối lượng trạng thái sau nhỏ hơn trạng thái trước; Q ≈ ${currentFusionProperties.qValueMeV.toFixedVi(2)} MeV.`
 
     ];
 }
@@ -1519,7 +1515,7 @@ function drawStage5(
 
 
     fusionContext.fillText(
-        `Q ≈ ${currentFusionProperties.qValueMeV.toFixed(2)} MeV`,
+        `Q ≈ ${currentFusionProperties.qValueMeV.toFixedVi(2)} MeV`,
         450,
         430
     );
@@ -1671,16 +1667,16 @@ function showFinalResults() {
 
 
     massDifferenceDisplay.textContent =
-        `${p.massDifferenceU.toFixed(6)} u`;
+        `${p.massDifferenceU.toFixedVi(6)} u`;
 
 
     qValueDisplay.textContent =
-        `${p.qValueMeV.toFixed(3)} MeV`;
+        `${p.qValueMeV.toFixedVi(3)} MeV`;
 
 
     if (qPerNucleonDisplay) {
         qPerNucleonDisplay.textContent =
-            `${(p.qValueMeV / p.initialA).toFixed(2)} MeV/nucleon`;
+            `${(p.qValueMeV / p.initialA).toFixedVi(2)} MeV/nucleon`;
     }
 
 
@@ -1703,11 +1699,11 @@ function showFinalResults() {
 
 
     initialMassDisplay.textContent =
-        `${p.initialMassU.toFixed(9)} u`;
+        `${p.initialMassU.toFixedVi(9)} u`;
 
 
     finalMassDisplay.textContent =
-        `${p.finalMassU.toFixed(9)} u`;
+        `${p.finalMassU.toFixedVi(9)} u`;
 
 
     initialMassBar.style.width =
@@ -1876,7 +1872,7 @@ function fusionAnimationLoop(
 
 
         stageDescription.textContent =
-            `Phản ứng hoàn thành. Q ≈ ${currentFusionProperties.qValueMeV.toFixed(3)} MeV.`;
+            `Phản ứng hoàn thành. Q ≈ ${currentFusionProperties.qValueMeV.toFixedVi(3)} MeV.`;
 
 
         setStatus(

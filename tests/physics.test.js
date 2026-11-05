@@ -56,8 +56,10 @@ function stubDocument(returnNull) {
 function loadLesson(lesson, files, extraGlobals = {}) {
     const context = vm.createContext({ console, Math, Number, Array, Object, Error, Set, Map, JSON, String, ...extraGlobals });
     // Hằng số dùng chung được nạp trước, giống thứ tự <script> trong trang.
-    const shared = path.join(ROOT, "assets", "shared", "constants.js");
-    vm.runInContext(fs.readFileSync(shared, "utf8"), context, { filename: shared });
+    for (const name of ["format.js", "constants.js"]) {
+        const shared = path.join(ROOT, "assets", "shared", name);
+        vm.runInContext(fs.readFileSync(shared, "utf8"), context, { filename: shared });
+    }
     for (const file of files) {
         const full = path.join(ROOT, "simulations", lesson, "js", file);
         vm.runInContext(fs.readFileSync(full, "utf8"), context, { filename: full });
@@ -283,6 +285,20 @@ function seededRandom(seed) {
             check(`hằng số: ${lesson}/${file} không khai báo riêng 931,494`, !/=\s*931\.494/.test(source));
         }
     }
+}
+
+// ---------------------------------------------------------------------
+// 10. Hiển thị số và kí hiệu hạt nhân (assets/shared/format.js)
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("half-life", []);
+    check("định dạng: dấu phẩy thập phân", run("(2.5).toFixedVi(2)") === "2,50");
+    check("định dạng: số âm", run("(-0.125).toFixedVi(3)") === "-0,125");
+    check("định dạng: hằng số đầy đủ chữ số", run("formatVi(931.49410242)") === "931,49410242");
+    check("định dạng: số nguyên giữ nguyên", run("formatVi(12)") === "12");
+    const html = run('nuclideHtml(235, 92, "U")');
+    check("kí hiệu hạt nhân: A và Z xếp chồng trước kí hiệu",
+        /nuclide-a">235<\/span><span class="nuclide-z">92<\/span><\/span><span class="nuclide-symbol">U</.test(html));
 }
 
 // ---------------------------------------------------------------------

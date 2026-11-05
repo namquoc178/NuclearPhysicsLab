@@ -822,7 +822,7 @@ function updateSelectedNuclideInfo() {
 
 
     atomicMassDisplay.textContent =
-        `${currentNuclide.atomicMassU.toFixed(9)} u`;
+        `${currentNuclide.atomicMassU.toFixedVi(9)} u`;
 
 
     clearCalculationResults();
@@ -1108,19 +1108,19 @@ function calculateCurrentNuclide() {
 
 
     freeMassDisplay.textContent =
-        `${currentProperties.freeNucleonMassU.toFixed(9)} u`;
+        `${currentProperties.freeNucleonMassU.toFixedVi(9)} u`;
 
 
     massDefectDisplay.textContent =
-        `${currentProperties.massDefectU.toFixed(6)} u`;
+        `${currentProperties.massDefectU.toFixedVi(6)} u`;
 
 
     bindingEnergyDisplay.textContent =
-        `${currentProperties.bindingEnergyMeV.toFixed(3)} MeV`;
+        `${currentProperties.bindingEnergyMeV.toFixedVi(3)} MeV`;
 
 
     bindingEnergyPerNucleonDisplay.textContent =
-        `${currentProperties.bindingEnergyPerNucleonMeV.toFixed(3)} MeV/nucleon`;
+        `${currentProperties.bindingEnergyPerNucleonMeV.toFixedVi(3)} MeV/nucleon`;
 
 
     updateMassComparison(
@@ -1170,15 +1170,15 @@ function updateMassComparison(
 
 
     freeMassBarLabel.textContent =
-        `${properties.freeNucleonMassU.toFixed(6)} u`;
+        `${properties.freeNucleonMassU.toFixedVi(6)} u`;
 
 
     atomicMassBarLabel.textContent =
-        `${properties.atomicMassU.toFixed(6)} u`;
+        `${properties.atomicMassU.toFixedVi(6)} u`;
 
 
     massDefectHighlight.textContent =
-        `Δm = ${properties.massDefectU.toFixed(6)} u`;
+        `Δm = ${properties.massDefectU.toFixedVi(6)} u`;
 }
 
 
@@ -1342,7 +1342,7 @@ function createBindingEnergyChart(
                                             +
                                             `A = ${point.x}, `
                                             +
-                                            `Eₗₖ/A = ${point.y.toFixed(3)} MeV/nucleon`
+                                            `Eₗₖ/A = ${point.y.toFixedVi(3)} MeV/nucleon`
                                         );
                                     }
 
@@ -1431,7 +1431,7 @@ function updateObservation(
         chartObservation.textContent =
             `${properties.symbol}-${properties.A} nằm ở vùng hạt nhân nhẹ. `
             +
-            `Eₗₖ/A = ${value.toFixed(3)} MeV/nucleon. `
+            `Eₗₖ/A = ${value.toFixedVi(3)} MeV/nucleon. `
             +
             `Hãy so sánh với các hạt nhân có số khối trung bình.`;
 
@@ -1447,7 +1447,7 @@ function updateObservation(
         chartObservation.textContent =
             `${properties.symbol}-${properties.A} là hạt nhân nặng. `
             +
-            `Eₗₖ/A = ${value.toFixed(3)} MeV/nucleon, `
+            `Eₗₖ/A = ${value.toFixedVi(3)} MeV/nucleon, `
             +
             `thấp hơn vùng Fe–Ni trong bộ dữ liệu.`;
 
@@ -1468,7 +1468,7 @@ function updateObservation(
             +
             `năng lượng liên kết riêng cao của bộ dữ liệu: `
             +
-            `${value.toFixed(3)} MeV/nucleon.`;
+            `${value.toFixedVi(3)} MeV/nucleon.`;
 
         return;
     }
@@ -1477,7 +1477,7 @@ function updateObservation(
     chartObservation.textContent =
         `${properties.symbol}-${properties.A}: `
         +
-        `Eₗₖ/A = ${value.toFixed(3)} MeV/nucleon. `
+        `Eₗₖ/A = ${value.toFixedVi(3)} MeV/nucleon. `
         +
         `Hãy chọn thêm các hạt nhân khác để so sánh.`;
 }
@@ -1695,7 +1695,7 @@ function setupTask1() {
 
 
     task1AtomicMassDisplay.textContent =
-        `${task1Nuclide.atomicMassU.toFixed(9)} u`;
+        `${task1Nuclide.atomicMassU.toFixedVi(9)} u`;
 
 
     task1MassDefectInput.value =
@@ -1931,15 +1931,15 @@ function showTask1Solution() {
 
 
     task1CorrectMassDefect.textContent =
-        `${p.massDefectU.toFixed(6)} u`;
+        `${p.massDefectU.toFixedVi(6)} u`;
 
 
     task1CorrectBindingEnergy.textContent =
-        `${p.bindingEnergyMeV.toFixed(3)} MeV`;
+        `${p.bindingEnergyMeV.toFixedVi(3)} MeV`;
 
 
     task1CorrectBindingEnergyPerNucleon.textContent =
-        `${p.bindingEnergyPerNucleonMeV.toFixed(3)} MeV/nucleon`;
+        `${p.bindingEnergyPerNucleonMeV.toFixedVi(3)} MeV/nucleon`;
 
 
     const protonMassContribution =
@@ -1965,51 +1965,51 @@ function showTask1Solution() {
             <strong>Bước 2.</strong>
             Zm<sub>H</sub> + Nm<sub>n</sub>
             =
-            ${p.Z} × ${HYDROGEN_ATOM_MASS_U}
+            ${p.Z} × ${formatVi(HYDROGEN_ATOM_MASS_U)}
             +
-            ${p.N} × ${NEUTRON_MASS_U}
+            ${p.N} × ${formatVi(NEUTRON_MASS_U)}
         </p>
 
         <p>
             =
-            ${protonMassContribution.toFixed(9)}
+            ${protonMassContribution.toFixedVi(9)}
             +
-            ${neutronMassContribution.toFixed(9)}
+            ${neutronMassContribution.toFixedVi(9)}
             =
-            ${p.freeNucleonMassU.toFixed(9)} u.
+            ${p.freeNucleonMassU.toFixedVi(9)} u.
         </p>
 
         <p>
             <strong>Bước 3.</strong>
             Δm
             =
-            ${p.freeNucleonMassU.toFixed(9)}
+            ${p.freeNucleonMassU.toFixedVi(9)}
             −
-            ${p.atomicMassU.toFixed(9)}
+            ${p.atomicMassU.toFixedVi(9)}
             =
-            ${p.massDefectU.toFixed(6)} u.
+            ${p.massDefectU.toFixedVi(6)} u.
         </p>
 
         <p>
             <strong>Bước 4.</strong>
             E<sub>lk</sub>
             =
-            ${p.massDefectU.toFixed(6)}
+            ${p.massDefectU.toFixedVi(6)}
             ×
-            ${U_TO_MEV}
+            ${formatVi(U_TO_MEV)}
             ≈
-            ${p.bindingEnergyMeV.toFixed(3)} MeV.
+            ${p.bindingEnergyMeV.toFixedVi(3)} MeV.
         </p>
 
         <p>
             <strong>Bước 5.</strong>
             E<sub>lk</sub>/A
             =
-            ${p.bindingEnergyMeV.toFixed(3)}
+            ${p.bindingEnergyMeV.toFixedVi(3)}
             /
             ${p.A}
             ≈
-            ${p.bindingEnergyPerNucleonMeV.toFixed(3)}
+            ${p.bindingEnergyPerNucleonMeV.toFixedVi(3)}
             MeV/nucleon.
         </p>
         `;
@@ -2555,8 +2555,8 @@ function setupTask2() {
             `
             <td>${item.label}</td>
             <td>${item.A}</td>
-            <td>${item.bindingEnergy.toFixed(3)}</td>
-            <td>${item.bindingEnergyPerNucleon.toFixed(3)}</td>
+            <td>${item.bindingEnergy.toFixedVi(3)}</td>
+            <td>${item.bindingEnergyPerNucleon.toFixedVi(3)}</td>
             `;
 
 
@@ -3113,7 +3113,7 @@ function createTask3Chart(
                                             +
                                             `A = ${point.x}, `
                                             +
-                                            `Eₗₖ/A = ${point.y.toFixed(3)} MeV/nucleon`
+                                            `Eₗₖ/A = ${point.y.toFixedVi(3)} MeV/nucleon`
                                         );
                                     }
 
@@ -3237,7 +3237,7 @@ function setupTask3() {
 
 
     task3MaximumValue.textContent =
-        `${maximumPoint.bindingEnergyPerNucleon.toFixed(3)} MeV/nucleon`;
+        `${maximumPoint.bindingEnergyPerNucleon.toFixedVi(3)} MeV/nucleon`;
 
 
     task3TableBody.innerHTML =
@@ -3271,7 +3271,7 @@ function setupTask3() {
             </td>
 
             <td>
-                ${item.bindingEnergyPerNucleon.toFixed(3)}
+                ${item.bindingEnergyPerNucleon.toFixedVi(3)}
             </td>
 
             <td>
@@ -3400,7 +3400,7 @@ function checkTask3Answers() {
         +
         `${maximumPoint.label} có Eₗₖ/A lớn nhất trong chính bộ dữ liệu này, `
         +
-        `với ${maximumPoint.bindingEnergyPerNucleon.toFixed(3)} MeV/nucleon. `
+        `với ${maximumPoint.bindingEnergyPerNucleon.toFixedVi(3)} MeV/nucleon. `
         +
         `Về phía các hạt nhân rất nặng, Eₗₖ/A nhìn chung giảm. `
         +

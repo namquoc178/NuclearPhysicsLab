@@ -407,13 +407,7 @@ function buildDecayNuclearNotationHtml(
 
 
     return (
-        `<sup>${nucleus.A}</sup>`
-        +
-        `<sub>${nucleus.Z}</sub>`
-        +
-        `${nucleus.symbol}`
-        +
-        star
+        nuclideHtml(nucleus.A, nucleus.Z, nucleus.symbol, star)
     );
 }
 
@@ -433,9 +427,7 @@ function getDecayEmissionNotationHtml(
         case "alpha":
 
             return (
-                `<sup>4</sup>`
-                +
-                `<sub>2</sub>He`
+                nuclideHtml(4, 2, "He")
             );
 
 

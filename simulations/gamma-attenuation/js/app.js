@@ -640,7 +640,7 @@ function updateThicknessLabel() {
 
 
     thicknessDisplay.textContent =
-        `${thickness.toFixed(1)} mm`;
+        `${thickness.toFixedVi(1)} mm`;
 }
 
 
@@ -663,11 +663,11 @@ function updateAdvancedInfo() {
 
 
     muDisplay.textContent =
-        `${mu.toFixed(3)} mm⁻¹`;
+        `${mu.toFixedVi(3)} mm⁻¹`;
 
 
     hvlDisplay.textContent =
-        `${hvl.toFixed(2)} mm`;
+        `${hvl.toFixedVi(2)} mm`;
 }
 
 
@@ -716,7 +716,7 @@ function clearResults() {
 
 
     transmissionDisplay.textContent =
-        "0.000";
+        "0,000";
 
 
     theoryDisplay.textContent =
@@ -763,13 +763,13 @@ function updateResults(
 
 
     transmissionDisplay.textContent =
-        simulatedRatio.toFixed(
+        simulatedRatio.toFixedVi(
             3
         );
 
 
     theoryDisplay.textContent =
-        theoreticalRatio.toFixed(
+        theoreticalRatio.toFixedVi(
             3
         );
 }
@@ -993,7 +993,7 @@ function drawStaticScene() {
 
 
     ctx.fillText(
-        `${parameters.thicknessMm.toFixed(1)} mm`,
+        `${parameters.thicknessMm.toFixedVi(1)} mm`,
         shieldX +
         visualShieldWidth / 2,
         height - 45
@@ -2115,11 +2115,11 @@ function runTask1() {
 
         row.innerHTML =
             `
-            <td>${result.thicknessMm.toFixed(1)}</td>
+            <td>${result.thicknessMm.toFixedVi(1)}</td>
             <td>${result.totalPhotons}</td>
             <td>${result.transmitted}</td>
-            <td>${result.simulatedRatio.toFixed(3)}</td>
-            <td>${result.theoreticalRatio.toFixed(3)}</td>
+            <td>${result.simulatedRatio.toFixedVi(3)}</td>
+            <td>${result.theoreticalRatio.toFixedVi(3)}</td>
             `;
 
 
@@ -2198,7 +2198,7 @@ function resetTask2Display() {
 
 
     task2MuModel.textContent =
-        `${getGammaMu("lead").toFixed(3)} mm⁻¹`;
+        `${getGammaMu("lead").toFixedVi(3)} mm⁻¹`;
 
 
     task2R2.textContent =
@@ -2710,15 +2710,15 @@ task2ExperimentalMu =
             row.innerHTML =
                 `
                 <td>
-                    ${point.x.toFixed(1)}
+                    ${point.x.toFixedVi(1)}
                 </td>
 
                 <td>
-                    ${point.ratio.toFixed(4)}
+                    ${point.ratio.toFixedVi(4)}
                 </td>
 
                 <td>
-                    ${point.lnRatio.toFixed(4)}
+                    ${point.lnRatio.toFixedVi(4)}
                 </td>
                 `;
 
@@ -2745,27 +2745,27 @@ task2ExperimentalMu =
 
 
         task2Equation.textContent =
-            `y = ${regression.slope.toFixed(4)}x ${interceptSign} ${Math.abs(regression.intercept).toFixed(4)}`;
+            `y = ${regression.slope.toFixedVi(4)}x ${interceptSign} ${Math.abs(regression.intercept).toFixedVi(4)}`;
 
 
         task2MuExperimental.textContent =
             Number.isFinite(regression.slopeStandardError)
-                ? `${experimentalMu.toFixed(4)} ± ${regression.slopeStandardError.toFixed(4)} mm⁻¹`
-                : `${experimentalMu.toFixed(4)} mm⁻¹`;
+                ? `${experimentalMu.toFixedVi(4)} ± ${regression.slopeStandardError.toFixedVi(4)} mm⁻¹`
+                : `${experimentalMu.toFixedVi(4)} mm⁻¹`;
 
 
         task2MuModel.textContent =
-            `${modelMu.toFixed(3)} mm⁻¹`;
+            `${modelMu.toFixedVi(3)} mm⁻¹`;
 
 
         task2R2.textContent =
-            regression.rSquared.toFixed(
+            regression.rSquared.toFixedVi(
                 4
             );
 
 
         task2RelativeError.textContent =
-            `${relativeError.toFixed(2)} %`;
+            `${relativeError.toFixedVi(2)} %`;
 
 
         task2Conclusion.textContent =
@@ -2948,19 +2948,19 @@ function setupTask3() {
 
 
     task3MuExperimental.textContent =
-        `${task2ExperimentalMu.toFixed(4)} mm⁻¹`;
+        `${task2ExperimentalMu.toFixedVi(4)} mm⁻¹`;
 
 
     task3HvlExperimental.textContent =
-        `${experimentalHvl.toFixed(3)} mm`;
+        `${experimentalHvl.toFixedVi(3)} mm`;
 
 
     task3HvlModel.textContent =
-        `${modelHvl.toFixed(3)} mm`;
+        `${modelHvl.toFixedVi(3)} mm`;
 
 
     task3HvlError.textContent =
-        `${relativeError.toFixed(2)} %`;
+        `${relativeError.toFixedVi(2)} %`;
 
 
     task3Ready =
@@ -3322,7 +3322,7 @@ function runTask3() {
                 </td>
 
                 <td>
-                    ${trial.ratio.toFixed(4)}
+                    ${trial.ratio.toFixedVi(4)}
                 </td>
                 `;
 
@@ -3354,13 +3354,13 @@ function runTask3() {
 
 
     task3AverageRatio.textContent =
-        averageRatio.toFixed(
+        averageRatio.toFixedVi(
             4
         );
 
 
     task3TheoryRatio.textContent =
-        theoryRatio.toFixed(
+        theoryRatio.toFixedVi(
             4
         );
 
@@ -3387,7 +3387,7 @@ function runTask3() {
         +
         "nhưng giá trị trung bình nằm gần 0,500. "
         +
-        `Trong lần kiểm tra này, độ lệch của giá trị trung bình so với 0,500 là ${differenceFromHalf.toFixed(4)}.`;
+        `Trong lần kiểm tra này, độ lệch của giá trị trung bình so với 0,500 là ${differenceFromHalf.toFixedVi(4)}.`;
 
 
     task3Status.textContent =
@@ -3863,7 +3863,7 @@ function createValidationChart(
 
                         {
                             label:
-                                `μ mô hình = ${getGammaMu("lead").toFixed(3).replace(".", ",")} mm⁻¹`,
+                                `μ mô hình = ${getGammaMu("lead").toFixedVi(3).replace(".", ",")} mm⁻¹`,
 
                             data:
                                 modelLine,
@@ -4233,15 +4233,15 @@ async function runValidation() {
                 </td>
 
                 <td>
-                    ${result.mu.toFixed(5)}
+                    ${result.mu.toFixedVi(5)}
                 </td>
 
                 <td>
-                    ${result.rSquared.toFixed(5)}
+                    ${result.rSquared.toFixedVi(5)}
                 </td>
 
                 <td>
-                    ${result.relativeError.toFixed(2)}
+                    ${result.relativeError.toFixedVi(2)}
                 </td>
                 `;
 
@@ -4258,19 +4258,19 @@ async function runValidation() {
         // ==================================================
 
         validationMeanMu.textContent =
-            `${meanMu.toFixed(5)} mm⁻¹`;
+            `${meanMu.toFixedVi(5)} mm⁻¹`;
 
 
         validationSdMu.textContent =
-            `${sdMu.toFixed(5)} mm⁻¹`;
+            `${sdMu.toFixedVi(5)} mm⁻¹`;
 
 
         validationRelativeError.textContent =
-            `${relativeErrorOfMean.toFixed(2)} %`;
+            `${relativeErrorOfMean.toFixedVi(2)} %`;
 
 
         validationMeanR2.textContent =
-            meanR2.toFixed(
+            meanR2.toFixedVi(
                 5
             );
 
@@ -4296,13 +4296,13 @@ async function runValidation() {
         validationConclusion.textContent =
             `Sau ${repeatCount} bộ dữ liệu Monte Carlo độc lập, `
             +
-            `giá trị μ trung bình thu được là ${meanMu.toFixed(5)} mm⁻¹, `
+            `giá trị μ trung bình thu được là ${meanMu.toFixedVi(5)} mm⁻¹, `
             +
-            `so với μ của mô hình là ${modelMu.toFixed(3)} mm⁻¹. `
+            `so với μ của mô hình là ${modelMu.toFixedVi(3)} mm⁻¹. `
             +
-            `Độ lệch chuẩn của các giá trị μ là ${sdMu.toFixed(5)} mm⁻¹ `
+            `Độ lệch chuẩn của các giá trị μ là ${sdMu.toFixedVi(5)} mm⁻¹ `
             +
-            `và sai lệch tương đối của giá trị trung bình là ${relativeErrorOfMean.toFixed(2)} %. `
+            `và sai lệch tương đối của giá trị trung bình là ${relativeErrorOfMean.toFixedVi(2)} %. `
             +
             `Các giá trị μ riêng lẻ dao động do tính ngẫu nhiên của quá trình Monte Carlo, `
             +

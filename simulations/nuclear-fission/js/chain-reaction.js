@@ -281,13 +281,13 @@ function updateChainParameterDisplay() {
 
 
     chainProbabilityDisplay.textContent =
-        preset.probability.toFixed(
+        preset.probability.toFixedVi(
             2
         );
 
 
     chainReproductionDisplay.textContent =
-        reproduction.toFixed(
+        reproduction.toFixedVi(
             2
         );
 }
@@ -1008,7 +1008,7 @@ function buildChainConclusion(
             +
             `Hệ số nhân neutron của mô hình là k = `
             +
-            `${reproduction.toFixed(2)}. `
+            `${reproduction.toFixedVi(2)}. `
             +
             `Kết quả chỉ minh họa một quá trình phân nhánh Monte Carlo.`
         );
@@ -1031,7 +1031,7 @@ function buildChainConclusion(
             +
             `Hệ số nhân neutron của mô hình là k = `
             +
-            `${reproduction.toFixed(2)}.`
+            `${reproduction.toFixedVi(2)}.`
         );
     }
 
@@ -1042,7 +1042,7 @@ function buildChainConclusion(
     ) {
 
         return (
-            `Mô hình có k = ${reproduction.toFixed(2)} < 1 (dưới tới hạn), `
+            `Mô hình có k = ${reproduction.toFixedVi(2)} < 1 (dưới tới hạn), `
             +
             `nên về trung bình chuỗi có xu hướng giảm. `
             +
@@ -1059,7 +1059,7 @@ function buildChainConclusion(
     ) {
 
         return (
-            `Mô hình có k ≈ ${reproduction.toFixed(2)} (tới hạn). `
+            `Mô hình có k ≈ ${reproduction.toFixedVi(2)} (tới hạn). `
             +
             `Vì vậy số neutron có thể dao động mạnh giữa các thế hệ `
             +
@@ -1069,7 +1069,7 @@ function buildChainConclusion(
 
 
     return (
-        `Mô hình có k = ${reproduction.toFixed(2)} > 1 (vượt hạn), `
+        `Mô hình có k = ${reproduction.toFixedVi(2)} > 1 (vượt hạn), `
         +
         `nên về trung bình số neutron có xu hướng tăng qua các thế hệ. `
         +

@@ -576,7 +576,7 @@ function createBindingValidationChart(
                                             +
                                             `${point.label}: `
                                             +
-                                            `${point.y.toFixed(4)} MeV/nucleon`
+                                            `${point.y.toFixedVi(4)} MeV/nucleon`
                                         );
                                     }
 
@@ -743,19 +743,19 @@ function runBindingValidation() {
                 </td>
 
                 <td>
-                    ${item.calculatedKeV.toFixed(3)}
+                    ${item.calculatedKeV.toFixedVi(3)}
                 </td>
 
                 <td>
-                    ${item.referenceKeV.toFixed(0)}
+                    ${item.referenceKeV.toFixedVi(0)}
                 </td>
 
                 <td>
-                    ${item.signedDifference.toFixed(3)}
+                    ${item.signedDifference.toFixedVi(3)}
                 </td>
 
                 <td>
-                    ${item.relativeError.toFixed(4)}
+                    ${item.relativeError.toFixedVi(4)}
                 </td>
                 `;
 
@@ -778,15 +778,15 @@ function runBindingValidation() {
 
 
         bindingValidationRmse.textContent =
-            `${rmse.toFixed(3)} keV/nucleon`;
+            `${rmse.toFixedVi(3)} keV/nucleon`;
 
 
         bindingValidationMeanError.textContent =
-            `${meanAbsoluteError.toFixed(3)} keV/nucleon`;
+            `${meanAbsoluteError.toFixedVi(3)} keV/nucleon`;
 
 
         bindingValidationMaxError.textContent =
-            `${maximumErrorItem.absoluteDifference.toFixed(3)} keV/nucleon`;
+            `${maximumErrorItem.absoluteDifference.toFixedVi(3)} keV/nucleon`;
 
 
         // ==================================================
@@ -807,13 +807,13 @@ function runBindingValidation() {
             +
             `Sai lệch tuyệt đối trung bình giữa kết quả tính toán `
             +
-            `và giá trị tham chiếu là ${meanAbsoluteError.toFixed(3)} keV/nucleon, `
+            `và giá trị tham chiếu là ${meanAbsoluteError.toFixedVi(3)} keV/nucleon, `
             +
-            `RMSE là ${rmse.toFixed(3)} keV/nucleon. `
+            `RMSE là ${rmse.toFixedVi(3)} keV/nucleon. `
             +
             `Sai lệch lớn nhất xuất hiện ở ${maximumErrorItem.label}, `
             +
-            `với ${maximumErrorItem.absoluteDifference.toFixed(3)} keV/nucleon. `
+            `với ${maximumErrorItem.absoluteDifference.toFixedVi(3)} keV/nucleon. `
             +
             `Mức sai khác nhỏ chủ yếu phản ánh việc giá trị tham chiếu `
             +

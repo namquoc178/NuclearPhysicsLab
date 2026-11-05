@@ -251,11 +251,7 @@ function getTask2NuclideHtml(
 
 
     return (
-        `<sup>${nuclide.A}</sup>`
-        +
-        `<sub>${nuclide.Z}</sub>`
-        +
-        `${nuclide.symbol}`
+        nuclideHtml(nuclide.A, nuclide.Z, nuclide.symbol)
     );
 }
 
@@ -351,10 +347,10 @@ function updateTask2ReactionEquation() {
             1
 
             ?
-            "<sup>1</sup><sub>0</sub>n"
+            nuclideHtml(1, 0, "n")
 
             :
-            `${count}<sup>1</sup><sub>0</sub>n`;
+            `${count}${nuclideHtml(1, 0, "n")}`;
 
 
         productParts.push(
@@ -440,7 +436,7 @@ function updateTask2MassData() {
             </span>
 
             <strong>
-                ${nuclide.atomicMassU} u
+                ${formatVi(nuclide.atomicMassU)} u
             </strong>
             `;
 
@@ -473,7 +469,7 @@ function updateTask2MassData() {
             </span>
 
             <strong>
-                ${NEUTRON_MASS_U} u
+                ${formatVi(NEUTRON_MASS_U)} u
             </strong>
             `;
 
@@ -530,7 +526,7 @@ function buildTask2MassExpression(
         } else {
 
             terms.push(
-                `${emittedNeutrons} × ${NEUTRON_MASS_U}`
+                `${emittedNeutrons} × ${formatVi(NEUTRON_MASS_U)}`
             );
         }
     }
@@ -820,11 +816,11 @@ function updateTask2MassBars() {
 
 
     task2InitialMassBarLabel.textContent =
-        `${p.initialMassU.toFixed(9)} u`;
+        `${p.initialMassU.toFixedVi(9)} u`;
 
 
     task2FinalMassBarLabel.textContent =
-        `${p.finalMassU.toFixed(9)} u`;
+        `${p.finalMassU.toFixedVi(9)} u`;
 }
 
 
@@ -839,19 +835,19 @@ function showTask2Solution() {
 
 
     task2CorrectInitialMass.textContent =
-        `${p.initialMassU.toFixed(9)} u`;
+        `${p.initialMassU.toFixedVi(9)} u`;
 
 
     task2CorrectFinalMass.textContent =
-        `${p.finalMassU.toFixed(9)} u`;
+        `${p.finalMassU.toFixedVi(9)} u`;
 
 
     task2CorrectMassDifference.textContent =
-        `${p.massDifferenceU.toFixed(9)} u`;
+        `${p.massDifferenceU.toFixedVi(9)} u`;
 
 
     task2CorrectQ.textContent =
-        `${p.qValueMeV.toFixed(3)} MeV`;
+        `${p.qValueMeV.toFixedVi(3)} MeV`;
 
 
     updateTask2MassBars();
@@ -895,7 +891,7 @@ function showTask2Solution() {
             =
             ${initialExpression}
             =
-            ${p.initialMassU.toFixed(11)} u.
+            ${p.initialMassU.toFixedVi(11)} u.
         </p>
 
 
@@ -908,7 +904,7 @@ function showTask2Solution() {
             =
             ${finalExpression}
             =
-            ${p.finalMassU.toFixed(11)} u.
+            ${p.finalMassU.toFixedVi(11)} u.
         </p>
 
 
@@ -926,11 +922,11 @@ function showTask2Solution() {
 
         <p>
             =
-            ${p.initialMassU.toFixed(11)}
+            ${p.initialMassU.toFixedVi(11)}
             −
-            ${p.finalMassU.toFixed(11)}
+            ${p.finalMassU.toFixedVi(11)}
             =
-            ${p.massDifferenceU.toFixed(11)} u.
+            ${p.massDifferenceU.toFixedVi(11)} u.
         </p>
 
 
@@ -941,16 +937,16 @@ function showTask2Solution() {
         <p>
             Q
             =
-            Δm × 931.49410242
+            Δm × 931,49410242
         </p>
 
         <p>
             =
-            ${p.massDifferenceU.toFixed(11)}
+            ${p.massDifferenceU.toFixedVi(11)}
             ×
-            ${U_TO_MEV}
+            ${formatVi(U_TO_MEV)}
             ≈
-            ${p.qValueMeV.toFixed(3)} MeV.
+            ${p.qValueMeV.toFixedVi(3)} MeV.
         </p>
         `;
 }
@@ -1059,11 +1055,11 @@ function checkTask2() {
             +
             `khối lượng sau phản ứng nhỏ hơn khối lượng trước `
             +
-            `một lượng khoảng ${p.massDifferenceU.toFixed(6)} u. `
+            `một lượng khoảng ${p.massDifferenceU.toFixedVi(6)} u. `
             +
             `Chênh lệch đó tương ứng với `
             +
-            `Q ≈ ${p.qValueMeV.toFixed(3)} MeV. `
+            `Q ≈ ${p.qValueMeV.toFixedVi(3)} MeV. `
             +
             `Vì Q > 0 nên phản ứng giải phóng năng lượng.`;
 

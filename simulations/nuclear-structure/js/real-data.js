@@ -1,6 +1,6 @@
 // =====================================================================
 // real-data.js – Bài Cấu tạo hạt nhân và đồng vị
-// Kiểm chứng: tính nguyên tử khối trung bình từ đồng vị và độ phổ biến,
+// Kiểm chứng: tính nguyên tử khối trung bình từ đồng vị và độ phổ cập,
 // rồi so với nguyên tử khối ghi trong bảng tuần hoàn.
 // Số liệu: NIST, Atomic Weights and Isotopic Compositions.
 // =====================================================================
@@ -46,6 +46,14 @@
         }
     };
 
+    // Lời giải mẫu: Ā = (m₁·x₁ + m₂·x₂ + …) / 100 với số liệu của nguyên tố đang chọn.
+    function workedExample(element, formatNumber) {
+        const terms = element.isotopes
+            .map(isotope => `${formatNumber(isotope.mass, 3)} × ${formatNumber(isotope.abundance, isotope.abundance < 1 ? 3 : 2)}`)
+            .join(" + ");
+        return `Ā = (${terms}) / 100 ≈ ${formatNumber(averageMass(element), 3)} u.`;
+    }
+
     function averageMass(element) {
         let sum = 0;
         let total = 0;
@@ -60,10 +68,10 @@
         title: "Nguyên tử khối trung bình có khớp bảng tuần hoàn không?",
         intro:
             "Mỗi nguyên tố trong tự nhiên là hỗn hợp nhiều đồng vị. Nếu mô hình \"cùng Z, khác số neutron\" đúng, " +
-            "thì trung bình khối lượng các đồng vị, tính theo độ phổ biến, phải bằng nguyên tử khối ghi trong bảng tuần hoàn. " +
+            "thì trung bình khối lượng các đồng vị, tính theo độ phổ cập, phải bằng nguyên tử khối ghi trong bảng tuần hoàn. " +
             "Hãy tự tính rồi kiểm tra.",
         sources: [
-            "NIST – Atomic Weights and Isotopic Compositions (khối lượng đồng vị và độ phổ biến).",
+            "NIST – Atomic Weights and Isotopic Compositions (khối lượng đồng vị và độ phổ cập).",
             "Nguyên tử khối trong bảng tuần hoàn theo IUPAC (giá trị rút gọn)."
         ],
         render(body, ui) {
@@ -81,7 +89,7 @@
                         el("th", {}, "Đồng vị"),
                         el("th", {}, "Số neutron N"),
                         el("th", {}, "Khối lượng (u)"),
-                        el("th", {}, "Độ phổ biến (%)")
+                        el("th", {}, "Độ phổ cập x (%)")
                     )),
                     tableBody
                 )
@@ -121,10 +129,10 @@
                 const ok = Math.abs(value - exact) <= 0.01;
                 setFeedback(feedback, ok, ok
                     ? `Đúng. Kết quả tính được ${formatNumber(exact, 3)} u.`
-                    : `Chưa đúng. Hãy nhân khối lượng mỗi đồng vị với độ phổ biến (đổi % ra phần thập phân) rồi cộng lại.`);
+                    : `Chưa đúng. Hãy nhân khối lượng mỗi đồng vị với độ phổ cập của nó, cộng các tích lại rồi chia cho 100.`);
                 reveal.hidden = false;
                 reveal.textContent =
-                    `M = Σ (mᵢ × xᵢ) = ${formatNumber(exact, 3)} u. Bảng tuần hoàn ghi ${formatNumber(element.tableValue, 3)}. ` +
+                    `${workedExample(element, formatNumber)} Bảng tuần hoàn ghi ${formatNumber(element.tableValue, 3)} u. ` +
                     `Chênh lệch ${formatNumber(Math.abs(exact - element.tableValue), 3)} u: nguyên tử khối là trung bình có trọng số ` +
                     `của các đồng vị, nên nó không phải số nguyên dù mỗi số khối A đều là số nguyên.`;
             });
@@ -138,9 +146,11 @@
                     table
                 ),
                 el("div", { class: "rd-step" },
-                    el("h3", {}, "2. Tính nguyên tử khối trung bình M = Σ mᵢ·xᵢ"),
+                    el("h3", {}, "2. Tính nguyên tử khối trung bình"),
+                    el("p", { class: "rd-formula" }, "Ā = (m₁·x₁ + m₂·x₂ + … + mₖ·xₖ) / 100"),
+                    el("p", {}, "Trong đó mᵢ là khối lượng nguyên tử của đồng vị thứ i (u), xᵢ là độ phổ cập của đồng vị đó (%), tức tỉ lệ số nguyên tử của đồng vị trong nguyên tố tự nhiên. Tổng các xᵢ bằng 100 %."),
                     el("div", { class: "rd-input-row" },
-                        el("label", { for: "rdAverageInput" }, "M ="), input, el("span", {}, "u"), check),
+                        el("label", { for: "rdAverageInput" }, "Ā ="), input, el("span", {}, "u"), check),
                     feedback,
                     reveal
                 )

@@ -507,9 +507,9 @@ function buildPhysicsExplanation(
                 </p>
 
                 <p class="physics-equation">
-                    <sup>A</sup><sub>Z</sub>X*
+                    ${nuclideHtml("A", "Z", "X", "*")}
                     →
-                    <sup>A</sup><sub>Z</sub>X
+                    ${nuclideHtml("A", "Z", "X")}
                     + γ
                 </p>
 

@@ -1245,7 +1245,7 @@ function drawStage5(
 
 
     ctx.fillText(
-        `Q ≈ ${currentFissionProperties.qValueMeV.toFixed(2)} MeV`,
+        `Q ≈ ${currentFissionProperties.qValueMeV.toFixedVi(2)} MeV`,
         centerX,
         450
     );
@@ -1394,11 +1394,11 @@ function showFinalResults() {
 
 
     massDifferenceDisplay.textContent =
-        `${currentFissionProperties.massDifferenceU.toFixed(6)} u`;
+        `${currentFissionProperties.massDifferenceU.toFixedVi(6)} u`;
 
 
     qValueDisplay.textContent =
-        `${currentFissionProperties.qValueMeV.toFixed(3)} MeV`;
+        `${currentFissionProperties.qValueMeV.toFixedVi(3)} MeV`;
 
 
     massConservationStatus.textContent =
@@ -2224,11 +2224,11 @@ function updateTask2MassComparison() {
 
 
     task2InitialMassBarLabel.textContent =
-        `${p.initialMassU.toFixed(9)} u`;
+        `${p.initialMassU.toFixedVi(9)} u`;
 
 
     task2FinalMassBarLabel.textContent =
-        `${p.finalMassU.toFixed(9)} u`;
+        `${p.finalMassU.toFixedVi(9)} u`;
 }
 
 
@@ -2243,19 +2243,19 @@ function showTask2Solution() {
 
 
     task2CorrectInitialMass.textContent =
-        `${p.initialMassU.toFixed(9)} u`;
+        `${p.initialMassU.toFixedVi(9)} u`;
 
 
     task2CorrectFinalMass.textContent =
-        `${p.finalMassU.toFixed(9)} u`;
+        `${p.finalMassU.toFixedVi(9)} u`;
 
 
     task2CorrectMassDifference.textContent =
-        `${p.massDifferenceU.toFixed(9)} u`;
+        `${p.massDifferenceU.toFixedVi(9)} u`;
 
 
     task2CorrectQValue.textContent =
-        `${p.qValueMeV.toFixed(3)} MeV`;
+        `${p.qValueMeV.toFixedVi(3)} MeV`;
 
 
     updateTask2MassComparison();
@@ -2277,11 +2277,11 @@ function showTask2Solution() {
 
         <p>
             =
-            235.0439301
+            235,0439301
             +
-            ${NEUTRON_MASS_U}
+            ${formatVi(NEUTRON_MASS_U)}
             =
-            ${p.initialMassU.toFixed(11)} u.
+            ${p.initialMassU.toFixedVi(11)} u.
         </p>
 
 
@@ -2301,16 +2301,16 @@ function showTask2Solution() {
 
         <p>
             =
-            140.9144033
+            140,9144033
             +
-            91.9261731
+            91,9261731
             +
-            3 × ${NEUTRON_MASS_U}
+            3 × ${formatVi(NEUTRON_MASS_U)}
         </p>
 
         <p>
             =
-            ${p.finalMassU.toFixed(11)} u.
+            ${p.finalMassU.toFixedVi(11)} u.
         </p>
 
 
@@ -2328,11 +2328,11 @@ function showTask2Solution() {
 
         <p>
             =
-            ${p.initialMassU.toFixed(11)}
+            ${p.initialMassU.toFixedVi(11)}
             −
-            ${p.finalMassU.toFixed(11)}
+            ${p.finalMassU.toFixedVi(11)}
             =
-            ${p.massDifferenceU.toFixed(11)} u.
+            ${p.massDifferenceU.toFixedVi(11)} u.
         </p>
 
 
@@ -2343,16 +2343,16 @@ function showTask2Solution() {
         <p>
             Q
             =
-            Δm × 931.49410242
+            Δm × 931,49410242
         </p>
 
         <p>
             =
-            ${p.massDifferenceU.toFixed(11)}
+            ${p.massDifferenceU.toFixedVi(11)}
             ×
-            ${U_TO_MEV}
+            ${formatVi(U_TO_MEV)}
             ≈
-            ${p.qValueMeV.toFixed(3)} MeV.
+            ${p.qValueMeV.toFixedVi(3)} MeV.
         </p>
         `;
 }
@@ -2480,11 +2480,11 @@ function checkTask2() {
             +
             `nhỏ hơn tổng khối lượng trước khoảng `
             +
-            `${p.massDifferenceU.toFixed(6)} u. `
+            `${p.massDifferenceU.toFixedVi(6)} u. `
             +
             `Chênh lệch đó tương ứng với Q ≈ `
             +
-            `${p.qValueMeV.toFixed(3)} MeV.`;
+            `${p.qValueMeV.toFixedVi(3)} MeV.`;
 
     } else {
 
