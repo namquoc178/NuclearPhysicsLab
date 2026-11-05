@@ -71,7 +71,7 @@
         for (let A = 10; A <= 240; A += 2) {
             const Z = stableZ(A);
             const value = semfSmooth(A, Z) / A;
-            d += (d ? " L" : "M") + `${X(A).toFixed(1)} ${Y(value).toFixed(1)}`;
+            d += (d ? " L" : "M") + `${X(A).toFixedVi(1)} ${Y(value).toFixedVi(1)}`;
         }
         add("path", { d, fill: "none", stroke: "#d97706", "stroke-width": 2.5 });
 

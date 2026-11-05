@@ -219,16 +219,16 @@ function updateDisplay() {
     const lambda = calculateLambda(currentHalfLife);
 
     timeDisplay.textContent =
-        `${currentTime.toFixed(2)} s`;
+        `${currentTime.toFixedVi(2)} s`;
 
     remainingDisplay.textContent =
         String(currentRemaining);
 
     ratioDisplay.textContent =
-        (currentRemaining / currentN0).toFixed(3);
+        (currentRemaining / currentN0).toFixedVi(3);
 
     lambdaDisplay.textContent =
-        `${lambda.toFixed(4)} s⁻¹`;
+        `${lambda.toFixedVi(4)} s⁻¹`;
 }
 
 function drawNuclei() {
@@ -753,10 +753,10 @@ function updateDataTable() {
             );
 
         row.innerHTML = `
-            <td>${point.x.toFixed(2)}</td>
+            <td>${point.x.toFixedVi(2)}</td>
             <td>${point.y}</td>
-            <td>${theoreticalN.toFixed(2)}</td>
-            <td>${ratio.toFixed(3)}</td>
+            <td>${theoreticalN.toFixedVi(2)}</td>
+            <td>${ratio.toFixedVi(3)}</td>
         `;
 
         dataTableBody.appendChild(
@@ -936,11 +936,11 @@ function finishExperiment1() {
 
     experiment1TheoryDisplay
         .textContent =
-        theoreticalValue.toFixed(0);
+        theoreticalValue.toFixedVi(0);
 
     experiment1DifferenceDisplay
         .textContent =
-        `${absoluteDifference.toFixed(0)} hạt`;
+        `${absoluteDifference.toFixedVi(0)} hạt`;
 
     experiment1Result.hidden =
         false;
@@ -958,9 +958,9 @@ function finishExperiment1() {
     );
 
     experiment1Message.textContent =
-        `Sau một chu kì bán rã, giá trị lí thuyết kì vọng là ${theoreticalValue.toFixed(0)} hạt. ` +
+        `Sau một chu kì bán rã, giá trị lí thuyết kì vọng là ${theoreticalValue.toFixedVi(0)} hạt. ` +
         `Kết quả của một lần mô phỏng có thể khác giá trị này vì thời điểm phân rã của từng hạt nhân có tính ngẫu nhiên. ` +
-        `Trong lần này, sai khác tương đối là ${percentDifference.toFixed(1)}%.`;
+        `Trong lần này, sai khác tương đối là ${percentDifference.toFixedVi(1)}%.`;
 }
 
 // ======================================================
@@ -1492,11 +1492,11 @@ function runExperiment2() {
 
     experiment2AverageDisplay
         .textContent =
-        average.toFixed(1);
+        average.toFixedVi(1);
 
     experiment2TheoryDisplay
         .textContent =
-        theoreticalValue.toFixed(0);
+        theoreticalValue.toFixedVi(0);
 
     experiment2Result.hidden =
         false;
@@ -1513,7 +1513,7 @@ function runExperiment2() {
 
     experiment2Message.textContent =
         `Năm lần thí nghiệm được thực hiện với cùng N₀ và T₁/₂ nhưng kết quả không nhất thiết giống nhau. ` +
-        `Các giá trị dao động quanh giá trị lí thuyết ${theoreticalValue.toFixed(0)} hạt.`;
+        `Các giá trị dao động quanh giá trị lí thuyết ${theoreticalValue.toFixedVi(0)} hạt.`;
 }
 
 // ======================================================
@@ -1797,7 +1797,7 @@ function createExperiment3Chart(
                                 ) {
                                     return (
                                         `${context.dataset.label}: ` +
-                                        `${context.parsed.y.toFixed(3)}`
+                                        `${context.parsed.y.toFixedVi(3)}`
                                     );
                                 }
                             }
@@ -1907,9 +1907,9 @@ function runExperiment3() {
         row.innerHTML = `
             <td>${N0}</td>
             <td>${trialResults.join(", ")}</td>
-            <td>${average.toFixed(1)}</td>
-            <td>${theoreticalValue.toFixed(0)}</td>
-            <td>${relativeDeviation.toFixed(1)} %</td>
+            <td>${average.toFixedVi(1)}</td>
+            <td>${theoreticalValue.toFixedVi(0)}</td>
+            <td>${relativeDeviation.toFixedVi(1)} %</td>
         `;
 
         experiment3TableBody
@@ -2304,7 +2304,7 @@ async function runValidationExperiment() {
             100;
 
         validationError.textContent =
-            `${normalizedRMSE.toFixed(3)} % (kì vọng ≈ ${expectedNormalizedRMSE.toFixed(3)} %)`;
+            `${normalizedRMSE.toFixedVi(3)} % (kì vọng ≈ ${expectedNormalizedRMSE.toFixedVi(3)} %)`;
 
         setSimulationStatus(
             "Kiểm chứng thống kê đã hoàn thành.",
@@ -2686,7 +2686,7 @@ pauseButton.addEventListener(
         stopTimer();
 
         setSimulationStatus(
-            `Đã tạm dừng tại t = ${currentTime.toFixed(2)} s.`,
+            `Đã tạm dừng tại t = ${currentTime.toFixedVi(2)} s.`,
             "paused"
         );
 
@@ -2698,7 +2698,7 @@ pauseButton.addEventListener(
             experiment1InProgress
         ) {
             experiment1Status.textContent =
-                `Đã tạm dừng tại t = ${currentTime.toFixed(2)} s.`;
+                `Đã tạm dừng tại t = ${currentTime.toFixedVi(2)} s.`;
         }
     }
 );

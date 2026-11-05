@@ -415,11 +415,11 @@ function runReactionValidation() {
             </td>
 
             <td>
-                ${p.massDifferenceU.toFixed(6)}
+                ${p.massDifferenceU.toFixedVi(6)}
             </td>
 
             <td>
-                ${p.qValueMeV.toFixed(3)}
+                ${p.qValueMeV.toFixedVi(3)}
             </td>
 
             <td class="${
@@ -487,7 +487,7 @@ function runReactionValidation() {
             +
             `nhất quán với phép tính trực tiếp `
             +
-            `Q = (m_trước − m_sau) × ${U_TO_MEV}.`;
+            `Q = (m_trước − m_sau) × ${formatVi(U_TO_MEV)}.`;
 
     } else {
 
@@ -832,25 +832,25 @@ function runMonteValidation() {
 
 
     monteValidationProbability.textContent =
-        probability.toFixed(
+        probability.toFixedVi(
             2
         );
 
 
     monteValidationExpectedR.textContent =
-        expectedR.toFixed(
+        expectedR.toFixedVi(
             4
         );
 
 
     monteValidationMeasuredR.textContent =
-        result.measuredR.toFixed(
+        result.measuredR.toFixedVi(
             4
         );
 
 
     monteValidationDifference.textContent =
-        difference.toFixed(
+        difference.toFixedVi(
             4
         );
 
@@ -874,7 +874,7 @@ function runMonteValidation() {
 
 
     monteValidationAverageNu.textContent =
-        result.averageNu.toFixed(
+        result.averageNu.toFixedVi(
             4
         );
 
@@ -908,17 +908,17 @@ function runMonteValidation() {
 
 
         monteValidationConclusion.textContent =
-            `Với p = ${probability.toFixed(2)}, `
+            `Với p = ${probability.toFixedVi(2)}, `
             +
             `mô hình dự đoán k = 2,5p = `
             +
-            `${expectedR.toFixed(4)}. `
+            `${expectedR.toFixedVi(4)}. `
             +
             `Sau ${trials.toLocaleString("vi-VN")} phép thử độc lập, `
             +
-            `Monte Carlo cho R ≈ ${result.measuredR.toFixed(4)}, `
+            `Monte Carlo cho R ≈ ${result.measuredR.toFixedVi(4)}, `
             +
-            `sai lệch ${difference.toFixed(4)}. `
+            `sai lệch ${difference.toFixedVi(4)}. `
             +
             `Kết quả phù hợp với kì vọng thống kê của mô hình. `
             +
@@ -931,9 +931,9 @@ function runMonteValidation() {
 
 
         monteValidationConclusion.textContent =
-            `Lần chạy này cho sai lệch ${difference.toFixed(4)} `
+            `Lần chạy này cho sai lệch ${difference.toFixedVi(4)} `
             +
-            `so với R lí thuyết = ${expectedR.toFixed(4)}. `
+            `so với R lí thuyết = ${expectedR.toFixedVi(4)}. `
             +
             `Do đây là mô phỏng ngẫu nhiên, có thể chạy lại `
             +

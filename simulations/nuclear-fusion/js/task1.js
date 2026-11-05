@@ -233,11 +233,7 @@ function getTask1NuclideHtml(
 
 
     return (
-        `<sup>${nuclide.A}</sup>`
-        +
-        `<sub>${nuclide.Z}</sub>`
-        +
-        `${nuclide.symbol}`
+        nuclideHtml(nuclide.A, nuclide.Z, nuclide.symbol)
     );
 }
 
@@ -276,10 +272,10 @@ function updateTask1ReactionEquation() {
             1
 
             ?
-            "<sup>1</sup><sub>0</sub>n"
+            nuclideHtml(1, 0, "n")
 
             :
-            `${number}<sup>1</sup><sub>0</sub>n`;
+            `${number}${nuclideHtml(1, 0, "n")}`;
 
 
         productParts.push(

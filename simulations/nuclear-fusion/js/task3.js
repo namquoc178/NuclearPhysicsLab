@@ -378,19 +378,19 @@ function createTask3Table(
             </td>
 
             <td>
-                ${item.initialMassU.toFixed(9)}
+                ${item.initialMassU.toFixedVi(9)}
             </td>
 
             <td>
-                ${item.finalMassU.toFixed(9)}
+                ${item.finalMassU.toFixedVi(9)}
             </td>
 
             <td>
-                ${item.massDifferenceU.toFixed(6)}
+                ${item.massDifferenceU.toFixedVi(6)}
             </td>
 
             <td>
-                ${item.qValueMeV.toFixed(3)}
+                ${item.qValueMeV.toFixedVi(3)}
             </td>
             `;
 
@@ -508,7 +508,7 @@ function createTask3Chart(
                                         return (
                                             `Q = `
                                             +
-                                            `${Number(context.raw).toFixed(3)} MeV`
+                                            `${Number(context.raw).toFixedVi(3)} MeV`
                                         );
                                     }
 
@@ -646,15 +646,15 @@ function runTask3() {
 
 
     task3MinimumQ.textContent =
-        `${minimum.qValueMeV.toFixed(3)} MeV`;
+        `${minimum.qValueMeV.toFixedVi(3)} MeV`;
 
 
     task3MaximumQ.textContent =
-        `${maximum.qValueMeV.toFixed(3)} MeV`;
+        `${maximum.qValueMeV.toFixedVi(3)} MeV`;
 
 
     task3QRange.textContent =
-        `${range.toFixed(3)} MeV`;
+        `${range.toFixedVi(3)} MeV`;
 
 
     task3Result.hidden =
@@ -793,15 +793,15 @@ function checkTask3Answers() {
         +
         `${maximum.name} có Q lớn nhất, khoảng `
         +
-        `${maximum.qValueMeV.toFixed(3)} MeV. `
+        `${maximum.qValueMeV.toFixedVi(3)} MeV. `
         +
         `Hai nhánh D + D có cùng khối lượng ban đầu `
         +
         `nhưng Q lần lượt khoảng `
         +
-        `${ddHe3.qValueMeV.toFixed(3)} MeV và `
+        `${ddHe3.qValueMeV.toFixedVi(3)} MeV và `
         +
-        `${ddT.qValueMeV.toFixed(3)} MeV, `
+        `${ddT.qValueMeV.toFixedVi(3)} MeV, `
         +
         `do các sản phẩm có tổng khối lượng khác nhau. `
         +

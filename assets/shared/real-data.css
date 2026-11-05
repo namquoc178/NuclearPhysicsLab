@@ -199,3 +199,13 @@ details.teacher-checks[open] > summary {
         padding: 16px;
     }
 }
+
+.rd-formula {
+    margin: 4px 0 8px;
+    padding: 10px 14px;
+    border-left: 3px solid var(--lab-ink);
+    color: var(--lab-ink);
+    background: var(--lab-surface-2);
+    font-family: var(--lab-serif);
+    font-size: 1.12rem;
+}

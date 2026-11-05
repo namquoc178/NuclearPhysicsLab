@@ -146,6 +146,29 @@ body.lesson-ui textarea {
     mix-blend-mode: multiply;
 }
 
+/* ----------------------- Kí hiệu hạt nhân xếp chồng ----------------------- */
+.nuclide {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    line-height: 1;
+}
+
+.nuclide-az {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: .06em;
+    font-size: .58em;
+    line-height: 1.08;
+    font-variant-numeric: tabular-nums;
+}
+
+.nuclide-symbol {
+    line-height: 1;
+}
+
 /* ----------------------- Định hướng bài học (thu gọn được) ----------------------- */
 .lesson-ui .lesson-briefing {
     margin: 0 0 16px;
@@ -521,6 +544,10 @@ body.lesson-ui textarea {
     color: var(--lab-text-2);
     font-size: 15px;
     line-height: 1.6;
+}
+
+.lesson-ui .lesson-model-card p + p {
+    margin-top: 8px;
 }
 
 .lesson-ui .lesson-mini-visual {

@@ -468,7 +468,7 @@ function updateThicknessLabel() {
     thicknessDisplay.textContent =
         `${parseFloat(
             thicknessInput.value
-        ).toFixed(1)} mm`;
+        ).toFixedVi(1)} mm`;
 }
 
 
@@ -496,7 +496,7 @@ function updateAdvancedInfo() {
                 getAlphaRangeMm(
                     parameters.material
                 ) * 1000
-            ).toFixed(0)} µm`;
+            ).toFixedVi(0)} µm`;
 
     } else {
 
@@ -508,7 +508,7 @@ function updateAdvancedInfo() {
 
 
         muDisplay.textContent =
-            `${mu.toFixed(3)} mm⁻¹`;
+            `${mu.toFixedVi(3)} mm⁻¹`;
 
     }
 
@@ -517,7 +517,7 @@ function updateAdvancedInfo() {
         `${(
             probability *
             100
-        ).toFixed(2)} %`;
+        ).toFixedVi(2)} %`;
 }
 
 
@@ -563,7 +563,7 @@ function clearResults() {
         "0";
 
     transmissionDisplay.textContent =
-        "0.0%";
+        "0,0%";
 }
 
 
@@ -604,7 +604,7 @@ function updateResults(
 
 
     transmissionDisplay.textContent =
-        `${transmissionPercent.toFixed(1)}%`;
+        `${transmissionPercent.toFixedVi(1)}%`;
 }
 
 
@@ -822,7 +822,7 @@ function drawStaticScene() {
     ctx.fillText(
         `${parseFloat(
             thicknessInput.value
-        ).toFixed(1)} mm`,
+        ).toFixedVi(1)} mm`,
         shieldX +
         shieldWidth / 2,
         height - 42
@@ -1600,7 +1600,7 @@ function setupTask1() {
 
 
     task1Status.textContent =
-        "Đã thiết lập: Nhôm 1.0 mm, 200 tia cho mỗi loại bức xạ.";
+        "Đã thiết lập: Nhôm 1,0 mm, 200 tia cho mỗi loại bức xạ.";
 
 
     setStatus(
@@ -1842,8 +1842,8 @@ function runTask1() {
             <td>${result.label}</td>
             <td>${result.totalRays}</td>
             <td>${result.transmitted}</td>
-            <td>${(result.simulatedRatio * 100).toFixed(1)} %</td>
-            <td>${(result.theoreticalRatio * 100).toFixed(1)} %</td>
+            <td>${(result.simulatedRatio * 100).toFixedVi(1)} %</td>
+            <td>${(result.theoreticalRatio * 100).toFixedVi(1)} %</td>
             `;
 
 
@@ -2215,11 +2215,11 @@ function runTask2() {
 
         row.innerHTML =
             `
-            <td>${result.thicknessMm.toFixed(1)}</td>
+            <td>${result.thicknessMm.toFixedVi(1)}</td>
             <td>${result.totalRays}</td>
             <td>${result.transmitted}</td>
-            <td>${result.simulatedRatio.toFixed(3)}</td>
-            <td>${result.theoreticalRatio.toFixed(3)}</td>
+            <td>${result.simulatedRatio.toFixedVi(3)}</td>
+            <td>${result.theoreticalRatio.toFixedVi(3)}</td>
             `;
 
 
@@ -2549,8 +2549,8 @@ function runTask3() {
             <td>${result.materialLabel}</td>
             <td>${result.totalRays}</td>
             <td>${result.transmitted}</td>
-            <td>${result.simulatedRatio.toFixed(3)}</td>
-            <td>${result.theoreticalRatio.toFixed(3)}</td>
+            <td>${result.simulatedRatio.toFixedVi(3)}</td>
+            <td>${result.theoreticalRatio.toFixedVi(3)}</td>
             `;
 
 
@@ -3138,19 +3138,19 @@ async function runValidation() {
             row.innerHTML =
                 `
                 <td>
-                    ${point.thickness.toFixed(1)}
+                    ${point.thickness.toFixedVi(1)}
                 </td>
 
                 <td>
-                    ${point.theory.toFixed(4)}
+                    ${point.theory.toFixedVi(4)}
                 </td>
 
                 <td>
-                    ${point.average.toFixed(4)}
+                    ${point.average.toFixedVi(4)}
                 </td>
 
                 <td>
-                    ${point.error.toFixed(4)}
+                    ${point.error.toFixedVi(4)}
                 </td>
                 `;
 
@@ -3182,11 +3182,11 @@ async function runValidation() {
 
 
         validationRmse.textContent =
-            statistics.rmse.toFixed(4);
+            statistics.rmse.toFixedVi(4);
 
 
         validationMaxError.textContent =
-            statistics.maxError.toFixed(4);
+            statistics.maxError.toFixedVi(4);
 
 
         validationConclusion.textContent =

@@ -270,11 +270,7 @@ function buildNuclearNotationHtml(
 ) {
 
     return (
-        `<sup>${A}</sup>`
-        +
-        `<sub>${Z}</sub>`
-        +
-        `${symbol}`
+        nuclideHtml(A, Z, symbol)
     );
 }
 
