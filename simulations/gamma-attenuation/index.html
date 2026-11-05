@@ -10,7 +10,7 @@
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
 <link href="css/style.css?v=6" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=5" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
 <link href="../../assets/shared/real-data.css?v=4" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="container">
@@ -335,13 +335,17 @@
 <h3>
                 Câu hỏi gợi ý
             </h3>
-<p>
-                Khi độ dày của cùng một vật liệu tăng lên,
+<div class="quick-check" data-check="ga-kp-1">
+<p class="qc-prompt">
+Khi độ dày của cùng một vật liệu tăng lên,
                 tỉ lệ photon gamma tới đầu dò thay đổi như thế nào?
-            </p>
-<p>
-                Đồ thị suy giảm có phải là một đường thẳng hay không?
-            </p>
+</p>
+</div>
+<div class="quick-check" data-check="ga-kp-2">
+<p class="qc-prompt">
+Đồ thị suy giảm có phải là một đường thẳng hay không?
+</p>
+</div>
 </div>
 </section>
 <!-- =====================================================
@@ -402,11 +406,13 @@
 <strong>
                 Dự đoán trước khi chạy:
             </strong>
-<p>
-                Khi độ dày lớp chì tăng dần,
+<div class="quick-check" data-check="ga-du-doan-1">
+<p class="qc-prompt">
+Khi độ dày lớp chì tăng dần,
                 tỉ lệ I/I₀ sẽ giảm theo đường thẳng
                 hay theo một đường cong?
-            </p>
+</p>
+</div>
 </div>
 <div class="task-button-group">
 <button id="setupTask1Button">
@@ -478,11 +484,13 @@
 <strong>
                         Câu hỏi suy nghĩ:
                     </strong>
-<p>
-                        Khoảng giảm của I/I₀ khi tăng thêm
+<div class="quick-check" data-check="ga-suy-nghi-1">
+<p class="qc-prompt">
+Khoảng giảm của I/I₀ khi tăng thêm
                         1 mm chì có giống nhau tại mọi độ dày không?
                         Kết quả này cho biết gì về dạng của quy luật suy giảm?
-                    </p>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -514,10 +522,12 @@
 <strong>
             Dự đoán:
         </strong>
-<p>
-            Nếu quy luật suy giảm có dạng hàm mũ,
+<div class="quick-check" data-check="ga-du-doan-2">
+<p class="qc-prompt">
+Nếu quy luật suy giảm có dạng hàm mũ,
             đồ thị ln(I/I₀) theo x sẽ có dạng như thế nào?
-        </p>
+</p>
+</div>
 </div>
 <div class="task-button-group">
 <button id="setupTask2Button">
@@ -624,12 +634,14 @@
 <strong>
                     Câu hỏi suy nghĩ:
                 </strong>
-<p>
-                    Vì sao đường cong I/I₀ theo x
+<div class="quick-check" data-check="ga-suy-nghi-2">
+<p class="qc-prompt">
+Vì sao đường cong I/I₀ theo x
                     trở thành gần đường thẳng
                     khi biểu diễn ln(I/I₀) theo x?
                     Hệ số góc của đường thẳng mang ý nghĩa vật lí gì?
-                </p>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -659,11 +671,13 @@
 <strong>
             Dự đoán:
         </strong>
-<p>
-            Nếu x = x₁/₂ thì giá trị I/I₀
+<div class="quick-check" data-check="ga-du-doan-3">
+<p class="qc-prompt">
+Nếu x = x₁/₂ thì giá trị I/I₀
             trong mỗi lần mô phỏng có bắt buộc
             đúng bằng 0,500 hay không?
-        </p>
+</p>
+</div>
 </div>
 <div class="task-button-group">
 <button id="setupTask3Button">
@@ -795,11 +809,13 @@
 <strong>
                     Câu hỏi suy nghĩ:
                 </strong>
-<p>
-                    Tại sao các lần mô phỏng riêng lẻ
+<div class="quick-check" data-check="ga-suy-nghi-3">
+<p class="qc-prompt">
+Tại sao các lần mô phỏng riêng lẻ
                     dao động quanh 0,500 thay vì đều bằng
                     chính xác 0,500?
-                </p>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -978,5 +994,7 @@
 <script src="js/app.js?v=10"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
-<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
+<script src="../../assets/shared/quick-check.js?v=2"></script>
+<script src="js/questions.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

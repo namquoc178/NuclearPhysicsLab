@@ -8,7 +8,7 @@
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
 <link href="css/style.css?v=2" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=5" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
 <link href="../../assets/shared/real-data.css?v=4" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="top-navigation">
@@ -148,11 +148,21 @@
 </div>
 <div class="question-card">
 <h3>Câu hỏi gợi ý</h3>
-<ol>
-<li>Với cùng vật liệu và độ dày, loại bức xạ nào có xu hướng truyền qua nhiều hơn?</li>
-<li>Khi tăng độ dày lớp chắn, tỉ lệ truyền qua thay đổi như thế nào?</li>
-<li>Cùng một bức xạ và độ dày, thay vật liệu có làm kết quả thay đổi không?</li>
-</ol>
+<div class="quick-check" data-check="rp-kp-1">
+<p class="qc-prompt">
+Với cùng vật liệu và độ dày, loại bức xạ nào có xu hướng truyền qua nhiều hơn?
+</p>
+</div>
+<div class="quick-check" data-check="rp-kp-2">
+<p class="qc-prompt">
+Khi tăng độ dày lớp chắn, tỉ lệ truyền qua thay đổi như thế nào?
+</p>
+</div>
+<div class="quick-check" data-check="rp-kp-3">
+<p class="qc-prompt">
+Cùng một bức xạ và độ dày, thay vật liệu có làm kết quả thay đổi không?
+</p>
+</div>
 </div>
 <p class="model-note"><strong>Lưu ý:</strong> Hạt α được mô tả bằng tầm xa (khoảng 0,01–0,05 mm với α cỡ 5 MeV), nên bị chặn hoàn toàn ở mọi độ dày trong bài. Hệ số của β (μ/ρ ≈ 17·E<sub>max</sub><sup>−1,14</sup> cm²/g) và tầm xa cực đại của β (công thức Katz–Penfold) là công thức thực nghiệm gần đúng. Hệ số của γ lấy từ bảng NIST ở 662 keV. Các số này đúng cho nguồn đã nêu, không đúng cho mọi năng lượng bức xạ.</p>
 </section>
@@ -207,10 +217,12 @@
 <strong>
                 Trước khi chạy:
             </strong>
-<p>
-                Em hãy dự đoán thứ tự khả năng đâm xuyên
+<div class="quick-check" data-check="rp-du-doan-1">
+<p class="qc-prompt">
+Em hãy dự đoán thứ tự khả năng đâm xuyên
                 của α, β và γ từ yếu đến mạnh.
-            </p>
+</p>
+</div>
 </div>
 <div class="task-button-group">
 <button id="setupTask1Button">
@@ -281,11 +293,13 @@
 <strong>
                         Câu hỏi suy nghĩ:
                     </strong>
-<p>
-                        Vì sao khi giữ nguyên vật liệu và độ dày,
+<div class="quick-check" data-check="rp-suy-nghi-1">
+<p class="qc-prompt">
+Vì sao khi giữ nguyên vật liệu và độ dày,
                         số tia đến được đầu dò lại khác nhau
                         đối với α, β và γ?
-                    </p>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -335,11 +349,13 @@
 <strong>
             Dự đoán:
         </strong>
-<p>
-            Khi tăng độ dày lớp chì,
+<div class="quick-check" data-check="rp-du-doan-2">
+<p class="qc-prompt">
+Khi tăng độ dày lớp chì,
             tỉ lệ bức xạ γ truyền qua lớp chắn
             sẽ thay đổi như thế nào?
-        </p>
+</p>
+</div>
 </div>
 <div class="task-button-group">
 <button id="setupTask2Button">
@@ -410,11 +426,13 @@
 <strong>
                     Câu hỏi suy nghĩ:
                 </strong>
-<p>
-                    Việc tăng gấp đôi độ dày lớp chì
+<div class="quick-check" data-check="rp-suy-nghi-2">
+<p class="qc-prompt">
+Việc tăng gấp đôi độ dày lớp chì
                     có làm tỉ lệ truyền qua giảm đúng một nửa
                     hay không? Hãy quan sát đồ thị để trả lời.
-                </p>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -466,12 +484,14 @@
 <strong>
             Dự đoán:
         </strong>
-<p>
-            Với cùng độ dày 5,0 mm,
+<div class="quick-check" data-check="rp-du-doan-3">
+<p class="qc-prompt">
+Với cùng độ dày 5,0 mm,
             vật liệu nào trong ba vật liệu
             Giấy – Nhôm – Chì
             làm giảm bức xạ γ mạnh nhất?
-        </p>
+</p>
+</div>
 </div>
 <div class="task-button-group">
 <button id="setupTask3Button">
@@ -542,11 +562,13 @@
 <strong>
                     Câu hỏi suy nghĩ:
                 </strong>
-<p>
-                    Nếu hai lớp chắn có cùng độ dày,
+<div class="quick-check" data-check="rp-suy-nghi-3">
+<p class="qc-prompt">
+Nếu hai lớp chắn có cùng độ dày,
                     tại sao khả năng làm giảm bức xạ
                     vẫn có thể khác nhau?
-                </p>
+</p>
+</div>
 </div>
 </div>
 </div>
@@ -700,5 +722,7 @@
 <script src="js/app.js?v=10"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
-<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
+<script src="../../assets/shared/quick-check.js?v=2"></script>
+<script src="js/questions.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

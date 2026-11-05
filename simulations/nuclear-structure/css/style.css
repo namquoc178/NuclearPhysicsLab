@@ -787,6 +787,170 @@ button {
 }
 
 
+/* =====================================================
+   DỰNG HẠT NHÂN TỪ Z VÀ N
+===================================================== */
+
+.nuclide-builder {
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.nuclide-builder h2 {
+    margin-top: 0;
+}
+
+.nuclide-builder > p {
+    max-width: 75ch;
+    color: var(--lab-text-2);
+}
+
+.builder-inputs {
+    display: grid;
+    grid-template-columns: auto 8em auto 8em auto;
+    align-items: center;
+    justify-content: start;
+    gap: 10px 12px;
+    margin: 14px 0;
+}
+
+.builder-inputs label {
+    font-weight: 600;
+}
+
+.builder-inputs input {
+    width: 100%;
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: var(--lab-radius-sm);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+}
+
+.builder-a {
+    margin: 0 0 0 12px;
+    color: var(--lab-text-2);
+    font-variant-numeric: tabular-nums;
+}
+
+.builder-a strong {
+    color: var(--lab-ink);
+    font-size: 18px;
+}
+
+.builder-result {
+    min-height: 120px;
+    padding: 16px 18px;
+    border: 1px solid var(--lab-rule);
+    border-radius: var(--lab-radius);
+    background: var(--lab-surface-2);
+}
+
+.builder-result p {
+    margin: 0 0 6px;
+    max-width: 75ch;
+}
+
+.builder-found {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 22px;
+}
+
+.builder-notation {
+    min-width: 120px;
+    padding: 10px 14px;
+    color: var(--lab-ink);
+    font-family: var(--lab-serif);
+    font-size: 46px;
+    line-height: 1.1;
+    text-align: center;
+}
+
+.builder-found h3 {
+    margin: 2px 0 8px;
+}
+
+.builder-verdict {
+    font-weight: 700;
+}
+
+.builder-verdict.found {
+    color: var(--lab-success);
+}
+
+.builder-verdict.missing {
+    color: var(--lab-danger);
+}
+
+.builder-facts {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 14px;
+    margin: 0 0 12px;
+}
+
+.builder-facts dt {
+    color: var(--lab-muted);
+}
+
+.builder-facts dd {
+    margin: 0;
+}
+
+.builder-show-button {
+    min-height: 40px;
+    padding: 7px 14px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: var(--lab-radius-sm);
+    color: var(--lab-ink);
+    background: var(--lab-surface);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.builder-source {
+    margin: 10px 0 0;
+    color: var(--lab-muted);
+    font-size: 13px;
+}
+
+@media (max-width: 720px) {
+    .builder-inputs {
+        grid-template-columns: auto 1fr;
+    }
+
+    .builder-a {
+        grid-column: 1 / -1;
+        margin: 0;
+    }
+
+    .builder-found {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .builder-notation {
+        text-align: left;
+        padding: 0;
+    }
+
+    .builder-facts {
+        grid-template-columns: 1fr;
+    }
+
+    .builder-facts dd {
+        margin-bottom: 6px;
+    }
+}
+
+
 .exploration-questions h2 {
     margin-top: 0;
 }
@@ -1141,6 +1305,18 @@ button {
 
 .answer-feedback.invalid {
     color: #b91c1c;
+}
+
+
+/* Báo ngay khi ba số A, Z, N em nhập không thỏa mãn A = Z + N */
+.task1-consistency-note {
+    margin: 12px 0 0;
+    padding: 10px 14px;
+    border-left: 3px solid var(--lab-danger);
+    border-radius: 0 var(--lab-radius-sm) var(--lab-radius-sm) 0;
+    color: var(--lab-text);
+    background: var(--lab-danger-wash);
+    font-size: 15px;
 }
 
 
@@ -1698,7 +1874,7 @@ button {
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(auto-fit, minmax(150px, 1fr));
 
     gap: 12px;
 
@@ -1773,9 +1949,11 @@ button {
 .task3-table-wrapper {
     width: 100%;
 
-    margin-top: 20px;
+    max-height: 560px;
 
-    overflow-x: auto;
+    margin-top: 10px;
+
+    overflow: auto;
 
     border: 1px solid var(--lab-rule);
 
@@ -1801,7 +1979,48 @@ button {
 
 
 .task3-table-wrapper th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     background: var(--lab-surface-3);
+}
+
+
+/* Bảng đầy đủ: dòng em cần điền nổi lên, dòng tham khảo nhạt hơn */
+.task3-practice-row td {
+    background: var(--lab-accent-wash);
+}
+
+.task3-practice-row td:first-child {
+    box-shadow: inset 4px 0 0 var(--lab-accent);
+}
+
+.task3-reference-row td {
+    color: var(--lab-muted);
+    font-size: 14px;
+}
+
+.task3-reference-row .nuclide {
+    font-size: 15px;
+}
+
+#task3TableBody.practice-only .task3-reference-row {
+    display: none;
+}
+
+.task3-filter {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.task3-filter input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--lab-ink);
 }
 
 

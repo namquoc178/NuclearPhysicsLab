@@ -9,8 +9,8 @@
     </title>
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
-<link href="css/style.css?v=7" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=5" rel="stylesheet"/>
+<link href="css/style.css?v=8" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
 <link href="../../assets/shared/real-data.css?v=4" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="container">
@@ -366,6 +366,37 @@
 </div>
 </section>
 <!-- =============================================
+             DỰNG HẠT NHÂN TỪ Z VÀ N (tra NUBASE2020)
+        ============================================== -->
+<section aria-labelledby="builderTitle" class="nuclide-builder">
+<h2 id="builderTitle">
+                Dựng hạt nhân từ Z và N
+            </h2>
+<p>
+                Em nhập số proton Z và số neutron N. Chương trình tính A = Z + N
+                và tra bảng NUBASE2020 xem hạt nhân đó đã được quan sát hay chưa.
+            </p>
+<div class="builder-inputs">
+<label for="builderZInput">
+                    Số proton Z
+                </label>
+<input id="builderZInput" inputmode="numeric" min="0" step="1" type="number" value="8"/>
+<label for="builderNInput">
+                    Số neutron N
+                </label>
+<input id="builderNInput" inputmode="numeric" min="0" step="1" type="number" value="10"/>
+<p class="builder-a">
+                    A = Z + N = <strong id="builderAOutput">18</strong>
+</p>
+</div>
+<div aria-live="polite" class="builder-result" id="builderResult" role="status">
+</div>
+<p class="builder-source">
+                Nguồn: NUBASE2020 (F.G. Kondev và cộng sự, Chinese Physics C 45, 030001, 2021),
+                gồm 3340 hạt nhân đã được quan sát ở trạng thái cơ bản.
+            </p>
+</section>
+<!-- =============================================
              GỢI Ý KHÁM PHÁ
         ============================================== -->
 <section class="exploration-questions">
@@ -377,40 +408,48 @@
 <strong>
                         Câu hỏi 1
                     </strong>
-<p>
-                        Khi chuyển từ H-1 → H-2 → H-3,
+<div class="quick-check" data-check="ns-kp-1">
+<p class="qc-prompt">
+Khi chuyển từ H-1 → H-2 → H-3,
                         số proton có thay đổi không?
-                    </p>
+</p>
+</div>
 </div>
 <div class="question-card">
 <strong>
                         Câu hỏi 2
                     </strong>
-<p>
-                        So sánh C-12 và C-14:
+<div class="quick-check" data-check="ns-kp-2">
+<p class="qc-prompt">
+So sánh C-12 và C-14:
                         hạt nhân nào nhiều neutron hơn
                         và nhiều hơn bao nhiêu?
-                    </p>
+</p>
+</div>
 </div>
 <div class="question-card">
 <strong>
                         Câu hỏi 3
                     </strong>
-<p>
-                        So sánh U-235 và U-238.
+<div class="quick-check" data-check="ns-kp-3">
+<p class="qc-prompt">
+So sánh U-235 và U-238.
                         Vì sao chúng vẫn được gọi
                         là các đồng vị của uranium?
-                    </p>
+</p>
+</div>
 </div>
 <div class="question-card">
 <strong>
                         Câu hỏi 4
                     </strong>
-<p>
-                        Hãy thử Co-59/Co-60,
+<div class="quick-check" data-check="ns-kp-4">
+<p class="qc-prompt">
+Hãy thử Co-59/Co-60,
                         I-127/I-131 hoặc Cs-133/Cs-137.
                         Đại lượng nào luôn giữ nguyên?
-                    </p>
+</p>
+</div>
 </div>
 </div>
 </section>
@@ -419,9 +458,10 @@
                 Ghi chú dữ liệu
             </strong>
 <p>
-                Danh sách trên là một tập hợp đồng vị đại diện
-                phục vụ học tập, không phải danh mục đầy đủ
-                tất cả đồng vị đã biết.
+                Danh sách đồng vị ở bảng điều khiển là một tập hợp đại diện
+                phục vụ học tập. Muốn biết một hạt nhân bất kì đã được quan sát hay chưa,
+                em dùng phần "Dựng hạt nhân từ Z và N"; bảng đầy đủ các đồng vị đã biết
+                của một nguyên tố có ở Nhiệm vụ 3.
             </p>
 </div>
 </section>
@@ -510,23 +550,8 @@
 <span class="answer-feedback" id="task1NFeedback">
 </span>
 </div>
-<div class="task1-answer-card">
-<label for="task1ProtonInput">
-                Số proton trong hạt nhân
-            </label>
-<input id="task1ProtonInput" placeholder="Nhập số proton" type="number"/>
-<span class="answer-feedback" id="task1ProtonFeedback">
-</span>
 </div>
-<div class="task1-answer-card">
-<label for="task1NeutronInput">
-                Số neutron trong hạt nhân
-            </label>
-<input id="task1NeutronInput" placeholder="Nhập số neutron" type="number"/>
-<span class="answer-feedback" id="task1NeutronFeedback">
-</span>
-</div>
-</div>
+<p class="task1-consistency-note" id="task1ConsistencyNote" role="status" hidden=""></p>
 <!-- =================================================
          CÂU HỎI KHÁI NIỆM
     ================================================== -->
@@ -606,22 +631,6 @@
                     N
                 </span>
 <strong id="task1CorrectN">
-                    —
-                </strong>
-</div>
-<div class="task1-result-box">
-<span>
-                    Proton
-                </span>
-<strong id="task1CorrectProtons">
-                    —
-                </strong>
-</div>
-<div class="task1-result-box">
-<span>
-                    Neutron
-                </span>
-<strong id="task1CorrectNeutrons">
                     —
                 </strong>
 </div>
@@ -954,9 +963,17 @@
 </div>
 <div>
 <span>
-                Số đồng vị khảo sát
+                Số đồng vị đã biết
             </span>
 <strong id="task3IsotopeCount">
+                —
+            </strong>
+</div>
+<div>
+<span>
+                Số dòng em cần điền
+            </span>
+<strong id="task3PracticeCount">
                 —
             </strong>
 </div>
@@ -969,7 +986,8 @@
             Yêu cầu
         </strong>
 <p>
-            Với mỗi đồng vị, hãy xác định:
+            Bảng dưới đây liệt kê mọi đồng vị đã biết của nguyên tố
+            (theo NUBASE2020). Với các dòng có ô trống, hãy xác định:
         </p>
 <p class="task3-formula">
             Z = số proton
@@ -981,7 +999,11 @@
 <!-- =================================================
          BẢNG ĐỒNG VỊ
     ================================================== -->
-<div class="task3-table-wrapper">
+<label class="task3-filter">
+<input id="task3PracticeOnlyToggle" type="checkbox"/>
+        Chỉ hiện các dòng em cần điền
+    </label>
+<div class="task3-table-wrapper" tabindex="0" aria-label="Bảng các đồng vị đã biết">
 <table>
 <thead>
 <tr>
@@ -998,7 +1020,10 @@
                         N
                     </th>
 <th>
-                        Trạng thái
+                        Độ phổ cập
+                    </th>
+<th>
+                        Chu kì bán rã
                     </th>
 <th>
                         Kết quả
@@ -1579,13 +1604,18 @@
 <script src="../../assets/shared/format.js?v=2"></script>
 <script src="js/nuclear-data.js?v=8"></script>
 <script src="js/physics.js?v=8"></script>
+<script src="js/nubase-data.js?v=2"></script>
+<script src="js/nuclide-lookup.js?v=2"></script>
 <script src="js/simulation.js?v=6"></script>
 <script src="js/app.js?v=6"></script>
-<script src="js/task1.js?v=6"></script>
+<script src="js/task1.js?v=7"></script>
 <script src="js/task2.js?v=5"></script>
-<script src="js/task3.js?v=4"></script>
+<script src="js/task3.js?v=5"></script>
 <script src="js/validation.js?v=2"></script>
+<script src="js/builder.js?v=2"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=3"></script>
-<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
+<script src="../../assets/shared/quick-check.js?v=2"></script>
+<script src="js/questions.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

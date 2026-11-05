@@ -66,18 +66,6 @@ const task1NInput =
     );
 
 
-const task1ProtonInput =
-    getTask1RequiredElement(
-        "task1ProtonInput"
-    );
-
-
-const task1NeutronInput =
-    getTask1RequiredElement(
-        "task1NeutronInput"
-    );
-
-
 const task1AFeedback =
     getTask1RequiredElement(
         "task1AFeedback"
@@ -93,18 +81,6 @@ const task1ZFeedback =
 const task1NFeedback =
     getTask1RequiredElement(
         "task1NFeedback"
-    );
-
-
-const task1ProtonFeedback =
-    getTask1RequiredElement(
-        "task1ProtonFeedback"
-    );
-
-
-const task1NeutronFeedback =
-    getTask1RequiredElement(
-        "task1NeutronFeedback"
     );
 
 
@@ -159,18 +135,6 @@ const task1CorrectZ =
 const task1CorrectN =
     getTask1RequiredElement(
         "task1CorrectN"
-    );
-
-
-const task1CorrectProtons =
-    getTask1RequiredElement(
-        "task1CorrectProtons"
-    );
-
-
-const task1CorrectNeutrons =
-    getTask1RequiredElement(
-        "task1CorrectNeutrons"
     );
 
 
@@ -237,8 +201,6 @@ function clearAllTask1Feedback() {
         task1AFeedback,
         task1ZFeedback,
         task1NFeedback,
-        task1ProtonFeedback,
-        task1NeutronFeedback,
         task1ConceptFeedback
     ];
 
@@ -274,19 +236,14 @@ function resetTask1Answers() {
         "";
 
 
-    task1ProtonInput.value =
-        "";
-
-
-    task1NeutronInput.value =
-        "";
-
-
     task1ConceptSelect.value =
         "";
 
 
     clearAllTask1Feedback();
+
+
+    updateTask1Consistency();
 
 
     task1Result.hidden =
@@ -595,18 +552,6 @@ function showTask1Solution() {
         );
 
 
-    task1CorrectProtons.textContent =
-        String(
-            p.protonNumber
-        );
-
-
-    task1CorrectNeutrons.textContent =
-        String(
-            p.neutronNumber
-        );
-
-
     task1Solution.innerHTML =
         `
         <p>
@@ -702,22 +647,6 @@ function checkTask1() {
         );
 
 
-    const resultProton =
-        evaluateTask1Number(
-            task1ProtonInput,
-            p.protonNumber,
-            task1ProtonFeedback
-        );
-
-
-    const resultNeutron =
-        evaluateTask1Number(
-            task1NeutronInput,
-            p.neutronNumber,
-            task1NeutronFeedback
-        );
-
-
     const resultConcept =
         evaluateTask1Concept();
 
@@ -727,8 +656,6 @@ function checkTask1() {
         resultA,
         resultZ,
         resultN,
-        resultProton,
-        resultNeutron,
         resultConcept
     ];
 
@@ -748,12 +675,12 @@ function checkTask1() {
 
 
     task1Status.textContent =
-        `Đã kiểm tra: ${correctCount}/6 nội dung phù hợp.`;
+        `Đã kiểm tra: ${correctCount}/4 nội dung phù hợp.`;
 
 
     if (
         correctCount ===
-        6
+        4
     ) {
 
         task1Conclusion.textContent =
@@ -776,6 +703,124 @@ function checkTask1() {
             +
             "số neutron được tính bằng N = A − Z.";
     }
+}
+
+
+// ======================================================
+// KIỂM TRA NGAY: A PHẢI BẰNG Z + N
+//
+// Không cần đáp án để phát hiện lỗi này: ba số em nhập phải
+// thỏa mãn A = Z + N với bất kì hạt nhân nào.
+// ======================================================
+
+const task1ConsistencyNote =
+    getTask1RequiredElement(
+        "task1ConsistencyNote"
+    );
+
+
+function readTask1Integer(
+    input
+) {
+
+    if (
+        input.value.trim() ===
+        ""
+    ) {
+
+        return null;
+    }
+
+
+    const value =
+        Number(
+            input.value
+        );
+
+
+    return Number.isInteger(value)
+        ? value
+        : null;
+}
+
+
+function updateTask1Consistency() {
+
+    const A =
+        readTask1Integer(
+            task1AInput
+        );
+
+    const Z =
+        readTask1Integer(
+            task1ZInput
+        );
+
+    const N =
+        readTask1Integer(
+            task1NInput
+        );
+
+
+    if (
+        A === null
+        ||
+        Z === null
+        ||
+        N === null
+    ) {
+
+        task1ConsistencyNote.hidden =
+            true;
+
+        task1ConsistencyNote.textContent =
+            "";
+
+        return true;
+    }
+
+
+    if (
+        A ===
+        Z + N
+    ) {
+
+        task1ConsistencyNote.hidden =
+            true;
+
+        task1ConsistencyNote.textContent =
+            "";
+
+        return true;
+    }
+
+
+    task1ConsistencyNote.hidden =
+        false;
+
+    task1ConsistencyNote.textContent =
+        `Ba số chưa khớp nhau: Z + N = ${Z} + ${N} = ${Z + N}, `
+        +
+        `nhưng A = ${A}. Với mọi hạt nhân, A = Z + N.`;
+
+    return false;
+}
+
+
+for (
+    const input
+    of
+    [
+        task1AInput,
+        task1ZInput,
+        task1NInput
+    ]
+) {
+
+    input.addEventListener(
+        "input",
+        updateTask1Consistency
+    );
 }
 
 

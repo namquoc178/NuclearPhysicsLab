@@ -404,6 +404,18 @@
 
         const heading = mode === "explore" ? "Em vừa quan sát" : "Em vừa luyện tập";
 
+        // Có đáp án trong js/questions.js của bài thì học sinh tự kiểm tra được;
+        // nếu chưa có, giữ dạng câu hỏi kèm gợi ý.
+        const checkId = `bridge-${mode}`;
+        const checkable = window.QuickCheck && window.QuickCheck.specs[checkId];
+        const question = checkable
+            ? `<div class="quick-check" data-check="${checkId}"><p class="qc-prompt">${data.question}</p></div>`
+            : `<p>${data.question}</p>
+                <details>
+                    <summary>Xem gợi ý</summary>
+                    <p>${data.hint}</p>
+                </details>`;
+
         card.innerHTML = `
             <div class="lesson-reflection-heading">
                 <h3>${heading}</h3>
@@ -413,14 +425,11 @@
             </ul>
             <div class="lesson-bridge-question">
                 <strong>Câu hỏi trước khi tiếp tục</strong>
-                <p>${data.question}</p>
-                <details>
-                    <summary>Xem gợi ý</summary>
-                    <p>${data.hint}</p>
-                </details>
+                ${question}
             </div>
         `;
 
+        if (checkable) window.QuickCheck.mountAll(card);
         return card;
     }
 

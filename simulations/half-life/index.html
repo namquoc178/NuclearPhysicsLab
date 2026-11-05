@@ -8,7 +8,7 @@
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
 <link href="css/style.css?v=16" rel="stylesheet"/>
-<link href="../../assets/shared/lesson-ui.css?v=5" rel="stylesheet"/>
+<link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
 <link href="../../assets/shared/real-data.css?v=4" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="top-navigation">
@@ -136,11 +136,21 @@
 </div>
 <div class="question-card">
 <h3>Câu hỏi gợi ý</h3>
-<ol>
-<li>Các hạt nhân có phân rã cùng một lúc không?</li>
-<li>Sau một chu kì bán rã, số hạt còn lại xấp xỉ bao nhiêu phần số hạt ban đầu?</li>
-<li>Nếu chạy lại với cùng điều kiện, kết quả có hoàn toàn giống nhau không?</li>
-</ol>
+<div class="quick-check" data-check="hl-kp-1">
+<p class="qc-prompt">
+Các hạt nhân có phân rã cùng một lúc không?
+</p>
+</div>
+<div class="quick-check" data-check="hl-kp-2">
+<p class="qc-prompt">
+Sau một chu kì bán rã, số hạt còn lại xấp xỉ bao nhiêu phần số hạt ban đầu?
+</p>
+</div>
+<div class="quick-check" data-check="hl-kp-3">
+<p class="qc-prompt">
+Nếu chạy lại với cùng điều kiện, kết quả có hoàn toàn giống nhau không?
+</p>
+</div>
 </div>
 </section>
 <section class="mode-panel" id="experimentPanel">
@@ -290,9 +300,11 @@
 </div>
 <div class="question-card experiment3-question">
 <h4>Câu hỏi quan sát</h4>
-<p>
-                                Khi N₀ tăng từ 20 lên 100 rồi 1000, mức dao động của đường mô phỏng so với đường lí thuyết thay đổi như thế nào?
-                            </p>
+<div class="quick-check" data-check="hl-quan-sat">
+<p class="qc-prompt">
+Khi N₀ tăng từ 20 lên 100 rồi 1000, mức dao động của đường mô phỏng so với đường lí thuyết thay đổi như thế nào?
+</p>
+</div>
 </div>
 <p id="experiment3Message"></p>
 </div>
@@ -370,5 +382,7 @@
 <script src="js/app.js?v=20"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
-<script src="../../assets/shared/lesson-ui.js?v=5"></script></body>
+<script src="../../assets/shared/quick-check.js?v=2"></script>
+<script src="js/questions.js?v=2"></script>
+<script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

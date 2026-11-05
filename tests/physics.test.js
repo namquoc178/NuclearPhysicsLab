@@ -302,6 +302,94 @@ function seededRandom(seed) {
 }
 
 // ---------------------------------------------------------------------
+// 11. Câu hỏi có kiểm tra đáp án (js/questions.js của từng bài)
+// Mỗi câu hỏi trong trang phải có đáp án; mỗi câu chọn có đúng một
+// đáp án đúng; mỗi lựa chọn sai có phản hồi riêng hoặc gợi ý chung.
+// ---------------------------------------------------------------------
+{
+    const LESSONS = fs.readdirSync(path.join(ROOT, "simulations"))
+        .filter((name) => fs.existsSync(path.join(ROOT, "simulations", name, "index.html")));
+    const lessonUi = fs.readFileSync(path.join(ROOT, "assets/shared/lesson-ui.js"), "utf8");
+
+    for (const lesson of LESSONS) {
+        const html = fs.readFileSync(path.join(ROOT, "simulations", lesson, "index.html"), "utf8");
+        const file = path.join(ROOT, "simulations", lesson, "js", "questions.js");
+        check(`câu hỏi: ${lesson} có js/questions.js`, fs.existsSync(file));
+        if (!fs.existsSync(file)) continue;
+
+        const specs = {};
+        const context = vm.createContext({ QuickCheck: { define: (map) => Object.assign(specs, map), mountAll: () => {} } });
+        vm.runInContext(fs.readFileSync(file, "utf8"), context, { filename: file });
+
+        const placed = [...html.matchAll(/class="quick-check" data-check="([^"]+)"/g)].map((m) => m[1]);
+        check(`câu hỏi: ${lesson} có câu hỏi trong trang`, placed.length > 0);
+        check(`câu hỏi: ${lesson} không trùng mã câu hỏi`, new Set(placed).size === placed.length);
+        for (const id of placed) check(`câu hỏi: ${lesson}/${id} có đáp án`, id in specs);
+        for (const id of Object.keys(specs)) {
+            check(`câu hỏi: ${lesson}/${id} được dùng`, placed.includes(id) || id.startsWith("bridge-"));
+        }
+        check(`câu hỏi: ${lesson} có dữ liệu câu hỏi chuyển tiếp`,
+            ["bridge-explore", "bridge-experiment"].every((id) => id in specs) && lessonUi.includes(`"${lesson}": {`));
+
+        for (const [id, spec] of Object.entries(specs)) {
+            const name = `câu hỏi: ${lesson}/${id}`;
+            check(`${name} có lời giải thích`, typeof spec.explanation === "string" && spec.explanation.length > 20);
+            const texts = [spec.explanation, spec.hint, ...(spec.options || []).flatMap((o) => [o.text, o.feedback])]
+                .filter(Boolean).join(" ");
+            check(`${name} dùng dấu phẩy thập phân`, !/\d\.\d/.test(texts), (texts.match(/\S*\d\.\d\S*/) || [""])[0]);
+            if (spec.type === "number") {
+                check(`${name} có đáp số`, Number.isFinite(spec.answer));
+                check(`${name} có gợi ý khi sai`, typeof spec.hint === "string" && spec.hint.length > 0);
+                continue;
+            }
+            const options = spec.options || [];
+            check(`${name} có từ 2 lựa chọn`, options.length >= 2);
+            check(`${name} có đúng một đáp án đúng`, options.filter((o) => o.correct).length === 1);
+            check(`${name} mỗi lựa chọn sai có phản hồi`,
+                options.every((o) => o.correct || (o.feedback && o.feedback.length > 0) || spec.hint));
+        }
+    }
+
+    // Đọc số học sinh nhập: chấp nhận dấu phẩy và dấu chấm.
+    const qcContext = vm.createContext({});
+    vm.runInContext(fs.readFileSync(path.join(ROOT, "assets/shared/quick-check.js"), "utf8"), qcContext);
+    const parse = vm.runInContext("globalThis.QuickCheck.parseNumber", qcContext);
+    check("câu hỏi: đọc 0,5", parse("0,5") === 0.5);
+    check("câu hỏi: đọc 0.5", parse("0.5") === 0.5);
+    check("câu hỏi: đọc −2", parse("−2") === -2);
+    check("câu hỏi: không đọc chữ", Number.isNaN(parse("hai")));
+}
+
+// ---------------------------------------------------------------------
+// 12. Bài 1: tra cứu hạt nhân trong NUBASE2020
+// Giá trị tham chiếu: NUBASE2020 (Kondev và cộng sự, Chin. Phys. C 45, 030001, 2021).
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("nuclear-structure", ["nubase-data.js", "nuclide-lookup.js"]);
+    const count = run("NUBASE_NUCLIDES.length");
+    const html = fs.readFileSync(path.join(ROOT, "simulations/nuclear-structure/index.html"), "utf8");
+    check("NUBASE: số hạt nhân ghi trong trang khớp dữ liệu", html.includes(`gồm ${count} hạt nhân`), `dữ liệu có ${count}`);
+    const fe56 = run("findNuclide(26, 56)");
+    check("NUBASE: Fe-56 bền", fe56 && fe56.stable);
+    near("NUBASE: độ phổ cập Fe-56 (%)", fe56.abundance, 91.754, 1e-9);
+    near("NUBASE: độ phổ cập H-1 (%)", run("findNuclide(1, 1).abundance"), 99.9855, 1e-9);
+    const be7 = run("findNuclide(4, 7)");
+    check("NUBASE: Be-7 phân rã bằng bắt electron", be7 && be7.modes[0] === "EC");
+    near("NUBASE: chu kì bán rã H-3 (năm)", run("findNuclide(1, 3).halfLifeSeconds") / (365.2422 * 86400), 12.32, 0.01);
+    check("NUBASE: U-238 vừa có trong tự nhiên vừa phóng xạ", run("findNuclide(92, 238).natural && !findNuclide(92, 238).stable"));
+    check("NUBASE: O-30 chưa được quan sát", run("findNuclide(8, 30)") === null);
+    check("NUBASE: Li-3 chỉ có giá trị ước lượng nên bị loại", run("findNuclide(3, 3)") === null);
+    check("NUBASE: nguyên tố nặng nhất Z = 118", run("getMaxObservedZ()") === 118);
+    check("NUBASE: chu kì bán rã tiếng Việt", run('formatHalfLifeVi("12.32 y")') === "12,32 năm");
+    check("NUBASE: chu kì bán rã ước lượng", run('formatHalfLifeVi("9# ms")') === "khoảng 9 ms (ước lượng)");
+    check("NUBASE: kiểu phân rã tiếng Việt", run('formatDecayModesVi(["B-", "EC"])') === "β⁻, bắt electron");
+    const practiceFe = run("choosePracticeIsotopes(26, [54, 56, 57, 58]).map(n => n.A).join(',')");
+    check("Nhiệm vụ 3: dòng luyện tập của Fe", practiceFe === "54,56,57,58,60", practiceFe);
+    const practiceC = run("choosePracticeIsotopes(6, [12, 13, 14]).map(n => n.A)");
+    check("Nhiệm vụ 3: 4–5 dòng luyện tập cho C", practiceC.length >= 4 && practiceC.length <= 5, String(practiceC));
+}
+
+// ---------------------------------------------------------------------
 // Kết quả
 // ---------------------------------------------------------------------
 console.log(`\nKiểm thử vật lí: ${passed} đạt, ${failed} không đạt.`);

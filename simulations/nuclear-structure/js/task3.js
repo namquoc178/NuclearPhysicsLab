@@ -216,7 +216,7 @@ function getTask3EligibleElements() {
     return getAllNuclearElements()
         .filter(
             element =>
-                element.isotopes.length >=
+                buildTask3IsotopeData(element).length >=
                 3
         );
 }
@@ -267,24 +267,33 @@ function populateTask3ElementSelect() {
 // TẠO DỮ LIỆU ĐỒNG VỊ
 // ======================================================
 
+// Các dòng học sinh tự điền (4–5 dòng): chọn bằng choosePracticeIsotopes()
+// trong nuclide-lookup.js, ưu tiên các đồng vị đã dùng trong bài.
 function buildTask3IsotopeData(
     element
 ) {
 
-    return element.isotopes
-        .map(
+    return choosePracticeIsotopes(
+        element.Z,
+        element.isotopes.map(
             isotope =>
-                calculateNuclearProperties(
-                    element.symbol,
-                    isotope.A
-                )
+                isotope.A
         )
-        .sort(
-            (
-                a,
-                b
-            ) =>
-                a.A - b.A
+    )
+        .map(
+            nuclide => ({
+                ...nuclide,
+                notationHtml:
+                    nuclideHtml(
+                        nuclide.A,
+                        nuclide.Z,
+                        nuclide.symbol
+                    ),
+                category:
+                    nuclide.stable
+                        ? "stable"
+                        : "radioactive"
+            })
         );
 }
 
@@ -323,74 +332,181 @@ function getTask3CategoryLabel(
 // TẠO BẢNG
 // ======================================================
 
+// Bảng liệt kê MỌI đồng vị đã biết của nguyên tố (NUBASE2020).
+// Chỉ các dòng luyện tập có ô nhập; thứ tự ô nhập trùng với
+// thứ tự trong task3CurrentIsotopes nên các hàm kiểm tra giữ nguyên.
 function buildTask3Table() {
 
     task3TableBody.innerHTML =
         "";
 
 
-    task3CurrentIsotopes.forEach(
-        (
-            isotope,
-            index
-        ) => {
+    const known =
+        getKnownIsotopes(
+            task3CurrentElement.Z
+        );
 
-            const row =
-                document.createElement(
-                    "tr"
+
+    let practiceIndex =
+        0;
+
+
+    for (
+        const nuclide
+        of
+        known
+    ) {
+
+        const index =
+            task3CurrentIsotopes.findIndex(
+                isotope =>
+                    isotope.A ===
+                    nuclide.A
+            );
+
+        const row =
+            document.createElement(
+                "tr"
+            );
+
+        const halfLife =
+            nuclide.stable
+                ? "Bền"
+                : formatHalfLifeVi(
+                    nuclide.halfLife
                 );
 
+        const notation =
+            `${nuclideHtml(nuclide.A, nuclide.Z, nuclide.symbol)}`
+            +
+            `<br><small>${nuclide.label}</small>`;
+
+
+        if (
+            index >= 0
+        ) {
+
+            row.className =
+                "task3-practice-row";
 
             row.innerHTML =
                 `
-                <td>
-                    ${isotope.notationHtml}
-                    <br>
-                    <small>${isotope.label}</small>
-                </td>
-
-                <td>
-                    ${isotope.A}
-                </td>
-
-                <td>
-                    <input
-                        type="number"
-                        class="task3-z-input"
-                        data-index="${index}"
-                        placeholder="Z"
-                    >
-                </td>
-
-                <td>
-                    <input
-                        type="number"
-                        class="task3-n-input"
-                        data-index="${index}"
-                        placeholder="N"
-                    >
-                </td>
-
-                <td>
-                    ${getTask3CategoryLabel(
-                        isotope.category
-                    )}
-                </td>
-
-                <td>
-                    <span
-                        class="task3-row-feedback"
-                        data-index="${index}"
-                    >
-                    </span>
-                </td>
+                <td>${notation}</td>
+                <td>${nuclide.A}</td>
+                <td><input type="number" class="task3-z-input" data-index="${practiceIndex}" placeholder="Z" aria-label="Z của ${nuclide.label}"></td>
+                <td><input type="number" class="task3-n-input" data-index="${practiceIndex}" placeholder="N" aria-label="N của ${nuclide.label}"></td>
+                <td>${formatAbundanceVi(nuclide.abundance)}</td>
+                <td>${halfLife}</td>
+                <td><span class="task3-row-feedback" data-index="${practiceIndex}"></span></td>
                 `;
 
+            practiceIndex++;
 
-            task3TableBody.appendChild(
-                row
-            );
+        } else {
+
+            row.className =
+                "task3-reference-row";
+
+            row.innerHTML =
+                `
+                <td>${notation}</td>
+                <td>${nuclide.A}</td>
+                <td>${nuclide.Z}</td>
+                <td>${nuclide.N}</td>
+                <td>${formatAbundanceVi(nuclide.abundance)}</td>
+                <td>${halfLife}</td>
+                <td></td>
+                `;
         }
+
+
+        task3TableBody.appendChild(
+            row
+        );
+    }
+
+
+    task3ScrollPending =
+        true;
+
+    scrollTask3TableToPractice();
+}
+
+
+// Bảng dài: cuộn sẵn tới dòng đầu tiên em cần điền.
+// Khi bảng đang ẩn (chưa mở chế độ Thí nghiệm) thì chờ tới lúc bảng hiện ra.
+let task3ScrollPending =
+    false;
+
+
+function scrollTask3TableToPractice() {
+
+    const wrapper =
+        task3TableBody.closest(
+            ".task3-table-wrapper"
+        );
+
+    const first =
+        task3TableBody.querySelector(
+            ".task3-practice-row"
+        );
+
+    if (
+        !task3ScrollPending
+        ||
+        !wrapper
+        ||
+        !first
+        ||
+        wrapper.clientHeight ===
+        0
+    ) {
+
+        return;
+    }
+
+
+    const header =
+        wrapper.querySelector(
+            "thead"
+        );
+
+    wrapper.scrollTop =
+        Math.max(
+            0,
+            first.offsetTop
+            -
+            (header ? header.offsetHeight : 0)
+            -
+            8
+        );
+
+    task3ScrollPending =
+        false;
+}
+
+
+if (
+    "IntersectionObserver" in window
+) {
+
+    new IntersectionObserver(
+        entries => {
+
+            if (
+                entries.some(
+                    entry =>
+                        entry.isIntersecting
+                )
+            ) {
+
+                scrollTask3TableToPractice();
+            }
+        }
+    ).observe(
+        task3TableBody.closest(
+            ".task3-table-wrapper"
+        )
     );
 }
 
@@ -416,6 +532,14 @@ function updateTask3ElementInformation() {
 
 
     task3IsotopeCount.textContent =
+        String(
+            getKnownIsotopes(
+                task3CurrentElement.Z
+            ).length
+        );
+
+
+    task3PracticeCount.textContent =
         String(
             task3CurrentIsotopes.length
         );
@@ -1166,6 +1290,34 @@ function checkTask3() {
             "vì vậy số khối A cũng khác nhau.";
     }
 }
+
+
+// ======================================================
+// CHỈ HIỆN CÁC DÒNG CẦN ĐIỀN
+// ======================================================
+
+const task3PracticeCount =
+    getTask3RequiredElement(
+        "task3PracticeCount"
+    );
+
+
+const task3PracticeOnlyToggle =
+    getTask3RequiredElement(
+        "task3PracticeOnlyToggle"
+    );
+
+
+task3PracticeOnlyToggle.addEventListener(
+    "change",
+    () => {
+
+        task3TableBody.classList.toggle(
+            "practice-only",
+            task3PracticeOnlyToggle.checked
+        );
+    }
+);
 
 
 // ======================================================
