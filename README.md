@@ -25,16 +25,19 @@ simulations/<bài>/         Mỗi bài: index.html, css/style.css, js/
   js/*-data.js             Số liệu của bài (khối lượng, chu kì bán rã, hệ số μ, ...)
   js/physics.js            Công thức vật lí, không phụ thuộc giao diện (có kiểm thử)
   js/real-data.js          Phần "Đối chiếu với dữ liệu thực" ở chế độ Kiểm chứng
+  js/questions.js          Đáp án và phản hồi cho các câu hỏi có kiểm tra của bài
 assets/shared/
   tokens.css               Màu, phông chữ, khoảng cách dùng chung
   lesson-ui.css, .js       Khung chung của các bài: định hướng, ba chế độ, thông báo
   real-data.css, .js       Khung chung của phần đối chiếu dữ liệu thực
+  quick-check.js           Câu hỏi có kiểm tra đáp án (chọn, nhập số, dự đoán)
+  format.js                Dấu phẩy thập phân và kí hiệu hạt nhân xếp chồng
   constants.js             Hằng số vật lí dùng chung (1 u·c², khối lượng neutron, ...)
   site.css                 Trang chủ
 assets/fonts/              Literata và Lab Sans (SIL OFL), xem README trong thư mục
 assets/vendor/chartjs/     Chart.js 4.4.1 (MIT), lưu kèm để không phụ thuộc CDN
 assets/images/             Hình minh họa và bản đồ hạt nhân
-tools/                     Công cụ dựng lại bản đồ hạt nhân
+tools/                     Công cụ dựng lại bản đồ hạt nhân và bảng NUBASE2020 của Bài 1
 tests/                     Kiểm thử vật lí và kiểm thử giao diện, xem tests/README.md
 ```
 
@@ -49,7 +52,8 @@ Trang không tải bất kì tệp nào từ máy chủ khác, nên vẫn chạy
 | Chu kì bán rã | NNDC, Brookhaven National Laboratory |
 | Hệ số suy giảm khối của tia γ | NIST, X-Ray Mass Attenuation Coefficients |
 | Tầm xa của β | Công thức Katz–Penfold |
-| Độ phổ biến đồng vị | CIAAW 2021 |
+| Độ phổ cập đồng vị | CIAAW 2021; Bài 1 (dựng hạt nhân, Nhiệm vụ 3) dùng NUBASE2020 |
+| Danh mục hạt nhân đã quan sát, chu kì bán rã, kiểu phân rã (Bài 1) | NUBASE2020 (Kondev và cộng sự, Chinese Physics C 45, 030001, 2021); tạo bằng `tools/build-nubase-data.py` |
 | Động năng mảnh phân hạch U-235 | Yanez và cộng sự (2015), arXiv:1512.06731 |
 
 ## Khi sửa mã

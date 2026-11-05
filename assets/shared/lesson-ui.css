@@ -784,6 +784,209 @@ body.lesson-ui textarea {
     line-height: 1.5;
 }
 
+/* ----------------------- Câu hỏi có kiểm tra đáp án ----------------------- */
+.lesson-ui .quick-check {
+    max-width: 75ch;
+}
+
+.lesson-ui .quick-check + .quick-check {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--lab-rule);
+}
+
+.lesson-ui .quick-check .qc-prompt {
+    margin: 0 0 10px;
+    color: var(--lab-ink);
+}
+
+.lesson-ui .qc-options {
+    display: grid;
+    gap: 6px;
+}
+
+.lesson-ui .qc-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin: 0;
+    padding: 9px 12px;
+    border: 1px solid var(--lab-rule);
+    border-radius: var(--lab-radius-sm);
+    color: var(--lab-text);
+    background: var(--lab-surface);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+.lesson-ui .qc-option input {
+    flex: none;
+    width: 17px;
+    height: 17px;
+    margin: 3px 0 0;
+    accent-color: var(--lab-ink);
+}
+
+.lesson-ui .qc-option:has(input:checked) {
+    border-color: var(--lab-accent);
+    background: var(--lab-accent-wash);
+}
+
+.lesson-ui .qc-option:has(input:disabled) {
+    cursor: default;
+}
+
+.lesson-ui .qc-options .qc-option.is-correct,
+.lesson-ui .qc-options .qc-option.is-answer,
+.lesson-ui .qc-number.is-correct input {
+    border-color: var(--lab-success);
+    background: var(--lab-success-wash);
+}
+
+.lesson-ui .qc-options .qc-option.is-wrong,
+.lesson-ui .qc-number.is-wrong input {
+    border-color: var(--lab-danger);
+    background: var(--lab-danger-wash);
+}
+
+@media (hover:hover) and (pointer:fine) {
+    .lesson-ui .qc-option:not(:has(input:disabled)):hover {
+        border-color: var(--lab-accent-line);
+    }
+}
+
+.lesson-ui .qc-number {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 10px;
+}
+
+.lesson-ui .qc-number-label {
+    color: var(--lab-text-2);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.lesson-ui .qc-number input {
+    width: 9em;
+    min-height: 40px;
+    padding: 7px 10px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: var(--lab-radius-sm);
+    color: var(--lab-ink);
+    background: var(--lab-surface);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+}
+
+.lesson-ui .qc-unit {
+    color: var(--lab-muted);
+}
+
+.lesson-ui .qc-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.lesson-ui .quick-check .qc-actions button {
+    width: auto;
+    min-height: 40px;
+    margin: 0;
+    padding: 7px 16px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: var(--lab-radius-sm);
+    color: var(--lab-ink);
+    background: var(--lab-surface);
+    box-shadow: none;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transform: none;
+}
+
+.lesson-ui .quick-check .qc-actions .qc-check,
+.lesson-ui .quick-check .qc-actions .qc-compare {
+    border-color: var(--lab-ink);
+    color: #fff;
+    background: var(--lab-ink);
+}
+
+.lesson-ui .quick-check .qc-actions button:disabled {
+    border-color: var(--lab-rule);
+    color: var(--lab-muted);
+    background: var(--lab-surface-3);
+    cursor: not-allowed;
+}
+
+.lesson-ui .quick-check .qc-actions button[hidden] {
+    display: none;
+}
+
+@media (hover:hover) and (pointer:fine) {
+    .lesson-ui .quick-check .qc-actions button:not(:disabled):not(.qc-check):not(.qc-compare):hover {
+        background: var(--lab-accent-wash);
+    }
+
+    .lesson-ui .quick-check .qc-actions .qc-check:not(:disabled):hover,
+    .lesson-ui .quick-check .qc-actions .qc-compare:hover {
+        border-color: var(--lab-accent);
+        background: var(--lab-accent);
+    }
+}
+
+.lesson-ui .qc-feedback {
+    margin-top: 10px;
+    padding: 10px 12px;
+    border-left: 3px solid var(--lab-accent-line);
+    border-radius: 0 var(--lab-radius-sm) var(--lab-radius-sm) 0;
+    color: var(--lab-text);
+    background: var(--lab-surface-2);
+    font-size: 15px;
+    line-height: 1.55;
+}
+
+.lesson-ui .qc-feedback strong {
+    color: var(--lab-ink);
+}
+
+.lesson-ui .qc-feedback.qc-right {
+    border-left-color: var(--lab-success);
+    background: var(--lab-success-wash);
+}
+
+.lesson-ui .qc-feedback.qc-right strong {
+    color: var(--lab-success);
+}
+
+.lesson-ui .qc-feedback.qc-wrong,
+.lesson-ui .qc-feedback.qc-invalid {
+    border-left-color: var(--lab-danger);
+    background: var(--lab-danger-wash);
+}
+
+.lesson-ui .qc-feedback.qc-wrong strong,
+.lesson-ui .qc-feedback.qc-invalid strong {
+    color: var(--lab-danger);
+}
+
+.lesson-ui .qc-feedback.qc-reveal-text {
+    border-left-color: var(--lab-ink);
+}
+
+/* Thẻ "Câu hỏi trước khi tiếp tục" chứa câu hỏi có kiểm tra */
+.lesson-ui .lesson-bridge-question .quick-check .qc-prompt {
+    font-family: var(--lab-serif);
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
 /* ----------------------- Tự đánh giá cuối bài ----------------------- */
 .lesson-ui .lesson-self-check-card {
     margin-top: 28px;
