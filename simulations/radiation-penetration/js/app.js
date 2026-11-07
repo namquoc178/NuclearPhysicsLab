@@ -32,6 +32,27 @@ const radiationSelect =
         "radiationSelect"
     );
 
+const sourceSelect =
+    getRequiredElement(
+        "sourceSelect"
+    );
+
+const energyInput =
+    getRequiredElement(
+        "energyInput"
+    );
+
+const energyDisplay =
+    getRequiredElement(
+        "energyDisplay"
+    );
+
+const energyHint =
+    getRequiredElement(
+        "energyHint"
+    );
+
+
 const materialSelect =
     getRequiredElement(
         "materialSelect"
@@ -473,6 +494,10 @@ function updateThicknessLabel() {
 
 
 function updateAdvancedInfo() {
+
+    // Ô nguồn luôn khớp với loại bức xạ đang chọn (kể cả khi nhiệm vụ tự đổi loại).
+    populateSourceSelect();
+
 
     const parameters =
         readParameters();
@@ -960,6 +985,9 @@ function buildAnimatedRays(
 
             return {
 
+                type:
+                    radiationSelect.value,
+
                 y,
 
                 startX:
@@ -980,6 +1008,41 @@ function buildAnimatedRays(
     );
 }
 
+
+// α: chấm lớn; β: chấm nhỏ; γ: bó sóng ngắn (photon, không phải hạt có khối lượng).
+// Màu lấy từ --lab-alpha, --lab-beta, --lab-gamma trong tokens.css.
+const RAY_COLORS = (() => {
+    const style = getComputedStyle(document.documentElement);
+    const read = (name, fallback) => style.getPropertyValue(name).trim() || fallback;
+    return {
+        alpha: read("--lab-alpha", "#6d28d9"),
+        beta: read("--lab-beta", "#0f766e"),
+        gamma: read("--lab-gamma", "#b45309")
+    };
+})();
+
+function drawRayParticle(context, x, y, type) {
+    context.save();
+    if (type === "gamma") {
+        const length = 26;
+        context.strokeStyle = RAY_COLORS.gamma;
+        context.lineWidth = 2;
+        context.beginPath();
+        for (let dx = -length; dx <= 0; dx += 1) {
+            const envelope = Math.exp(-Math.pow((dx + length / 2) / (length / 3.2), 2));
+            const dy = 5 * envelope * Math.sin(2 * Math.PI * dx / 8);
+            if (dx === -length) context.moveTo(x + dx, y + dy);
+            else context.lineTo(x + dx, y + dy);
+        }
+        context.stroke();
+    } else {
+        context.beginPath();
+        context.arc(x, y, type === "alpha" ? 5.5 : 3.2, 0, Math.PI * 2);
+        context.fillStyle = type === "alpha" ? RAY_COLORS.alpha : RAY_COLORS.beta;
+        context.fill();
+    }
+    context.restore();
+}
 
 function animateResults(
     results,
@@ -1061,23 +1124,12 @@ function animateResults(
                 localProgress;
 
 
-            simulationContext.beginPath();
-
-
-            simulationContext.arc(
-                x,
-                ray.y,
-                4,
-                0,
-                Math.PI * 2
-            );
-
-
-            simulationContext.fillStyle =
-                "#2563eb";
-
-
-            simulationContext.fill();
+            drawRayParticle(
+            simulationContext,
+            x,
+            ray.y,
+            ray.type
+        );
 
 
             if (
@@ -3220,7 +3272,74 @@ async function runValidation() {
 // 18. CHUYỂN CHẾ ĐỘ
 // ======================================================
 
+// ======================================================
+// NGUỒN PHÓNG XẠ VÀ NĂNG LƯỢNG (chỉ đổi được ở chế độ Khám phá)
+// ======================================================
+
+function formatEnergyVi(energyMeV) {
+    return energyMeV < 1
+        ? `${formatVi(energyMeV * 1000, energyMeV < 0.1 ? 1 : 0)} keV`
+        : `${formatVi(energyMeV, 2)} MeV`;
+}
+
+function populateSourceSelect() {
+    const type = radiationSelect.value;
+    const range = RADIATION_ENERGY_RANGE[type];
+    sourceSelect.innerHTML = "";
+    for (const source of RADIATION_SOURCES[type]) {
+        const option = document.createElement("option");
+        option.value = source.id;
+        option.textContent = `${source.label} – ${formatEnergyVi(source.energyMeV)}`;
+        sourceSelect.appendChild(option);
+    }
+    const custom = document.createElement("option");
+    custom.value = "custom";
+    custom.textContent = "Tự chọn năng lượng";
+    sourceSelect.appendChild(custom);
+
+    energyInput.min = String(range.min);
+    energyInput.max = String(range.max);
+    energyInput.step = String(range.step);
+
+    const energy = getRadiationEnergy(type);
+    const match = RADIATION_SOURCES[type].find((source) => Math.abs(source.energyMeV - energy) < 1e-9);
+    sourceSelect.value = match ? match.id : "custom";
+    energyInput.value = String(energy);
+    updateEnergyLabel();
+}
+
+function updateEnergyLabel() {
+    const type = radiationSelect.value;
+    const range = RADIATION_ENERGY_RANGE[type];
+    energyDisplay.textContent = formatEnergyVi(getRadiationEnergy(type));
+    energyHint.textContent = {
+        alpha: `Động năng hạt α, từ ${formatVi(range.min)} đến ${formatVi(range.max)} MeV.`,
+        beta: `Năng lượng cực đại của hạt β, từ ${formatVi(range.min)} đến ${formatVi(range.max)} MeV.`,
+        gamma: `Năng lượng photon γ, từ ${formatVi(range.min * 1000)} keV đến ${formatVi(range.max)} MeV.`
+    }[type];
+}
+
+function onEnergyChanged() {
+    lastExperimentalPoint = null;
+    updateEnergyLabel();
+    drawStaticScene();
+    updateAdvancedInfo();
+    createOrUpdateChart();
+}
+
+// Nhiệm vụ và phần kiểm chứng dùng nguồn mặc định (Am-241, Y-90, Cs-137)
+// để kết quả khớp với câu hỏi; ô chọn nguồn bị khóa ngoài chế độ Khám phá.
+function setSourceControlsForMode(mode) {
+    const explore = mode === "explore";
+    if (!explore) useDefaultRadiationEnergies();
+    sourceSelect.disabled = !explore;
+    energyInput.disabled = !explore;
+    populateSourceSelect();
+}
+
 function setMode(mode) {
+    setSourceControlsForMode(mode);
+
 
     stopRadiationAnimation();
 
@@ -3387,9 +3506,36 @@ function setMode(mode) {
 // 19. EVENT LISTENER
 // ======================================================
 
+sourceSelect.addEventListener(
+    "change",
+    () => {
+        const type = radiationSelect.value;
+        const source = RADIATION_SOURCES[type].find((item) => item.id === sourceSelect.value);
+        if (source) {
+            setRadiationEnergy(type, source.energyMeV);
+            energyInput.value = String(source.energyMeV);
+        }
+        onEnergyChanged();
+    }
+);
+
+energyInput.addEventListener(
+    "input",
+    () => {
+        const type = radiationSelect.value;
+        setRadiationEnergy(type, parseFloat(energyInput.value));
+        const match = RADIATION_SOURCES[type].find(
+            (source) => Math.abs(source.energyMeV - getRadiationEnergy(type)) < 1e-9
+        );
+        sourceSelect.value = match ? match.id : "custom";
+        onEnergyChanged();
+    }
+);
+
 radiationSelect.addEventListener(
     "change",
     () => {
+        populateSourceSelect();
 
         lastExperimentalPoint =
             null;
@@ -3553,3 +3699,5 @@ resetValidationDisplay();
 setMode(
     "explore"
 );
+
+populateSourceSelect();

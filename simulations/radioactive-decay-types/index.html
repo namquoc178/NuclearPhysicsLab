@@ -44,7 +44,7 @@
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Trong β⁻ và β⁺, electron/positron không được xem là hạt có sẵn trong hạt nhân. Với γ, A và Z không đổi; hạt nhân chỉ chuyển từ trạng thái kích thích xuống mức năng lượng thấp hơn.</p>
+<p>Trong β⁻ và β⁺, electron/positron không được xem là hạt có sẵn trong hạt nhân. Bắt electron (chỉ có ở chế độ Khám phá) cho cùng ΔA, ΔZ như β⁺, nên các nhiệm vụ nhận dạng chỉ dùng α, β⁻, β⁺ và γ. Với γ, A và Z không đổi; hạt nhân chỉ chuyển từ trạng thái kích thích xuống mức năng lượng thấp hơn.</p>
 </article>
 </section>
 <!-- =================================================
@@ -121,6 +121,9 @@
                             </option>
 <option value="gamma">
                                 Chuyển mức γ
+                            </option>
+<option value="electronCapture">
+                                Bắt electron (EC)
                             </option>
 </select>
 </div>
@@ -445,6 +448,20 @@
                                     Hạt nhân đổi trạng thái năng lượng
                                 </td>
 </tr>
+<tr>
+<td>
+                                    Bắt electron
+                                </td>
+<td>
+                                    0
+                                </td>
+<td>
+                                    −1
+                                </td>
+<td>
+                                    p + e⁻ → n
+                                </td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -500,6 +517,17 @@ So sánh β⁻ và β⁺:
 <p class="qc-prompt">
 Tại sao sau phát xạ γ
                             hạt nhân vẫn là cùng một nuclide?
+</p>
+</div>
+</div>
+<div class="question-card">
+<strong>
+                            Câu hỏi 5
+                        </strong>
+<div class="quick-check" data-check="dt-kp-5">
+<p class="qc-prompt">
+Chọn "Bắt electron" với ví dụ Be-7.
+                            Vì sao Be-7 không phân rã β⁺ dù cũng có ΔA = 0 và ΔZ = −1?
 </p>
 </div>
 </div>
@@ -1604,10 +1632,11 @@ Tại sao sau phát xạ γ
 </section>
 </div>
 <script src="../../assets/shared/format.js?v=2"></script>
-<script src="js/decay-data.js?v=8"></script>
-<script src="js/physics.js?v=7"></script>
-<script src="js/simulation.js?v=4"></script>
-<script src="js/app.js?v=6"></script>
+<script src="../../assets/shared/constants.js?v=4"></script>
+<script src="js/decay-data.js?v=9"></script>
+<script src="js/physics.js?v=8"></script>
+<script src="js/simulation.js?v=5"></script>
+<script src="js/app.js?v=7"></script>
 <script src="js/task1.js?v=6"></script>
 <script src="js/task2.js?v=3"></script>
 <script src="js/task3.js?v=3"></script>
@@ -1615,6 +1644,6 @@ Tại sao sau phát xạ γ
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
 <script src="../../assets/shared/quick-check.js?v=2"></script>
-<script src="js/questions.js?v=2"></script>
+<script src="js/questions.js?v=3"></script>
 <script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

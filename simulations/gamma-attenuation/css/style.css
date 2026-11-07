@@ -1669,3 +1669,128 @@ th {
     }
 
 }
+
+
+/* =====================================================
+   NGUỒN BÍ ẨN (chế độ Kiểm chứng)
+===================================================== */
+
+.mystery-source {
+    margin-top: 28px;
+    padding: 22px;
+    border: 1px solid var(--lab-rule);
+    border-radius: var(--lab-radius);
+    background: var(--lab-surface);
+}
+
+.mystery-source h2 {
+    margin-top: 0;
+}
+
+.mystery-source > p {
+    max-width: 75ch;
+}
+
+.mystery-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+    margin: 16px 0 6px;
+}
+
+.mystery-controls label {
+    font-weight: 700;
+}
+
+.mystery-controls select,
+.mystery-controls input {
+    min-height: 42px;
+    padding: 8px 10px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: var(--lab-radius-sm);
+    background: var(--lab-surface);
+    font: inherit;
+}
+
+.mystery-controls input {
+    width: 7em;
+}
+
+.mystery-status {
+    min-height: 1.5em;
+    color: var(--lab-text-2);
+}
+
+.mystery-answer {
+    margin: 18px 0 0;
+    padding: 14px 16px;
+    border: 1px solid var(--lab-rule);
+    border-radius: var(--lab-radius-sm);
+}
+
+.mystery-answer legend {
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+#mysteryOptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 18px;
+    margin-bottom: 12px;
+}
+
+.mystery-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.mystery-option input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--lab-ink);
+}
+
+.mystery-feedback {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-left: 3px solid var(--lab-rule-strong);
+    border-radius: 0 var(--lab-radius-sm) var(--lab-radius-sm) 0;
+    background: var(--lab-surface-2);
+    max-width: 75ch;
+}
+
+.mystery-feedback.right {
+    border-left-color: var(--lab-success);
+    background: var(--lab-success-wash);
+}
+
+.mystery-feedback.wrong {
+    border-left-color: var(--lab-danger);
+    background: var(--lab-danger-wash);
+}
+
+.mystery-source button {
+    min-height: 42px;
+    padding: 9px 16px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: 7px;
+    color: var(--lab-ink);
+    background: var(--lab-surface);
+    font-weight: 600;
+}
+
+.mystery-source #mysteryMeasureButton,
+.mystery-source #mysteryCheckButton {
+    border-color: var(--lab-ink);
+    color: #fff;
+    background: var(--lab-ink);
+}
+
+.mystery-source button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

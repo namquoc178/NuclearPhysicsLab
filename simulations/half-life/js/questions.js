@@ -68,10 +68,10 @@ QuickCheck.define({
             },
             {
                 text: "Mức dao động gần như không đổi.",
-                feedback: "Em hãy đặt đồ thị N₀ = 20 cạnh đồ thị N₀ = 1000 và so sánh độ gồ ghề của đường mô phỏng."
+                feedback: "Em hãy so sánh độ gồ ghề của đường N₀ = 20 với đường N₀ = 1 000 000 trên đồ thị."
             }
         ],
-        explanation: "Độ lệch chuẩn của số hạt còn lại vào cỡ √N₀, nên độ lệch so với N₀ tỉ lệ với 1/√N₀. Khi N₀ tăng từ 20 lên 1000 (gấp 50 lần), dao động tương đối giảm khoảng √50 ≈ 7 lần."
+        explanation: "Tại t = T₁/₂, độ lệch chuẩn của số hạt còn lại là √N₀/2, nên độ lệch tương đối so với N₀/2 là 1/√N₀. N₀ tăng 100 lần thì dao động tương đối giảm 10 lần; từ 20 lên 1 000 000 (gấp 50 000 lần) thì giảm khoảng √50 000 ≈ 220 lần."
     },
 
     "bridge-explore": {

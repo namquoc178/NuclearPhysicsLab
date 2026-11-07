@@ -37,6 +37,24 @@ QuickCheck.define({
         explanation: "Q = (m trước − m sau)·c². Khi m sau < m trước thì Q > 0: phản ứng tỏa năng lượng, chủ yếu dưới dạng động năng của hai mảnh phân hạch."
     },
 
+    "fi-kp-3": {
+        options: [
+            {
+                text: "Hai đỉnh: một quanh A ≈ 95 (mảnh nhẹ), một quanh A ≈ 138 (mảnh nặng).",
+                correct: true
+            },
+            {
+                text: "Một đỉnh ở giữa, quanh A ≈ 117, vì hạt nhân thường vỡ đôi đều nhau.",
+                feedback: "Em hãy nhìn lại đồ thị ở vùng A ≈ 117: số mảnh ở đó gần như bằng 0."
+            },
+            {
+                text: "Gần như phẳng: mọi số khối từ 70 đến 165 đều có khả năng như nhau.",
+                feedback: "Với 10 000 phân hạch, các cột chênh nhau rất rõ. Em hãy so cột cao nhất với cột ở A ≈ 117."
+            }
+        ],
+        explanation: "Phân hạch U-235 bởi neutron nhiệt thường không đối xứng: một mảnh nhẹ (A ≈ 90–100) và một mảnh nặng (A ≈ 133–143). Theo ENDF/B-VIII.0, hiệu suất ở A = 134 lớn gấp khoảng 600 lần ở A = 117. Hai đỉnh đối xứng quanh A ≈ 117 vì tổng số khối của hai mảnh xấp xỉ 236 trừ đi vài neutron."
+    },
+
     "bridge-explore": {
         options: [
             { text: "Tổng số khối A và tổng điện tích Z.", correct: true },

@@ -9,7 +9,7 @@
     </title>
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
-<link href="css/style.css?v=6" rel="stylesheet"/>
+<link href="css/style.css?v=7" rel="stylesheet"/>
 <link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
 <link href="../../assets/shared/real-data.css?v=4" rel="stylesheet"/></head>
 <body class="lesson-ui">
@@ -44,7 +44,7 @@
 </article>
 <article class="lesson-insight-card lesson-model-card">
 <div class="lesson-insight-heading"><span aria-hidden="true" class="lesson-insight-icon note-icon">i</span><div><span class="lesson-insight-kicker">KHOA HỌC</span><h2>Lưu ý về mô hình</h2></div></div>
-<p>Nguồn giả định là Cs-137, phát tia γ 662 keV, trong điều kiện chùm hẹp. Hệ số μ lấy từ bảng NIST: chì 0,126 mm⁻¹ (x<sub>1/2</sub> ≈ 5,5 mm), nhôm 0,0201 mm⁻¹ (≈ 34 mm), giấy ≈ 0,0069 mm⁻¹. Với năng lượng photon khác, μ sẽ khác.</p>
+<p>Nguồn mặc định là Cs-137, phát tia γ 662 keV, trong điều kiện chùm hẹp. Hệ số μ lấy từ bảng NIST: chì 0,126 mm⁻¹ (x<sub>1/2</sub> ≈ 5,5 mm), nhôm 0,0201 mm⁻¹ (≈ 34 mm), giấy ≈ 0,0066 mm⁻¹. Ở chế độ Khám phá, em đổi được nguồn hoặc năng lượng photon và thấy μ thay đổi theo. Co-60 có hai vạch 1,17 và 1,33 MeV, được thay bằng năng lượng trung bình 1,25 MeV.</p>
 </article>
 </section>
 <!-- =====================================================
@@ -117,7 +117,31 @@
 <option value="lead">
                         Chì
                     </option>
+<option value="water">
+                        Nước
+                    </option>
 </select>
+</div>
+<div class="control-group">
+<label for="sourceSelect">
+                    Nguồn γ
+                </label>
+<select id="sourceSelect"></select>
+</div>
+<div class="control-group">
+<label for="energyInput">
+                    Năng lượng photon:
+                    <strong id="energyDisplay">662 keV</strong>
+</label>
+<input id="energyInput" max="3" min="0.05" step="0.01" type="range" value="0.661657"/>
+<div class="range-labels">
+<span>
+                        50 keV
+                    </span>
+<span>
+                        3 MeV
+                    </span>
+</div>
 </div>
 <div class="control-group">
 <label for="thicknessInput">
@@ -175,10 +199,10 @@
                     Lưu ý
                 </strong>
 <p>
-                    Hệ số μ ứng với tia γ 662 keV của Cs-137,
-                    lấy từ bảng NIST (chùm hẹp).
-                    Nhôm và giấy chắn γ kém hơn chì nhiều,
-                    nên hãy thử độ dày lớn tới 50 mm.
+                    Hệ số μ nội suy từ bảng NIST theo năng lượng photon (chùm hẹp).
+                    Photon năng lượng thấp (Am-241, 59,5 keV) bị chì chặn gần hết
+                    chỉ sau 1 mm; photon năng lượng cao xuyên qua nhiều hơn.
+                    Nhiệm vụ và kiểm chứng luôn dùng Cs-137 (662 keV).
                 </p>
 </div>
 </aside>
@@ -985,15 +1009,116 @@ Tại sao các lần mô phỏng riêng lẻ
             dao động thống kê quanh giá trị này hay không.
         </p>
 </div>
+<!-- =================================================
+         NGUỒN BÍ ẨN: XÁC ĐỊNH NGUỒN TỪ μ ĐO ĐƯỢC
+    ================================================== -->
+<section aria-labelledby="mysteryTitle" class="mystery-source">
+<h2 id="mysteryTitle">
+            Nguồn bí ẩn
+        </h2>
+<p>
+            Chương trình chọn ngẫu nhiên một trong bốn nguồn γ và giấu tên nguồn.
+            Em đo tỉ lệ I/I₀ qua lớp chì hoặc nhôm, tính μ = −ln(I/I₀)/x,
+            rồi so với bảng μ tham chiếu để tìm ra nguồn.
+        </p>
+<div class="mystery-controls">
+<label for="mysteryMaterial">
+                Vật liệu
+            </label>
+<select id="mysteryMaterial">
+<option value="lead">
+                    Chì
+                </option>
+<option value="aluminum">
+                    Nhôm
+                </option>
+</select>
+<label for="mysteryThickness">
+                Độ dày x (mm)
+            </label>
+<input id="mysteryThickness" inputmode="decimal" max="50" min="0.1" step="0.1" type="number" value="2"/>
+<button id="mysteryMeasureButton" type="button">
+                Đo (10 000 photon)
+            </button>
+<button id="mysteryNewButton" type="button">
+                Lấy nguồn khác
+            </button>
+</div>
+<p class="mystery-status" id="mysteryStatus" role="status" aria-live="polite"></p>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                        Vật liệu
+                    </th>
+<th>
+                        x (mm)
+                    </th>
+<th>
+                        Số photon tới đầu dò
+                    </th>
+<th>
+                        I/I₀
+                    </th>
+<th>
+                        μ = −ln(I/I₀)/x (mm⁻¹)
+                    </th>
+</tr>
+</thead>
+<tbody id="mysteryTableBody">
+</tbody>
+</table>
+</div>
+<h4>
+            Bảng μ tham chiếu (NIST)
+        </h4>
+<div class="validation-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                        Nguồn
+                    </th>
+<th>
+                        Năng lượng
+                    </th>
+<th>
+                        μ của chì (mm⁻¹)
+                    </th>
+<th>
+                        μ của nhôm (mm⁻¹)
+                    </th>
+</tr>
+</thead>
+<tbody id="mysteryReferenceBody">
+</tbody>
+</table>
+</div>
+<fieldset class="mystery-answer">
+<legend>
+                Nguồn bí ẩn là nguồn nào?
+            </legend>
+<div id="mysteryOptions">
+</div>
+<button id="mysteryCheckButton" type="button" disabled="">
+                Kiểm tra
+            </button>
+</fieldset>
+<p class="mystery-feedback" id="mysteryFeedback" role="status" aria-live="polite" hidden=""></p>
 </section>
+</section>
+
 </div>
 <script src="../../assets/vendor/chartjs/chart.umd.min.js?v=4.4.1"></script>
 <script src="../../assets/shared/format.js?v=2"></script>
-<script src="js/physics.js?v=8"></script>
+<script src="../../assets/shared/gamma-mu-data.js?v=2"></script>
+<script src="js/physics.js?v=9"></script>
 <script src="js/simulation.js?v=5"></script>
-<script src="js/app.js?v=10"></script>
+<script src="js/app.js?v=11"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
+<script src="js/mystery-source.js?v=2"></script>
 <script src="../../assets/shared/quick-check.js?v=2"></script>
 <script src="js/questions.js?v=2"></script>
 <script src="../../assets/shared/lesson-ui.js?v=6"></script></body>

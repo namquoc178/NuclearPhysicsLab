@@ -1770,19 +1770,18 @@ function renderGammaDecay(
             );
 
 
-        drawEmissionArrow(
+        drawGammaWavePacket(
             context,
-            455,
+            gammaX - 60,
             270,
-            gammaX - 25,
-            270
+            90
         );
 
 
         drawEmissionLabel(
             context,
-            gammaX,
-            270,
+            gammaX + 10,
+            278,
             "γ",
             "photon gamma"
         );
@@ -1830,6 +1829,183 @@ function renderGammaDecay(
             335,
             75
         );
+    }
+}
+
+
+// ======================================================
+// BÓ SÓNG GAMMA
+//
+// Photon γ được vẽ thành một bó sóng ngắn (dao động có biên độ
+// giảm dần hai đầu) thay cho mũi tên, để phân biệt bức xạ điện từ
+// với các hạt có khối lượng như α, β.
+// ======================================================
+
+function drawGammaWavePacket(
+    context,
+    centerX,
+    centerY,
+    length,
+    angle = 0
+) {
+
+    const wavelength =
+        14;
+
+    const amplitude =
+        11;
+
+    context.save();
+    context.translate(centerX, centerY);
+    context.rotate(angle);
+    context.strokeStyle =
+        DECAY_CANVAS_COLORS.radiation;
+    context.lineWidth =
+        2.4;
+    context.beginPath();
+
+    for (let x = -length / 2; x <= length / 2; x += 1) {
+        const envelope =
+            Math.exp(
+                -Math.pow(x / (length / 4), 2)
+            );
+        const y =
+            amplitude
+            *
+            envelope
+            *
+            Math.sin(2 * Math.PI * x / wavelength);
+        if (x === -length / 2) {
+            context.moveTo(x, y);
+        } else {
+            context.lineTo(x, y);
+        }
+    }
+
+    context.stroke();
+    context.restore();
+}
+
+
+// ======================================================
+// BẮT ELECTRON
+// ======================================================
+
+function renderElectronCaptureDecay(
+    canvas,
+    context,
+    example,
+    progress
+) {
+
+    clearDecayCanvas(canvas, context);
+
+    const centerX = 335;
+    const centerY = 270;
+    const shellRadius = 165;
+
+    let state = "parent";
+    if (progress >= 0.30 && progress < 0.55) {
+        state = "transforming";
+    } else if (progress >= 0.55) {
+        state = "daughter";
+    }
+
+    // Lớp K của nguyên tử (vẽ đứt nét)
+    context.save();
+    context.strokeStyle = DECAY_CANVAS_COLORS.secondary;
+    context.setLineDash([6, 6]);
+    context.lineWidth = 1.2;
+    context.beginPath();
+    context.arc(centerX, centerY, shellRadius, 0, 2 * Math.PI);
+    context.stroke();
+    context.restore();
+
+    context.fillStyle = DECAY_CANVAS_COLORS.secondary;
+    context.font = "13px Arial";
+    context.textAlign = "left";
+    context.fillText("lớp K", centerX + shellRadius * 0.72 + 6, centerY - shellRadius * 0.72);
+
+    drawDecayNucleus(
+        context,
+        centerX,
+        centerY,
+        105,
+        progress < 0.55 ? example.parent : example.daughter,
+        { state }
+    );
+
+    if (state === "parent") {
+        drawParentLabel(context, centerX, 410);
+    }
+
+    // Electron lớp K quay trên quỹ đạo rồi rơi vào hạt nhân
+    if (progress < 0.34) {
+        const fall = clampDecayValue((progress - 0.12) / 0.22, 0, 1);
+        const angle = Math.PI + progress * 5;
+        const radius = decayLerp(shellRadius, 40, fall);
+        const ex = centerX + radius * Math.cos(angle);
+        const ey = centerY + radius * Math.sin(angle);
+        context.fillStyle = "#e0f2fe";
+        context.strokeStyle = "#0369a1";
+        context.lineWidth = 2;
+        context.beginPath();
+        context.arc(ex, ey, 12, 0, 2 * Math.PI);
+        context.fill();
+        context.stroke();
+        context.fillStyle = "#0369a1";
+        context.font = "bold 15px Arial";
+        context.textAlign = "center";
+        context.fillText("e⁻", ex, ey + 5);
+    }
+
+    // p + e⁻ → n trong hạt nhân
+    if (progress >= 0.28 && progress < 0.70) {
+        context.textAlign = "center";
+        // Đặt dưới các dòng A, Z, N để không che chữ trong hạt nhân.
+        const reactionY = centerY + 86;
+        context.font = "bold 18px Arial";
+        context.fillStyle = "#b91c1c";
+        context.fillText("p", centerX - 44, reactionY);
+        context.fillStyle = "#0369a1";
+        context.fillText("+ e⁻", centerX - 12, reactionY);
+        context.fillStyle = DECAY_CANVAS_COLORS.secondary;
+        context.font = "17px Arial";
+        context.fillText("→", centerX + 20, reactionY);
+        context.fillStyle = "#1d4ed8";
+        context.font = "bold 18px Arial";
+        context.fillText("n", centerX + 44, reactionY);
+    }
+
+    // Neutrino bay ra
+    if (progress > 0.42) {
+        const t = clampDecayValue((progress - 0.42) / 0.58, 0, 1);
+        const nx = decayLerp(475, 760, t);
+        drawEmissionArrow(context, 455, 270, nx - 28, 270);
+        drawEmissionLabel(context, nx, 270, "νₑ", "neutrino");
+    }
+
+    // Electron lớp ngoài lấp chỗ trống ở lớp K, phát tia X
+    if (progress > 0.62) {
+        const t = clampDecayValue((progress - 0.62) / 0.38, 0, 1);
+        const xx = decayLerp(centerX - 120, 150, t);
+        const xy = decayLerp(centerY - 120, 120, t);
+        drawGammaWavePacket(context, xx, xy, 56, Math.atan2(120 - (centerY - 120), 150 - (centerX - 120)));
+        context.fillStyle = DECAY_CANVAS_COLORS.secondary;
+        context.font = "13px Arial";
+        context.textAlign = "center";
+        context.fillText("tia X (từ lớp vỏ)", xx, xy + 34);
+    }
+
+    context.fillStyle = DECAY_CANVAS_COLORS.secondary;
+    context.textAlign = "center";
+    context.font = "15px Arial";
+    if (progress < 0.30) {
+        context.fillText("Một electron ở lớp K bị hạt nhân bắt", centerX, 75);
+    } else if (progress < 0.55) {
+        context.fillText("Trong hạt nhân: proton kết hợp với electron thành neutron", centerX, 75);
+    } else {
+        context.fillText("A không đổi; Z giảm 1; N tăng 1; chỉ có neutrino bay ra", centerX, 75);
     }
 }
 
@@ -1884,6 +2060,18 @@ function renderDecayAnimationFrame(
         case "betaPlus":
 
             renderBetaPlusDecay(
+                canvas,
+                context,
+                example,
+                safeProgress
+            );
+
+            break;
+
+
+        case "electronCapture":
+
+            renderElectronCaptureDecay(
                 canvas,
                 context,
                 example,

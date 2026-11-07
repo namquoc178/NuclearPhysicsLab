@@ -16,24 +16,56 @@ let currentDt = 0.1;
 
 
 // ========================================
-// DANH SÁCH CÁC HẠT NHÂN
+// QUẦN THỂ HẠT NHÂN
+//
+// Vẽ tối đa MAX_DRAWN_CELLS chấm. Khi N₀ lớn hơn, mỗi chấm đại diện
+// cho một nhóm k hạt nhân; trong mỗi bước, số hạt phân rã của nhóm
+// được lấy mẫu từ phân bố nhị thức B(k, p), tương đương với việc gieo
+// xác suất cho từng hạt một. Khi N₀ ≤ MAX_DRAWN_CELLS, mỗi chấm là
+// đúng một hạt nhân như trước.
 // ========================================
 
-// 1 = hạt nhân chưa phân rã
-// 0 = hạt nhân đã phân rã
+const MAX_DRAWN_CELLS = 2500;
 
+const MAX_N0 = 1000000;
+
+// nuclei[i]: số hạt chưa phân rã trong chấm i
+// nucleiInitial[i]: số hạt ban đầu trong chấm i
 let nuclei = [];
 
+let nucleiInitial = [];
 
-// ========================================
-// TẠO QUẦN THỂ HẠT NHÂN BAN ĐẦU
-// ========================================
 
 function createNuclei(numberOfNuclei) {
 
-    nuclei = new Array(numberOfNuclei);
+    const cells =
+        Math.min(numberOfNuclei, MAX_DRAWN_CELLS);
 
-    nuclei.fill(1);
+    const base =
+        Math.floor(numberOfNuclei / cells);
+
+    const extra =
+        numberOfNuclei % cells;
+
+    nucleiInitial = new Array(cells);
+
+    for (let i = 0; i < cells; i++) {
+        nucleiInitial[i] = i < extra ? base + 1 : base;
+    }
+
+    nuclei = nucleiInitial.slice();
+
+}
+
+
+// Số hạt nhân trung bình mà mỗi chấm đại diện.
+function getNucleiPerCell() {
+
+    if (nuclei.length === 0) {
+        return 1;
+    }
+
+    return nucleiInitial.reduce((sum, count) => sum + count, 0) / nuclei.length;
 
 }
 
@@ -52,37 +84,11 @@ function performDecayStep(lambda, dt) {
 
     let remaining = 0;
 
-    for (
-        let i = 0;
-        i < nuclei.length;
-        i++
-    ) {
+    for (let i = 0; i < nuclei.length; i++) {
 
-        // Chỉ xét những hạt nhân
-        // chưa phân rã
-
-        if (nuclei[i] === 1) {
-
-            const randomNumber =
-                Math.random();
-
-            if (
-                randomNumber <
-                decayProbability
-            ) {
-
-                // Hạt nhân phân rã
-
-                nuclei[i] = 0;
-
-            } else {
-
-                // Hạt nhân vẫn tồn tại
-
-                remaining++;
-
-            }
-
+        if (nuclei[i] > 0) {
+            nuclei[i] -= sampleBinomial(nuclei[i], decayProbability);
+            remaining += nuclei[i];
         }
 
     }
