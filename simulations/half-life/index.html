@@ -7,9 +7,9 @@
 <title>Mô phỏng định luật phóng xạ và chu kì bán rã</title>
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
-<link href="css/style.css?v=16" rel="stylesheet"/>
+<link href="css/style.css?v=18" rel="stylesheet"/>
 <link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
-<link href="../../assets/shared/real-data.css?v=4" rel="stylesheet"/></head>
+<link href="../../assets/shared/real-data.css?v=5" rel="stylesheet"/></head>
 <body class="lesson-ui">
 <div class="top-navigation">
 <a aria-label="Trở về trang chủ Phòng thí nghiệm Vật lí hạt nhân trực tuyến" class="home-link" href="../../index.html">← Trang chủ</a>
@@ -52,7 +52,7 @@
 <h2>Thông số mô phỏng</h2>
 <div class="control-group">
 <label for="inputN0">Số hạt ban đầu N₀</label>
-<input id="inputN0" max="10000" min="10" step="10" type="number" value="1000"/>
+<input id="inputN0" max="1000000" min="10" step="10" type="number" value="1000"/>
 </div>
 <div class="control-group">
 <label for="inputHalfLife">Chu kì bán rã T₁/₂ (s)</label>
@@ -75,13 +75,14 @@
 <section class="simulation-panel">
 <h2>Mô hình hạt nhân</h2>
 <p class="canvas-note">
-                    Mỗi chấm đại diện cho một hạt nhân trong mô hình.
+                    Mỗi chấm là một hạt nhân; khi N₀ lớn hơn 2500, mỗi chấm là một nhóm hạt (xem chú thích dưới hình).
                 </p>
 <div aria-label="Chú giải trạng thái hạt nhân" class="particle-legend">
 <span class="legend-item"><span class="legend-dot alive"></span>Chưa phân rã</span>
 <span class="legend-item"><span class="legend-dot decayed"></span>Đã phân rã</span>
 </div>
 <canvas height="420" id="nucleiCanvas" width="700"></canvas>
+<p class="nuclei-scale-note" id="nucleiScaleNote"></p>
 </section>
 </section>
 <section class="data-panel">
@@ -260,8 +261,8 @@ Nếu chạy lại với cùng điều kiện, kết quả có hoàn toàn giố
 <div class="experiment-task" id="experiment3Card">
 <h3>Nhiệm vụ 3: Ảnh hưởng của số hạt ban đầu</h3>
 <p>
-                    Giữ nguyên <strong>T₁/₂ = 10 s</strong> và khảo sát ba trường hợp
-                    <strong>N₀ = 20, 100 và 1000 hạt</strong>.
+                    Giữ nguyên <strong>T₁/₂ = 10 s</strong> và khảo sát năm trường hợp
+                    <strong>N₀ = 20, 100, 1000, 10 000 và 1 000 000 hạt</strong>.
                 </p>
 <p>
                     Với mỗi trường hợp, chương trình thực hiện 5 lần mô phỏng tại t = T₁/₂ và đồng thời tạo một đường mô phỏng N/N₀ theo thời gian để so sánh trực quan với đường lí thuyết.
@@ -284,6 +285,7 @@ Nếu chạy lại với cùng điều kiện, kết quả có hoàn toàn giố
 <th>Trung bình</th>
 <th>Lí thuyết N₀/2</th>
 <th>Độ lệch tương đối TB</th>
+<th>Dự kiến ≈ 80 %/√N₀</th>
 </tr>
 </thead>
 <tbody id="experiment3TableBody"></tbody>
@@ -302,7 +304,7 @@ Nếu chạy lại với cùng điều kiện, kết quả có hoàn toàn giố
 <h4>Câu hỏi quan sát</h4>
 <div class="quick-check" data-check="hl-quan-sat">
 <p class="qc-prompt">
-Khi N₀ tăng từ 20 lên 100 rồi 1000, mức dao động của đường mô phỏng so với đường lí thuyết thay đổi như thế nào?
+Khi N₀ tăng từ 20 lên 1000 rồi 1 000 000, mức dao động của đường mô phỏng so với đường lí thuyết thay đổi như thế nào?
 </p>
 </div>
 </div>
@@ -377,12 +379,12 @@ Khi N₀ tăng từ 20 lên 100 rồi 1000, mức dao động của đường m�
 </div>
 <script src="../../assets/vendor/chartjs/chart.umd.min.js?v=4.4.1"></script>
 <script src="../../assets/shared/format.js?v=2"></script>
-<script src="js/physics.js?v=15"></script>
-<script src="js/simulation.js?v=15"></script>
-<script src="js/app.js?v=20"></script>
+<script src="js/physics.js?v=17"></script>
+<script src="js/simulation.js?v=17"></script>
+<script src="js/app.js?v=22"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
 <script src="../../assets/shared/quick-check.js?v=2"></script>
-<script src="js/questions.js?v=2"></script>
+<script src="js/questions.js?v=4"></script>
 <script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

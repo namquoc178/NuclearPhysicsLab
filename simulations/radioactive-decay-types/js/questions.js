@@ -86,6 +86,28 @@ QuickCheck.define({
         explanation: "X* → X + γ. Hạt nhân chuyển từ trạng thái kích thích xuống trạng thái có năng lượng thấp hơn. Phần năng lượng chênh lệch mang đi bởi photon γ; số proton và số neutron không đổi."
     },
 
+    "dt-kp-5": {
+        options: [
+            {
+                text: "Vì năng lượng phân rã Q ≈ 0,862 MeV nhỏ hơn 2mₑc² ≈ 1,022 MeV, không đủ để tạo ra positron.",
+                correct: true
+            },
+            {
+                text: "Vì Be-7 là hạt nhân bền.",
+                feedback: "Be-7 là hạt nhân phóng xạ, chu kì bán rã khoảng 53 ngày. Câu hỏi là vì sao nó chọn cách bắt electron."
+            },
+            {
+                text: "Vì Be-7 có quá nhiều neutron.",
+                feedback: "Be-7 có 4 proton và 3 neutron, tức là thừa proton. Hạt nhân thừa proton mới phân rã bằng β⁺ hoặc bắt electron."
+            },
+            {
+                text: "Vì bắt electron làm A giảm 1.",
+                feedback: "Bắt electron giữ nguyên A, giống β⁺. Em hãy xem bảng ΔA, ΔZ, ΔN."
+            }
+        ],
+        explanation: "β⁺ phải tạo ra một positron, cần Q lớn hơn 2mₑc² ≈ 1,022 MeV (tính theo khối lượng nguyên tử). Be-7 chỉ có Q ≈ 0,862 MeV nên chỉ bắt electron được. Na-22 có Q ≈ 2,843 MeV, vượt ngưỡng, nên chủ yếu phân rã β⁺."
+    },
+
     "bridge-explore": {
         options: [
             { text: "Phân rã β⁻", correct: true },

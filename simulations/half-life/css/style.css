@@ -512,6 +512,13 @@ tbody tr:nth-child(even) {
 }
 
 .legend-dot.alive { background: #2563eb; }
+
+.nuclei-scale-note {
+    margin: 8px 0 0;
+    color: var(--lab-text-2);
+    font-size: 14px;
+    line-height: 1.5;
+}
 .legend-dot.decayed { background: #d1d5db; border: 1px solid #b8c0ca; }
 
 .chart-note,

@@ -312,7 +312,7 @@ function populateDecayExamples() {
 
 
     const examples =
-        RADIOACTIVE_DECAY_EXAMPLES.filter(
+        getAllDecayExamples().filter(
             example =>
                 example.type ===
                 selectedType
@@ -527,10 +527,75 @@ function buildPhysicsExplanation(
             `;
 
 
+        case "electronCapture":
+
+            return buildElectronCaptureExplanation(
+                example
+            );
+
+
         default:
 
             return "";
     }
+}
+
+
+// ======================================================
+// BẮT ELECTRON: VÌ SAO KHÔNG PHÁT POSITRON?
+// ======================================================
+
+function buildElectronCaptureExplanation(
+    example
+) {
+
+    const threshold =
+        getBetaPlusThresholdKeV();
+
+    const allowed =
+        getAllowedProtonRichDecays(
+            example.qKeV
+        );
+
+    const naAllowed =
+        getAllowedProtonRichDecays(
+            NA22_Q_EC_KEV
+        );
+
+    const toMeV =
+        keV =>
+            formatVi(
+                keV / 1000,
+                3
+            );
+
+    return `
+        <p>
+            Hạt nhân bắt một electron của chính nguyên tử,
+            thường ở lớp K gần hạt nhân nhất.
+            Một proton kết hợp với electron đó thành neutron
+            và phát ra một neutrino.
+        </p>
+        <p class="physics-equation">
+            p + e<sup>−</sup> → n + ν<sub>e</sub>
+        </p>
+        <p>
+            Giống β⁺: <strong>A không đổi, Z giảm 1, N tăng 1</strong>.
+            Khác β⁺: không có positron bay ra; hạt nhân chỉ phát ra neutrino.
+            Chỗ trống ở lớp K sau đó được electron lớp ngoài lấp vào và phát ra tia X.
+        </p>
+        <p>
+            <strong>Vì sao ${example.parent.symbol}-${example.parent.A} không phân rã β⁺?</strong>
+            Năng lượng phân rã ${example.parent.symbol}-${example.parent.A} → ${example.daughter.symbol}-${example.daughter.A}
+            là Q = ${toMeV(example.qKeV)} MeV.
+            Phân rã β⁺ phải tạo ra positron và cần Q lớn hơn 2m<sub>e</sub>c² = ${toMeV(threshold)} MeV.
+            ${allowed.betaPlus
+                ? "Điều kiện này thỏa mãn, nên hạt nhân có thể phân rã theo cả hai cách."
+                : "Điều kiện này không thỏa mãn, nên hạt nhân chỉ có thể bắt electron."}
+            Để so sánh: Na-22 có Q = ${toMeV(NA22_Q_EC_KEV)} MeV
+            ${naAllowed.betaPlus ? "lớn hơn ngưỡng" : "nhỏ hơn ngưỡng"}, nên chủ yếu phân rã β⁺.
+        </p>
+    `;
 }
 
 

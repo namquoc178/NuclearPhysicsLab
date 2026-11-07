@@ -13,6 +13,7 @@ function getRequiredElement(id) {
 // ======================================================
 
 const inputN0 = getRequiredElement("inputN0");
+const nucleiScaleNote = getRequiredElement("nucleiScaleNote");
 const inputHalfLife = getRequiredElement("inputHalfLife");
 const inputDt = getRequiredElement("inputDt");
 
@@ -188,8 +189,8 @@ function validateInputs() {
         return false;
     }
 
-    if (currentN0 > 10000) {
-        alert("Phiên bản hiện tại giới hạn N₀ không quá 10000.");
+    if (currentN0 > MAX_N0) {
+        alert("N₀ tối đa là 10⁶ (một triệu) hạt.");
         return false;
     }
 
@@ -231,7 +232,34 @@ function updateDisplay() {
         `${lambda.toFixedVi(4)} s⁻¹`;
 }
 
+// 1000000 -> "1 000 000" (khoảng trắng hẹp, không dùng dấu chấm để khỏi
+// nhầm với dấu thập phân). Số dưới 10 000 giữ nguyên.
+function groupThousands(value) {
+    const text = String(value);
+    const [integer, decimals] = text.split(",");
+    if (Math.abs(parseInt(integer, 10)) < 10000) return text;
+    const grouped = integer.replace(/\B(?=(\d{3})+(?!\d))/g, "\u202F");
+    return decimals === undefined ? grouped : `${grouped},${decimals}`;
+}
+
+function mixNucleusColor(fraction) {
+    const alive = [37, 99, 235];
+    const decayed = [209, 213, 219];
+    const f = Math.max(0, Math.min(1, fraction));
+    const channel = (k) => Math.round(decayed[k] + (alive[k] - decayed[k]) * f);
+    return `rgb(${channel(0)}, ${channel(1)}, ${channel(2)})`;
+}
+
+function updateNucleiScaleNote() {
+    const perCell = getNucleiPerCell();
+    nucleiScaleNote.textContent = perCell > 1
+        ? `Có ${groupThousands(currentN0)} hạt nhân nhưng chỉ vẽ ${nuclei.length} chấm: mỗi chấm đại diện cho khoảng ${formatVi(perCell, perCell < 10 ? 1 : 0)} hạt. Chấm càng nhạt thì càng nhiều hạt trong chấm đã phân rã.`
+        : "Mỗi chấm là một hạt nhân: xanh là chưa phân rã, xám là đã phân rã.";
+}
+
 function drawNuclei() {
+    updateNucleiScaleNote();
+
     nucleiContext.clearRect(
         0,
         0,
@@ -296,10 +324,12 @@ function drawNuclei() {
             Math.PI * 2
         );
 
+        // Chấm đại diện cho nhiều hạt: màu pha giữa xanh (còn) và
+        // xám (đã phân rã) theo tỉ lệ số hạt còn lại trong chấm.
         nucleiContext.fillStyle =
-            nuclei[i] === 1
-                ? "#2563eb"
-                : "#d1d5db";
+            mixNucleusColor(
+                nuclei[i] / nucleiInitial[i]
+            );
 
         nucleiContext.fill();
     }
@@ -1109,13 +1139,6 @@ function simulateOneHalfLifeTrial(
             halfLife
         );
 
-    const localNuclei =
-        new Uint8Array(
-            N0
-        );
-
-    localNuclei.fill(1);
-
     let localTime = 0;
     let remaining = N0;
 
@@ -1140,26 +1163,11 @@ function simulateOneHalfLifeTrial(
                 stepDt
             );
 
-        remaining = 0;
-
-        for (
-            let i = 0;
-            i < localNuclei.length;
-            i++
-        ) {
-            if (
-                localNuclei[i] === 1
-            ) {
-                if (
-                    Math.random() <
-                    probability
-                ) {
-                    localNuclei[i] = 0;
-                } else {
-                    remaining++;
-                }
-            }
-        }
+        remaining -=
+            sampleBinomial(
+                remaining,
+                probability
+            );
 
         localTime +=
             stepDt;
@@ -1177,13 +1185,6 @@ function simulateDecayCurve(
         calculateLambda(
             halfLife
         );
-
-    const localNuclei =
-        new Uint8Array(
-            N0
-        );
-
-    localNuclei.fill(1);
 
     let time = 0;
     let remaining = N0;
@@ -1219,26 +1220,11 @@ function simulateDecayCurve(
                 stepDt
             );
 
-        remaining = 0;
-
-        for (
-            let i = 0;
-            i < localNuclei.length;
-            i++
-        ) {
-            if (
-                localNuclei[i] === 1
-            ) {
-                if (
-                    Math.random() <
-                    probability
-                ) {
-                    localNuclei[i] = 0;
-                } else {
-                    remaining++;
-                }
-            }
-        }
+        remaining -=
+            sampleBinomial(
+                remaining,
+                probability
+            );
 
         time +=
             stepDt;
@@ -1637,7 +1623,8 @@ function createExperiment3Chart(
     curve20,
     curve100,
     curve1000,
-    theoreticalCurve
+    theoreticalCurve,
+    curveMillion
 ) {
     if (
         experiment3Chart !== null
@@ -1709,6 +1696,19 @@ function createExperiment3Chart(
                             showLine:
                                 true
                         },
+
+                    {
+                        label:
+                            "N₀ = 1 000 000",
+                        data:
+                            curveMillion,
+                        borderWidth:
+                            2,
+                        pointRadius:
+                            0,
+                        showLine:
+                            true
+                    },
 
                         {
                             label:
@@ -1833,10 +1833,13 @@ function runExperiment3() {
     experiment3Results =
         [];
 
+    // N₀ = 10⁴ và 10⁶ chạy nhanh nhờ lấy mẫu nhị thức (sampleBinomial).
     const sampleSizes = [
         20,
         100,
-        1000
+        1000,
+        10000,
+        1000000
     ];
 
     const numberOfTrials =
@@ -1905,11 +1908,12 @@ function runExperiment3() {
             );
 
         row.innerHTML = `
-            <td>${N0}</td>
-            <td>${trialResults.join(", ")}</td>
-            <td>${average.toFixedVi(1)}</td>
-            <td>${theoreticalValue.toFixedVi(0)}</td>
-            <td>${relativeDeviation.toFixedVi(1)} %</td>
+            <td>${groupThousands(N0)}</td>
+            <td>${trialResults.map(groupThousands).join("; ")}</td>
+            <td>${groupThousands(average.toFixedVi(1))}</td>
+            <td>${groupThousands(theoreticalValue.toFixedVi(0))}</td>
+            <td>${relativeDeviation.toFixedVi(relativeDeviation < 1 ? 2 : 1)} %</td>
+            <td>${(100 * expectedMeanRelativeDeviationAtHalfLife(N0)).toFixedVi(N0 >= 10000 ? 2 : 1)} %</td>
         `;
 
         experiment3TableBody
@@ -1939,6 +1943,14 @@ function runExperiment3() {
             dt
         );
 
+    const curveMillion =
+        simulateDecayCurve(
+            1000000,
+            halfLife,
+            dt
+        );
+
+
     const theoreticalCurve =
         generateNormalizedTheoryCurve(
             halfLife
@@ -1951,15 +1963,18 @@ function runExperiment3() {
         curve20,
         curve100,
         curve1000,
-        theoreticalCurve
+        theoreticalCurve,
+        curveMillion
     );
 
     experiment3Status.textContent =
         "Hoàn thành";
 
     experiment3Message.textContent =
-        "Ba đường mô phỏng đều có dao động ngẫu nhiên. Khi N₀ tăng, mức dao động tương đối có xu hướng nhỏ hơn và đường N/N₀ thường bám sát đường lí thuyết hơn. " +
-        "Không nhất thiết mọi lần chạy riêng lẻ đều cho mức lệch giảm đều từ N₀ = 20 đến 1000; cần quan sát xu hướng thống kê qua nhiều lần lặp.";
+        "Tại t = T₁/₂, mỗi hạt còn lại với xác suất 1/2 một cách độc lập, nên số hạt còn lại dao động quanh N₀/2 với độ lệch chuẩn √N₀/2. " +
+        "So với giá trị lí thuyết N₀/2, độ lệch tương đối là 1/√N₀: N₀ tăng 100 lần thì độ lệch tương đối giảm 10 lần. " +
+        "Vì vậy với N₀ = 10⁶ đường mô phỏng gần như trùng đường lí thuyết, còn với N₀ = 20 nó dao động rõ. " +
+        "Cột “Dự kiến” tính √(2/π)/√N₀ ≈ 80 %/√N₀; vì mỗi dòng chỉ có 5 lần chạy, độ lệch đo được có thể khác giá trị này khá nhiều.";
 }
 
 // ======================================================
