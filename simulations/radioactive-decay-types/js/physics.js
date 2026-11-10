@@ -454,6 +454,13 @@ function getDecayEmissionNotationHtml(
             return "γ";
 
 
+        case "electronCapture":
+
+            return (
+                `ν<sub>e</sub>`
+            );
+
+
         default:
 
             return "?";
@@ -493,6 +500,18 @@ function buildDecayEquationHtml(
         getDecayEmissionNotationHtml(
             decayTypeId
         );
+
+
+    // Bắt electron: electron ở lớp vỏ đi VÀO phản ứng nên đứng ở vế trái.
+    if (
+        decayTypeId ===
+        "electronCapture"
+    ) {
+
+        return (
+            `${parentHtml} + e<sup>−</sup> → ${daughterHtml} + ${emissionHtml}`
+        );
+    }
 
 
     return (
@@ -601,5 +620,38 @@ function calculateDecayExampleProperties(
                 example.type
             )
 
+    };
+}
+
+// ======================================================
+// NGƯỠNG NĂNG LƯỢNG CỦA PHÂN RÃ β⁺
+//
+// Với khối lượng nguyên tử: Q(β⁺) = Q_EC − 2mₑc².
+// β⁺ chỉ xảy ra khi Q_EC > 2mₑc²; bắt electron chỉ cần Q_EC > 0
+// (bỏ qua năng lượng liên kết rất nhỏ của electron lớp K).
+// ======================================================
+
+function getBetaPlusThresholdKeV() {
+
+    return (
+        2 * NPL_CONSTANTS.ELECTRON_REST_ENERGY_MEV * 1000
+    );
+}
+
+
+function getAllowedProtonRichDecays(
+    qEcKeV
+) {
+
+    return {
+
+        electronCapture:
+            qEcKeV > 0,
+
+        betaPlus:
+            qEcKeV > getBetaPlusThresholdKeV(),
+
+        betaPlusQKeV:
+            qEcKeV - getBetaPlusThresholdKeV()
     };
 }

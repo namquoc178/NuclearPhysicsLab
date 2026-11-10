@@ -32,12 +32,13 @@ assets/shared/
   real-data.css, .js       Khung chung của phần đối chiếu dữ liệu thực
   quick-check.js           Câu hỏi có kiểm tra đáp án (chọn, nhập số, dự đoán)
   format.js                Dấu phẩy thập phân và kí hiệu hạt nhân xếp chồng
+  gamma-mu-data.js         Bảng μ/ρ của NIST cho chì, nhôm, nước, giấy (Bài 5 và 6)
   constants.js             Hằng số vật lí dùng chung (1 u·c², khối lượng neutron, ...)
   site.css                 Trang chủ
 assets/fonts/              Literata và Lab Sans (SIL OFL), xem README trong thư mục
 assets/vendor/chartjs/     Chart.js 4.4.1 (MIT), lưu kèm để không phụ thuộc CDN
 assets/images/             Hình minh họa và bản đồ hạt nhân
-tools/                     Công cụ dựng lại bản đồ hạt nhân và bảng NUBASE2020 của Bài 1
+tools/                     Công cụ tạo dữ liệu: bản đồ hạt nhân, NUBASE2020 (Bài 1), μ/ρ của NIST (Bài 5–6), hiệu suất phân hạch (Bài 7)
 tests/                     Kiểm thử vật lí và kiểm thử giao diện, xem tests/README.md
 ```
 
@@ -50,8 +51,12 @@ Trang không tải bất kì tệp nào từ máy chủ khác, nên vẫn chạy
 | Khối lượng nguyên tử | AME2020 (Wang và cộng sự, Chinese Physics C 45, 030003, 2021) |
 | Hằng số vật lí | CODATA 2018 và 2022 (NIST), ghi rõ trong `assets/shared/constants.js` |
 | Chu kì bán rã | NNDC, Brookhaven National Laboratory |
-| Hệ số suy giảm khối của tia γ | NIST, X-Ray Mass Attenuation Coefficients |
+| Hệ số suy giảm khối của tia γ theo năng lượng | NIST, X-Ray Mass Attenuation Coefficients (Hubbell & Seltzer); tạo bằng `tools/build-nist-gamma.py` |
+| Năng lượng vạch γ của nguồn (Am-241, Ba-133, Cs-137, Co-60) | IAEA, X-ray and gamma-ray decay data standards |
+| Năng lượng α và E_max của β | Tính từ độ dư khối lượng NUBASE2020 |
+| Tầm xa của α | Quy tắc Geiger và quy tắc Bragg–Kleeman |
 | Tầm xa của β | Công thức Katz–Penfold |
+| Hiệu suất mảnh phân hạch U-235 (neutron nhiệt) | ENDF/B-VIII.0, MF8/MT454 (Brown và cộng sự, Nuclear Data Sheets 148, 2018); tạo bằng `tools/build-fission-yields.py` |
 | Độ phổ cập đồng vị | CIAAW 2021; Bài 1 (dựng hạt nhân, Nhiệm vụ 3) dùng NUBASE2020 |
 | Danh mục hạt nhân đã quan sát, chu kì bán rã, kiểu phân rã (Bài 1) | NUBASE2020 (Kondev và cộng sự, Chinese Physics C 45, 030001, 2021); tạo bằng `tools/build-nubase-data.py` |
 | Động năng mảnh phân hạch U-235 | Yanez và cộng sự (2015), arXiv:1512.06731 |

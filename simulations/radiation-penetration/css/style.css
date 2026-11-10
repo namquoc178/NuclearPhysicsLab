@@ -664,3 +664,11 @@ button {
     }
 
 }
+
+/* Ghi chú dưới thanh trượt năng lượng */
+.control-hint {
+    margin: 6px 0 0;
+    color: var(--lab-muted);
+    font-size: 13px;
+    line-height: 1.45;
+}

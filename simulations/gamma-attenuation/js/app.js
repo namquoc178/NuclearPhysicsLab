@@ -27,6 +27,22 @@ function getRequiredElement(id) {
 // 1. GIAO DIỆN
 // ======================================================
 
+const sourceSelect =
+    getRequiredElement(
+        "sourceSelect"
+    );
+
+const energyInput =
+    getRequiredElement(
+        "energyInput"
+    );
+
+const energyDisplay =
+    getRequiredElement(
+        "energyDisplay"
+    );
+
+
 const materialSelect =
     getRequiredElement(
         "materialSelect"
@@ -618,8 +634,13 @@ function getMaterialLabel(
     if (
         material === "aluminum"
     ) {
-
         return "Nhôm";
+    }
+
+    if (
+        material === "water"
+    ) {
+        return "Nước";
     }
 
 
@@ -1178,6 +1199,27 @@ function buildAnimatedPhotons(
 }
 
 
+// Photon γ vẽ thành một bó sóng ngắn thay cho chấm tròn: tia γ là sóng
+// điện từ, không phải hạt có khối lượng. Màu lấy từ --lab-gamma.
+const PHOTON_COLOR =
+    getComputedStyle(document.documentElement).getPropertyValue("--lab-gamma").trim() || "#b45309";
+
+function drawPhotonWavePacket(context, x, y) {
+    const length = 24;
+    context.save();
+    context.strokeStyle = PHOTON_COLOR;
+    context.lineWidth = 2;
+    context.beginPath();
+    for (let dx = -length; dx <= 0; dx += 1) {
+        const envelope = Math.exp(-Math.pow((dx + length / 2) / (length / 3.2), 2));
+        const dy = 4.5 * envelope * Math.sin(2 * Math.PI * dx / 7);
+        if (dx === -length) context.moveTo(x + dx, y + dy);
+        else context.lineTo(x + dx, y + dy);
+    }
+    context.stroke();
+    context.restore();
+}
+
 function animatePhotonResults(
     results,
     onComplete
@@ -1259,23 +1301,11 @@ function animatePhotonResults(
                 progress;
 
 
-            simulationContext.beginPath();
-
-
-            simulationContext.arc(
+            drawPhotonWavePacket(
+                simulationContext,
                 x,
-                photon.y,
-                3.7,
-                0,
-                Math.PI * 2
+                photon.y
             );
-
-
-            simulationContext.fillStyle =
-                "#2563eb";
-
-
-            simulationContext.fill();
 
 
             if (
@@ -4352,10 +4382,57 @@ async function runValidation() {
 // 17. CHUYỂN CHẾ ĐỘ
 // ======================================================
 
+// ======================================================
+// NGUỒN γ VÀ NĂNG LƯỢNG PHOTON (chỉ đổi được ở chế độ Khám phá)
+// ======================================================
+
+function populateGammaSourceSelect() {
+    sourceSelect.innerHTML = "";
+    for (const source of GAMMA_SOURCES) {
+        const option = document.createElement("option");
+        option.value = source.id;
+        option.textContent = `${source.label} – ${formatGammaEnergyVi(source.energyMeV)}`;
+        sourceSelect.appendChild(option);
+    }
+    const custom = document.createElement("option");
+    custom.value = "custom";
+    custom.textContent = "Tự chọn năng lượng";
+    sourceSelect.appendChild(custom);
+    syncGammaSourceControls();
+}
+
+function syncGammaSourceControls() {
+    const energy = getGammaEnergy();
+    const match = GAMMA_SOURCES.find((source) => Math.abs(source.energyMeV - energy) < 1e-9);
+    sourceSelect.value = match ? match.id : "custom";
+    energyInput.value = String(energy);
+    energyDisplay.textContent = formatGammaEnergyVi(energy);
+}
+
+function onGammaEnergyChanged() {
+    stopGammaAnimation();
+    lastExperimentalPoint = null;
+    syncGammaSourceControls();
+    clearResults();
+    updateAdvancedInfo();
+    drawStaticScene();
+    createOrUpdateChart();
+}
+
+// Nhiệm vụ và kiểm chứng dùng Cs-137 để số liệu khớp với câu hỏi và giá trị tham chiếu.
+function setGammaSourceControlsForMode(mode) {
+    const explore = mode === "explore";
+    if (!explore) setGammaEnergy(DEFAULT_GAMMA_ENERGY_MEV);
+    sourceSelect.disabled = !explore;
+    energyInput.disabled = !explore;
+    syncGammaSourceControls();
+}
+
 function setMode(
     mode
 ) {
 
+    setGammaSourceControlsForMode(mode);
     stopGammaAnimation();
 
 
@@ -4500,9 +4577,25 @@ function setMode(
 // 18. EVENT LISTENER
 // ======================================================
 
+sourceSelect.addEventListener(
+    "change",
+    () => {
+        const source = GAMMA_SOURCES.find((item) => item.id === sourceSelect.value);
+        if (source) setGammaEnergy(source.energyMeV);
+        onGammaEnergyChanged();
+    }
+);
+
+energyInput.addEventListener(
+    "input",
+    () => {
+        setGammaEnergy(parseFloat(energyInput.value));
+        onGammaEnergyChanged();
+    }
+);
+
 materialSelect.addEventListener(
     "change",
-
     () => {
 
         stopGammaAnimation();
@@ -4665,3 +4758,5 @@ resetValidationDisplay();
 setMode(
     "explore"
 );
+
+populateGammaSourceSelect();

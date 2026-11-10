@@ -56,7 +56,7 @@ function stubDocument(returnNull) {
 function loadLesson(lesson, files, extraGlobals = {}) {
     const context = vm.createContext({ console, Math, Number, Array, Object, Error, Set, Map, JSON, String, ...extraGlobals });
     // Hằng số dùng chung được nạp trước, giống thứ tự <script> trong trang.
-    for (const name of ["format.js", "constants.js"]) {
+    for (const name of ["format.js", "constants.js", "gamma-mu-data.js"]) {
         const shared = path.join(ROOT, "assets", "shared", name);
         vm.runInContext(fs.readFileSync(shared, "utf8"), context, { filename: shared });
     }
@@ -107,6 +107,32 @@ function seededRandom(seed) {
         const d = run(`calculateDaughterNucleus(${JSON.stringify(ex.parent)}, ${JSON.stringify(ex.type)})`);
         check(`phân rã: hạt nhân con của ${ex.id}`, d.A === ex.daughter.A && d.Z === ex.daughter.Z);
     }
+}
+
+// ---------------------------------------------------------------------
+// 2b. Bắt electron (EC): ΔA = 0, ΔZ = −1; ngưỡng β⁺ là 2mₑc²
+// Q_EC tính lại từ độ dư khối lượng NUBASE2020 (keV) ghi trong decay-data.js.
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("radioactive-decay-types", ["decay-data.js", "physics.js"]);
+    const ec = run('getDecayTypeById("electronCapture")');
+    check("bắt electron: ΔA = 0, ΔZ = −1", ec.deltaA === 0 && ec.deltaZ === -1);
+    near("bắt electron: 2mₑc² (keV)", run("getBetaPlusThresholdKeV()"), 1021.998, 0.001);
+    near("bắt electron: Q của Be-7", run('getDecayExampleById("Be7-electronCapture").qKeV'), 15769.00 - 14907.105, 0.01);
+    near("bắt electron: Q của Fe-55", run('getDecayExampleById("Fe55-electronCapture").qKeV'), -57481.4 - (-57712.54), 0.01);
+    near("bắt electron: Q của Na-22", run("NA22_Q_EC_KEV"), -5181.39 - (-8024.716), 0.01);
+    for (const id of ["Be7-electronCapture", "Fe55-electronCapture"]) {
+        const allowed = run(`getAllowedProtonRichDecays(getDecayExampleById("${id}").qKeV)`);
+        check(`bắt electron: ${id} không thể β⁺`, allowed.electronCapture && !allowed.betaPlus);
+        const ex = run(`getDecayExampleById("${id}")`);
+        const d = run(`calculateDaughterNucleus(${JSON.stringify(ex.parent)}, "electronCapture")`);
+        check(`bắt electron: hạt nhân con của ${id}`, d.A === ex.daughter.A && d.Z === ex.daughter.Z && d.symbol === ex.daughter.symbol);
+    }
+    check("bắt electron: Na-22 đủ năng lượng cho β⁺", run("getAllowedProtonRichDecays(NA22_Q_EC_KEV).betaPlus"));
+    check("bắt electron: không lẫn vào ví dụ của các nhiệm vụ",
+        run('RADIOACTIVE_DECAY_EXAMPLES.every(e => e.type !== "electronCapture")'));
+    check("bắt electron: phương trình có e⁻ ở vế trái",
+        /\+ e<sup>−<\/sup> →/.test(run('buildDecayEquationHtml({A:7,Z:4,symbol:"Be"}, "electronCapture")')));
 }
 
 // ---------------------------------------------------------------------
@@ -240,7 +266,7 @@ function seededRandom(seed) {
     check("đâm xuyên: β bị chặn hoàn toàn bởi 5 mm nhôm", run(`calculateTransmissionFor("beta", "aluminum", 5)`) === 0);
     check("đâm xuyên: β còn đi qua 1 mm nhôm", run(`calculateTransmissionFor("beta", "aluminum", 1)`) > 0.1);
     // γ dùng cùng bộ μ với bài Suy giảm γ.
-    near("đâm xuyên: μγ(chì) = 0,126 mm⁻¹ (Cs-137)", run(`getEffectiveMu("gamma", "lead")`), 0.126, 1e-9);
+    near("đâm xuyên: μγ(chì) = 0,126 mm⁻¹ (Cs-137)", run(`getEffectiveMu("gamma", "lead")`), 0.126, 5e-4);
     // Chì phải chắn γ tốt hơn nhôm, nhôm tốt hơn giấy.
     const gPaper = run(`calculateTransmissionFor("gamma", "paper", 5)`);
     const gAl = run(`calculateTransmissionFor("gamma", "aluminum", 5)`);
@@ -249,6 +275,68 @@ function seededRandom(seed) {
     // Hàm mũ: truyền qua 2x bằng bình phương truyền qua x.
     near("đâm xuyên: γ tuân theo hàm mũ",
         run(`calculateTransmissionFor("gamma", "lead", 4)`), gPb ** (4 / 5), 1e-12);
+}
+
+// ---------------------------------------------------------------------
+// 7b. Đâm xuyên theo năng lượng
+// Giá trị tham chiếu:
+//  - Quy tắc Geiger: R_kk(5 MeV) = 0,318·5^1,5 ≈ 3,56 cm.
+//  - Katz–Penfold: R(2,28 MeV) ≈ 1,10 g/cm²; R(0,156 MeV) ≈ 0,028 g/cm².
+//  - E_max của β và động năng α: tính từ độ dư khối lượng NUBASE2020.
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("radiation-penetration", ["physics.js"]);
+    near("đâm xuyên: tầm xa α 5 MeV trong không khí (cm)", run("getAlphaRangeInAirCm(5)"), 3.556, 0.01);
+    near("đâm xuyên: tầm xa β 2,28 MeV (g/cm²)", run("getBetaRangeGPerCm2(2.28)"), 1.10, 0.01);
+    near("đâm xuyên: tầm xa β 0,156 MeV (g/cm²)", run("getBetaRangeGPerCm2(0.156)"), 0.0283, 0.0005);
+    const delta = { He4: 2424.91587, Am241: 52934.3, Np237: 44871.6, Po210: -15953.1, Pb206: -23785.5,
+        Ra226: 23667.6, Rn222: 16372.0, Po214: -4470.0, Pb210: -14728.4,
+        C14: 3019.893, N14: 2863.4168, Sr90: -85950.9, Y90: -86496.9, P32: -24304.88, S32: -26015.5371, Zr90: -88772.55 };
+    const alphaE = (parent, daughter, A, levelKeV = 0) =>
+        (delta[parent] - delta[daughter] - delta.He4 - levelKeV) * (A - 4) / A / 1000;
+    const sources = run("RADIATION_SOURCES");
+    const byId = (type, id) => sources[type].find((s) => s.id === id).energyMeV;
+    near("nguồn: α của Am-241 (MeV)", byId("alpha", "Am241"), alphaE("Am241", "Np237", 241, 59.5409), 0.002);
+    near("nguồn: α của Po-210 (MeV)", byId("alpha", "Po210"), alphaE("Po210", "Pb206", 210), 0.002);
+    near("nguồn: α của Ra-226 (MeV)", byId("alpha", "Ra226"), alphaE("Ra226", "Rn222", 226), 0.002);
+    near("nguồn: α của Po-214 (MeV)", byId("alpha", "Po214"), alphaE("Po214", "Pb210", 214), 0.002);
+    near("nguồn: E_max β của C-14 (MeV)", byId("beta", "C14"), (delta.C14 - delta.N14) / 1000, 0.001);
+    near("nguồn: E_max β của Sr-90 (MeV)", byId("beta", "Sr90"), (delta.Sr90 - delta.Y90) / 1000, 0.001);
+    near("nguồn: E_max β của P-32 (MeV)", byId("beta", "P32"), (delta.P32 - delta.S32) / 1000, 0.001);
+    near("nguồn: E_max β của Y-90 (MeV)", byId("beta", "Y90"), (delta.Y90 - delta.Zr90) / 1000, 0.001);
+    for (const type of ["alpha", "beta", "gamma"]) {
+        const range = run("RADIATION_ENERGY_RANGE")[type];
+        check(`nguồn: năng lượng các nguồn ${type} nằm trong miền thanh trượt`,
+            sources[type].every((s) => s.energyMeV >= range.min && s.energyMeV <= range.max));
+    }
+    // α 8 MeV vẫn bị 0,1 mm giấy chặn hết.
+    check("đâm xuyên: α 8 MeV bị chặn bởi 0,1 mm giấy", run('getAlphaRangeMm("paper", 8)') < 0.1);
+    // β năng lượng thấp (C-14) không qua nổi 0,1 mm nhôm.
+    check("đâm xuyên: β của C-14 bị 0,1 mm nhôm chặn hết", run('getBetaMaxRangeMm("aluminum", 0.156)') < 0.11 && run('getBetaMaxRangeMm("aluminum", 0.156)') > 0.1);
+    // γ: photon năng lượng thấp bị chặn mạnh hơn nhiều.
+    check("đâm xuyên: μγ(chì) giảm khi năng lượng tăng",
+        run('getEffectiveMu("gamma", "lead", 0.0595409) > getEffectiveMu("gamma", "lead", 0.661657) && getEffectiveMu("gamma", "lead", 0.661657) > getEffectiveMu("gamma", "lead", 1.25286)'));
+    run('setRadiationEnergy("gamma", 0.0595409)');
+    check("đâm xuyên: đổi năng lượng làm đổi μ", Math.abs(run('getEffectiveMu("gamma", "lead")') - 0.126) > 1);
+    run("useDefaultRadiationEnergies()");
+    near("đâm xuyên: trở về nguồn mặc định", run('getEffectiveMu("gamma", "lead")'), 0.1261, 2e-4);
+}
+
+// ---------------------------------------------------------------------
+// 7c. Bảng μ/ρ của NIST (assets/shared/gamma-mu-data.js)
+// Tại các điểm lưới, nội suy phải trả lại đúng giá trị trong bảng NIST.
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("gamma-attenuation", ["physics.js"]);
+    near("NIST: μ/ρ chì 0,6 MeV", run('getMassAttenuation("lead", 0.6)'), 0.1248, 1e-6);
+    near("NIST: μ/ρ nhôm 1 MeV", run('getMassAttenuation("aluminum", 1)'), 0.06146, 1e-6);
+    near("NIST: μ/ρ nước 1 MeV", run('getMassAttenuation("water", 1)'), 0.07072, 1e-6);
+    // Giấy (cellulose) theo quy tắc cộng: nằm giữa C và O, nhỏ hơn nước ở 1 MeV.
+    const paper1 = run('getMassAttenuation("paper", 1)');
+    check("NIST: μ/ρ cellulose 1 MeV nhỏ hơn nước", paper1 < 0.07072 && paper1 > 0.06);
+    // Bờ hấp thụ K của chì (88 keV): μ/ρ nhảy lên phía năng lượng cao.
+    check("NIST: bờ K của chì", run('getMassAttenuation("lead", 0.0881) > 3 * getMassAttenuation("lead", 0.0879)'));
+    near("NIST: μ chì ở 662 keV (mm⁻¹)", run('getGammaMu("lead", 0.661657)'), 0.1261, 2e-4);
 }
 
 // ---------------------------------------------------------------------
@@ -299,6 +387,66 @@ function seededRandom(seed) {
     const html = run('nuclideHtml(235, 92, "U")');
     check("kí hiệu hạt nhân: A và Z xếp chồng trước kí hiệu",
         /nuclide-a">235<\/span><span class="nuclide-z">92<\/span><\/span><span class="nuclide-symbol">U</.test(html));
+}
+
+// ---------------------------------------------------------------------
+// 4b. Bài 4: lấy mẫu nhị thức cho N₀ lớn
+// Trung bình và phương sai của sampleBinomial phải khớp n·p và n·p·(1 − p).
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("half-life", ["physics.js"]);
+    const sample = run("sampleBinomial");
+    const random = seededRandom(2024);
+    for (const [n, p] of [[1, 0.3], [400, 0.0069], [1000000, 0.5], [50, 0.9]]) {
+        const trials = n >= 1000000 ? 400 : 4000;
+        let sum = 0;
+        let sumSq = 0;
+        for (let i = 0; i < trials; i++) {
+            const k = sample(n, p, random);
+            sum += k;
+            sumSq += k * k;
+        }
+        const mean = sum / trials;
+        const variance = sumSq / trials - mean * mean;
+        const sigma = Math.sqrt(n * p * (1 - p));
+        near(`nhị thức: trung bình B(${n}; ${p})`, mean, n * p, 4 * sigma / Math.sqrt(trials) + 1e-9);
+        near(`nhị thức: phương sai B(${n}; ${p})`, variance, sigma * sigma, 0.15 * sigma * sigma + 1e-9);
+    }
+    check("nhị thức: n = 0 cho 0", sample(0, 0.5, random) === 0);
+    check("nhị thức: p = 1 cho n", sample(7, 1, random) === 7);
+    near("Bài 4: độ lệch dự kiến tại N₀ = 10⁶", run("expectedMeanRelativeDeviationAtHalfLife(1e6)"), Math.sqrt(2 / Math.PI) / 1000, 1e-15);
+
+    const sim = loadLesson("half-life", ["physics.js", "simulation.js"]);
+    sim("createNuclei(1000000)");
+    check("Bài 4: N₀ = 10⁶ vẽ 2500 chấm", sim("nuclei.length") === 2500);
+    check("Bài 4: tổng số hạt các chấm bằng N₀", sim("nucleiInitial.reduce((a, b) => a + b, 0)") === 1000000);
+    sim("createNuclei(1234)");
+    check("Bài 4: N₀ ≤ 2500 thì mỗi chấm một hạt", sim("nuclei.length === 1234 && nucleiInitial.every(c => c === 1)"));
+}
+
+// ---------------------------------------------------------------------
+// 7d. Bài 7: phân hạch ngẫu nhiên từ hiệu suất ENDF/B-VIII.0
+// ---------------------------------------------------------------------
+{
+    const run = loadLesson("nuclear-fission", ["fission-yield-data.js", "fission-yields.js"]);
+    near("phân hạch: tổng Y(A) = 2 mảnh mỗi phân hạch", run("FISSION_MASS_YIELD.reduce((s, r) => s + r[1], 0)"), 2, 0.001);
+    // Hai đỉnh của phân bố số khối: quanh A ≈ 95 và A ≈ 138.
+    const peakLight = run("FISSION_MASS_YIELD.filter(r => r[0] < 118).reduce((a, b) => b[1] > a[1] ? b : a)[0]");
+    const peakHeavy = run("FISSION_MASS_YIELD.filter(r => r[0] >= 118).reduce((a, b) => b[1] > a[1] ? b : a)[0]");
+    check("phân hạch: đỉnh nhẹ ở A = 89–102", peakLight >= 89 && peakLight <= 102, String(peakLight));
+    check("phân hạch: đỉnh nặng ở A = 130–145", peakHeavy >= 130 && peakHeavy <= 145, String(peakHeavy));
+    const random = seededRandom(7);
+    const events = [];
+    for (let i = 0; i < 3000; i++) events.push(run("sampleFissionEvent")(random));
+    check("phân hạch: mỗi sự kiện bảo toàn Z", events.every((e) => e.light.Z + e.heavy.Z === 92));
+    check("phân hạch: mỗi sự kiện bảo toàn A", events.every((e) => e.light.A + e.heavy.A + e.neutrons === 236));
+    const meanQ = events.reduce((s, e) => s + e.qMeV, 0) / events.length;
+    check("phân hạch: Q trung bình 170–190 MeV", meanQ > 170 && meanQ < 190, String(meanQ));
+    const meanNu = events.reduce((s, e) => s + e.neutrons, 0) / events.length;
+    check("phân hạch: số neutron trung bình 2–3", meanNu > 2 && meanNu < 3, String(meanNu));
+    // Q của kênh Ba-141 + Kr-92 + 3n tính từ NUBASE2020 khớp với Q của bài (AME2020).
+    const qBaKr = run(`calculateFissionQMeV(FISSION_FRAGMENTS.find(r => r[0] === 36 && r[1] === 92), FISSION_FRAGMENTS.find(r => r[0] === 56 && r[1] === 141), 3)`);
+    near("phân hạch: Q(Ba-141 + Kr-92 + 3n) (MeV)", qBaKr, 173.3, 0.2);
 }
 
 // ---------------------------------------------------------------------

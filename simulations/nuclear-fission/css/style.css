@@ -2287,3 +2287,98 @@ button {
     }
 
 }
+
+
+/* =====================================================
+   PHÂN HẠCH NGẪU NHIÊN (chế độ Khám phá)
+===================================================== */
+
+.fission-yield-section {
+    margin-top: 22px;
+    padding: 20px;
+    border: 1px solid var(--lab-rule);
+    border-radius: var(--lab-radius);
+    background: var(--lab-surface);
+}
+
+.fission-yield-section h3 {
+    margin-top: 0;
+}
+
+.fission-yield-section > p {
+    max-width: 75ch;
+}
+
+.fission-yield-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.fission-yield-buttons button {
+    min-height: 42px;
+    padding: 9px 16px;
+    border: 1px solid var(--lab-ink);
+    border-radius: 7px;
+    color: #fff;
+    background: var(--lab-ink);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.fission-yield-buttons #fissionYieldReset {
+    border-color: var(--lab-rule-strong);
+    color: var(--lab-ink);
+    background: var(--lab-surface);
+}
+
+.fission-yield-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.fission-yield-stats div {
+    padding: 10px 14px;
+    border: 1px solid var(--lab-rule);
+    border-radius: var(--lab-radius-sm);
+    background: var(--lab-surface-2);
+}
+
+.fission-yield-stats span {
+    display: block;
+    color: var(--lab-muted);
+    font-size: 13px;
+}
+
+.fission-yield-stats strong {
+    font-size: 20px;
+    font-variant-numeric: tabular-nums;
+}
+
+.fission-yield-chart {
+    position: relative;
+    height: 340px;
+}
+
+.fission-yield-events {
+    padding-left: 22px;
+}
+
+.fission-yield-events li {
+    margin: 6px 0;
+    font-size: 17px;
+}
+
+.fission-event-q {
+    margin-left: 10px;
+    color: var(--lab-text-2);
+    font-size: 14px;
+}
+
+.fission-yield-note {
+    color: var(--lab-muted);
+    font-size: 14px;
+}

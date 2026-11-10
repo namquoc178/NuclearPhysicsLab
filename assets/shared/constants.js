@@ -16,5 +16,8 @@ const NPL_CONSTANTS = Object.freeze({
     NEUTRON_MASS_U: 1.00866491606,
 
     // Khối lượng nguyên tử hydrogen-1 (u), AME2020.
-    HYDROGEN_ATOM_MASS_U: 1.00782503223
+    HYDROGEN_ATOM_MASS_U: 1.00782503223,
+
+    // Năng lượng nghỉ của electron mₑc² (MeV), CODATA 2022.
+    ELECTRON_REST_ENERGY_MEV: 0.51099895069
 });
