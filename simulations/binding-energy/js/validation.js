@@ -166,7 +166,7 @@ if (
 ) {
 
     throw new Error(
-        "Thiếu một hoặc nhiều phần tử HTML của chế độ Kiểm chứng Bài 8."
+        "Thiếu một hoặc nhiều phần tử HTML của chế độ Kiểm chứng Bài 2."
     );
 }
 
