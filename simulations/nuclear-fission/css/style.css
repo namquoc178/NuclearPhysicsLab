@@ -2382,3 +2382,47 @@ button {
     color: var(--lab-muted);
     font-size: 14px;
 }
+
+/* Nhiệm vụ 4: phân bố số khối của mảnh phân hạch */
+.task4-model-note {
+    max-width: 75ch;
+    color: var(--lab-muted);
+    font-size: 14px;
+}
+
+.task4-chart-caption {
+    margin: 18px 0 6px;
+    color: var(--lab-muted);
+    font-size: 14px;
+}
+
+.task4-question-label {
+    margin: 0;
+    font-weight: 700;
+}
+
+.task4-peak-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+}
+
+.task4-peak-inputs label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+
+.task4-peak-inputs input {
+    width: 5.5em;
+    padding: 8px 10px;
+    border: 1px solid var(--lab-rule-strong);
+    border-radius: 7px;
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+}
+
+#task4Card .quick-check {
+    margin-top: 14px;
+}

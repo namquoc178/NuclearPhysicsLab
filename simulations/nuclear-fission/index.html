@@ -9,7 +9,7 @@
     </title>
 <link href="data:," rel="icon"/>
 <link href="../../assets/shared/tokens.css?v=2" rel="stylesheet"/>
-<link href="css/style.css?v=9" rel="stylesheet"/>
+<link href="css/style.css?v=10" rel="stylesheet"/>
 <link href="../../assets/shared/lesson-ui.css?v=6" rel="stylesheet"/>
 <link href="../../assets/shared/real-data.css?v=5" rel="stylesheet"/></head>
 <body class="lesson-ui">
@@ -104,12 +104,21 @@
                 Điều khiển
             </h2>
 <div class="control-group">
-<label>
+<label for="fissionChannelSelect">
                     Kênh phân hạch
                 </label>
-<select disabled="" id="fissionChannelSelect">
-<option value="U235-Ba141-Kr92-3n">
-                        U-235 → Ba-141 + Kr-92 + 3n
+<select id="fissionChannelSelect">
+<option selected="" value="U235-Ba141-Kr92-3n">
+                        Ba-141 + Kr-92 + 3n
+                    </option>
+<option value="U235-Xe140-Sr94-2n">
+                        Xe-140 + Sr-94 + 2n
+                    </option>
+<option value="U235-Cs144-Rb89-3n">
+                        Cs-144 + Rb-89 + 3n
+                    </option>
+<option value="random">
+                        Ngẫu nhiên (theo hiệu suất mảnh phân hạch)
                     </option>
 </select>
 </div>
@@ -145,9 +154,10 @@
                     Lưu ý
                 </strong>
 <p>
-                    Đây là một kênh phân hạch đại diện.
-                    U-235 có thể phân hạch theo nhiều kênh
-                    với các mảnh và năng lượng khác nhau.
+                    Ba kênh đầu là kênh minh họa cố định.
+                    Chọn &ldquo;Ngẫu nhiên&rdquo; để mỗi lần chạy, U-235
+                    vỡ thành một cặp mảnh khác nhau, theo đúng
+                    tỉ lệ xuất hiện đo được của các mảnh.
                 </p>
 </div>
 </aside>
@@ -209,7 +219,7 @@
 <h2>
             Kênh phân hạch đang minh họa
         </h2>
-<div class="reaction-equation">
+<div class="reaction-equation" id="reactionEquation">
 <span>
 <span class="nuclide" role="img" aria-label="U-235, Z = 92"><span class="nuclide-az"><span class="nuclide-a">235</span><span class="nuclide-z">92</span></span><span class="nuclide-symbol">U</span></span>
             </span>
@@ -238,7 +248,7 @@
                 3<span class="nuclide" role="img" aria-label="n-1, Z = 0"><span class="nuclide-az"><span class="nuclide-a">1</span><span class="nuclide-z">0</span></span><span class="nuclide-symbol">n</span></span>
             </span>
 </div>
-<p class="reaction-note">
+<p class="reaction-note" id="reactionNote">
             Đây là một kênh minh họa,
             không phải sản phẩm duy nhất của phân hạch U-235.
         </p>
@@ -1199,6 +1209,160 @@ Sau 10 000 phân hạch, đồ thị số khối của các mảnh có dạng n�
 </div>
 </div>
 </div>
+<div class="experiment-task" id="task4Card">
+<h3>
+        Nhiệm vụ 4:
+        Phân bố số khối của mảnh phân hạch
+    </h3>
+<p>
+        Ba kênh ở Nhiệm vụ 3 chỉ là ví dụ. Trong thực tế, mỗi lần
+        <sup>236</sup>U* vỡ ra một cặp mảnh khác nhau và không thể biết
+        trước cặp nào. Em sẽ cho chương trình thực hiện nhiều phân hạch
+        rồi đọc quy luật từ số liệu thu được.
+    </p>
+<p class="task4-model-note">
+        Mỗi phân hạch được rút ngẫu nhiên theo hiệu suất mảnh phân hạch độc lập
+        của U-235 với neutron nhiệt (thư viện ENDF/B-VIII.0); Q tính từ khối
+        lượng AME2020. Số liệu trong bảng là kết quả mô phỏng, không phải số đo.
+    </p>
+<h4>
+        Bước 1. Dự đoán
+    </h4>
+<div class="quick-check" data-check="fi-tn4-du-doan">
+<p class="qc-prompt">
+            Trước khi chạy, em dự đoán: khi <sup>236</sup>U* vỡ đôi,
+            hai mảnh thường có số khối như thế nào?
+        </p>
+</div>
+<h4>
+        Bước 2. Đo
+    </h4>
+<p>
+        Mỗi nút thực hiện một loạt phân hạch mới và ghi kết quả
+        thành một dòng trong bảng. Em hãy chạy lần lượt cả ba loạt.
+    </p>
+<div class="task-button-group">
+<button data-task4-runs="10" type="button">
+            Chạy 10 phân hạch
+        </button>
+<button data-task4-runs="100" type="button">
+            Chạy 100 phân hạch
+        </button>
+<button data-task4-runs="10000" type="button">
+            Chạy 10 000 phân hạch
+        </button>
+<button id="resetTask4Button" type="button">
+            Đặt lại
+        </button>
+</div>
+<p class="task-status-line">
+<strong>
+            Trạng thái:
+        </strong>
+<span id="task4Status">
+            Chưa thực hiện
+        </span>
+</p>
+<div class="task3-table-wrapper">
+<table>
+<thead>
+<tr>
+<th>
+                    Số phân hạch
+                </th>
+<th>
+                    Đỉnh nhẹ (A)
+                </th>
+<th>
+                    Đỉnh nặng (A)
+                </th>
+<th>
+                    A = 90–100 (%)
+                </th>
+<th>
+                    A = 112–122 (%)
+                </th>
+<th>
+                    Q trung bình (MeV)
+                </th>
+<th>
+                    Số n trung bình
+                </th>
+</tr>
+</thead>
+<tbody id="task4TableBody">
+<tr class="task4-empty-row">
+<td colspan="7">
+                    Chưa có số liệu. Em hãy bấm một trong ba nút chạy ở trên.
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<p class="task4-model-note">
+        Đỉnh nhẹ, đỉnh nặng: số khối gặp nhiều nhất ở mỗi phía (A ≤ 117 và A ≥ 118).
+        Hai cột phần trăm: tỉ lệ số mảnh có số khối trong vùng ghi ở đầu cột.
+    </p>
+<p class="task4-chart-caption" id="task4ChartCaption">
+        Đồ thị: phân bố số khối của loạt gần nhất (cột) và hiệu suất
+        ENDF/B-VIII.0 (đường).
+    </p>
+<div class="fission-yield-chart">
+<canvas aria-describedby="task4ChartCaption" id="task4Chart" role="img"></canvas>
+</div>
+<h4>
+        Bước 3. Phân tích
+    </h4>
+<div class="task3-question-card">
+<p class="task4-question-label">
+            1. Từ loạt 10 000 phân hạch, em hãy đọc số khối A ứng với
+            đỉnh cao nhất ở mỗi phía của đồ thị.
+        </p>
+<div class="task4-peak-inputs">
+<label for="task4LightPeakInput">
+                Đỉnh mảnh nhẹ: A ≈
+                <input autocomplete="off" id="task4LightPeakInput" inputmode="numeric" type="text"/>
+</label>
+<label for="task4HeavyPeakInput">
+                Đỉnh mảnh nặng: A ≈
+                <input autocomplete="off" id="task4HeavyPeakInput" inputmode="numeric" type="text"/>
+</label>
+</div>
+<span class="answer-feedback" id="task4PeakFeedback">
+</span>
+<div class="task-button-group">
+<button id="checkTask4Button" type="button">
+                Kiểm tra số đọc
+            </button>
+</div>
+</div>
+<div class="quick-check" data-check="fi-tn4-1">
+<p class="qc-prompt">
+            2. Vì sao loạt 10 phân hạch chưa cho thấy rõ hai đỉnh,
+            còn loạt 10 000 phân hạch thì cho thấy?
+        </p>
+</div>
+<div class="quick-check" data-check="fi-tn4-2">
+<p class="qc-prompt">
+            3. So sánh cột “A = 90–100” với cột “A = 112–122”
+            của loạt 10 000 phân hạch. Em rút ra điều gì về
+            phân hạch đối xứng (hai mảnh gần bằng nhau)?
+        </p>
+</div>
+<div class="quick-check" data-check="fi-tn4-3">
+<p class="qc-prompt">
+            4. Vì sao Q của từng phân hạch không giống nhau,
+            nhưng Q trung bình của loạt 10 000 phân hạch lại khá ổn định?
+        </p>
+</div>
+<div class="task-conclusion" hidden="" id="task4ConclusionBox">
+<h4>
+            Kết luận
+        </h4>
+<p id="task4Conclusion">
+</p>
+</div>
+</div>
 <div class="experiment-task chain-reaction-task" id="chainReactionCard">
 <h3>
         Mô phỏng mở rộng:
@@ -1763,15 +1927,16 @@ Sau 10 000 phân hạch, đồ thị số khối của các mảnh có dạng n�
 <script src="js/fission-data.js?v=9"></script>
 <script src="js/physics.js?v=6"></script>
 <script src="js/simulation.js?v=6"></script>
-<script src="js/app.js?v=9"></script>
+<script src="js/app.js?v=10"></script>
 <script src="js/task3.js?v=9"></script>
 <script src="js/chain-reaction.js?v=10"></script>
 <script src="js/validation.js?v=11"></script>
 <script src="js/fission-yield-data.js?v=3"></script>
-<script src="js/fission-yields.js?v=3"></script>
+<script src="js/fission-yields.js?v=4"></script>
+<script src="js/task4.js?v=2"></script>
 <script src="../../assets/shared/real-data.js?v=3"></script>
 <script src="js/real-data.js?v=2"></script>
 <script src="../../assets/shared/quick-check.js?v=2"></script>
-<script src="js/questions.js?v=4"></script>
+<script src="js/questions.js?v=5"></script>
 <script src="../../assets/shared/lesson-ui.js?v=6"></script></body>
 </html>

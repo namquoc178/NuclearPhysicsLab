@@ -430,7 +430,7 @@ function seededRandom(seed) {
 {
     const run = loadLesson("nuclear-fission", ["fission-yield-data.js", "fission-yields.js"]);
     near("phân hạch: tổng Y(A) = 2 mảnh mỗi phân hạch", run("FISSION_MASS_YIELD.reduce((s, r) => s + r[1], 0)"), 2, 0.001);
-    // Hai đỉnh của phân bố số khối: quanh A ≈ 95 và A ≈ 138.
+    // Hai đỉnh của phân bố số khối: A = 94 và A = 134 theo ENDF/B-VIII.0.
     const peakLight = run("FISSION_MASS_YIELD.filter(r => r[0] < 118).reduce((a, b) => b[1] > a[1] ? b : a)[0]");
     const peakHeavy = run("FISSION_MASS_YIELD.filter(r => r[0] >= 118).reduce((a, b) => b[1] > a[1] ? b : a)[0]");
     check("phân hạch: đỉnh nhẹ ở A = 89–102", peakLight >= 89 && peakLight <= 102, String(peakLight));
@@ -447,6 +447,28 @@ function seededRandom(seed) {
     // Q của kênh Ba-141 + Kr-92 + 3n tính từ NUBASE2020 khớp với Q của bài (AME2020).
     const qBaKr = run(`calculateFissionQMeV(FISSION_FRAGMENTS.find(r => r[0] === 36 && r[1] === 92), FISSION_FRAGMENTS.find(r => r[0] === 56 && r[1] === 141), 3)`);
     near("phân hạch: Q(Ba-141 + Kr-92 + 3n) (MeV)", qBaKr, 173.3, 0.2);
+
+    // Nhiệm vụ 4: tóm tắt một loạt phân hạch và khoảng chấp nhận vị trí đỉnh.
+    const summarize = run("summarizeFissionRun");
+    const big = summarize(events);
+    check("nhiệm vụ 4: đếm đủ 2 mảnh mỗi phân hạch",
+        [...big.counts.values()].reduce((s, n) => s + n, 0) === 2 * events.length);
+    near("nhiệm vụ 4: Q trung bình khớp phép tính trực tiếp (MeV)", big.meanQMeV, meanQ, 1e-9);
+    near("nhiệm vụ 4: số neutron trung bình khớp phép tính trực tiếp", big.meanNeutrons, meanNu, 1e-9);
+    const lightRange = run("fissionPeakRange('light')");
+    const heavyRange = run("fissionPeakRange('heavy')");
+    check("nhiệm vụ 4: khoảng đỉnh nhẹ chứa A = 94", lightRange[0] <= 94 && lightRange[1] >= 94, String(lightRange));
+    check("nhiệm vụ 4: khoảng đỉnh nặng chứa A = 134", heavyRange[0] <= 134 && heavyRange[1] >= 134, String(heavyRange));
+    check("nhiệm vụ 4: khoảng đỉnh không chứa vùng giữa A = 112–122",
+        lightRange[1] < 112 && heavyRange[0] > 122, `${lightRange} / ${heavyRange}`);
+    check("nhiệm vụ 4: đỉnh mô phỏng (3000 phân hạch) nằm trong khoảng chấp nhận",
+        big.lightPeakA >= lightRange[0] && big.lightPeakA <= lightRange[1] &&
+        big.heavyPeakA >= heavyRange[0] && big.heavyPeakA <= heavyRange[1], `${big.lightPeakA}, ${big.heavyPeakA}`);
+    // Vùng A = 90–100 chiếm khoảng 34 % số mảnh, vùng A = 112–122 dưới 0,5 % (ENDF: 33,8 % và 0,07 %).
+    check("nhiệm vụ 4: vùng A = 90–100 chiếm 30–38 % số mảnh", big.peakWindowPercent > 30 && big.peakWindowPercent < 38, String(big.peakWindowPercent));
+    check("nhiệm vụ 4: vùng A = 112–122 chiếm dưới 0,5 % số mảnh", big.valleyWindowPercent < 0.5, String(big.valleyWindowPercent));
+    const none = summarize([]);
+    check("nhiệm vụ 4: loạt rỗng không gây lỗi", none.events === 0 && none.meanQMeV === null && none.lightPeakA === null);
 }
 
 // ---------------------------------------------------------------------
