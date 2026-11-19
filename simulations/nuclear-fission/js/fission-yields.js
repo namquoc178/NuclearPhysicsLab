@@ -58,6 +58,60 @@ function sampleFissionEvent(random) {
     throw new Error("Không chọn được cặp mảnh phân hạch.");
 }
 
+// ---------------- Nhiệm vụ 4: tóm tắt một loạt phân hạch ----------------
+// Mảnh nhẹ: A ≤ 117; mảnh nặng: A ≥ 118 (hai nửa quanh 236/2).
+// Vùng đỉnh nhẹ A = 90–100 và vùng giữa A = 112–122 (hai mảnh gần bằng nhau)
+// dùng để so sánh mức độ thường gặp của phân hạch không đối xứng và đối xứng.
+
+const FISSION_PEAK_WINDOW = [90, 100];
+const FISSION_VALLEY_WINDOW = [112, 122];
+
+function summarizeFissionRun(events) {
+    const counts = new Map();
+    let sumQ = 0;
+    let sumNu = 0;
+    for (const event of events) {
+        for (const fragment of [event.light, event.heavy]) {
+            counts.set(fragment.A, (counts.get(fragment.A) || 0) + 1);
+        }
+        sumQ += event.qMeV;
+        sumNu += event.neutrons;
+    }
+    const fragments = 2 * events.length;
+    const share = ([low, high]) => {
+        let n = 0;
+        counts.forEach((count, A) => { if (A >= low && A <= high) n += count; });
+        return fragments ? 100 * n / fragments : 0;
+    };
+    const peakOf = (inHalf) => {
+        let best = null;
+        counts.forEach((count, A) => {
+            if (inHalf(A) && (best === null || count > counts.get(best) || (count === counts.get(best) && A < best))) best = A;
+        });
+        return best;
+    };
+    return {
+        events: events.length,
+        counts,
+        lightPeakA: peakOf((A) => A <= FISSION_LIGHT_MAX_A),
+        heavyPeakA: peakOf((A) => A > FISSION_LIGHT_MAX_A),
+        peakWindowPercent: share(FISSION_PEAK_WINDOW),
+        valleyWindowPercent: share(FISSION_VALLEY_WINDOW),
+        meanQMeV: events.length ? sumQ / events.length : null,
+        meanNeutrons: events.length ? sumNu / events.length : null
+    };
+}
+
+// Khoảng số khối có hiệu suất Y(A) ≥ fraction × đỉnh của nửa nhẹ hoặc nửa nặng,
+// theo ENDF/B-VIII.0. Dùng làm khoảng chấp nhận khi học sinh đọc vị trí đỉnh.
+function fissionPeakRange(side, fraction) {
+    const keep = fraction === undefined ? 0.8 : fraction;
+    const half = FISSION_MASS_YIELD.filter(([A]) => (side === "light" ? A <= FISSION_LIGHT_MAX_A : A > FISSION_LIGHT_MAX_A));
+    const top = Math.max(...half.map(([, y]) => y));
+    const inside = half.filter(([, y]) => y >= keep * top).map(([A]) => A);
+    return [Math.min(...inside), Math.max(...inside)];
+}
+
 
 // ---------------- Giao diện ----------------
 

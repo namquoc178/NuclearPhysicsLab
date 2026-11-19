@@ -479,6 +479,152 @@ const currentFissionProperties =
 
 
 // ======================================================
+// KÊNH ĐANG MINH HỌA Ở CHẾ ĐỘ KHÁM PHÁ
+// ======================================================
+// Nhiệm vụ 1 và 2 luôn dùng kênh Ba-141 + Kr-92 + 3n (currentFissionChannel).
+// Hình động ở chế độ Khám phá dùng một trong ba kênh minh họa, hoặc một cặp
+// mảnh chọn ngẫu nhiên theo hiệu suất ENDF/B-VIII.0 (sampleFissionEvent trong
+// js/fission-yields.js; Q tính từ độ dư khối lượng NUBASE2020).
+
+const RANDOM_CHANNEL_VALUE =
+    "random";
+
+
+function describeFixedChannel(
+    channel
+) {
+    // fragments[0] là mảnh nặng, fragments[1] là mảnh nhẹ.
+    const heavy =
+        getFissionNuclideById(
+            channel.fragments[0]
+        );
+
+    const light =
+        getFissionNuclideById(
+            channel.fragments[1]
+        );
+
+    return {
+        random: false,
+        heavy: { symbol: heavy.symbol, A: heavy.A, Z: heavy.Z },
+        light: { symbol: light.symbol, A: light.A, Z: light.Z },
+        neutrons: channel.emittedNeutrons,
+        properties: calculateFissionChannelProperties(channel)
+    };
+}
+
+
+function describeRandomFissionEvent(
+    event
+) {
+    const symbolOf = (Z) => FISSION_SYMBOLS[Z] || `Z${Z}`;
+    const finalA = event.light.A + event.heavy.A + event.neutrons;
+    const finalZ = event.light.Z + event.heavy.Z;
+
+    return {
+        random: true,
+        heavy: { symbol: symbolOf(event.heavy.Z), A: event.heavy.A, Z: event.heavy.Z },
+        light: { symbol: symbolOf(event.light.Z), A: event.light.A, Z: event.light.Z },
+        neutrons: event.neutrons,
+        properties: {
+            initialA: 236,
+            finalA,
+            initialZ: 92,
+            finalZ,
+            massNumberConserved: finalA === 236,
+            atomicNumberConserved: finalZ === 92,
+            massDifferenceU: event.qMeV / U_TO_MEV,
+            qValueMeV: event.qMeV
+        }
+    };
+}
+
+
+let animationChannel =
+    describeFixedChannel(
+        currentFissionChannel
+    );
+
+
+// Ở chế độ ngẫu nhiên, mỗi lần chạy hình động từ đầu sẽ chọn cặp mảnh mới.
+let animationChannelUsed =
+    false;
+
+
+function isRandomChannelMode() {
+    return fissionChannelSelect.value === RANDOM_CHANNEL_VALUE;
+}
+
+
+function fragmentLabel(
+    fragment
+) {
+    return `${fragment.symbol}-${fragment.A}`;
+}
+
+
+// Bán kính vẽ tỉ lệ với A^(1/3), như bán kính hạt nhân R ≈ r₀·A^(1/3).
+function fragmentRadius(
+    fragment
+) {
+    return Math.round(13 * Math.cbrt(fragment.A));
+}
+
+
+function neutronCountText(
+    count
+) {
+    return `${count} neutron`;
+}
+
+
+function renderReactionEquation() {
+    const equation =
+        document.getElementById("reactionEquation");
+
+    const note =
+        document.getElementById("reactionNote");
+
+    if (!equation || typeof nuclideHtml !== "function") return;
+
+    const channel = animationChannel;
+    const parts = [
+        nuclideHtml(235, 92, "U"), "+", nuclideHtml(1, 0, "n"), "→",
+        nuclideHtml(channel.heavy.A, channel.heavy.Z, channel.heavy.symbol), "+",
+        nuclideHtml(channel.light.A, channel.light.Z, channel.light.symbol)
+    ];
+
+    if (channel.neutrons > 0) {
+        parts.push("+", `${channel.neutrons > 1 ? channel.neutrons : ""}${nuclideHtml(1, 0, "n")}`);
+    }
+
+    equation.innerHTML = parts.map((part) => `<span>${part}</span>`).join("");
+
+    if (note) {
+        note.textContent = channel.random
+            ? "Cặp mảnh này được chọn ngẫu nhiên theo hiệu suất mảnh phân hạch ENDF/B-VIII.0; "
+              + "Q tính từ độ dư khối lượng NUBASE2020. Bấm “Bắt đầu” lần nữa để xem một lần phân hạch khác."
+            : "Đây là một kênh minh họa, không phải sản phẩm duy nhất của phân hạch U-235.";
+    }
+}
+
+
+function chooseAnimationChannel() {
+    if (isRandomChannelMode()) {
+        animationChannel = describeRandomFissionEvent(sampleFissionEvent());
+    } else {
+        const channel =
+            getFissionChannelById(fissionChannelSelect.value) || currentFissionChannel;
+
+        animationChannel = describeFixedChannel(channel);
+    }
+
+    animationChannelUsed = false;
+    renderReactionEquation();
+}
+
+
+// ======================================================
 // MÔ TẢ GIAI ĐOẠN
 // ======================================================
 
@@ -496,6 +642,18 @@ const STAGE_DESCRIPTIONS =
 
     "Ba neutron thứ cấp được phát ra cùng với hai mảnh phân hạch."
 ];
+
+
+function stageDescriptionText(
+    stage
+) {
+    if (stage === 5) {
+        return animationChannel.neutrons > 0
+            ? `${neutronCountText(animationChannel.neutrons)} thứ cấp được phát ra cùng với hai mảnh phân hạch.`
+            : "Hai mảnh phân hạch bay ra; lần này không có neutron tức thời nào.";
+    }
+    return STAGE_DESCRIPTIONS[stage];
+}
 
 
 // ======================================================
@@ -564,9 +722,9 @@ function updateStageIndicator(
 
 
     stageDescription.textContent =
-        STAGE_DESCRIPTIONS[
+        stageDescriptionText(
             stage
-        ];
+        );
 }
 
 
@@ -1099,21 +1257,26 @@ function drawStage4(
         separation;
 
 
+    const heavyRadius =
+        fragmentRadius(animationChannel.heavy);
+
+    const lightRadius =
+        fragmentRadius(animationChannel.light);
+
     drawNucleusCircle(
         leftX,
         centerY,
-        68,
+        heavyRadius,
         "#fee2e2",
-        "Ba-141"
+        fragmentLabel(animationChannel.heavy)
     );
-
 
     drawNucleusCircle(
         rightX,
         centerY,
-        58,
+        lightRadius,
         "#dcfce7",
-        "Kr-92"
+        fragmentLabel(animationChannel.light)
     );
 
 
@@ -1134,13 +1297,12 @@ function drawStage4(
 
 
         ctx.moveTo(
-            leftX + 65,
+            leftX + heavyRadius - 3,
             centerY
         );
 
-
         ctx.lineTo(
-            rightX - 55,
+            rightX - lightRadius + 3,
             centerY
         );
 
@@ -1180,9 +1342,9 @@ function drawStage5(
         270 -
         fragmentTravel,
         centerY,
-        68,
+        fragmentRadius(animationChannel.heavy),
         "#fee2e2",
-        "Ba-141"
+        fragmentLabel(animationChannel.heavy)
     );
 
 
@@ -1190,9 +1352,9 @@ function drawStage5(
         630 +
         fragmentTravel,
         centerY,
-        58,
+        fragmentRadius(animationChannel.light),
         "#dcfce7",
-        "Kr-92"
+        fragmentLabel(animationChannel.light)
     );
 
 
@@ -1202,34 +1364,20 @@ function drawStage5(
         progress;
 
 
-    drawNeutron(
-        centerX,
-        centerY -
-        neutronDistance,
-        10
-    );
+    // Các neutron tỏa đều theo các hướng, neutron đầu tiên bay lên trên.
+    const neutronCount =
+        animationChannel.neutrons;
 
+    for (let i = 0; i < neutronCount; i++) {
+        const angle =
+            -Math.PI / 2 + i * 2 * Math.PI / neutronCount;
 
-    drawNeutron(
-        centerX -
-        neutronDistance *
-        0.75,
-        centerY +
-        neutronDistance *
-        0.55,
-        10
-    );
-
-
-    drawNeutron(
-        centerX +
-        neutronDistance *
-        0.75,
-        centerY +
-        neutronDistance *
-        0.55,
-        10
-    );
+        drawNeutron(
+            centerX + neutronDistance * Math.cos(angle) * 0.85,
+            centerY + neutronDistance * Math.sin(angle),
+            10
+        );
+    }
 
 
     ctx.textAlign =
@@ -1245,7 +1393,7 @@ function drawStage5(
 
 
     ctx.fillText(
-        `Q ≈ ${currentFissionProperties.qValueMeV.toFixedVi(2)} MeV`,
+        `Q ≈ ${animationChannel.properties.qValueMeV.toFixedVi(2)} MeV`,
         centerX,
         450
     );
@@ -1371,48 +1519,48 @@ function showFinalResults() {
 
     initialADisplay.textContent =
         String(
-            currentFissionProperties.initialA
+            animationChannel.properties.initialA
         );
 
 
     finalADisplay.textContent =
         String(
-            currentFissionProperties.finalA
+            animationChannel.properties.finalA
         );
 
 
     initialZDisplay.textContent =
         String(
-            currentFissionProperties.initialZ
+            animationChannel.properties.initialZ
         );
 
 
     finalZDisplay.textContent =
         String(
-            currentFissionProperties.finalZ
+            animationChannel.properties.finalZ
         );
 
 
     massDifferenceDisplay.textContent =
-        `${currentFissionProperties.massDifferenceU.toFixedVi(6)} u`;
+        `${animationChannel.properties.massDifferenceU.toFixedVi(6)} u`;
 
 
     qValueDisplay.textContent =
-        `${currentFissionProperties.qValueMeV.toFixedVi(3)} MeV`;
+        `${animationChannel.properties.qValueMeV.toFixedVi(3)} MeV`;
 
 
     massConservationStatus.textContent =
-        currentFissionProperties.massNumberConserved
+        animationChannel.properties.massNumberConserved
             ?
-            `✓ Bảo toàn A: ${currentFissionProperties.initialA} = ${currentFissionProperties.finalA}`
+            `✓ Bảo toàn A: ${animationChannel.properties.initialA} = ${animationChannel.properties.finalA}`
             :
             "Cần kiểm tra bảo toàn A";
 
 
     chargeConservationStatus.textContent =
-        currentFissionProperties.atomicNumberConserved
+        animationChannel.properties.atomicNumberConserved
             ?
-            `✓ Bảo toàn Z: ${currentFissionProperties.initialZ} = ${currentFissionProperties.finalZ}`
+            `✓ Bảo toàn Z: ${animationChannel.properties.initialZ} = ${animationChannel.properties.finalZ}`
             :
             "Cần kiểm tra bảo toàn Z";
 }
@@ -1535,7 +1683,9 @@ function animationLoop(
 
 
         stageDescription.textContent =
-            "Phân hạch hoàn thành: hai mảnh phân hạch và ba neutron thứ cấp đã được tạo thành.";
+            animationChannel.neutrons > 0
+                ? `Phân hạch hoàn thành: hai mảnh phân hạch và ${neutronCountText(animationChannel.neutrons)} thứ cấp đã được tạo thành.`
+                : "Phân hạch hoàn thành: hai mảnh phân hạch đã được tạo thành, không có neutron tức thời.";
 
 
         setStatus(
@@ -1571,8 +1721,21 @@ function startSimulation() {
         fissionElapsedTime >=
         finalTime
     ) {
-
         resetSimulation();
+    }
+
+
+    // Chế độ ngẫu nhiên: mỗi lần chạy lại từ đầu là một lần phân hạch mới.
+    if (
+        !fissionAnimationPaused
+        &&
+        fissionElapsedTime === 0
+    ) {
+        if (isRandomChannelMode() && animationChannelUsed) {
+            chooseAnimationChannel();
+        }
+
+        animationChannelUsed = true;
     }
 
 
@@ -2684,6 +2847,16 @@ pauseButton.addEventListener(
 resetButton.addEventListener(
     "click",
     resetSimulation
+);
+
+
+fissionChannelSelect.addEventListener(
+    "change",
+    () => {
+        resetSimulation();
+        chooseAnimationChannel();
+        drawFissionFrame(0);
+    }
 );
 
 

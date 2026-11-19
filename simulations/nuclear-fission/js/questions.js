@@ -40,7 +40,7 @@ QuickCheck.define({
     "fi-kp-3": {
         options: [
             {
-                text: "Hai đỉnh: một quanh A ≈ 95 (mảnh nhẹ), một quanh A ≈ 138 (mảnh nặng).",
+                text: "Hai đỉnh: một quanh A ≈ 95 (mảnh nhẹ), một quanh A ≈ 134 (mảnh nặng).",
                 correct: true
             },
             {
@@ -53,6 +53,83 @@ QuickCheck.define({
             }
         ],
         explanation: "Phân hạch U-235 bởi neutron nhiệt thường không đối xứng: một mảnh nhẹ (A ≈ 90–100) và một mảnh nặng (A ≈ 133–143). Theo ENDF/B-VIII.0, hiệu suất ở A = 134 lớn gấp khoảng 600 lần ở A = 117. Hai đỉnh đối xứng quanh A ≈ 117 vì tổng số khối của hai mảnh xấp xỉ 236 trừ đi vài neutron."
+    },
+
+    "fi-tn4-du-doan": {
+        predict: true,
+        options: [
+            {
+                text: "Hai mảnh gần bằng nhau, mỗi mảnh có A ≈ 117.",
+                feedback: "Em hãy nhìn cột “A = 112–122” của loạt 10 000 phân hạch: vùng này chỉ chiếm chưa tới 0,1 % số mảnh."
+            },
+            {
+                text: "Thường có một mảnh nhẹ (A ≈ 90–100) và một mảnh nặng (A ≈ 130–145).",
+                correct: true
+            },
+            {
+                text: "Luôn là Ba-141 và Kr-92 như trong phần hoạt hình.",
+                feedback: "Ba-141 + Kr-92 chỉ là một trong rất nhiều cặp mảnh có thể xuất hiện. Em hãy xem các dòng trong bảng: mỗi loạt cho phân bố trải rộng trên nhiều số khối."
+            },
+            {
+                text: "Mọi số khối từ 70 đến 165 đều có khả năng như nhau.",
+                feedback: "Với 10 000 phân hạch, các cột trên đồ thị chênh nhau hàng trăm lần. Em hãy so cột cao nhất với cột ở A ≈ 117."
+            }
+        ],
+        explanation: "Phân hạch U-235 bởi neutron nhiệt thường không đối xứng: một mảnh nhẹ quanh A ≈ 95 và một mảnh nặng quanh A ≈ 134–139. Đồ thị số khối vì thế có hai đỉnh và một vùng trũng sâu ở giữa (A ≈ 117)."
+    },
+
+    "fi-tn4-1": {
+        options: [
+            {
+                text: "Mỗi phân hạch xảy ra ngẫu nhiên. Với ít lần, số mảnh ở mỗi số khối quá nhỏ nên thăng giáng che mất quy luật; với nhiều lần, tỉ lệ ở mỗi số khối tiến gần tới xác suất của nó.",
+                correct: true
+            },
+            {
+                text: "Vì quy luật phân bố thay đổi theo số lần phân hạch.",
+                feedback: "Xác suất xuất hiện của mỗi cặp mảnh là như nhau ở mọi loạt. Thứ thay đổi theo số lần phân hạch là độ thăng giáng của kết quả."
+            },
+            {
+                text: "Vì loạt 10 phân hạch dùng một mô hình khác, đơn giản hơn.",
+                feedback: "Cả ba loạt dùng cùng một cách rút ngẫu nhiên. Em hãy chạy lại loạt 10 phân hạch vài lần và so các dòng trong bảng."
+            }
+        ],
+        explanation: "Ở A = 134, mỗi mảnh có xác suất khoảng 3,9 %. Loạt 10 phân hạch có 20 mảnh, trung bình chưa tới 1 mảnh rơi vào A = 134. Loạt 10 000 phân hạch có khoảng 785 mảnh ở A = 134, sai lệch ngẫu nhiên cỡ √785 ≈ 28 mảnh, tức khoảng 3,6 %. Đây là cùng một ý như ở Bài 4: với ít hạt nhân, số hạt nhân còn lại lệch nhiều khỏi đường e^(−λt); với rất nhiều hạt nhân, kết quả bám sát quy luật."
+    },
+
+    "fi-tn4-2": {
+        options: [
+            {
+                text: "Phân hạch đối xứng rất hiếm: vùng A = 112–122 chỉ chiếm cỡ 0,1 % số mảnh, trong khi vùng A = 90–100 chiếm khoảng một phần ba.",
+                correct: true
+            },
+            {
+                text: "Hai vùng có tỉ lệ gần bằng nhau, nên phân hạch đối xứng và không đối xứng thường gặp như nhau.",
+                feedback: "Em hãy đọc lại hai cột của loạt 10 000 phân hạch: tỉ lệ ở vùng A = 90–100 lớn hơn vùng A = 112–122 hàng trăm lần."
+            },
+            {
+                text: "Phân hạch đối xứng không bao giờ xảy ra.",
+                feedback: "Phân hạch đối xứng vẫn xảy ra, chỉ là rất hiếm. Nếu em chạy thêm vài loạt 10 000 phân hạch, thỉnh thoảng sẽ có mảnh ở vùng A = 112–122."
+            }
+        ],
+        explanation: "Theo ENDF/B-VIII.0, hiệu suất ở A = 134 là khoảng 7,8 %, còn ở A = 117 chỉ khoảng 0,013 %, nhỏ hơn khoảng 600 lần. Vùng A = 90–100 chiếm khoảng 34 % số mảnh, vùng A = 112–122 chỉ khoảng 0,07 %. Giải thích vì sao hạt nhân ưa vỡ không đối xứng cần đến mô hình lớp vỏ của hạt nhân, nằm ngoài chương trình lớp 12."
+    },
+
+    "fi-tn4-3": {
+        options: [
+            {
+                text: "Mỗi cặp mảnh có tổng khối lượng khác nhau nên độ hụt khối và Q khác nhau. Lấy trung bình trên rất nhiều phân hạch thì các chênh lệch ngẫu nhiên bù trừ nhau.",
+                correct: true
+            },
+            {
+                text: "Vì trong một số phân hạch, số nucleon không được bảo toàn.",
+                feedback: "Tổng A và tổng Z luôn được bảo toàn trong mọi phân hạch. Điều thay đổi giữa các lần là tổng khối lượng của các sản phẩm."
+            },
+            {
+                text: "Vì Q phụ thuộc vào tốc độ của neutron bắn vào.",
+                feedback: "Trong mô phỏng, neutron tới luôn là neutron nhiệt. Q khác nhau là do mỗi lần sinh ra một cặp mảnh khác nhau."
+            }
+        ],
+        explanation: "Q = (m trước − m sau)·c², mà m sau phụ thuộc cặp mảnh và số neutron phát ra. Trong mô phỏng, Q của từng phân hạch thường nằm trong khoảng 163–198 MeV, nhưng trung bình của 10 000 phân hạch chỉ dao động cỡ 0,1 MeV giữa các loạt, quanh 180 MeV."
     },
 
     "bridge-explore": {
