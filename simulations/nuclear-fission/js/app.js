@@ -1364,13 +1364,16 @@ function drawStage5(
         progress;
 
 
-    // Các neutron tỏa đều theo các hướng, neutron đầu tiên bay lên trên.
+    // Các neutron tỏa theo hình quạt quanh hướng lên trên (bước góc 120° khi
+    // có tới 3 neutron), để không neutron nào bay xuống đè lên dòng chữ Q.
     const neutronCount =
         animationChannel.neutrons;
 
     for (let i = 0; i < neutronCount; i++) {
         const angle =
-            -Math.PI / 2 + i * 2 * Math.PI / neutronCount;
+            -Math.PI / 2 +
+            (i - (neutronCount - 1) / 2) *
+            2 * Math.PI / Math.max(neutronCount, 3);
 
         drawNeutron(
             centerX + neutronDistance * Math.cos(angle) * 0.85,
